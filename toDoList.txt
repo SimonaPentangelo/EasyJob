@@ -1,0 +1,15 @@
+1) Definire la bacheca (Nello scenario) [Lista di annunci, e com'è fatto ogni annuncio].
+2) Ridefinire i requisiti funzionali ("Il sistema deve...").
+3) Dopo aver premuto "candidati" (da non loggato), viene fatto fare log in, e poi viene mostrata la pagina di candidatura
+   effettuata con succeso.
+4) Aggiungere la funzionalità di inviare una proposta di colloquio ai lavoratori.
+5) Al caso d'uso "login" al punto 4, se viene fallito il login si deve rimandare "al caso d'uso x.x" che fornisce la descriz
+   zione del caso d'uso di fallimento.
+6) Aggiunta di dati anagrafici dell' inoccupato (Data di nascita,proveniena,età...).
+7) Aggiungere al caso d'uso di registrazione il controllo dati del sistema per la registrazione ( questo generà un rinvio ad 
+un altro caso d'uso).
+8) Non lasciare il flusso alternativo per la registrazione, ma fare un caso d'uso separato(due registrazioni separate).
+9) Utente NON autenticato diventa utente NON registrato ( divisa in azienda NON reg. e inoccupato Non reg.), Utente-> inoccupato
+
+
+10) Aggiungere eccezioni.
