@@ -3,7 +3,7 @@
    zione del caso d'uso di fallimento.
 7) Aggiungere al caso d'uso di registrazione il controllo dati del sistema per la registrazione ( questo generà un rinvio ad 
 un altro caso d'uso).
-8) Non lasciare il flusso alternativo per la registrazione, ma fare un caso d'uso separato(due registrazioni separate).
+
 
 
 10) Aggiungere eccezioni (Login -> Account Bannato, Login/Registrazione -> Form Exception, 
