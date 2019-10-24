@@ -1,10 +1,11 @@
-1) Riscrivere i casi d'uso in base agli scenari e alle funzionalità aggiornate (ultimo documento).	
-5) Al caso d'uso "login" al punto 4, se viene fallito il login si deve rimandare "al caso d'uso x.x" che fornisce la descriz
-   zione del caso d'uso di fallimento.
+1)Eliminare gerarchia dell'utente non registrato
+2)Aggiungere p.iva all'azienda
+3)9.1 UC, inserire il riferimento che genera l'eccezione
+4)Cambiare le eccezioni, la exit condition : "Il sistema mostra di nuovo i campi del form con un errore sui rispettivi.
+5) Al caso d'uso "login" al punto 4, se viene fallito il login si deve rimandare "al caso d'uso x.x" che fornisce la descrizione del caso d'uso di fallimento.
+6)Separare le eccezioni
 7) Aggiungere al caso d'uso di registrazione il controllo dati del sistema per la registrazione ( questo generà un rinvio ad 
 un altro caso d'uso).
-
-
-
-10) Aggiungere eccezioni (Login -> Account Bannato, Login/Registrazione -> Form Exception, 
-Eccezione in caso di mancata memorizzazione dei dati [vedi login/reg. o qualsiasi modulo da compilare])
+8)VISUALIZZA PROFILO UC 4.2
+9)Nell'exception dei casi d'uso, l'exit cond. è : "username e password non corrispondono"
+10) Aggiungere l'eccezione di campi già esistenti nel DB in fase di registrazione.
