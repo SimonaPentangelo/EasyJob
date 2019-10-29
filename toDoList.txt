@@ -1,10 +1,6 @@
 
-2) inserire tutti i riferimenti alle eccezioni
-3)9.1 UC, inserire il riferimento che genera l'eccezione
-5) Al caso d'uso "login" al punto 4, se viene fallito il login si deve rimandare 
-"al caso d'uso x.x" che fornisce la descrizione del caso d'uso di fallimento.
 6) aggiornare i diagrammi
-
+ TUTTO OBJECT MODEL  E DYNAMIC MODELLING
 
 
 
