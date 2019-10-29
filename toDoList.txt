@@ -1,13 +1,10 @@
 
-2)Aggiungere p.iva all'azienda nello scenario del doc. di requisiti e casi d'uso
+2) inserire tutti i riferimenti alle eccezioni
 3)9.1 UC, inserire il riferimento che genera l'eccezione
-4)Cambiare le eccezioni, la exit condition : "Il sistema mostra di nuovo i campi del form con un errore sui rispettivi.
 5) Al caso d'uso "login" al punto 4, se viene fallito il login si deve rimandare 
 "al caso d'uso x.x" che fornisce la descrizione del caso d'uso di fallimento.
-6) Completare i casi d'uso delle eccesioni (c'è
-solo la signature)
-7) Aggiungere al caso d'uso di registrazione il controllo dati del sistema per la registrazione ( questo generà un rinvio ad 
-un altro caso d'uso).
-8)VISUALIZZA PROFILO UC 4.2
-11) Dal caso d'uso "CONTATTA CANDIDATO" separare la visualizzazione ddel curriculum
-(nuovo use case) da quello del contatto.
+6) aggiornare i diagrammi
+
+
+
+
