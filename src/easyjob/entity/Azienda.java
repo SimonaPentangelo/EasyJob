@@ -10,22 +10,29 @@ public class Azienda extends Utente {
 	private int numeroDipendenti;
 	private String partitaIVA;
 	private Date dataFondazione;
+	private String descrizione;
 	private String indirizzoSede;
 	private boolean banned;
 	
-	//Costruttore
+	//Costruttori
 	public Azienda(String username, String password, String email, int idUser, String nomeAzienda, 
 			String logoAzienda, int numeroDipendenti, String partitaIVA, Date dataFondazione,
-			String indirizzoSede, boolean banned) {
+			String descrizione, String indirizzoSede, boolean banned) {
 		super(username, password, email, idUser);
 		this.nomeAzienda = nomeAzienda;
 		this.logoAzienda = logoAzienda;
 		this.numeroDipendenti = numeroDipendenti;
 		this.partitaIVA = partitaIVA;
 		this.dataFondazione = dataFondazione;
+		this.descrizione = descrizione;
 		this.indirizzoSede = indirizzoSede;
 		this.banned = banned;
 	}
+	
+	public Azienda() {
+		super();
+	}
+
 
 	//Getters and setters
 	public String getNomeAzienda() {
@@ -66,6 +73,14 @@ public class Azienda extends Utente {
 
 	public void setDataFondazione(Date dataFondazione) {
 		this.dataFondazione = dataFondazione;
+	}
+	
+	public String getDescrizione() {
+		return descrizione;
+	}
+	
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
 	}
 
 	public String getIndirizzoSede() {

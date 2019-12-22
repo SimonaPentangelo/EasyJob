@@ -8,12 +8,16 @@ public abstract class Utente {
 	private String email;
 	private int idUser;
 	
-	//Costruttore
+	//Costruttori
 	public Utente(String username, String password, String email, int idUser) {
 		this.username = username;
 		this.password = password;
 		this.email = email;
 		this.idUser = idUser;
+	}
+	
+	public Utente() {
+		
 	}
 	
 	//Getters and setters
