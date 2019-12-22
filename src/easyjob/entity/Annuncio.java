@@ -1,6 +1,5 @@
 package easyjob.entity;
 
-import java.util.Date;
 import java.util.List;
 
 public class Annuncio {
@@ -12,12 +11,12 @@ public class Annuncio {
 	private String requisiti;
 	private List<String> tags;
 	private String tipoContratto;
-	private Date data;
+	private String data;
 	private Azienda azienda;
 	
 	//Costruttore
 	public Annuncio(int idAnnuncio, String titolo, String descrizione, String requisiti, List<String> tags,
-			String tipoContratto, Date data, Azienda azienda) {
+			String tipoContratto, String data, Azienda azienda) {
 		this.idAnnuncio = idAnnuncio;
 		this.titolo = titolo;
 		this.descrizione = descrizione;
@@ -81,11 +80,11 @@ public class Annuncio {
 		this.tipoContratto = tipoContratto;
 	}
 
-	public Date getData() {
+	public String getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(String data) {
 		this.data = data;
 	}
 
