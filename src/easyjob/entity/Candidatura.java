@@ -6,11 +6,11 @@ public class Candidatura {
 
 	//Parametri
 	private Date data;
-	private Inoccupato inoccupato;
-	private Annuncio annuncio;
+	private int inoccupato;
+	private int annuncio;
 	
 	//Costruttore
-	public Candidatura(Date data, Inoccupato inoccupato, Annuncio annuncio) {
+	public Candidatura(Date data, int inoccupato, int annuncio) {
 		super();
 		this.data = data;
 		this.inoccupato = inoccupato;
@@ -30,19 +30,19 @@ public class Candidatura {
 		this.data = data;
 	}
 
-	public Inoccupato getInoccupato() {
+	public int getInoccupato() {
 		return inoccupato;
 	}
 
-	public void setInoccupato(Inoccupato inoccupato) {
+	public void setInoccupato(int inoccupato) {
 		this.inoccupato = inoccupato;
 	}
 
-	public Annuncio getAnnuncio() {
+	public int getAnnuncio() {
 		return annuncio;
 	}
 
-	public void setAnnuncio(Annuncio annuncio) {
+	public void setAnnuncio(int annuncio) {
 		this.annuncio = annuncio;
 	}
 	

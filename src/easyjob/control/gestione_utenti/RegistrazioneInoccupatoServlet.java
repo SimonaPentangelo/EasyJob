@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import easyjob.entity.Inoccupato;
+import easyjob.model.ManagerUtenti;
 
 /**
  * Servlet implementation class RegistrazioneInoccupatoServlet
@@ -52,6 +54,7 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		Inoccupato inoccupato = new Inoccupato();
+		ManagerUtenti mu = new ManagerUtenti();
 		
 		String nome = request.getParameter("nome");
 		if(nome != null && !nome.equals("") && !nome.equals(" ") && nome.length() >= 2 && nome.length() <= 50) {
@@ -153,6 +156,15 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
 		
 		if(request.getParameter("trattamentoDati") == null) {
 			//deve fare il check
+		}
+		
+		try {
+			if(!mu.isPresent(inoccupato)) {
+				mu.registerUserInoccupato(inoccupato);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 		//response.sendRedirect(/*pagina di registrazione avvenuta con successo*/);

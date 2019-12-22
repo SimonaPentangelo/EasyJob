@@ -179,7 +179,7 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
 		
 		try {
 			if(!mu.isPresent(azienda)) {
-				mu.registerUser(azienda);
+				mu.registerUserAzienda(azienda);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

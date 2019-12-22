@@ -12,11 +12,11 @@ public class Annuncio {
 	private List<String> tags;
 	private String tipoContratto;
 	private String data;
-	private Azienda azienda;
+	private int azienda;
 	
 	//Costruttore
 	public Annuncio(int idAnnuncio, String titolo, String descrizione, String requisiti, List<String> tags,
-			String tipoContratto, String data, Azienda azienda) {
+			String tipoContratto, String data, int azienda) {
 		this.idAnnuncio = idAnnuncio;
 		this.titolo = titolo;
 		this.descrizione = descrizione;
@@ -88,11 +88,11 @@ public class Annuncio {
 		this.data = data;
 	}
 
-	public Azienda getAzienda() {
+	public int getAzienda() {
 		return azienda;
 	}
 
-	public void setAzienda(Azienda azienda) {
+	public void setAzienda(int azienda) {
 		this.azienda = azienda;
 	}
 

@@ -7,7 +7,7 @@
 <title>Contatta Candidato</title>
 </head>
 <body>
-	<form>
+	<form action="ContattaCandidatoServlet" method="POST">
 	Titolo: <input type="text" name="titolo">
 	Messaggio: <input type="text" name="messaggio">
 	<input type="submit" value="Invia">
