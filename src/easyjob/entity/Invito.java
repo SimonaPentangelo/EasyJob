@@ -5,11 +5,11 @@ public class Invito {
 	//Parametri
 	private String titolo;
 	private String corpo;
-	private Azienda azienda;
-	private Inoccupato inoccupato;
+	private int azienda;
+	private int inoccupato;
 	
 	//Costruttore
-	public Invito(String titolo, String corpo, Azienda azienda, Inoccupato inoccupato) {
+	public Invito(String titolo, String corpo, int azienda, int inoccupato) {
 		super();
 		this.titolo = titolo;
 		this.corpo = corpo;
@@ -38,19 +38,19 @@ public class Invito {
 		this.corpo = corpo;
 	}
 
-	public Azienda getAzienda() {
+	public int getAzienda() {
 		return azienda;
 	}
 
-	public void setAzienda(Azienda azienda) {
+	public void setAzienda(int azienda) {
 		this.azienda = azienda;
 	}
 
-	public Inoccupato getInoccupato() {
+	public int getInoccupato() {
 		return inoccupato;
 	}
 
-	public void setInoccupato(Inoccupato inoccupato) {
+	public void setInoccupato(int inoccupato) {
 		this.inoccupato = inoccupato;
 	}
 

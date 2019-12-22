@@ -7,11 +7,11 @@ public class Segnalazione {
 	private String titolo;
 	private String corpo;
 	private Date data;
-	private Azienda azienda;
-	private Moderatore moderatore;
+	private int azienda;
+	private int moderatore;
 
 	//Costruttore
-	public Segnalazione(String titolo, String corpo, Date data, Azienda azienda, Moderatore moderatore) {
+	public Segnalazione(String titolo, String corpo, Date data, int azienda, int moderatore) {
 		super();
 		this.titolo = titolo;
 		this.corpo = corpo;
@@ -49,19 +49,19 @@ public class Segnalazione {
 		this.data = data;
 	}
 	
-	public Azienda getAzienda() {
+	public int getAzienda() {
 		return azienda;
 	}
 	
-	public void setAzienda(Azienda azienda) {
+	public void setAzienda(int azienda) {
 		this.azienda = azienda;
 	}
 	
-	public Moderatore getModeratore() {
+	public int getModeratore() {
 		return moderatore;
 	}
 	
-	public void setModeratore(Moderatore moderatore) {
+	public void setModeratore(int moderatore) {
 		this.moderatore = moderatore;
 	}
 }

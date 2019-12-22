@@ -94,7 +94,7 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
 		SimpleDateFormat sdf = new SimpleDateFormat("gg/mm/yyyy");
 		try {
 			Date dataFondazione = sdf.parse(dataFondazioneString);
-			azienda.setDataFondazione(dataFondazione);
+			azienda.setDataFondazione(dataFondazioneString);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -179,7 +179,7 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
 		
 		try {
 			if(!mu.isPresent(azienda)) {
-				mu.registerUser(azienda);
+				mu.registerUserAzienda(azienda);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

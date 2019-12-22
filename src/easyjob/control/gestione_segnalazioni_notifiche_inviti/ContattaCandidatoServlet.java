@@ -7,6 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import easyjob.entity.Azienda;
+import easyjob.entity.Invito;
+import easyjob.model.ManagerInviti;
+import easyjob.model.ManagerUtenti;
+
 /**
  * Servlet implementation class ContattaCandidatoServlet
  */
@@ -26,7 +31,7 @@ public class ContattaCandidatoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request, response);
 	}
 
 	/**
@@ -34,7 +39,35 @@ public class ContattaCandidatoServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		Invito invito = new Invito();
+		ManagerInviti mi = new ManagerInviti();
+		
+		//Prendo l'azienda dalla sessione, quella che sta contattando il candidato
+		Azienda azienda = (Azienda) request.getSession().getAttribute("Azienda");
+		
+		int idInoccupato; //in qualche modo prendo l'id dell'inoccupato che voglio contattare
+			
+		invito.setAzienda(azienda.getIdUser());
+		
+		String titolo = request.getParameter("titolo");
+		if(titolo != null && !titolo.equals("") && !titolo.equals(" ") && titolo.length() >= 5 && titolo.length() <= 60) {
+			invito.setTitolo(titolo);
+		} else {
+			//errore nella titolo
+		}
+		
+		String messaggio = request.getParameter("messaggio");
+		if(messaggio != null && !messaggio.contentEquals("") && !messaggio.contentEquals(" ") && messaggio.length() >= 10 && messaggio.length() <= 10000) {
+			invito.setCorpo(messaggio);
+		} else {
+			//errore nel corpo
+		}
+		
+		invito.setInoccupato(idInoccupato);
+		mi.contattaCandidato(invito);
+		
+		//response.sendRedirect(/*pagina di invio avvenuto con successo*/);
 	}
 
 }
