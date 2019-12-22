@@ -8,18 +8,20 @@ public class Inoccupato extends Utente {
 		private String nome;
 		private String cognome;
 		private String residenza;
-		private Date dataNascita;
+		private String dataNascita;
 		private String curriculum;
+		private String città;
 		
 	//Costruttore
 	public Inoccupato(String username, String password, String email, int idUser, String nome, String cognome,
-			String residenza, Date dataNascita, String curriculum) {
+			String residenza, String dataNascita, String curriculum,String città) {
 		super(username, password, email, idUser);
 		this.nome = nome;
 		this.cognome = cognome;
 		this.residenza = residenza;
 		this.dataNascita = dataNascita;
 		this.curriculum = curriculum;
+		this.città = città;
 	}
 	
 	public Inoccupato() {
@@ -50,11 +52,11 @@ public class Inoccupato extends Utente {
 		this.residenza = residenza;
 	}
 
-	public Date getDataNascita() {
+	public String getDataNascita() {
 		return dataNascita;
 	}
 
-	public void setDataNascita(Date dataNascita) {
+	public void setDataNascita(String dataNascita) {
 		this.dataNascita = dataNascita;
 	}
 
@@ -66,5 +68,11 @@ public class Inoccupato extends Utente {
 		this.curriculum = curriculum;
 	}
 	
+	public String getCittà (){
+		return città;
+	}
 	
+	public void setCittà (String città){
+		this.città = città;
+	}
 }
