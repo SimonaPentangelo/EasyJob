@@ -1,6 +1,12 @@
 package easyjob.control.gestione_utenti;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -14,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import easyjob.entity.Azienda;
+import easyjob.model.ManagerUtenti;
 
 /**
  * Servlet implementation class RegistrazioneAziendaServlet
@@ -48,10 +55,13 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		Azienda azienda = new Azienda();
+		ManagerUtenti mu = new ManagerUtenti();
 		
 		String nomeAzienda = request.getParameter("nomeAzienda");
-		if(nomeAzienda != null && !nomeAzienda.equals("") && !nomeAzienda.equals(" ")) {
-			azienda.setNomeAzienda(nomeAzienda);
+		if(nomeAzienda != null && !nomeAzienda.equals("") && !nomeAzienda.equals(" ") && nomeAzienda.length() >= 6 && nomeAzienda.length() <= 30) {
+				azienda.setNomeAzienda(nomeAzienda);
+		} else {
+			//errore nel nome dell'aziendas
 		}
 		
 		Part logoAzienda = request.getPart("logoAzienda");
@@ -60,18 +70,24 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
 		}
 		
 		String partitaIVA = request.getParameter("partitaIVA");
-		if(partitaIVA != null && !partitaIVA.equals("") && !partitaIVA.equals(" ")) {
+		if(partitaIVA != null && !partitaIVA.equals("") && !partitaIVA.equals(" ") && partitaIVA.length() == 11) {
 			azienda.setPartitaIVA(partitaIVA);
+		} else {
+			//errore nella partita iva
 		}
 		
 		String username = request.getParameter("username");
-		if(username != null && !username.equals("") && !username.contentEquals(" ")) {
+		if(username != null && !username.equals("") && !username.contentEquals(" ") && username.length() >= 5 && username.length() <= 20) {
 			azienda.setUsername(username);
+		} else {
+			//errore nell'username
 		}
 		
 		String indirizzo = request.getParameter("IndirizzoSede");
-		if(indirizzo != null && !indirizzo.equals("") && !indirizzo.contentEquals(" ")) {
+		if(indirizzo != null && !indirizzo.equals("") && !indirizzo.contentEquals(" ") && indirizzo.length() >= 6 && indirizzo.length() <= 30) {
 			azienda.setIndirizzoSede(indirizzo);
+		} else {
+			//errore nell'indirizzo
 		}
 		
 		String dataFondazioneString = request.getParameter("dataFondazione");
@@ -85,13 +101,19 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
 		}
 		
 		String descrizione = request.getParameter("descrizione");
-		if(descrizione != null && !descrizione.equals("") && !descrizione.equals(" ")) {
+		if(descrizione != null && !descrizione.equals("") && !descrizione.equals(" ") && descrizione.length() <= 500) {
 			azienda.setDescrizione(descrizione);
+		} else {
+			//errore nella descrizione
 		}
 		
 		String numeroDipendentiString = request.getParameter("numeroDipendenti");
 		if(numeroDipendentiString != null && !numeroDipendentiString.contentEquals("") && !numeroDipendentiString.contentEquals(" ")) {
-			azienda.setNumeroDipendenti(Integer.parseInt(numeroDipendentiString));
+			try {
+				azienda.setNumeroDipendenti(Integer.parseInt(numeroDipendentiString));
+			} catch(NumberFormatException e) {
+				//non è stato passato un numero in input
+			}
 		}
 		
 		String email = request.getParameter("email");
@@ -102,12 +124,16 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		String confermaPassword = request.getParameter("confermaPassword");
 	
-		if(password != null && !password.contentEquals("") && !password.contentEquals(" ")) {
-			if(confermaPassword != null && !confermaPassword.contentEquals("") && !confermaPassword.contentEquals(" "))
+		if(password != null && !password.contentEquals("") && !password.contentEquals(" ") && password.length() >= 8 && password.length() <= 16) {
+			if(confermaPassword != null && !confermaPassword.contentEquals("") && !confermaPassword.contentEquals(" ") && confermaPassword.length() >= 8 && confermaPassword.length() <= 16)
 			{
 				if(password.equals(confermaPassword)) {
 					azienda.setPassword(password);
+				} else {
+					//le due password non corrispondono
 				}
+			} else {
+				//errore nella password
 			}
 		}
 		
@@ -116,6 +142,51 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
 		if(request.getParameter("trattamentoDati") == null) {
 			//deve fare il check
 		}
+		
+		//Codice per creare la directory dove salvare l'immagine del logo
+		//BISOGNA VEDERE SE FUNZIONA!
+		
+		String rootFolder = "resources"; //serve a dare il nome della cartella di root per salvare i file se gia c'è non la crea
+		String rootPath = request.getServletContext().getRealPath("") + rootFolder; //costruisce la stringa contenete il percorso della root dove salviamo i file 
+		String userPath = rootPath + File.separator + azienda.getUsername();; //serve per definire la cartella dell'utente se gia esiste non viene creata
+		String userImagePath = userPath + File.separator + "image";//crea la cartella dove verrà inserita l'immagine del logo
+		
+		File dirRoot = new File(rootPath); //cartella delle resources
+		if(!dirRoot.exists())//se la cartella esiste non la crea altrimenti genera la cartella 
+		{
+			dirRoot.mkdirs();
+		}
+		
+		File userDir = new File(userPath); //cartella propria dell'utente
+		if(!userDir.exists())//serve a creare la cartella dell'utente
+		{
+			userDir.mkdir();
+			
+		}
+
+		File userImagesDir = new File(userImagePath);
+		if(!userImagesDir.exists())//serve a creare la cartella immagini dell'utente
+		{
+			userImagesDir.mkdir();
+		}
+		
+		String imageFullPath = userImagePath + logoAzienda.getSubmittedFileName().replaceAll(" ", "_");
+		InputStream inputStream = logoAzienda.getInputStream();
+		
+		Files.copy(inputStream, Paths.get(imageFullPath), StandardCopyOption.REPLACE_EXISTING);
+		azienda.setLogoAzienda(imageFullPath);
+		inputStream.close();
+		
+		try {
+			if(!mu.isPresent(azienda)) {
+				mu.registerUser(azienda);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//response.sendRedirect(/*pagina di registrazione avvenuta con successo*/);
 	}
 
 }
