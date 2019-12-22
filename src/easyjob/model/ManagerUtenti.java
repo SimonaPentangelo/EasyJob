@@ -17,8 +17,15 @@ public class ManagerUtenti {
 	public static final String TABLE_AZIENDA= "Azienda";
 	public static final String TABLE_MODERATORE= "Moderatore";
 	public static final String TABLE_AMMINISTRATORE= "Amministratore";
-	
-	
+	public static final String INSERT_INOCCUPATO = "INSERT INTO Inoccupato (Username,Password,Email,Nome,Cognome,DataNascita,Residenza,Città,Curriculum)"+
+	"VALUES (?,?,?,?,?,?,?,?,?);";
+	public static final String INSERT_AZIENDA = "INSERT INTO Azienda (Username,Password,Email,NomeAzienda,LogoAzienda,Dipendenti,DataFondazione,Indirizzo,PIva,Banned)"+
+	"VALUES(?,?,?,?,?,?,?,?,?,?);";
+	public static final String MODIFICA_CV = "UPDATE Inoccupato SET Curriculum=? WHERE idUser=?;";
+	public static final String FIND_AZIENDA_BANNED = "SELECT Banned FROM Azienda WHERE idUser = ?;";
+	public static final String BAN_AZIENDA = "UPDATE Azienda SET Banned=? WHERE idUser=?;";
+			
+			
 	public synchronized boolean isPresent(Utente u) throws SQLException{
 		/*Spacchettamento di username  poi si controlla se è presente
 		 * nel db*/
@@ -51,26 +58,193 @@ public class ManagerUtenti {
 			
 	}
 	
-	public synchronized boolean isAlreadyBanned(int idUser){
-		/*Controlla il campo banned*/
+	public synchronized boolean isAlreadyBanned(int idUser) throws SQLException{
+		Connection connect = null;
+		PreparedStatement banned = null;
+		boolean flag = false;
+		
+		
+		try{
+			
+			connect = DriverManagerConnectionPool.getConnection();
+			banned = connect.prepareStatement(FIND_AZIENDA_BANNED);
+			banned.setInt(1,idUser);
+			ResultSet result = banned.executeQuery();
+			while(result.next()){
+				flag = result.getBoolean("Banned");
+				
+			}
+		}finally
+		{
+			try{
+				 if (banned!= null)
+					 banned.close();
+			   }
+			finally
+			{
+				DriverManagerConnectionPool.releaseConnection(connect);
+			}
+			
+		}
+		
+		return flag;
+	}
+	
+	public synchronized boolean deleteUser (Utente u) throws SQLException{
+		
+		int idUser = u.getIdUser();
+		Connection connect = null;
+		PreparedStatement ban = null;
+		boolean flag = false;
+		
+		try{
+			connect = DriverManagerConnectionPool.getConnection();
+			ban = connect.prepareStatement(BAN_AZIENDA);
+			ban.setBoolean(1, true);
+			ban.setInt(2, idUser);
+			
+			int risultato= ban.executeUpdate();
+			connect.commit();  /*Se non funziona provare con connect.setAutoCommit(false) quando si prende la connessione*/
+			
+			if(risultato==1){
+				flag = true;
+				return flag;
+			}
+		}
+		finally{
+			try{
+				if (ban != null)
+				{
+				ban.close();
+				}
+			 }
+			finally{
+				DriverManagerConnectionPool.releaseConnection(connect);
+			}
+		}
 		return false;
 	}
 	
-	public synchronized boolean deleteUser (Utente u){
-		/* Controlla se nel databas è presente un utente poi esegue la remove*/
-		return false;
+	
+	public synchronized boolean modificaCurriculum(int idUser,String pathNewCV) throws SQLException{
+
+		Connection connect = null;
+		PreparedStatement modificaCV = null;
+		boolean flag = false;
+		
+		try{
+			connect = DriverManagerConnectionPool.getConnection();
+			modificaCV = connect.prepareStatement(MODIFICA_CV);
+			modificaCV.setString(1, pathNewCV);
+			modificaCV.setInt(2, idUser);
+			
+			int risultato = modificaCV.executeUpdate();
+			connect.commit();  /*Se non funziona provare con connect.setAutoCommit(false) quando si prende la connessione*/
+			
+			if(risultato==1){
+				flag = true;
+				return flag;
+			}
+		}
+		finally{
+			try{
+				if (modificaCV != null)
+				{
+				modificaCV.close();
+				}
+			 }
+			finally{
+				DriverManagerConnectionPool.releaseConnection(connect);
+			}
+		}
+		return flag;
+	}
+		
+	
+	
+	public synchronized boolean registerUserInoccupato (Inoccupato inocc) throws SQLException{
+		
+		Connection connect = null;
+		PreparedStatement insertUser = null;
+		Boolean flag = false;
+		
+		try{
+			connect = DriverManagerConnectionPool.getConnection();
+			insertUser = connect.prepareStatement(INSERT_INOCCUPATO);
+			insertUser.setString(1,inocc.getUsername());
+			insertUser.setString(2,inocc.getPassword());
+			insertUser.setString(3,inocc.getEmail());
+			insertUser.setString(4, inocc.getNome());
+			insertUser.setString(5,inocc.getCognome());
+			insertUser.setString(6, inocc.getDataNascita());
+			insertUser.setString(7, inocc.getResidenza());
+			insertUser.setString(8,inocc.getCittà());
+			insertUser.setString(9,inocc.getCurriculum());
+			
+			int risultato =  insertUser.executeUpdate();
+			connect.commit();
+			if (risultato==1){
+				flag = true;
+				return flag;
+			}
+		} 
+		finally{
+			
+			try{
+				if(insertUser != null)
+				{
+					insertUser.close();
+				}
+			}
+			finally{
+				DriverManagerConnectionPool.releaseConnection(connect);
+			}
+		}
+		
+		return flag;
 	}
 	
-	
-	public synchronized boolean modificaCurriculum(int idUser,String pathNewCV){
-		/*Dato un id modifica il path del curriculum nel db*/
-		return false;
-	}
-	
-	public synchronized boolean registerUser (Utente u){
-		/*Controlla se esiste già un utente con con l'username passato se non c'è
-		 * lo inserisce nel db*/
-		return false;
+	public synchronized boolean registerUserAzienda (Azienda azienda) throws SQLException{
+		
+		Connection connect = null;
+		PreparedStatement insertUser = null;
+		Boolean flag = false;
+		
+		try{
+			connect = DriverManagerConnectionPool.getConnection();
+			insertUser = connect.prepareStatement(INSERT_AZIENDA);
+			insertUser.setString(1,azienda.getUsername());
+			insertUser.setString(2,azienda.getPassword());
+			insertUser.setString(3,azienda.getEmail());
+			insertUser.setString(4, azienda.getNomeAzienda());
+			insertUser.setString(5,azienda.getLogoAzienda());
+			insertUser.setInt(6, azienda.getNumeroDipendenti());
+			insertUser.setString(7,azienda.getDataFondazione());
+			insertUser.setString(8,azienda.getIndirizzoSede());
+			insertUser.setString(9,azienda.getPartitaIVA());
+			insertUser.setBoolean(10,azienda.isBanned());
+			
+			int risultato =  insertUser.executeUpdate();
+			connect.commit();
+			if (risultato==1){
+				flag = true;
+				return flag;
+			}
+		} 
+		finally{
+			
+			try{
+				if(insertUser != null)
+				{
+					insertUser.close();
+				}
+			}
+			finally{
+				DriverManagerConnectionPool.releaseConnection(connect);
+			}
+		}
+		
+		return flag;
 	}
 	
 	
