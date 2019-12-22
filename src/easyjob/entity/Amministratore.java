@@ -6,5 +6,9 @@ public class Amministratore extends Utente {
 		super(username, password, email, idUser);
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Amministratore() {
+		super();
+	}
 
 }

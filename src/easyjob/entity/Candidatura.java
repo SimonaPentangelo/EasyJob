@@ -16,6 +16,10 @@ public class Candidatura {
 		this.inoccupato = inoccupato;
 		this.annuncio = annuncio;
 	}
+	
+	public Candidatura() {
+		
+	}
 
 	//Getters and setters
 	public Date getData() {

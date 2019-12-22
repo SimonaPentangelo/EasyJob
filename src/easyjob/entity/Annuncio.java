@@ -27,6 +27,10 @@ public class Annuncio {
 		this.data = data;
 		this.azienda = azienda;
 	}
+	
+	public Annuncio() {
+		
+	}
 
 	//Getters and setters
 	public int getIdAnnuncio() {

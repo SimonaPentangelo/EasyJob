@@ -21,6 +21,10 @@ public class Inoccupato extends Utente {
 		this.dataNascita = dataNascita;
 		this.curriculum = curriculum;
 	}
+	
+	public Inoccupato() {
+		super();
+	}
 
 	public String getNome() {
 		return nome;

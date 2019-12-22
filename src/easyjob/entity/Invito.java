@@ -17,6 +17,10 @@ public class Invito {
 		this.inoccupato = inoccupato;
 	}
 
+	public Invito() {
+		
+	}
+	
 	//Getters and setters
 	public String getTitolo() {
 		return titolo;

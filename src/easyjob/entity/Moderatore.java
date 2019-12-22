@@ -6,5 +6,9 @@ public class Moderatore extends Utente {
 		super(username, password, email, idUser);
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Moderatore() {
+		super();
+	}
 
 }

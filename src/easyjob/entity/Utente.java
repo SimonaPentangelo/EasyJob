@@ -1,6 +1,6 @@
 package easyjob.entity;
 
-public abstract class Utente {
+public class Utente {
 
 	//Parametri
 	private String username;

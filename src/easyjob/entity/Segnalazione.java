@@ -19,6 +19,10 @@ public class Segnalazione {
 		this.azienda = azienda;
 		this.moderatore = moderatore;
 	}
+	
+	public Segnalazione() {
+		
+	}
 
 	//Getters and setters
 	public String getTitolo() {
