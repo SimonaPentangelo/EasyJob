@@ -26,10 +26,10 @@ values("Esempio invito1","Invito per esempio su prima azienda e primo inoccupato
 ("Esempio invito 3", "Invito su seconda azienda e secondo inoccupato",2,2),
 ("Esempio invito 4", "Invito su seconda azienda e primo inoccupato",2,1);
 
-insert into EasyJob.Annuncio (Azienda,Titolo,Descrizione,Requisiti,TipoContratto)
-values(1,"Esempio annuncio 1","Annuncio della prima azineda","req1,req2,req3,...","Indeterminato"),
-(2,"Esempio annuncio 2", "Annuncio della seconda azienda","req1,req2,...","Part-time"),
-(2,"Esempio annuncio 3","Secondo annuncio della seconda azienda","req1,req2,req3,...","Stage");
+insert into EasyJob.Annuncio (Azienda,Titolo,Descrizione,Requisiti,TipoContratto,DataPubblicazione,Città)
+values(1,"Esempio annuncio 1","Annuncio della prima azineda","req1,req2,req3,...","Indeterminato","23/12/2019","Salerno"),
+(2,"Esempio annuncio 2", "Annuncio della seconda azienda","req1,req2,...","Part-time","22/12/2019","Battipaglia"),
+(2,"Esempio annuncio 3","Secondo annuncio della seconda azienda","req1,req2,req3,...","Stage","24/10/2019","Fisciano");
 
 insert into EasyJob.Tag(NomeTag,Annuncio)
 values("Informatica",1),

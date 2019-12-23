@@ -10,7 +10,7 @@ create table if not exists EasyJob.Inoccupato (
 	Cognome varchar(50) not null,
 	DataNascita varchar(50) not null,
 	Residenza varchar(50) not null,
-	Citt� varchar(20) not null,
+	Città varchar(20) not null,
 	Curriculum varchar(200) not null,
 	primary key(idUser)
 );
@@ -85,6 +85,8 @@ create table if not exists EasyJob.Annuncio (
 	Descrizione varchar(7000) not null,
 	Requisiti varchar(3000) not null,
 	TipoContratto varchar(20) not null,
+	DataPubblicazione varchar(15)not null,
+	Città varchar(50) not null,
 	foreign key(Azienda)
 	references EasyJob.Azienda (idUser)
 	on delete cascade

@@ -13,10 +13,11 @@ public class Annuncio {
 	private String tipoContratto;
 	private String data;
 	private int azienda;
+	private String città;
 	
 	//Costruttore
 	public Annuncio(int idAnnuncio, String titolo, String descrizione, String requisiti, List<String> tags,
-			String tipoContratto, String data, int azienda) {
+			String tipoContratto, String data, int azienda,String città) {
 		this.idAnnuncio = idAnnuncio;
 		this.titolo = titolo;
 		this.descrizione = descrizione;
@@ -25,6 +26,7 @@ public class Annuncio {
 		this.tipoContratto = tipoContratto;
 		this.data = data;
 		this.azienda = azienda;
+		this.città = città;
 	}
 	
 	public Annuncio() {
@@ -32,6 +34,15 @@ public class Annuncio {
 	}
 
 	//Getters and setters
+	
+	public String getCittà(){
+		return città;
+	}
+	
+	public void setCittà(String nuovaCittà){
+		this.città = nuovaCittà;
+	}
+	
 	public int getIdAnnuncio() {
 		return idAnnuncio;
 	}
