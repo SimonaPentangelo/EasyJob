@@ -5,12 +5,12 @@ import java.util.Date;
 public class Candidatura {
 
 	//Parametri
-	private Date data;
+	private String data;
 	private int inoccupato;
 	private int annuncio;
 	
 	//Costruttore
-	public Candidatura(Date data, int inoccupato, int annuncio) {
+	public Candidatura(String data, int inoccupato, int annuncio) {
 		super();
 		this.data = data;
 		this.inoccupato = inoccupato;
@@ -22,11 +22,11 @@ public class Candidatura {
 	}
 
 	//Getters and setters
-	public Date getData() {
+	public String getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(String data) {
 		this.data = data;
 	}
 

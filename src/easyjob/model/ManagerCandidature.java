@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +17,9 @@ public class ManagerCandidature {
 
 	public final String FIND_CANDIDATE = "SELECT * FROM Candidatura WHERE Inoccupato = ? AND Annuncio = ?;";
 	public final String FIND_PER_INOCC = "SELECT * FROM Candidatura WHERE Inoccupato = ?;";
-	public final String INSERT_CAND = "INSERT INTO Candidatura(Inoccupato, Annuncio) VALUES (?, ?);";
+	public final String FIND_PER_ANN = "SELECT * FROM Candidatura WHERE Annuncio = ?;";
+	public final String DELETE_PER_ANN = "DELETE FROM Candidatura WHERE Annuncio = ?;";
+	public final String INSERT_CAND = "INSERT INTO Candidatura(Inoccupato, Annuncio, Data) VALUES (?, ?, ?);";
 	
 	private synchronized boolean isAlreadyCandidate (int idInoccupato,int idAnnuncio) throws SQLException {
 		
@@ -51,11 +55,80 @@ public class ManagerCandidature {
 	}
 	
 	
-	public synchronized List<Candidatura> visualizzaCandidature (Inoccupato inocc){
+	public synchronized List<Candidatura> visualizzaCandidatureEffettuate(Inoccupato inocc) throws SQLException {
 		
-		/*Dato un inoccupato, si restituiscono le candidature effettuate*/
+		Connection connect = null;
+		PreparedStatement candidate = null;
+		List<Candidatura> lista = new ArrayList<Candidatura>();
 		
-		return null;
+		try {
+			
+			connect = DriverManagerConnectionPool.getConnection();
+			candidate = connect.prepareStatement(FIND_PER_INOCC);
+			candidate.setInt(1, inocc.getIdUser());
+			
+			ResultSet result = candidate.executeQuery();
+			
+			while(result.next()) {
+				Candidatura c = new Candidatura();
+				c.setAnnuncio(result.getInt("Annuncio"));
+				c.setData(result.getString("Data"));
+				c.setInoccupato(inocc.getIdUser());
+				lista.add(c);
+			}
+			
+			return lista;
+			
+		} finally {
+			
+			try {
+				if (candidate != null) {
+					candidate.close();
+				}
+			}
+			finally {
+				
+				DriverManagerConnectionPool.releaseConnection(connect);
+			}
+		}
+	}
+	
+public synchronized List<Candidatura> visualizzaCandidatureRicevute(int idAnn) throws SQLException {
+		
+		Connection connect = null;
+		PreparedStatement candidate = null;
+		List<Candidatura> lista = new ArrayList<Candidatura>();
+		
+		try {
+			
+			connect = DriverManagerConnectionPool.getConnection();
+			candidate = connect.prepareStatement(FIND_PER_ANN);
+			candidate.setInt(1, idAnn);
+			
+			ResultSet result = candidate.executeQuery();
+			
+			while(result.next()) {
+				Candidatura c = new Candidatura();
+				c.setInoccupato(result.getInt("Inoccupato"));
+				c.setData(result.getString("Data"));
+				c.setAnnuncio(idAnn);
+				lista.add(c);
+			}
+			
+			return lista;
+			
+		} finally {
+			
+			try {
+				if (candidate != null) {
+					candidate.close();
+				}
+			}
+			finally {
+				
+				DriverManagerConnectionPool.releaseConnection(connect);
+			}
+		}
 	}
 	
 	public synchronized boolean candidate (Inoccupato inocc,Annuncio ann) throws SQLException{
@@ -66,6 +139,9 @@ public class ManagerCandidature {
 			
 			Connection connect = null;
 			PreparedStatement insertCandidate = null;
+			//Per mettere la data corrente, non so se funziona però
+			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+			String localDate = dtf.format(LocalDate.now());
 			
 			try {
 				
@@ -73,6 +149,7 @@ public class ManagerCandidature {
 				insertCandidate = connect.prepareStatement(FIND_CANDIDATE);
 				insertCandidate.setInt(1, inocc.getIdUser());
 				insertCandidate.setInt(2, ann.getIdAnnuncio());
+				insertCandidate.setString(3, localDate); //non so se funziona!!
 				insertCandidate.executeUpdate();
 				connect.commit();
 				return true;
@@ -90,5 +167,34 @@ public class ManagerCandidature {
 				}
 			}
 		}
-	}	
+	}
+	
+	public boolean deleteCandidate(int idAnnuncio) throws SQLException {
+		
+		Connection connect = null;
+		PreparedStatement candidate = null;
+		
+		try {
+			
+			connect = DriverManagerConnectionPool.getConnection();
+			candidate = connect.prepareStatement(DELETE_PER_ANN);
+			candidate.setInt(1, idAnnuncio);
+			
+			candidate.executeUpdate();
+			connect.commit();
+			return true;
+			
+		} finally {
+			
+			try {
+				if (candidate != null) {
+					candidate.close();
+				}
+			}
+			finally {
+				
+				DriverManagerConnectionPool.releaseConnection(connect);
+			}
+		}
+	}
 }
