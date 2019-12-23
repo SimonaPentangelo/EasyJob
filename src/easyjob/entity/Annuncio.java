@@ -71,6 +71,10 @@ public class Annuncio {
 	public void setTags(List<String> tags) {
 		this.tags = tags;
 	}
+	
+	public void addTag (String tag){
+		tags.add(tag);
+	}
 
 	public String getTipoContratto() {
 		return tipoContratto;
