@@ -15,13 +15,13 @@ public class ManagerAnnunci {
 	public final String FIND_BY_TAG = "SELECT * FROM Annuncio JOIN Tag ON idAnnuncio = Annuncio WHERE NomeTag =?;";
 	public final String FIND_TAGS = "SELECT NomeTag FROM tag WHERE Annuncio = ?;";
 	public final String FIND_ALL_ADS = "SELECT * FROM Annuncio WHERE Azienda = ?;";
-	public final String INSERT_AD = "INSERT INTO Annuncio(Azienda,Titolo,Descrizione,Requisiti,TipoContratto)"+
-	"VALUES (?,?,?,?,?);";
+	public final String INSERT_AD = "INSERT INTO Annuncio(Azienda,Titolo,Descrizione,Requisiti,TipoContratto,DataPubblicazione,Città)"+
+	"VALUES (?,?,?,?,?,?,?);";
 	public final String INSERT_TAG = "INSERT INTO TAG (NomeTag,Annuncio)"+
 	"VALUES (?,?);";
 	public final String DELETE_TAG = "DELETE FROM Tag WHERE Annuncio = ?;";
 	public final String DELETE_AD = "DELETE FROM Annuncio WHERE idAnnuncio = ?;";
-	
+	public final String ADVANCED_SEARCH = "SELECT * FROM Annuncio JOIN Tag ON idAnnuncio = Annuncio WHERE Tag.NomeTag =? AND Annuncio.Città=?;";
 	public synchronized List<Annuncio> searchAd(String ricerca) throws SQLException{
 		
 		Connection connect = null;
@@ -43,6 +43,8 @@ public class ManagerAnnunci {
 				temp.setDescrizione (result.getString("Descrizione"));
 				temp.setRequisiti(result.getString("Requisiti"));
 				temp.setTipoContratto(result.getString("TipoContratto"));
+				temp.setCittà(result.getString("Città"));
+				temp.setData(result.getString("DataPubblicazione"));
 				temp.setTags(findTags(id));
 				listaAnnunci.add(temp);
 			}
@@ -59,10 +61,47 @@ public class ManagerAnnunci {
 		return listaAnnunci;
 	}
 	
-	public synchronized List<Annuncio> searchAdAdvanced (String ricercaAvanzata){
+	public synchronized List<Annuncio> searchAdAdvanced (String tag,String città) throws SQLException{ 
+	
+		/*Ricerca per tag e per città insieme*/
+	
+		Connection connect = null;
+		PreparedStatement searchAdv = null;
+		List<Annuncio> listaAnnunci = new ArrayList<>();
 		
-		/*Ricerca gli annunci in base alla città passata come parametro*/
-		return null;
+		try{
+			connect = DriverManagerConnectionPool.getConnection();
+			searchAdv = connect.prepareStatement(ADVANCED_SEARCH);
+			searchAdv.setString(1, tag);
+			searchAdv.setString(2, città);
+			
+			ResultSet result = searchAdv.executeQuery();
+			while(result.next()){
+				Annuncio temp = new Annuncio();
+				int id = result.getInt("idAnnuncio");
+				temp.setIdAnnuncio(id);
+				temp.setAzienda(result.getInt("Azienda"));
+				temp.setTitolo(result.getString("Titolo"));
+				temp.setDescrizione (result.getString("Descrizione"));
+				temp.setRequisiti(result.getString("Requisiti"));
+				temp.setTipoContratto(result.getString("TipoContratto"));
+				temp.setCittà(result.getString("Città"));
+				temp.setData(result.getString("DataPubblicazione"));
+				temp.setTags(findTags(id));
+				listaAnnunci.add(temp);
+			}
+		}finally{
+			try{
+				if (searchAdv != null)
+					searchAdv.close();
+				
+				
+			}finally{
+				DriverManagerConnectionPool.releaseConnection(connect);
+			}
+		}
+		
+		return listaAnnunci;
 	}
 	
 	public synchronized List<Annuncio> visualizzaElencoAnnunci(Azienda azienda) throws SQLException{
@@ -85,6 +124,8 @@ public class ManagerAnnunci {
 				temp.setDescrizione (result.getString("Descrizione"));
 				temp.setRequisiti(result.getString("Requisiti"));
 				temp.setTipoContratto(result.getString("TipoContratto"));
+				temp.setCittà(result.getString("Città"));
+				temp.setData(result.getString("DataPubblicazione"));
 				temp.setTags(findTags(id));
 				listaAnnunci.add(temp);
 				
@@ -119,6 +160,8 @@ public class ManagerAnnunci {
 			insertAd.setString(3,ann.getDescrizione());
 			insertAd.setString(4, ann.getRequisiti());
 			insertAd.setString(5, ann.getTipoContratto());
+			insertAd.setString(6, ann.getData());
+			insertAd.setString(7, ann.getCittà());
 			
 			int risultato = insertAd.executeUpdate();
 			connect.commit();
