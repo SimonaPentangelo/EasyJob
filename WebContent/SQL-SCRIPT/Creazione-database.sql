@@ -105,14 +105,14 @@ create table if not exists EasyJob.Tag (
 
 create table if not exists EasyJob.Candidatura (
 	Inoccupato int not null,
-	Azienda int not null,
-	foreign key(Azienda)
-	references EasyJob.Azienda (idUser)
+	Annuncio int not null,
+	foreign key(Annuncio)
+	references EasyJob.Annuncio (idAnnuncio)
 	on delete cascade
 	on update cascade,
 	foreign key(Inoccupato)
 	references EasyJob.Inoccupato (idUser)
 	on delete cascade
 	on update cascade,
-	primary key(Azienda, Inoccupato)
+	primary key(Annuncio, Inoccupato)
 );

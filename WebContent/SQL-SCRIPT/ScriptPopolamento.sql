@@ -36,7 +36,7 @@ values("Informatica",1),
 ("Ingegneria Informatica",1),
 ("Biologia",2);
 
-insert into EasyJob.Candidatura(Inoccupato,Azienda)
+insert into EasyJob.Candidatura(Inoccupato, Annuncio)
 values (1,1),
 (1,2),
 (2,2),
