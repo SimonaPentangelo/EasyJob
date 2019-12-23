@@ -6,12 +6,12 @@ public class Segnalazione {
 	
 	private String titolo;
 	private String corpo;
-	private Date data;
+	private String data;
 	private int azienda;
 	private int moderatore;
 
 	//Costruttore
-	public Segnalazione(String titolo, String corpo, Date data, int azienda, int moderatore) {
+	public Segnalazione(String titolo, String corpo, String data, int azienda, int moderatore) {
 		super();
 		this.titolo = titolo;
 		this.corpo = corpo;
@@ -41,11 +41,11 @@ public class Segnalazione {
 		this.corpo = corpo;
 	}
 	
-	public Date getData() {
+	public String getData() {
 		return data;
 	}
 	
-	public void setData(Date data) {
+	public void setData(String data) {
 		this.data = data;
 	}
 	
