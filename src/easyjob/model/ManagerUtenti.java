@@ -45,13 +45,13 @@ public class ManagerUtenti {
 		Moderatore mod = retriveUserModeratore(username,password,TABLE_MODERATORE);
 		Amministratore admin = retriveUserAmministratore (username,password,TABLE_AMMINISTRATORE);
 		
-		if (inocc != null)
+		if (inocc.getUsername()!= null)
 			return inocc;
-		else if (azienda != null)
+		else if (azienda.getUsername() != null)
 			return azienda;
-		else if (mod!=null)
+		else if (mod.getUsername()!=null)
 			return mod;
-		else if(admin !=null)
+		else if(admin.getUsername() !=null)
 			return admin;
 		else return null;
 
@@ -284,7 +284,7 @@ public class ManagerUtenti {
 	private Inoccupato retriveUserInoccupato (String username,String password, String table) throws SQLException{
 		
 		
-		Inoccupato inoc = null;
+		Inoccupato inoc = new Inoccupato();
 		PreparedStatement retriveUser = null;
 		Connection connect = null;
 		String query = "SELECT * FROM "+table+" WHERE Username = ? AND Password = ?;";
@@ -325,7 +325,7 @@ public class ManagerUtenti {
 	private Azienda retriveUserAzienda (String username,String password, String table) throws SQLException{
 		
 		
-		Azienda azienda = null;
+		Azienda azienda = new Azienda();
 		PreparedStatement retriveUser = null;
 		Connection connect = null;
 		String query = "SELECT * FROM "+table+" WHERE Username = ? AND Password = ?;";
@@ -368,7 +368,7 @@ public class ManagerUtenti {
 	private Moderatore retriveUserModeratore (String username,String password, String table) throws SQLException{
 		
 		
-		Moderatore mod = null;
+		Moderatore mod = new Moderatore();
 		PreparedStatement retriveUser = null;
 		Connection connect = null;
 		String query = "SELECT * FROM "+table+" WHERE Username = ? AND Password = ?;";
@@ -404,7 +404,7 @@ public class ManagerUtenti {
 	private Amministratore retriveUserAmministratore (String username,String password, String table) throws SQLException{
 		
 		
-		Amministratore admin = null;
+		Amministratore admin = new Amministratore();
 		PreparedStatement retriveUser = null;
 		Connection connect = null;
 		String query = "SELECT * FROM "+table+" WHERE Username = ? AND Password = ?;";

@@ -10,7 +10,7 @@
 	<ul>
 		<li><a href="registrazioneInoccupato.jsp">Registrazione Inoccupato</a></li>
 		<li><a href="registrazioneAzienda.jsp">Registrazione Azienda</a></li>
-		<li><a href="login.jsp">Login</a></li>
+		<li><a href="WEB-PAGES/view/login.jsp">Login</a></li>
 	</ul>
 	
 	<form>

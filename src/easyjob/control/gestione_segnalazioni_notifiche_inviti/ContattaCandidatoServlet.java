@@ -64,8 +64,8 @@ public class ContattaCandidatoServlet extends HttpServlet {
 			//errore nel corpo
 		}
 		
-		invito.setInoccupato(idInoccupato);
-		mi.contattaCandidato(invito);
+		/*invito.setInoccupato(idInoccupato);
+		mi.contattaCandidato(invito);*/
 		
 		//response.sendRedirect(/*pagina di invio avvenuto con successo*/);
 	}
