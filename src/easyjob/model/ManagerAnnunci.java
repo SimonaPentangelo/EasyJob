@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class ManagerAnnunci {
 	public final String DELETE_TAG = "DELETE FROM Tag WHERE Annuncio = ?;";
 	public final String DELETE_AD = "DELETE FROM Annuncio WHERE idAnnuncio = ?;";
 	public final String ADVANCED_SEARCH = "SELECT * FROM Annuncio JOIN Tag ON idAnnuncio = Annuncio WHERE Tag.NomeTag =? AND Annuncio.Città=?;";
+	
 	public synchronized List<Annuncio> searchAd(String ricerca) throws SQLException{
 		
 		Connection connect = null;
@@ -154,7 +156,7 @@ public class ManagerAnnunci {
 		boolean flagPerTag = false;
 		try{
 			connect = DriverManagerConnectionPool.getConnection();
-			insertAd = connect.prepareStatement(INSERT_AD);
+			insertAd = connect.prepareStatement(INSERT_AD,Statement.RETURN_GENERATED_KEYS);
 			insertAd.setInt(1, ann.getAzienda());
 			insertAd.setString(2,ann.getTitolo());
 			insertAd.setString(3,ann.getDescrizione());
@@ -165,8 +167,14 @@ public class ManagerAnnunci {
 			
 			int risultato = insertAd.executeUpdate();
 			connect.commit();
-			if (risultato ==1){   /* Qui viene inserito l'annuncio ora dobibamo aggiunger i tag*/
-				flag = true;
+			
+				ResultSet generatedKeys = insertAd.getGeneratedKeys();
+				if (generatedKeys.next()){
+				
+					int idUser = generatedKeys.getInt(1);
+					ann.setIdAnnuncio(idUser);
+					flag = true;
+				
 				
 				for (int i= 0; i<ann.getTags().size();i++){
 					int id = ann.getIdAnnuncio();
@@ -174,7 +182,7 @@ public class ManagerAnnunci {
 					flagPerTag = inserimentoTag(id,tag);
 				}
 				return flag && flagPerTag;      /*Se è false una delle due operazioni è fallita*/
-			}
+				}
 		}
 		finally{
 			try{

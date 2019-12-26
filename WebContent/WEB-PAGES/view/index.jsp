@@ -11,10 +11,12 @@
 		<li><a href="registrazioneInoccupato.jsp">Registrazione Inoccupato</a></li>
 		<li><a href="registrazioneAzienda.jsp">Registrazione Azienda</a></li>
 		<li><a href="WEB-PAGES/view/login.jsp">Login</a></li>
+		<li><a href="WEB-PAGES/view/pubblicaAnnuncio.jsp">Pubblica Annuncio</a></li>
 	</ul>
 	
-	<form>
-		<input type="text" value="Ricerca per tag"> <br>
+	<form action="RicercaAnnunciServlet" method="GET">
+		<input type="text" name="searchTag"> <br>
+		<input type="submit" value ="Cerca Annunci"> <br>
 	</form>
 	
 	<img src="" alt="Immagine sito"> <br>
