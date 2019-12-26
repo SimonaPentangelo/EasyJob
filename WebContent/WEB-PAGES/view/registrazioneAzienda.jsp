@@ -18,7 +18,7 @@
 	Numero Dipendenti: <input type="text" name="numeroDipendenti"> <br>
 	e-mail: <input type=email" name="email"> <br>
 	Password: <input type="password" name="password"> <br>
-	Conferma Password: <input type="password" name="password"> <br>
+	Conferma Password: <input type="password" name="confermaPassword"> <br>
 	<input type="checkbox" name="trattamentoDati"> Accetto i termini del 
 	trattamento dati personali. <br>
 	<input type="submit" value="Conferma Registrazione">

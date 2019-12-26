@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -77,23 +78,24 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
 		}
 		
 		String username = request.getParameter("username");
-		if(username != null && !username.equals("") && !username.contentEquals(" ") && username.length() >= 5 && username.length() <= 20) {
+		if(username != null && !username.equals("") && !username.equals(" ") && username.length() >= 5 && username.length() <= 20) {
 			azienda.setUsername(username);
 		} else {
 			//errore nell'username
 		}
 		
-		String indirizzo = request.getParameter("IndirizzoSede");
-		if(indirizzo != null && !indirizzo.equals("") && !indirizzo.contentEquals(" ") && indirizzo.length() >= 6 && indirizzo.length() <= 30) {
+		String indirizzo = request.getParameter("indirizzoSede");
+		if(indirizzo != null && !indirizzo.equals("") && !indirizzo.equals(" ") && indirizzo.length() >= 6 && indirizzo.length() <= 30) {
 			azienda.setIndirizzoSede(indirizzo);
 		} else {
 			//errore nell'indirizzo
 		}
 		
 		String dataFondazioneString = request.getParameter("dataFondazione");
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
+		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
 		try {
-			Date dataFondazione = sdf.parse(dataFondazioneString);
+			String dataFondazione = sdf2.format(sdf1.parse(dataFondazioneString));
 			azienda.setDataFondazione(dataFondazioneString);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
@@ -108,7 +110,7 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
 		}
 		
 		String numeroDipendentiString = request.getParameter("numeroDipendenti");
-		if(numeroDipendentiString != null && !numeroDipendentiString.contentEquals("") && !numeroDipendentiString.contentEquals(" ")) {
+		if(numeroDipendentiString != null && !numeroDipendentiString.equals("") && !numeroDipendentiString.equals(" ")) {
 			try {
 				azienda.setNumeroDipendenti(Integer.parseInt(numeroDipendentiString));
 			} catch(NumberFormatException e) {
@@ -123,12 +125,15 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
 		
 		String password = request.getParameter("password");
 		String confermaPassword = request.getParameter("confermaPassword");
-	
-		if(password != null && !password.contentEquals("") && !password.contentEquals(" ") && password.length() >= 8 && password.length() <= 16) {
-			if(confermaPassword != null && !confermaPassword.contentEquals("") && !confermaPassword.contentEquals(" ") && confermaPassword.length() >= 8 && confermaPassword.length() <= 16)
+		System.out.println(password.equals(confermaPassword));
+		System.out.println(password != null && !password.equals("") && !password.equals(" ") && password.length() >= 8 && password.length() <= 16);
+		System.out.println(confermaPassword != null && !confermaPassword.equals("") && !confermaPassword.equals(" ") && confermaPassword.length() >= 8 && confermaPassword.length() <= 16);
+		if(password != null && !password.equals("") && !password.equals(" ") && password.length() >= 8 && password.length() <= 16) {
+			if(confermaPassword != null && !confermaPassword.equals("") && !confermaPassword.equals(" ") && confermaPassword.length() >= 8 && confermaPassword.length() <= 16)
 			{
 				if(password.equals(confermaPassword)) {
 					azienda.setPassword(password);
+					System.out.println(azienda.getPassword());
 				} else {
 					//le due password non corrispondono
 				}
@@ -148,8 +153,10 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
 		
 		String rootFolder = "resources"; //serve a dare il nome della cartella di root per salvare i file se gia c'è non la crea
 		String rootPath = request.getServletContext().getRealPath("") + rootFolder; //costruisce la stringa contenete il percorso della root dove salviamo i file 
-		String userPath = rootPath + File.separator + azienda.getUsername();; //serve per definire la cartella dell'utente se gia esiste non viene creata
-		String userImagePath = userPath + File.separator + "image";//crea la cartella dove verrà inserita l'immagine del logo
+		String userPath = rootPath + File.separator + azienda.getUsername(); //serve per definire la cartella dell'utente se gia esiste non viene creata
+		
+		System.out.println(rootPath);
+		System.out.println(userPath);
 		
 		File dirRoot = new File(rootPath); //cartella delle resources
 		if(!dirRoot.exists())//se la cartella esiste non la crea altrimenti genera la cartella 
@@ -163,18 +170,12 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
 			userDir.mkdir();
 			
 		}
-
-		File userImagesDir = new File(userImagePath);
-		if(!userImagesDir.exists())//serve a creare la cartella immagini dell'utente
-		{
-			userImagesDir.mkdir();
-		}
 		
-		String imageFullPath = userImagePath + logoAzienda.getSubmittedFileName().replaceAll(" ", "_");
+		String imageFullPath = userPath + logoAzienda.getSubmittedFileName().replaceAll(" ", "_");
 		InputStream inputStream = logoAzienda.getInputStream();
 		
 		Files.copy(inputStream, Paths.get(imageFullPath), StandardCopyOption.REPLACE_EXISTING);
-		azienda.setLogoAzienda(imageFullPath);
+		azienda.setLogoAzienda("resources" + azienda.getUsername() + logoAzienda.getSubmittedFileName().replaceAll(" ", "_"));
 		inputStream.close();
 		
 		try {
