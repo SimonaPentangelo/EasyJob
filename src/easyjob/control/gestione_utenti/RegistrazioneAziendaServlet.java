@@ -26,9 +26,9 @@ import easyjob.model.ManagerUtenti;
  * Servlet implementation class RegistrazioneAziendaServlet
  */
 @WebServlet("/RegistrazioneAziendaServlet")
-@MultipartConfig(fileSizeThreshold=1024*1024*10,//10MB
+@MultipartConfig/*(fileSizeThreshold=1024*1024*10,//10MB
 maxFileSize=1024*1024*100000,//100GB
-maxRequestSize=1024*1024*100000)//100GB per la dimensione dei file
+maxRequestSize=1024*1024*100000)*/ //100GB per la dimensione dei file
 
 public class RegistrazioneAziendaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -91,7 +91,7 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
 		}
 		
 		String dataFondazioneString = request.getParameter("dataFondazione");
-		SimpleDateFormat sdf = new SimpleDateFormat("gg/mm/yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
 		try {
 			Date dataFondazione = sdf.parse(dataFondazioneString);
 			azienda.setDataFondazione(dataFondazioneString);

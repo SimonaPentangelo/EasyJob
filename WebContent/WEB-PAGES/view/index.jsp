@@ -8,8 +8,8 @@
 </head>
 <body>
 	<ul>
-		<li><a href="registrazioneInoccupato.jsp">Registrazione Inoccupato</a></li>
-		<li><a href="registrazioneAzienda.jsp">Registrazione Azienda</a></li>
+		<li><a href="WEB-PAGES/view/registrazioneInoccupato.jsp">Registrazione Inoccupato</a></li>
+		<li><a href="WEB-PAGES/view/registrazioneAzienda.jsp">Registrazione Azienda</a></li>
 		<li><a href="WEB-PAGES/view/login.jsp">Login</a></li>
 		<li><a href="WEB-PAGES/view/pubblicaAnnuncio.jsp">Pubblica Annuncio</a></li>
 	</ul>
