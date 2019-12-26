@@ -171,11 +171,13 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
 			
 		}
 		
-		String imageFullPath = userPath + logoAzienda.getSubmittedFileName().replaceAll(" ", "_");
+		String imageFullPath = userPath + File.separator + logoAzienda.getSubmittedFileName().replaceAll(" ", "_");
 		InputStream inputStream = logoAzienda.getInputStream();
 		
+		System.out.println(logoAzienda.getSubmittedFileName().replaceAll(" ", "_"));
+	
 		Files.copy(inputStream, Paths.get(imageFullPath), StandardCopyOption.REPLACE_EXISTING);
-		azienda.setLogoAzienda("resources" + azienda.getUsername() + logoAzienda.getSubmittedFileName().replaceAll(" ", "_"));
+		azienda.setLogoAzienda("resources\\" + azienda.getUsername() + "\\" + logoAzienda.getSubmittedFileName().replaceAll(" ", "_"));
 		inputStream.close();
 		
 		try {
