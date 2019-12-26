@@ -31,6 +31,7 @@ public class RicercaAnnunciServlet extends HttpServlet {
 		try{
 			annunci = manager.searchAd(tagDaCercare);
 			request.getSession().setAttribute("annunci", annunci);
+			request.getSession().setAttribute("tag",tagDaCercare);
 			redirect = "/WEB-PAGES/view/Bacheca.jsp";
 		}catch (Exception e){
 			e.printStackTrace();

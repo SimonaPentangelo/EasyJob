@@ -3,6 +3,7 @@
 <%
 	List<Annuncio> annunci = new ArrayList<>();
 	annunci = (ArrayList) session.getAttribute("annunci");
+	String tagDellaRicerca =(String) session.getAttribute("tag");
 	
 %>
 
@@ -22,6 +23,13 @@
 
 <%} else{
 
+%>
+<form action="../../FiltraAnnunciServlet" method="GET">
+	 <input type="text" name="advancedSearch">
+	 <input type="hidden" name="tag" value="<%=tagDellaRicerca %>">
+	 <input type="submit" value="Cerca per città">
+</form>
+<% 	
 for (int i=0;i<annunci.size();i++){
 	String titolo = annunci.get(i).getTitolo();
 

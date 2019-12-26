@@ -38,6 +38,7 @@
 </head>
 <body>
 <p>Benvenuto <%= nameString %> </p>
+<button><a href="index.jsp"> Torna alla home</a></button>
 
 </body>
 </html>
