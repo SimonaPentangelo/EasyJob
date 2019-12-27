@@ -154,29 +154,30 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
 		String rootPath = request.getServletContext().getRealPath("") + rootFolder; //costruisce la stringa contenete il percorso della root dove salviamo i file 
 		String userPath = rootPath + File.separator + azienda.getUsername(); //serve per definire la cartella dell'utente se gia esiste non viene creata
 		
-		File dirRoot = new File(rootPath); //cartella delle resources
-		if(!dirRoot.exists())//se la cartella esiste non la crea altrimenti genera la cartella 
-		{
-			dirRoot.mkdirs();
-		}
-		
-		File userDir = new File(userPath); //cartella propria dell'utente
-		if(!userDir.exists())//serve a creare la cartella dell'utente
-		{
-			userDir.mkdir();
-			
-		}
-		
-		String imageFullPath = userPath + File.separator + logoAzienda.getSubmittedFileName().replaceAll(" ", "_");
-		InputStream inputStream = logoAzienda.getInputStream();
-	
-		Files.copy(inputStream, Paths.get(imageFullPath), StandardCopyOption.REPLACE_EXISTING);
 		azienda.setLogoAzienda("resources\\" + azienda.getUsername() + "\\" + logoAzienda.getSubmittedFileName().replaceAll(" ", "_"));
-		inputStream.close();
 		
 		try {
 			if(!mu.isPresent(azienda)) {
 				mu.registerUserAzienda(azienda);
+				
+				File dirRoot = new File(rootPath); //cartella delle resources
+				if(!dirRoot.exists())//se la cartella esiste non la crea altrimenti genera la cartella 
+				{
+					dirRoot.mkdirs();
+				}
+				
+				File userDir = new File(userPath); //cartella propria dell'utente
+				if(!userDir.exists())//serve a creare la cartella dell'utente
+				{
+					userDir.mkdir();
+					
+				}
+				
+				String imageFullPath = userPath + File.separator + logoAzienda.getSubmittedFileName().replaceAll(" ", "_");
+				InputStream inputStream = logoAzienda.getInputStream();
+			
+				Files.copy(inputStream, Paths.get(imageFullPath), StandardCopyOption.REPLACE_EXISTING);
+				inputStream.close();
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
