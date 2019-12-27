@@ -18,11 +18,48 @@ public class ManagerAnnunci {
 	public final String FIND_ALL_ADS = "SELECT * FROM Annuncio WHERE Azienda = ?;";
 	public final String INSERT_AD = "INSERT INTO Annuncio(Azienda,Titolo,Descrizione,Requisiti,TipoContratto,DataPubblicazione,Città)"+
 	"VALUES (?,?,?,?,?,?,?);";
+	public final String SEARCH_BY_ID= "SELECT * FROM Annuncio WHERE idAnnuncio=?;";
 	public final String INSERT_TAG = "INSERT INTO TAG (NomeTag,Annuncio)"+
 	"VALUES (?,?);";
 	public final String DELETE_TAG = "DELETE FROM Tag WHERE Annuncio = ?;";
 	public final String DELETE_AD = "DELETE FROM Annuncio WHERE idAnnuncio = ?;";
 	public final String ADVANCED_SEARCH = "SELECT * FROM Annuncio JOIN Tag ON idAnnuncio = Annuncio WHERE Tag.NomeTag =? AND Annuncio.Città=?;";
+	
+	
+	
+	public synchronized Annuncio searchById(int idAnnuncio)throws SQLException{
+		Connection connect = null;
+		PreparedStatement searchById = null;
+		Annuncio annuncio = new Annuncio();
+		try{
+			connect = DriverManagerConnectionPool.getConnection();
+			searchById = connect.prepareStatement(SEARCH_BY_ID);
+			searchById.setInt(1, idAnnuncio);
+			ResultSet result = searchById.executeQuery();
+			while(result.next()){
+				int id = result.getInt("idAnnuncio");
+				annuncio.setIdAnnuncio(id);
+				annuncio.setAzienda(result.getInt("Azienda"));
+				annuncio.setTitolo(result.getString("Titolo"));
+				annuncio.setDescrizione (result.getString("Descrizione"));
+				annuncio.setRequisiti(result.getString("Requisiti"));
+				annuncio.setTipoContratto(result.getString("TipoContratto"));
+				annuncio.setCittà(result.getString("Città"));
+				annuncio.setData(result.getString("DataPubblicazione"));
+				annuncio.setTags(findTags(id));
+			}
+		}finally{
+			try{
+				if (searchById!=null){
+					searchById.close();
+				}
+			}finally{
+				DriverManagerConnectionPool.releaseConnection(connect);
+			}
+		}
+		return annuncio;
+	}
+	
 	
 	public synchronized List<Annuncio> searchAd(String ricerca) throws SQLException{
 		

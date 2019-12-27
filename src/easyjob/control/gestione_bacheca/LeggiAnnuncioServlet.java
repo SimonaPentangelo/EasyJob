@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import easyjob.entity.Annuncio;
+import easyjob.model.ManagerAnnunci;
+
 /**
  * Servlet implementation class LeggiAnnuncioServlet
  */
@@ -14,24 +17,24 @@ import javax.servlet.http.HttpServletResponse;
 public class LeggiAnnuncioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * Default constructor. 
-     */
-    public LeggiAnnuncioServlet() {
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		ManagerAnnunci manager = new ManagerAnnunci();
+		Annuncio annuncio = new Annuncio();
+		String redirect = "";
+		
+		int id = Integer.parseInt(request.getParameter("idAnnuncio"));
+		try{
+			annuncio = manager.searchById(id);
+			request.getSession().setAttribute("annuncioSelezionato",annuncio);
+			redirect ="/WEB-PAGES/view/ShowAzienda.jsp";
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+		response.sendRedirect(request.getContextPath()+redirect);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

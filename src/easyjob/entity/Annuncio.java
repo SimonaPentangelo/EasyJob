@@ -15,6 +15,7 @@ public class Annuncio {
 	private int azienda;
 	private String città;
 	
+	
 	//Costruttore
 	public Annuncio(int idAnnuncio, String titolo, String descrizione, String requisiti, List<String> tags,
 			String tipoContratto, String data, int azienda,String città) {
@@ -27,6 +28,7 @@ public class Annuncio {
 		this.data = data;
 		this.azienda = azienda;
 		this.città = città;
+		;
 	}
 	
 	public Annuncio() {
@@ -34,6 +36,7 @@ public class Annuncio {
 	}
 
 	//Getters and setters
+	
 	
 	public String getCittà(){
 		return città;

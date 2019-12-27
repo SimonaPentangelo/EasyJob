@@ -31,11 +31,13 @@
 </form>
 <% 	
 for (int i=0;i<annunci.size();i++){
+	int id = annunci.get(i).getIdAnnuncio();
 	String titolo = annunci.get(i).getTitolo();
 
 %>
 <br>
-<p> <%=titolo %> </p>
+<p><a href="LeggiAnnuncioServlet?idAnnuncio=<%=id %>"><%=titolo %></a>  </p>
+
 <br>
 <%
 	} // fine for
