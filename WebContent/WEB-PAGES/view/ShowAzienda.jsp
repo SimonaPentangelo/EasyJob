@@ -7,7 +7,7 @@ String requisiti = annuncioSel.getRequisiti();
 List<String> tags = annuncioSel.getTags();
 String tipoContratto = annuncioSel.getTipoContratto();
 String dataPubb = annuncioSel.getData();
-String azienda = annuncioSel.get        // Ci vorrebbe il nome azienda qui
+String azienda = annuncioSel.getNomeAzienda();        // Ci vorrebbe il nome azienda qui
 %>
 <%@ page import ="easyjob.entity.Inoccupato" %>
 <%@ page import ="easyjob.entity.Annuncio" %>
