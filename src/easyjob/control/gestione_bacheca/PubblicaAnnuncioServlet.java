@@ -65,7 +65,7 @@ public class PubblicaAnnuncioServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		response.sendRedirect(request.getContextPath()+redirect);
+		response.sendRedirect(redirect);
 	}
 
 	/**

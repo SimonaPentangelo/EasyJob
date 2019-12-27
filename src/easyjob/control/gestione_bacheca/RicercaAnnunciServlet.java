@@ -4,11 +4,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+
 
 import easyjob.entity.Annuncio;
 import easyjob.model.ManagerAnnunci;
@@ -36,7 +39,8 @@ public class RicercaAnnunciServlet extends HttpServlet {
 		}catch (Exception e){
 			e.printStackTrace();
 		}
-		response.sendRedirect(request.getContextPath()+ redirect);
+		response.sendRedirect(request.getContextPath()+redirect);
+		
 	}
 
 	/**
