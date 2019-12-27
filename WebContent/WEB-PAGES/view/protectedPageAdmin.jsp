@@ -37,6 +37,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<p> Benvenuto <%= nameString %></p>
+<p> Benvenuto <%= nameString %></p> <br>
+<form  action="../../VisualizzaSegnalazioniServlet" method="GET">
+	<input type="submit" value="Visualizza Segnalazioni">
+</form>
 </body>
 </html>
