@@ -13,6 +13,7 @@ public class Annuncio {
 	private String tipoContratto;
 	private String data;
 	private int azienda;
+	private String nomeAzienda;
 	private String città;
 	
 	
@@ -114,5 +115,12 @@ public class Annuncio {
 		this.azienda = azienda;
 	}
 
+	public String getNomeAzienda() {
+		return nomeAzienda;
+	}
+
+	public void setNomeAzienda(String nomeAzienda) {
+		this.nomeAzienda = nomeAzienda;
+	}
 	
 }

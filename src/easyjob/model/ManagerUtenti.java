@@ -24,6 +24,7 @@ public class ManagerUtenti {
 	public static final String MODIFICA_CV = "UPDATE Inoccupato SET Curriculum=? WHERE idUser=?;";
 	public static final String FIND_AZIENDA_BANNED = "SELECT Banned FROM Azienda WHERE idUser = ?;";
 	public static final String BAN_AZIENDA = "UPDATE Azienda SET Banned=? WHERE idUser=?;";
+	public static final String GET_NOME_AZIENDA ="SELECT NomeAzienda WHERE idUser=?;";
 			
 			
 	public synchronized boolean isPresent(Utente u) throws SQLException{
@@ -88,6 +89,37 @@ public class ManagerUtenti {
 		}
 		
 		return flag;
+	}
+	
+	public synchronized String getNomeAzienda(int idUser) throws SQLException{
+		Connection connect = null;
+		PreparedStatement azienda = null;
+		String nome = null;
+		
+		try{
+			
+			connect = DriverManagerConnectionPool.getConnection();
+			azienda = connect.prepareStatement(GET_NOME_AZIENDA);
+			azienda.setInt(1,idUser);
+			ResultSet result = azienda.executeQuery();
+			while(result.next()){
+				nome = result.getString("NomeAzienda");
+				return nome;
+			}
+		}finally
+		{
+			try{
+				 if (azienda!= null)
+					 azienda.close();
+			   }
+			finally
+			{
+				DriverManagerConnectionPool.releaseConnection(connect);
+			}
+			
+		}
+		
+		return nome;
 	}
 	
 	public synchronized boolean deleteUser (Utente u) throws SQLException{

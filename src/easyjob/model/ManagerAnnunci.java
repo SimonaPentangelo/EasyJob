@@ -31,6 +31,7 @@ public class ManagerAnnunci {
 		Connection connect = null;
 		PreparedStatement searchById = null;
 		Annuncio annuncio = new Annuncio();
+		ManagerUtenti mu = new ManagerUtenti();
 		try{
 			connect = DriverManagerConnectionPool.getConnection();
 			searchById = connect.prepareStatement(SEARCH_BY_ID);
@@ -47,6 +48,7 @@ public class ManagerAnnunci {
 				annuncio.setCittà(result.getString("Città"));
 				annuncio.setData(result.getString("DataPubblicazione"));
 				annuncio.setTags(findTags(id));
+				annuncio.setNomeAzienda(mu.getNomeAzienda(annuncio.getAzienda()));
 			}
 		}finally{
 			try{
@@ -66,6 +68,7 @@ public class ManagerAnnunci {
 		Connection connect = null;
 		PreparedStatement searchByTag = null;
 		List<Annuncio> listaAnnunci = new ArrayList<>();
+		ManagerUtenti mu = new ManagerUtenti();
 		
 		try{
 			connect = DriverManagerConnectionPool.getConnection();
@@ -85,6 +88,7 @@ public class ManagerAnnunci {
 				temp.setCittà(result.getString("Città"));
 				temp.setData(result.getString("DataPubblicazione"));
 				temp.setTags(findTags(id));
+				temp.setNomeAzienda(mu.getNomeAzienda(temp.getAzienda()));
 				listaAnnunci.add(temp);
 			}
 		}finally
@@ -107,6 +111,7 @@ public class ManagerAnnunci {
 		Connection connect = null;
 		PreparedStatement searchAdv = null;
 		List<Annuncio> listaAnnunci = new ArrayList<>();
+		ManagerUtenti mu = new ManagerUtenti();
 		
 		try{
 			connect = DriverManagerConnectionPool.getConnection();
@@ -127,6 +132,7 @@ public class ManagerAnnunci {
 				temp.setCittà(result.getString("Città"));
 				temp.setData(result.getString("DataPubblicazione"));
 				temp.setTags(findTags(id));
+				temp.setNomeAzienda(mu.getNomeAzienda(temp.getAzienda()));
 				listaAnnunci.add(temp);
 			}
 		}finally{
@@ -148,6 +154,7 @@ public class ManagerAnnunci {
 		Connection connect = null;
 		PreparedStatement findAllAds = null;
 		List<Annuncio> listaAnnunci = new ArrayList<>();
+		
 		try{
 			connect = DriverManagerConnectionPool.getConnection();
 			findAllAds = connect.prepareStatement(FIND_ALL_ADS);
@@ -166,6 +173,7 @@ public class ManagerAnnunci {
 				temp.setCittà(result.getString("Città"));
 				temp.setData(result.getString("DataPubblicazione"));
 				temp.setTags(findTags(id));
+				temp.setNomeAzienda(azienda.getNomeAzienda());
 				listaAnnunci.add(temp);
 				
 			}
