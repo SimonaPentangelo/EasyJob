@@ -96,7 +96,8 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
 		SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
 		try {
 			String dataFondazione = sdf2.format(sdf1.parse(dataFondazioneString));
-			azienda.setDataFondazione(dataFondazioneString);
+			azienda.setDataFondazione(dataFondazione);
+			
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -125,15 +126,13 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
 		
 		String password = request.getParameter("password");
 		String confermaPassword = request.getParameter("confermaPassword");
-		System.out.println(password.equals(confermaPassword));
-		System.out.println(password != null && !password.equals("") && !password.equals(" ") && password.length() >= 8 && password.length() <= 16);
-		System.out.println(confermaPassword != null && !confermaPassword.equals("") && !confermaPassword.equals(" ") && confermaPassword.length() >= 8 && confermaPassword.length() <= 16);
+		
 		if(password != null && !password.equals("") && !password.equals(" ") && password.length() >= 8 && password.length() <= 16) {
 			if(confermaPassword != null && !confermaPassword.equals("") && !confermaPassword.equals(" ") && confermaPassword.length() >= 8 && confermaPassword.length() <= 16)
 			{
 				if(password.equals(confermaPassword)) {
 					azienda.setPassword(password);
-					System.out.println(azienda.getPassword());
+				
 				} else {
 					//le due password non corrispondono
 				}
@@ -155,34 +154,30 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
 		String rootPath = request.getServletContext().getRealPath("") + rootFolder; //costruisce la stringa contenete il percorso della root dove salviamo i file 
 		String userPath = rootPath + File.separator + azienda.getUsername(); //serve per definire la cartella dell'utente se gia esiste non viene creata
 		
-		System.out.println(rootPath);
-		System.out.println(userPath);
-		
-		File dirRoot = new File(rootPath); //cartella delle resources
-		if(!dirRoot.exists())//se la cartella esiste non la crea altrimenti genera la cartella 
-		{
-			dirRoot.mkdirs();
-		}
-		
-		File userDir = new File(userPath); //cartella propria dell'utente
-		if(!userDir.exists())//serve a creare la cartella dell'utente
-		{
-			userDir.mkdir();
-			
-		}
-		
-		String imageFullPath = userPath + File.separator + logoAzienda.getSubmittedFileName().replaceAll(" ", "_");
-		InputStream inputStream = logoAzienda.getInputStream();
-		
-		System.out.println(logoAzienda.getSubmittedFileName().replaceAll(" ", "_"));
-	
-		Files.copy(inputStream, Paths.get(imageFullPath), StandardCopyOption.REPLACE_EXISTING);
 		azienda.setLogoAzienda("resources\\" + azienda.getUsername() + "\\" + logoAzienda.getSubmittedFileName().replaceAll(" ", "_"));
-		inputStream.close();
 		
 		try {
 			if(!mu.isPresent(azienda)) {
 				mu.registerUserAzienda(azienda);
+				
+				File dirRoot = new File(rootPath); //cartella delle resources
+				if(!dirRoot.exists())//se la cartella esiste non la crea altrimenti genera la cartella 
+				{
+					dirRoot.mkdirs();
+				}
+				
+				File userDir = new File(userPath); //cartella propria dell'utente
+				if(!userDir.exists())//serve a creare la cartella dell'utente
+				{
+					userDir.mkdir();
+					
+				}
+				
+				String imageFullPath = userPath + File.separator + logoAzienda.getSubmittedFileName().replaceAll(" ", "_");
+				InputStream inputStream = logoAzienda.getInputStream();
+			
+				Files.copy(inputStream, Paths.get(imageFullPath), StandardCopyOption.REPLACE_EXISTING);
+				inputStream.close();
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

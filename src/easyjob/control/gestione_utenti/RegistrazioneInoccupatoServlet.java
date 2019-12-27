@@ -73,6 +73,7 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
 		String cittàNascita = request.getParameter("cittàNascita");
 		if(cittàNascita != null && !cittàNascita.equals("") && !cittàNascita.equals(" ") && cittàNascita.length() >= 2 && cittàNascita.length() <= 20) {
 				inoccupato.setCittà(cittàNascita);
+				System.out.println(inoccupato.getCittà());
 		} else {
 			//errore nella città
 		}
@@ -84,11 +85,21 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
 			//errore nell'username
 		}
 		
+		String indirizzo = request.getParameter("residenza");
+		if(indirizzo != null && !indirizzo.equals("") && !indirizzo.equals(" ") && indirizzo.length() >= 6 && indirizzo.length() <= 30) {
+			inoccupato.setResidenza(indirizzo);
+		} else {
+			//errore nell'indirizzo
+		}
+		
 		String dataNascitaString = request.getParameter("dataNascita");
-		SimpleDateFormat sdf = new SimpleDateFormat("gg/mm/yyyy");
+		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
 		try {
-			Date dataNascita = sdf.parse(dataNascitaString);
-			inoccupato.setDataNascita(dataNascitaString);
+			
+			String dataNascita = sdf2.format(sdf1.parse(dataNascitaString));
+			inoccupato.setDataNascita(dataNascita);
+			
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -126,33 +137,9 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
 		String rootFolder = "resources"; //serve a dare il nome della cartella di root per salvare i file se gia c'è non la crea
 		String rootPath = request.getServletContext().getRealPath("") + rootFolder; //costruisce la stringa contenete il percorso della root dove salviamo i file 
 		String userPath = rootPath + File.separator + inoccupato.getUsername();; //serve per definire la cartella dell'utente se gia esiste non viene creata
-		String userCVPath = userPath + File.separator + "curriculum";//crea la cartella dove verrà inserita l'immagine del logo
 				
-		File dirRoot = new File(rootPath); //cartella delle resources
-		if(!dirRoot.exists())//se la cartella esiste non la crea altrimenti genera la cartella 
-		{
-			dirRoot.mkdirs();
-		}
-				
-		File userDir = new File(userPath); //cartella propria dell'utente
-		if(!userDir.exists())//serve a creare la cartella dell'utente
-		{
-			userDir.mkdir();
 					
-		}
-
-		File userCVDir = new File(userCVPath);
-		if(!userCVDir.exists())//serve a creare la cartella immagini dell'utente
-		{
-			userCVDir.mkdir();
-		}
-				
-		String cvFullPath = userCVPath + curriculum.getSubmittedFileName().replaceAll(" ", "_");
-		InputStream inputStream = curriculum.getInputStream();
-				
-		Files.copy(inputStream, Paths.get(cvFullPath), StandardCopyOption.REPLACE_EXISTING);			
-		inoccupato.setCurriculum(cvFullPath);
-		inputStream.close();
+		inoccupato.setCurriculum("resources\\" + inoccupato.getUsername() + "\\" + curriculum.getSubmittedFileName().replaceAll(" ", "_"));
 		
 		if(request.getParameter("trattamentoDati") == null) {
 			//deve fare il check
@@ -161,6 +148,26 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
 		try {
 			if(!mu.isPresent(inoccupato)) {
 				mu.registerUserInoccupato(inoccupato);
+				
+				File dirRoot = new File(rootPath); //cartella delle resources
+				if(!dirRoot.exists())//se la cartella esiste non la crea altrimenti genera la cartella 
+				{
+					dirRoot.mkdirs();
+				}
+						
+				File userDir = new File(userPath); //cartella propria dell'utente
+				if(!userDir.exists())//serve a creare la cartella dell'utente
+				{
+					userDir.mkdir();
+							
+				}
+
+						
+				String cvFullPath = userPath + File.separator + curriculum.getSubmittedFileName().replaceAll(" ", "_");
+				InputStream inputStream = curriculum.getInputStream();
+						
+				Files.copy(inputStream, Paths.get(cvFullPath), StandardCopyOption.REPLACE_EXISTING);
+				inputStream.close();
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
