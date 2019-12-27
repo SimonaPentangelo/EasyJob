@@ -131,9 +131,9 @@ public synchronized List<Candidatura> visualizzaCandidatureRicevute(int idAnn) t
 		}
 	}
 	
-	public synchronized boolean candidate (Inoccupato inocc,Annuncio ann) throws SQLException{
+	public synchronized boolean candidate (int idInocc,int idAnn) throws SQLException{
 		
-		if(!this.isAlreadyCandidate(inocc.getIdUser(), ann.getIdAnnuncio())) {
+		if(!this.isAlreadyCandidate(idInocc, idAnn)) {
 			return false;
 		} else {
 			
@@ -146,9 +146,9 @@ public synchronized List<Candidatura> visualizzaCandidatureRicevute(int idAnn) t
 			try {
 				
 				connect = DriverManagerConnectionPool.getConnection();
-				insertCandidate = connect.prepareStatement(FIND_CANDIDATE);
-				insertCandidate.setInt(1, inocc.getIdUser());
-				insertCandidate.setInt(2, ann.getIdAnnuncio());
+				insertCandidate = connect.prepareStatement(INSERT_CAND);
+				insertCandidate.setInt(1,idInocc);
+				insertCandidate.setInt(2,idAnn);
 				insertCandidate.setString(3, localDate); //non so se funziona!!
 				insertCandidate.executeUpdate();
 				connect.commit();

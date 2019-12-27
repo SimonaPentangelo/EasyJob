@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import easyjob.model.ManagerCandidature;
+
 /**
  * Servlet implementation class CandidaturaServlet
  */
@@ -14,24 +16,27 @@ import javax.servlet.http.HttpServletResponse;
 public class CandidaturaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * Default constructor. 
-     */
-    public CandidaturaServlet() {
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		ManagerCandidature manager = new ManagerCandidature();
+		int idAzienda = Integer.parseInt(request.getParameter("idUt"));
+		int idInoccupato = Integer.parseInt(request.getParameter("idAz"));
+		String redirect= "";
+		try{
+			if(manager.candidate(idInoccupato, idAzienda)){
+				redirect ="/WEB-PAGES/view/SuccesfulCandidate.jsp";
+			}
+			else
+				redirect= "/WEB-PAGES/view/ErroreCandidatura.jsp";
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		
+	response.sendRedirect(request.getContextPath()+redirect);	
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

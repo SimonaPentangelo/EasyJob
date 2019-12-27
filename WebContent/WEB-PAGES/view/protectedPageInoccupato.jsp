@@ -41,5 +41,6 @@
 </head>
 <body>
 <p> Benvenuto nella tua area private <%= nameString %></p>
+<button><a href="index.jsp"> Torna alla home</a></button>
 </body>
 </html>

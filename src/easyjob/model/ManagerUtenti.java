@@ -24,7 +24,7 @@ public class ManagerUtenti {
 	public static final String MODIFICA_CV = "UPDATE Inoccupato SET Curriculum=? WHERE idUser=?;";
 	public static final String FIND_AZIENDA_BANNED = "SELECT Banned FROM Azienda WHERE idUser = ?;";
 	public static final String BAN_AZIENDA = "UPDATE Azienda SET Banned=? WHERE idUser=?;";
-	public static final String GET_NOME_AZIENDA ="SELECT NomeAzienda WHERE idUser=?;";
+	public static final String GET_NOME_AZIENDA ="SELECT NomeAzienda FROM Azienda WHERE idUser=?;";
 			
 			
 	public synchronized boolean isPresent(Utente u) throws SQLException{

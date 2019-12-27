@@ -36,7 +36,7 @@ for (int i=0;i<annunci.size();i++){
 
 %>
 <br>
-<p><a href="LeggiAnnuncioServlet?idAnnuncio=<%=id %>"><%=titolo %></a>  </p>
+<p><a href="../../LeggiAnnuncioServlet?idAnnuncio=<%=id %>"><%=titolo %></a>  </p>
 
 <br>
 <%

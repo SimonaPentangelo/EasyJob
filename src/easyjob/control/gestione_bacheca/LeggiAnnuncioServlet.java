@@ -27,7 +27,7 @@ public class LeggiAnnuncioServlet extends HttpServlet {
 		try{
 			annuncio = manager.searchById(id);
 			request.getSession().setAttribute("annuncioSelezionato",annuncio);
-			redirect ="/WEB-PAGES/view/ShowAzienda.jsp";
+			redirect ="/WEB-PAGES/view/ShowAnnuncio.jsp";
 		} catch (Exception e){
 			e.printStackTrace();
 		}
