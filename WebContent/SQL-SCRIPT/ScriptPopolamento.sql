@@ -29,12 +29,14 @@ values("Esempio invito1","Invito per esempio su prima azienda e primo inoccupato
 insert into EasyJob.Annuncio (Azienda,Titolo,Descrizione,Requisiti,TipoContratto,DataPubblicazione,Città)
 values(1,"Esempio annuncio 1","Annuncio della prima azineda","req1,req2,req3,...","Indeterminato","23/12/2019","Salerno"),
 (2,"Esempio annuncio 2", "Annuncio della seconda azienda","req1,req2,...","Part-time","22/12/2019","Battipaglia"),
-(2,"Esempio annuncio 3","Secondo annuncio della seconda azienda","req1,req2,req3,...","Stage","24/10/2019","Fisciano");
+(2,"Esempio annuncio 3","Secondo annuncio della seconda azienda","req1,req2,req3,...","Stage","24/10/2019","Fisciano"),
+(1,"Test per canidad","test per la candidatura","req1,2,3","stage","28/12/2019","Battipaglia");
 
 insert into EasyJob.Tag(NomeTag,Annuncio)
 values("Informatica",1),
 ("Ingegneria Informatica",1),
-("Biologia",2);
+("Biologia",2),
+("Informatica",4);
 
 insert into EasyJob.Candidatura(Inoccupato, Annuncio,DataCandidatura)
 values (1,1,"28/12/2019"),

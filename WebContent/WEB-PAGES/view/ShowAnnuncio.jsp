@@ -8,7 +8,7 @@ List<String> tags = annuncioSel.getTags();
 String tipoContratto = annuncioSel.getTipoContratto();
 String dataPubb = annuncioSel.getData();
 String azienda = annuncioSel.getNomeAzienda();
-int idAzienda = annuncioSel.getIdAnnuncio();
+int idAnnuncio = annuncioSel.getIdAnnuncio();
 int idInocc= 0;
 String redirect="";
 %>
@@ -56,7 +56,7 @@ else{
 Candidati!
 </button>
 <input type="hidden" name="idUt" value ="<%=idInocc %>">
-<input type="hidden" name="idAz" value="<%=idAzienda %>">
+<input type="hidden" name="idAz" value="<%=idAnnuncio %>">
 </form>
 
 <script>

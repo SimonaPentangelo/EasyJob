@@ -40,5 +40,9 @@
 <p>Benvenuto <%= nameString %> </p>
 <button><a href="index.jsp"> Torna alla home</a></button>
 
+<form action = "${pageContext.request.contextPath}/VisualizzaElencoAnnunciServlet" method="get">
+<button type="submit">Visualizza annunci pubblicati </button>
+</form>
+
 </body>
 </html>
