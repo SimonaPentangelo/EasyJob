@@ -1,5 +1,5 @@
 use EasyJob;
-insert into EasyJob.Inoccupato (Username,Password,Email,Nome,Cognome,DataNascita,Residenza,Citt‡,Curriculum)
+insert into EasyJob.Inoccupato (Username,Password,Email,Nome,Cognome,DataNascita,Residenza,Citt√†,Curriculum)
 values ("gabriele1997","ciaociao","gpisapia97@gmail.com","Gabriele","Pisapia","01/06/1997","Via napoleone 3","Battipaglia","c:/user/admin/file.pdf"),
 ("simona00","ciao12345","spentangelo@gmail.com","Simona","Pentangelo","12/09/1999","Via cinque maggio","Angri","c:/user/admin/file.pdf");
 
@@ -26,7 +26,7 @@ values("Esempio invito1","Invito per esempio su prima azienda e primo inoccupato
 ("Esempio invito 3", "Invito su seconda azienda e secondo inoccupato",2,2),
 ("Esempio invito 4", "Invito su seconda azienda e primo inoccupato",2,1);
 
-insert into EasyJob.Annuncio (Azienda,Titolo,Descrizione,Requisiti,TipoContratto,DataPubblicazione,Citt‡)
+insert into EasyJob.Annuncio (Azienda,Titolo,Descrizione,Requisiti,TipoContratto,DataPubblicazione,Citt√†)
 values(1,"Esempio annuncio 1","Annuncio della prima azineda","req1,req2,req3,...","Indeterminato","23/12/2019","Salerno"),
 (2,"Esempio annuncio 2", "Annuncio della seconda azienda","req1,req2,...","Part-time","22/12/2019","Battipaglia"),
 (2,"Esempio annuncio 3","Secondo annuncio della seconda azienda","req1,req2,req3,...","Stage","24/10/2019","Fisciano");
@@ -36,8 +36,8 @@ values("Informatica",1),
 ("Ingegneria Informatica",1),
 ("Biologia",2);
 
-insert into EasyJob.Candidatura(Inoccupato, Annuncio)
-values (1,1),
-(1,2),
-(2,2),
-(2,1);
+insert into EasyJob.Candidatura(Inoccupato, Annuncio,DataCandidatura)
+values (1,1,"28/12/2019"),
+(1,2,"12/12/2019"),
+(2,2,"14/11/2019"),
+(2,1,"17/10/2019");

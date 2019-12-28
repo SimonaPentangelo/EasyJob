@@ -15,11 +15,11 @@ import easyjob.entity.Inoccupato;
 
 public class ManagerCandidature {
 
-	public final String FIND_CANDIDATE = "SELECT * FROM Candidatura WHERE Inoccupato = ? AND Annuncio = ?;";
+	public final String FIND_CANDIDATE = "SELECT * FROM Candidatura WHERE Inoccupato = ? AND Azienda = ?;";
 	public final String FIND_PER_INOCC = "SELECT * FROM Candidatura WHERE Inoccupato = ?;";
-	public final String FIND_PER_ANN = "SELECT * FROM Candidatura WHERE Annuncio = ?;";
-	public final String DELETE_PER_ANN = "DELETE FROM Candidatura WHERE Annuncio = ?;";
-	public final String INSERT_CAND = "INSERT INTO Candidatura(Inoccupato, Annuncio, Data) VALUES (?, ?, ?);";
+	public final String FIND_PER_ANN = "SELECT * FROM Candidatura WHERE Azienda = ?;";
+	public final String DELETE_PER_ANN = "DELETE FROM Candidatura WHERE Azienda = ?;";
+	public final String INSERT_CAND = "INSERT INTO Candidatura(Inoccupato, Azienda, Data) VALUES (?, ?, ?);";
 	
 	private synchronized boolean isAlreadyCandidate (int idInoccupato,int idAnnuncio) throws SQLException {
 		
