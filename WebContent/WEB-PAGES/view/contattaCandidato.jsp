@@ -8,9 +8,8 @@
 </head>
 <body>
 	<form action="${pageContext.request.contextPath}/ContattaCandidatoServlet" method="POST">
-	Titolo: <input type="text" name="titolo"> <br>
-	Messaggio: <br>
-	 <textarea name="Messaggio" rows=10 cols=20> </textarea> 
+	Titolo: <input type="text" name="titolo">
+	Messaggio: <input type="text" name="messaggio">
 	<input type="submit" value="Invia">
 	</form>
 </body>
