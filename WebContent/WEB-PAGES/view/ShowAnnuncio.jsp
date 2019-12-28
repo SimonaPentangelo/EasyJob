@@ -18,7 +18,8 @@ String redirect="";
 }
 else{
 	idInocc = inoccupato.getIdUser();
-	redirect ="CandidaturaServlet?idUt="+idInocc+"&idAz="+idAzienda;
+	System.out.println(idInocc);
+	redirect ="../../CandidaturaServlet";
 }
 %>
 <%@ page import ="easyjob.entity.Inoccupato" %>
@@ -54,6 +55,8 @@ else{
 <button type="submit" class="class" value="<%=redirect %>" onsubmit="loginForce()">
 Candidati!
 </button>
+<input type="hidden" name="idUt" value ="<%=idInocc %>">
+<input type="hidden" name="idAz" value="<%=idAzienda %>">
 </form>
 
 <script>

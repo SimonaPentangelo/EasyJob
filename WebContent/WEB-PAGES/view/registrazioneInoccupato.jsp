@@ -7,7 +7,7 @@
 <title>Registrazione Inoccupato</title>
 </head>
 <body>
-	<form enctype='multipart/form-data' action="../../RegistrazioneInoccupatoServlet" method="POST">
+	<form enctype='multipart/form-data' action="${pageContext.request.contextPath}/RegistrazioneInoccupatoServlet" method="POST">
 	Nome: <input type="text" name="nome"> <br>
 	Cognome: <input type="text" name="cognome"> <br>
 	Città di Nascita: <input type="text" name="cittàNascita"> <br>

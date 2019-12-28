@@ -24,7 +24,7 @@
 <%} else{
 
 %>
-<form action="../../FiltraAnnunciServlet" method="GET">
+<form action="${pageContext.request.contextPath}/FiltraAnnunciServlet" method="GET">
 	 <input type="text" name="advancedSearch">
 	 <input type="hidden" name="tag" value="<%=tagDellaRicerca %>">
 	 <input type="submit" value="Cerca per città">

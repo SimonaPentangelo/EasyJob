@@ -28,7 +28,7 @@
 	}
 	%>
 	
-	<form action="RicercaAnnunciServlet" method="GET">
+	<form action="${pageContext.request.contextPath}/RicercaAnnunciServlet" method="GET">
 		<input type="text" name="searchTag"> <br>
 		<input type="submit" value ="Cerca Annunci"> <br>
 	</form>

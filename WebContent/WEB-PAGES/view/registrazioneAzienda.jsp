@@ -7,7 +7,7 @@
 <title>Registrazione Azienda</title>
 </head>
 <body>
-	<form enctype='multipart/form-data' action="../../RegistrazioneAziendaServlet" method="POST">
+	<form enctype='multipart/form-data' action="${pageContext.request.contextPath}/registrazioneAziendaServlet" method="POST">
 	Nome Azienda: <input type="text" name="nomeAzienda"> <br>
 	Logo: <input type="file" accept="image/*" name="logoAzienda"> <br>
 	Partita IVA: <input type="text" name="partitaIVA"> <br>

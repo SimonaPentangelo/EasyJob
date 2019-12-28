@@ -7,7 +7,7 @@
 <title>Pubblica Annuncio</title>
 </head>
 <body>
-	<form action="../../PubblicaAnnuncioServlet" method="GET">
+	<form action="${pageContext.request.contextPath}/PubblicaAnnuncioServlet" method="GET">
 	Titolo: <input type="text" name="titolo"> <br>
 	Descrizione: <input type="text" name="descrizione"> <br>
 	Requisiti: <input type="text" name="requisiti"> <br>
