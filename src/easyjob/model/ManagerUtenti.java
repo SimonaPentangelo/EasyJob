@@ -25,6 +25,7 @@ public class ManagerUtenti {
 	public static final String FIND_AZIENDA_BANNED = "SELECT Banned FROM Azienda WHERE idUser = ?;";
 	public static final String BAN_AZIENDA = "UPDATE Azienda SET Banned=? WHERE idUser=?;";
 	public static final String GET_NOME_AZIENDA ="SELECT NomeAzienda FROM Azienda WHERE idUser=?;";
+	public static final String FIND_INOCCUPATO ="SELECT * FROM Inoccupato WHERE idUser=?;";
 			
 			
 	public synchronized boolean isPresent(Utente u) throws SQLException{
@@ -399,7 +400,6 @@ public class ManagerUtenti {
 
 	private Moderatore retriveUserModeratore (String username,String password, String table) throws SQLException{
 		
-		
 		Moderatore mod = new Moderatore();
 		PreparedStatement retriveUser = null;
 		Connection connect = null;
@@ -469,6 +469,42 @@ public class ManagerUtenti {
 		return admin;
 	}
 	
+	public Inoccupato findInoccupato(int idUser) throws SQLException {
+		PreparedStatement retriveUser = null;
+		Connection connect = null;
+		Inoccupato inocc = new Inoccupato();
+		try{
+			
+			connect = DriverManagerConnectionPool.getConnection();
+			retriveUser = connect.prepareStatement(FIND_INOCCUPATO);
+			retriveUser.setInt(1, idUser);
+			ResultSet result = retriveUser.executeQuery();
+			while(result.next()){
+				inocc.setIdUser(result.getInt("idUser"));
+				inocc.setUsername(result.getString("Username"));
+				inocc.setPassword(result.getString("Password"));
+				inocc.setEmail(result.getString("Email"));
+				inocc.setCittà(result.getString("Città"));
+				inocc.setNome(result.getString("Nome"));
+				inocc.setCognome(result.getString("Cognome"));
+				inocc.setCurriculum(result.getString("Curriculum"));
+				inocc.setResidenza(result.getString("Residenza"));
+				inocc.setDataNascita(result.getString("DataNascita"));
+			}
+		}finally
+		{
+			try{
+				 if (retriveUser!= null)
+					 retriveUser.close();
+			   }
+			finally
+			{
+				DriverManagerConnectionPool.releaseConnection(connect);
+			}
+			
+		}
+		return inocc;
+	}
 }
 
 

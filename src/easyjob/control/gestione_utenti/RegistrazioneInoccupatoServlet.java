@@ -136,7 +136,7 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
 			
 		String rootFolder = "resources"; //serve a dare il nome della cartella di root per salvare i file se gia c'è non la crea
 		String rootPath = request.getServletContext().getRealPath("") + rootFolder; //costruisce la stringa contenete il percorso della root dove salviamo i file 
-		String userPath = rootPath + File.separator + inoccupato.getUsername();; //serve per definire la cartella dell'utente se gia esiste non viene creata
+		String userPath = rootPath + File.separator + inoccupato.getUsername(); //serve per definire la cartella dell'utente se gia esiste non viene creata
 				
 					
 		inoccupato.setCurriculum("resources\\" + inoccupato.getUsername() + "\\" + curriculum.getSubmittedFileName().replaceAll(" ", "_"));

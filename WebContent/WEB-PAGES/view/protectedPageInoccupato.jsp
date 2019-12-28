@@ -37,10 +37,31 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Pagina Personale Inoccupato</title>
 </head>
 <body>
-<p> Benvenuto nella tua area private <%= nameString %></p>
-<button><a href="index.jsp"> Torna alla home</a></button>
+	<p> Benvenuto nella tua area private <%= nameString %></p>
+	<button><a href="index.jsp"> Torna alla home</a></button>
+
+	<ul>
+	<li><%=nameString%></li>
+	<li><%=utente.getNome()%></li>
+	<li><%=utente.getCognome()%></li>
+	<li><%=utente.getCittà()%></li>
+	<li><%=utente.getResidenza()%></li>
+	</ul> <br>
+	
+	<input type="button" value="Candidature Effettuate"> <br>
+	
+	<div>
+		<form action="${pageContext.request.contextPath}/DisplayCurriculumServlet" method="POST">
+			<input type="submit" value="Visualizza Curriculum"> <br>
+		</form> 
+		
+		<form action="${pageContext.request.contextPath}/ModificaCurriculumServlet" method="POST">
+			 Nuovo Curriculum: <input type="file" name="curriculum"> <br>
+			<input type="submit" value="Modifica Curriculum">
+		</form> 
+    </div>
 </body>
 </html>
