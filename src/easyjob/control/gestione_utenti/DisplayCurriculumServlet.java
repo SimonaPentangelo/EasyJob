@@ -73,7 +73,7 @@ public class DisplayCurriculumServlet extends HttpServlet {
 			} else {
 				Inoccupato inoccupato = new Inoccupato();
 				try {
-					inoccupato = mu.findInoccupato((Integer) request.getAttribute("attributoFittizio"));
+					inoccupato = mu.findInoccupato(Integer.parseInt(request.getParameter("attributoFittizio")));
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
