@@ -72,10 +72,12 @@ public class ModificaCurriculumServlet extends HttpServlet {
 				String userPath = rootPath + File.separator + rootFolder + File.separator + inoccupato.getUsername();; //serve per definire la cartella dell'utente se gia esiste non viene creata
 						
 				String oldCurriculum = inoccupato.getCurriculum();			
-				inoccupato.setCurriculum("resources\\" + inoccupato.getUsername() + "\\" + curriculum.getSubmittedFileName().replaceAll(" ", "_"));
+				inoccupato.setCurriculum("resources" + File.separator + inoccupato.getUsername() + File.separator + curriculum.getSubmittedFileName().replaceAll(" ", "_"));
 				
 				try {
-					if(mu.modificaCurriculum(inoccupato.getIdUser(), "resources\\" + inoccupato.getUsername() + "\\" + curriculum.getSubmittedFileName().replaceAll(" ", "_"))) {
+					if(mu.modificaCurriculum(inoccupato.getIdUser(), "resources" + File.separator + inoccupato.getUsername() + File.separator + curriculum.getSubmittedFileName().replaceAll(" ", "_"))) {
+						File here = new File(".");
+						System.out.println(here.getAbsolutePath());
 						Files.deleteIfExists(Paths.get(rootPath + File.separator + oldCurriculum));
 						File dirRoot = new File(rootPath); //cartella delle resources
 						if(!dirRoot.exists())//se la cartella esiste non la crea altrimenti genera la cartella 

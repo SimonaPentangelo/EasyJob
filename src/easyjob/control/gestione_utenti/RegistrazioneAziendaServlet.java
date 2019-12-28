@@ -154,7 +154,7 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
 		String rootPath = request.getServletContext().getRealPath("") + rootFolder; //costruisce la stringa contenete il percorso della root dove salviamo i file 
 		String userPath = rootPath + File.separator + azienda.getUsername(); //serve per definire la cartella dell'utente se gia esiste non viene creata
 		
-		azienda.setLogoAzienda("resources\\" + azienda.getUsername() + "\\" + logoAzienda.getSubmittedFileName().replaceAll(" ", "_"));
+		azienda.setLogoAzienda("resources" + File.separator + azienda.getUsername()+ File.separator + logoAzienda.getSubmittedFileName().replaceAll(" ", "_"));
 		
 		try {
 			if(!mu.isPresent(azienda)) {
