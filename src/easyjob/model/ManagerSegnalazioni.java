@@ -82,5 +82,41 @@ public class ManagerSegnalazioni {
 		return flag;
 	}
 	
+	public synchronized Segnalazione retrieveSegnByAz(int id) throws SQLException {
+		
+		Segnalazione segnalazione = new Segnalazione();
+		PreparedStatement retrieveSegn = null;
+		Connection connect = null;
+		String query = "SELECT * FROM Segnalazione WHERE Azienda = ?";
+		try{
+			
+			connect = DriverManagerConnectionPool.getConnection();
+			retrieveSegn = connect.prepareStatement(query);
+			retrieveSegn.setInt(1, id);
+			ResultSet result = retrieveSegn.executeQuery();
+			while(result.next()){
+				segnalazione.setTitolo(result.getString("Titolo"));
+				segnalazione.setCorpo(result.getString("Corpo"));
+				segnalazione.setModeratore(result.getInt("Moderatore"));
+				segnalazione.setAzienda(result.getInt("Azienda"));
+				
+			}
+		}finally
+		{
+			try{
+				 if (retrieveSegn!= null)
+					 retrieveSegn.close();
+			   }
+			finally
+			{
+				DriverManagerConnectionPool.releaseConnection(connect);
+			}
+			
+		}
+			
+		return segnalazione;
+	}
+	
 	
 }
+	
