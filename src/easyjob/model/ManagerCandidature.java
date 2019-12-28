@@ -72,7 +72,7 @@ public class ManagerCandidature {
 			while(result.next()) {
 				Candidatura c = new Candidatura();
 				c.setAnnuncio(result.getInt("Annuncio"));
-				c.setData(result.getString("Data"));
+				c.setData(result.getString("DataCandidatura"));
 				c.setInoccupato(inocc.getIdUser());
 				lista.add(c);
 			}
@@ -110,7 +110,7 @@ public synchronized List<Candidatura> visualizzaCandidatureRicevute(int idAnn) t
 			while(result.next()) {
 				Candidatura c = new Candidatura();
 				c.setInoccupato(result.getInt("Inoccupato"));
-				c.setData(result.getString("Data"));
+				c.setData(result.getString("DataCandidatura"));
 				c.setAnnuncio(idAnn);
 				lista.add(c);
 			}
