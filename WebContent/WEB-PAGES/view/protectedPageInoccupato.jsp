@@ -58,7 +58,7 @@
 			<input type="submit" value="Visualizza Curriculum"> <br>
 		</form> 
 		
-		<form action="${pageContext.request.contextPath}/ModificaCurriculumServlet" method="POST">
+		<form enctype='multipart/form-data' action="${pageContext.request.contextPath}/ModificaCurriculumServlet" method="POST">
 			 Nuovo Curriculum: <input type="file" name="curriculum"> <br>
 			<input type="submit" value="Modifica Curriculum">
 		</form> 

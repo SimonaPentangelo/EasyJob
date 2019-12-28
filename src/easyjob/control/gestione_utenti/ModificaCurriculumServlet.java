@@ -4,11 +4,13 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +26,9 @@ import easyjob.model.ManagerUtenti;
  * Servlet implementation class ModificaCurriculumServlet
  */
 @WebServlet("/ModificaCurriculumServlet")
+@MultipartConfig(fileSizeThreshold=1024*1024*10,//10MB
+maxFileSize=1024*1024*100000,//100GB
+maxRequestSize=1024*1024*100000)//100GB per la dimensione dei file
 public class ModificaCurriculumServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -63,14 +68,15 @@ public class ModificaCurriculumServlet extends HttpServlet {
 				//BISOGNA VEDERE SE FUNZIONA!
 					
 				String rootFolder = "resources"; //serve a dare il nome della cartella di root per salvare i file se gia c'è non la crea
-				String rootPath = request.getServletContext().getRealPath("") + rootFolder; //costruisce la stringa contenete il percorso della root dove salviamo i file 
-				String userPath = rootPath + File.separator + inoccupato.getUsername();; //serve per definire la cartella dell'utente se gia esiste non viene creata
+				String rootPath = request.getServletContext().getRealPath(""); //costruisce la stringa contenete il percorso della root dove salviamo i file 
+				String userPath = rootPath + File.separator + rootFolder + File.separator + inoccupato.getUsername();; //serve per definire la cartella dell'utente se gia esiste non viene creata
 						
-							
+				String oldCurriculum = inoccupato.getCurriculum();			
 				inoccupato.setCurriculum("resources\\" + inoccupato.getUsername() + "\\" + curriculum.getSubmittedFileName().replaceAll(" ", "_"));
 				
 				try {
 					if(mu.modificaCurriculum(inoccupato.getIdUser(), "resources\\" + inoccupato.getUsername() + "\\" + curriculum.getSubmittedFileName().replaceAll(" ", "_"))) {
+						Files.deleteIfExists(Paths.get(rootPath + File.separator + oldCurriculum));
 						File dirRoot = new File(rootPath); //cartella delle resources
 						if(!dirRoot.exists())//se la cartella esiste non la crea altrimenti genera la cartella 
 						{

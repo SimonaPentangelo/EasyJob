@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -47,6 +48,7 @@ public class DisplayCurriculumServlet extends HttpServlet {
 		ManagerUtenti mu = new ManagerUtenti();
 		HttpSession session = request .getSession(false);
 		boolean auth = (boolean) session.getAttribute("autenticato");
+		System.out.println("PUDDIPUDDI");
 		if(auth) {
 			
 			if(session.getAttribute("utenteInoccupato") != null) {
@@ -68,8 +70,14 @@ public class DisplayCurriculumServlet extends HttpServlet {
 				    e.printStackTrace();
 				}
 				out.close();
-			} else if(session.getAttribute("utenteAzienda") != null) {
-				Inoccupato inoccupato = mu.findInoccupato((Integer) request.getAttribute(/*attributo per l'id*/));
+			} else {
+				Inoccupato inoccupato = new Inoccupato();
+				try {
+					inoccupato = mu.findInoccupato((Integer) request.getAttribute("attributoFittizio"));
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				response.setContentType("application/pdf");
 				String nomeFile = inoccupato.getCurriculum().substring(inoccupato.getCurriculum().lastIndexOf("\\"));
 				response.setHeader("Content-Disposition", "inline; filename=" + nomeFile + ";");
