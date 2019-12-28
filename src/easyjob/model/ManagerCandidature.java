@@ -15,13 +15,13 @@ import easyjob.entity.Inoccupato;
 
 public class ManagerCandidature {
 
-	public final String FIND_CANDIDATE = "SELECT * FROM Candidatura WHERE Inoccupato = ? AND Azienda = ?;";
+	public final String FIND_CANDIDATE = "SELECT * FROM Candidatura WHERE Inoccupato = ? AND Annuncio = ?;";
 	public final String FIND_PER_INOCC = "SELECT * FROM Candidatura WHERE Inoccupato = ?;";
-	public final String FIND_PER_ANN = "SELECT * FROM Candidatura WHERE Azienda = ?;";
-	public final String DELETE_PER_ANN = "DELETE FROM Candidatura WHERE Azienda = ?;";
-	public final String INSERT_CAND = "INSERT INTO Candidatura(Inoccupato, Azienda, Data) VALUES (?, ?, ?);";
+	public final String FIND_PER_ANN = "SELECT * FROM Candidatura WHERE Annuncio = ?;";
+	public final String DELETE_PER_ANN = "DELETE FROM Candidatura WHERE Annuncio = ?;";
+	public final String INSERT_CAND = "INSERT INTO Candidatura(Inoccupato, Annuncio, DataCandidatura) VALUES (?, ?, ?);";
 	
-	private synchronized boolean isAlreadyCandidate (int idInoccupato,int idAnnuncio) throws SQLException {
+	public synchronized boolean isAlreadyCandidate (int idInoccupato,int idAnnuncio) throws SQLException {
 		
 		Connection connect = null;
 		PreparedStatement searchCandidate = null;
@@ -132,10 +132,6 @@ public synchronized List<Candidatura> visualizzaCandidatureRicevute(int idAnn) t
 	}
 	
 	public synchronized boolean candidate (int idInocc,int idAnn) throws SQLException{
-		
-		if(!this.isAlreadyCandidate(idInocc, idAnn)) {
-			return false;
-		} else {
 			
 			Connection connect = null;
 			PreparedStatement insertCandidate = null;
@@ -150,9 +146,13 @@ public synchronized List<Candidatura> visualizzaCandidatureRicevute(int idAnn) t
 				insertCandidate.setInt(1,idInocc);
 				insertCandidate.setInt(2,idAnn);
 				insertCandidate.setString(3, localDate); //non so se funziona!!
-				insertCandidate.executeUpdate();
+				System.out.println("Sto cercando di aggiunger l'id inocc: " + idInocc+ " e idAnnuncio: " + idAnn);
+				int ris = insertCandidate.executeUpdate();
 				connect.commit();
+				if(ris==1)
 				return true;
+				else
+					return false;
 				
 			} finally {
 				
@@ -166,7 +166,7 @@ public synchronized List<Candidatura> visualizzaCandidatureRicevute(int idAnn) t
 					DriverManagerConnectionPool.releaseConnection(connect);
 				}
 			}
-		}
+		
 	}
 	
 	public boolean deleteCandidate(int idAnnuncio) throws SQLException {

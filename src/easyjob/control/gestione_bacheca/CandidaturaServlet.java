@@ -20,11 +20,12 @@ public class CandidaturaServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		ManagerCandidature manager = new ManagerCandidature();
-		int idAzienda = Integer.parseInt(request.getParameter("idUt"));
-		int idInoccupato = Integer.parseInt(request.getParameter("idAz"));
+		int idAzienda = Integer.parseInt(request.getParameter("idAz"));
+		int idInoccupato = Integer.parseInt(request.getParameter("idUt"));
 		String redirect= "";
 		try{
-			if(manager.candidate(idInoccupato, idAzienda)){
+			if(!(manager.isAlreadyCandidate(idInoccupato,idAzienda))){
+				if(manager.candidate(idInoccupato,idAzienda))
 				redirect ="/WEB-PAGES/view/SuccesfulCandidate.jsp";
 			}
 			else
