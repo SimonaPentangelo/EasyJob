@@ -36,9 +36,14 @@ String titoloAnnuncio = (String) session.getAttribute("titoloAnnuncio");
 	Cognome:<%=cognome %>
 	Data di nascita: <%=dataNascita %>
 	Residenza: <%=residenza %>
-	Curriculum (Da cambiare appena funziona) <%= cv %>
+	
+	<form action="${pageContext.request.contextPath}/DisplayCurriculumServlet" method="POST">
+	<input type="hidden" name="attributoFittizio" value="<%=id %>">
+	<button type="submit">Mostra CV</button>	
+	</form>
+	
 	<form action="${pageContext.request.contextPath}/ContattaCandidatoServlet" method="GET">
-	<input type="hidden" value= "<%=id %>">
+	<input type="hidden" name="candidato" value= "<%=id %>">
 	<button type="submit">Contatta il Candidato</button>
 	</form>
 <%
