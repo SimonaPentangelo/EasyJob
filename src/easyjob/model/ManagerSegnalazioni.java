@@ -14,7 +14,6 @@ public class ManagerSegnalazioni {
 	public static final String FIND_SEGNALAZIONI ="SELECT * FROM Segnalazione;";
 	public static final String INSERT_SEGNALAZIONE = "INSERT INTO Segnalazione(Titolo,Corpo,Azienda,Moderatore)"+
 	"VALUES(?,?,?,?);";
-
 	public synchronized List<Segnalazione> visualizzaElencoSegnalazioni () throws SQLException{
 		
 		/*Select nel db di tutte le segnalazioni*/
@@ -80,6 +79,41 @@ public class ManagerSegnalazioni {
 			}
 		}
 		return flag;
+	}
+	
+	public synchronized Segnalazione retrieveSegnByAz(int id) throws SQLException {
+		
+		Segnalazione segnalazione = new Segnalazione();
+		PreparedStatement retriveUser = null;
+		Connection connect = null;
+		String query = "SELECT * FROM Segnalazione WHERE Azienda = ?";
+		try{
+			
+			connect = DriverManagerConnectionPool.getConnection();
+			retriveUser = connect.prepareStatement(query);
+			retriveUser.setInt(1, id);
+			ResultSet result = retriveUser.executeQuery();
+			while(result.next()){
+				segnalazione.setTitolo(result.getString("Titolo"));
+				segnalazione.setCorpo(result.getString("Corpo"));
+				segnalazione.setModeratore(result.getInt("Moderatore"));
+				segnalazione.setAzienda(result.getInt("Azienda"));
+				
+			}
+		}finally
+		{
+			try{
+				 if (retriveUser!= null)
+					 retriveUser.close();
+			   }
+			finally
+			{
+				DriverManagerConnectionPool.releaseConnection(connect);
+			}
+			
+		}
+			
+		return segnalazione;
 	}
 	
 	
