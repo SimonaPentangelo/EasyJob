@@ -57,7 +57,6 @@ public class LoginServlet extends HttpServlet {
 		
 		if((username!=null || username.equals("")) && password!=null || password.equals(""))
 		{
-		
 			try {
 				if(mu.isPresent(user))
 					

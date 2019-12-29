@@ -79,7 +79,7 @@ public class DisplayCurriculumServlet extends HttpServlet {
 					e1.printStackTrace();
 				}
 				response.setContentType("application/pdf");
-				String nomeFile = inoccupato.getCurriculum().substring(inoccupato.getCurriculum().lastIndexOf("\\"));
+				String nomeFile = inoccupato.getCurriculum().substring(inoccupato.getCurriculum().lastIndexOf(File.separator));
 				response.setHeader("Content-Disposition", "inline; filename=" + nomeFile + ";");
 				String rootFolder = "resources"; //serve a dare il nome della cartella di root per salvare i file se gia c'è non la crea
 				String rootPath = request.getServletContext().getRealPath(""); //costruisce la stringa contenete il percorso della root dove salviamo i file 
