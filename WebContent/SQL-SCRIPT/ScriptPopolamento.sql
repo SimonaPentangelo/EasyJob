@@ -1,12 +1,12 @@
 use EasyJob;
 insert into EasyJob.Inoccupato (Username,Password,Email,Nome,Cognome,DataNascita,Residenza,Città,Curriculum)
-values ("gabriele1997","ciaociao","gpisapia97@gmail.com","Gabriele","Pisapia","01/06/1997","Via napoleone 3","Battipaglia","c:/user/admin/file.pdf"),
-("simona00","ciao12345","spentangelo@gmail.com","Simona","Pentangelo","12/09/1999","Via cinque maggio","Angri","c:/user/admin/file.pdf");
+values ("gabriele1997","ciaociao","gpisapia97@gmail.com","Gabriele","Pisapia","01/06/1997","Via napoleone 3","Battipaglia","resources\gabriele1997\curriculum1.pdf"),
+("simona00","ciao12345","spentangelo@gmail.com","Simona","Pentangelo","12/09/1999","Via cinque maggio","Angri","resources\simona00\curriculum2.pdf");
 
 
 insert into EasyJob.Azienda(Username,Password,Email,NomeAzienda,LogoAzienda,Dipendenti,DataFondazione,Indirizzo,PIva,Banned)
-values ("google2019","google19","google@gmail.com","Google","c:/user/admin/file.jpg",2000,"10/02/1960","Via mezzocannone,19","01234567ABC",false),
-("facebook2019","facebook19","facebook@gmail.com","Facebook","c:/user/admin/file.jpg",1800,"12/03/1999","Via montesi 14","91202849CDB",false);
+values ("google2019","google19","google@gmail.com","Google","resources\google2019\logo1.jpg",2000,"10/02/1960","Via mezzocannone,19","01234567ABC",false),
+("facebook2019","facebook19","facebook@gmail.com","Facebook","resources\facebook2019\logo2.jpg",1800,"12/03/1999","Via montesi 14","91202849CDB",false);
 
 insert into EasyJob.Moderatore(Username,Password,Email)
 values ("Moderatore1","modmod","moderatoreEJ@gmail.com"),
