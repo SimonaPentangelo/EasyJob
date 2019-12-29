@@ -36,7 +36,7 @@ public class ManagerInviti {
 				temp.setTitolo(rs.getString("Titolo"));
 				temp.setCorpo(rs.getString("Corpo"));
 				temp.setInoccupato(rs.getInt("Inoccupato"));
-				temp.setAzienda(rs.getInt("Azienda"));
+				temp.setAnnuncio(rs.getInt("Annuncio"));
 				listaInviti.add(temp);
 			}
 			
@@ -60,19 +60,48 @@ public class ManagerInviti {
 		PreparedStatement contact = null;
 		boolean flag = false;
 		
-		try{
+		if(!alreadyInvited(i.getAnnuncio(), i.getInoccupato())) {
+			try{
+				connect = DriverManagerConnectionPool.getConnection();
+				contact = connect.prepareStatement(INSERT_INVITO);
+				contact.setString(1,i.getTitolo());
+				contact.setString(2, i.getCorpo());
+				contact.setInt(3, i.getAnnuncio());
+				contact.setInt(4, i.getInoccupato());
+				
+				int risultato = contact.executeUpdate();
+				connect.commit();
+				if (risultato ==1){
+					flag = true;
+					return flag;
+				}
+			} finally{
+				try{
+					if (contact != null)
+						contact.close();
+				}finally{
+					DriverManagerConnectionPool.releaseConnection(connect);
+				}
+			}
+		}
+		return false;
+	}
+	
+	private boolean alreadyInvited(int idAnnuncio, int idUser) throws SQLException {
+		Connection connect = null;
+		PreparedStatement contact = null;
+		
+		try {
 			connect = DriverManagerConnectionPool.getConnection();
-			contact = connect.prepareStatement(INSERT_INVITO);
-			contact.setString(1,i.getTitolo());
-			contact.setString(2, i.getCorpo());
-			contact.setInt(3, i.getAzienda());
-			contact.setInt(4, i.getInoccupato());
+			contact = connect.prepareStatement(ALREADY_INVITED);
+			contact.setInt(1, idAnnuncio);
+			contact.setInt(2,  idUser);
 			
-			int risultato = contact.executeUpdate();
-			connect.commit();
-			if (risultato ==1){
-				flag = true;
-				return flag;
+			ResultSet res = contact.executeQuery();
+			if(res.next()) {
+				return true;
+			} else {
+				return false;
 			}
 		} finally{
 			try{
@@ -82,8 +111,5 @@ public class ManagerInviti {
 				DriverManagerConnectionPool.releaseConnection(connect);
 			}
 		}
-		return false;
 	}
-	
-	private boolean alreadyInvited(int idA)
 }
