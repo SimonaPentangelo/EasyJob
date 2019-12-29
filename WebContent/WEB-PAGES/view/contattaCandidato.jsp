@@ -1,5 +1,6 @@
 <% 
-int id = Integer.parseInt(request.getParameter("idUt"));
+int idUt = Integer.parseInt(request.getParameter("idUt"));
+int idAn = Integer.parseInt(request.getParameter("idAn"));
 %>
 <%@page import="javax.servlet.*" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -14,7 +15,8 @@ int id = Integer.parseInt(request.getParameter("idUt"));
 	<form action="${pageContext.request.contextPath}/ContattaCandidatoServlet" method="POST">
 	Titolo: <input type="text" name="titolo">
 	Messaggio: <input type="text" name="messaggio">
-	<input type="hidden" name="idUtente" value="<%=id %>">
+	<input type="hidden" name="idUtente" value="<%=idUt %>">
+	<input type="hidden" name="idAnnuncio" value="<%=idAn %>">
 	<input type="submit" value="Invia">
 	</form>
 </body>

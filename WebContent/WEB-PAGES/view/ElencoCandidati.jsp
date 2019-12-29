@@ -2,7 +2,7 @@
 
 List<Inoccupato> listaCandidati = (List<Inoccupato>)session.getAttribute("listaCandidati");
 String titoloAnnuncio = (String) session.getAttribute("titoloAnnuncio");
-int idAnnuncio = Integer.parseInt( (String) session.getAttribute("idAnnuncio")); 
+int idAnnuncio =  (Integer) session.getAttribute("idAnnuncio"); 
 %>
 <%@page import="java.util.*" %>
 <%@page import="easyjob.entity.Inoccupato" %>
