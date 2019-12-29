@@ -30,8 +30,8 @@
 <%@page import="java.util.*"%>
 
 <%
-	List<Invito> segnalazioni = new ArrayList<>();
-	segnalazioni = (ArrayList) session.getAttribute("inviti");	
+	List<Invito> inviti = new ArrayList<>();
+	inviti = (ArrayList) session.getAttribute("inviti");	
 %>
 
 
@@ -63,14 +63,14 @@
 	
 	<h2>Elenco Inviti:</h2> <br>
 	
-	<%for(int i=0; i<invito.getSize() ;i++){
-		String titolo = invito.get(i).getTitolo();
+	<%for(int i=0; i<inviti.size() ;i++){
+		String titolo = inviti.get(i).getTitolo();
 		String ahref= "../../VisualizzaInvitoServlet?idAd="+inviti.get(i).getAnnuncio() + "&idInocc="+inviti.get(i).getInoccupato();
 	%>
 	
 	<a href="<%=ahref%>"> <p> Titolo: <%=titolo %></p></a>
 	
-	<% } %>
+	<% } } %>
 	
 	<form action="${pageContext.request.contextPath}/VisualizzaInvitiServlet" method="POST">
 		<input type="button" value="Candidature Effettuate"> <br>
