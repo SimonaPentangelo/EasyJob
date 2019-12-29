@@ -26,9 +26,13 @@
 %>
 
 <%@page import="easyjob.entity.Inoccupato" %>
+<%@page import="easyjob.entity.Invito" %>
+<%@page import="java.util.*"%>
 
-
-
+<%
+	List<Invito> segnalazioni = new ArrayList<>();
+	segnalazioni = (ArrayList) session.getAttribute("inviti");	
+%>
 
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -51,14 +55,33 @@
 	<li><%=utente.getResidenza()%></li>
 	</ul> <br>
 	
-	<input type="button" value="Candidature Effettuate"> <br>
+	<% if (inviti.isEmpty()) {%>
+	
+	<p> Non ci sono inviti</p>
+
+	<%} else{ %>
+	
+	<h2>Elenco Inviti:</h2> <br>
+	
+	<%for(int i=0; i<invito.getSize() ;i++){
+		String titolo = invito.get(i).getTitolo();
+		String ahref= "../../VisualizzaInvitoServlet?idAd="+inviti.get(i).getAnnuncio() + "&idInocc="+inviti.get(i).getInoccupato();
+	%>
+	
+	<a href="<%=ahref%>"> <p> Titolo: <%=titolo %></p></a>
+	
+	<% } %>
+	
+	<form action="${pageContext.request.contextPath}/VisualizzaInvitiServlet" method="POST">
+		<input type="button" value="Candidature Effettuate"> <br>
+	</form>
 	
 	<div>
 		<form action="${pageContext.request.contextPath}/DisplayCurriculumServlet" method="POST">
 			<input type="submit" value="Visualizza Curriculum"> <br>
 		</form> 
 		
-		<form enctype='multipart/form-data' action="${pageContext.request.contextPath}/ModificaCurriculumServlet" method="POST">
+		<form action="${pageContext.request.contextPath}/ModificaCurriculumServlet" method="POST" enctype='multipart/form-data'>
 			 Nuovo Curriculum: <input type="file" name="curriculum"> <br>
 			<input type="submit" value="Modifica Curriculum">
 		</form> 

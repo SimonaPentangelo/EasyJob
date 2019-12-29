@@ -2,6 +2,8 @@ package easyjob.control.gestione_utenti;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,11 +15,8 @@ import javax.servlet.RequestDispatcher;
 import org.apache.catalina.Manager;
 import org.eclipse.jdt.internal.compiler.ast.AND_AND_Expression;
 
-import easyjob.entity.Amministratore;
-import easyjob.entity.Azienda;
-import easyjob.entity.Inoccupato;
-import easyjob.entity.Moderatore;
-import easyjob.entity.Utente;
+import easyjob.entity.*;
+import easyjob.model.ManagerInviti;
 import easyjob.model.ManagerUtenti;
 
 /**
@@ -38,10 +37,11 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		
 		Utente user = new Utente();
 		ManagerUtenti mu = new ManagerUtenti();
+		ManagerInviti mi = new ManagerInviti();
+		List<Invito> inviti = new ArrayList<Invito>();
+		List<Invito> soloCinque = new ArrayList<Invito>();
 		Inoccupato inoccupato = new Inoccupato();
 		Azienda azienda = new Azienda();
 		Amministratore admin = new Amministratore();
@@ -71,8 +71,16 @@ public class LoginServlet extends HttpServlet {
 					if (user instanceof Inoccupato){
 						inoccupato = (Inoccupato) user;
 						System.out.println(inoccupato.getCognome());
+						inviti = mi.visualizzaInviti(inoccupato);
+						
+						if(inviti.size() >= 5) {
+							soloCinque = inviti.subList(0, 4);
+						} else {
+							soloCinque = inviti;
+						}
 						request.getSession().setAttribute("utenteInoccupato", inoccupato);
 						request.getSession().setAttribute("autenticato",true);
+						request.getSession().setAttribute("inviti", soloCinque);
 						redirect = "/WEB-PAGES/view/protectedPageInoccupato.jsp";
 					} 
 					if(user instanceof Azienda) {
@@ -94,13 +102,7 @@ public class LoginServlet extends HttpServlet {
 						request.getSession().setAttribute("utenteAdmin", admin);
 						request.getSession().setAttribute("autenticato", true);
 						redirect = "/WEB-PAGES/view/protectedPageAdmin.jsp";
-					}
-						 
-					
-					
-					
-					
-					
+					}	
 				}
 			
 				else {
