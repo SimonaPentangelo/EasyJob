@@ -40,6 +40,7 @@ public class VisualizzaCandidatiServlet extends HttpServlet {
 				int idInocc = c.getInoccupato();
 				listaCandidati.add(managerUt.findInoccupato(idInocc));
 			}
+			request.getSession().setAttribute("idAnnuncio", idAnnuncio);
 			request.getSession().setAttribute("titoloAnnuncio", titoloAnnuncio);
 			request.getSession().setAttribute("listaCandidati",listaCandidati);
 		}catch (Exception e){

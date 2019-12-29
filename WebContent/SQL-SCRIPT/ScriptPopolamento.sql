@@ -20,17 +20,19 @@ insert into EasyJob.Segnalazione(Titolo,Corpo,Azienda,Moderatore)
 values ("Seganalazione esempio1", "Segnalazione per esempio su prima azienda e primo moderatore",1,1),
 ("Segnalazione esempio2","Segnalazione per esempio su seconda azienda e primo moderatore",2,1);
 
-insert into EasyJob.Invito (Titolo,Corpo,Azienda,Inoccupato)
-values("Esempio invito1","Invito per esempio su prima azienda e primo inoccupato",1,1),
-("Esempio invito2","Invito per esempio su prima azienda e secondo inoccupato",1,2),
-("Esempio invito 3", "Invito su seconda azienda e secondo inoccupato",2,2),
-("Esempio invito 4", "Invito su seconda azienda e primo inoccupato",2,1);
-
 insert into EasyJob.Annuncio (Azienda,Titolo,Descrizione,Requisiti,TipoContratto,DataPubblicazione,Città)
 values(1,"Esempio annuncio 1","Annuncio della prima azineda","req1,req2,req3,...","Indeterminato","23/12/2019","Salerno"),
 (2,"Esempio annuncio 2", "Annuncio della seconda azienda","req1,req2,...","Part-time","22/12/2019","Battipaglia"),
 (2,"Esempio annuncio 3","Secondo annuncio della seconda azienda","req1,req2,req3,...","Stage","24/10/2019","Fisciano"),
 (1,"Test per canidad","test per la candidatura","req1,2,3","stage","28/12/2019","Battipaglia");
+
+insert into EasyJob.Invito (Titolo,Corpo,Annuncio,Inoccupato)
+values("Esempio invito1","Invito per esempio su prima azienda e primo inoccupato",1,1),
+("Esempio invito2","Invito per esempio su prima azienda e secondo inoccupato",1,2),
+("Esempio invito 3", "Invito su seconda azienda e secondo inoccupato",2,2),
+("Esempio invito 4", "Invito su seconda azienda e primo inoccupato",2,1);
+
+
 
 insert into EasyJob.Tag(NomeTag,Annuncio)
 values("Informatica",1),

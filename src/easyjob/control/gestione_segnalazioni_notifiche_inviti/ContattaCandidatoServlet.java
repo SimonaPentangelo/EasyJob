@@ -19,36 +19,25 @@ import easyjob.model.ManagerUtenti;
 public class ContattaCandidatoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * Default constructor. 
-     */
-    public ContattaCandidatoServlet() {
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doPost(request, response);
+		doPost(request,response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		String redirect="";
 		Invito invito = new Invito();
 		ManagerInviti mi = new ManagerInviti();
 		
 		//Prendo l'azienda dalla sessione, quella che sta contattando il candidato
-		Azienda azienda = (Azienda) request.getSession().getAttribute("Azienda");
 		
-		int idInoccupato; //in qualche modo prendo l'id dell'inoccupato che voglio contattare
+		int idAnnuncio = Integer.parseInt(request.getParameter("idAnnuncio"));
+		int idInoccupato = Integer.parseInt(request.getParameter("idUtente")); //in qualche modo prendo l'id dell'inoccupato che voglio contattare
 			
-		invito.setAzienda(azienda.getIdUser());
+		invito.setAnnuncio(idAnnuncio);
+		invito.setInoccupato(idInoccupato);
 		
 		String titolo = request.getParameter("titolo");
 		if(titolo != null && !titolo.equals("") && !titolo.equals(" ") && titolo.length() >= 5 && titolo.length() <= 60) {
@@ -64,10 +53,19 @@ public class ContattaCandidatoServlet extends HttpServlet {
 			//errore nel corpo
 		}
 		
-		/*invito.setInoccupato(idInoccupato);
-		mi.contattaCandidato(invito);*/
+		invito.setInoccupato(idInoccupato);
+		try{
 		
-		//response.sendRedirect(/*pagina di invio avvenuto con successo*/);
+			if(mi.contattaCandidato(invito)){
+				redirect="/WEB-PAGES/view/SuccessfulInvite.jsp";
+			}
+			else{
+				redirect ="/WEB-PAGES/view/ErrorInvite.jsp";
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		response.sendRedirect(request.getContextPath()+redirect);
 	}
 
 }

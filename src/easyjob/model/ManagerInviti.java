@@ -13,8 +13,10 @@ import easyjob.entity.Invito;
 public class ManagerInviti {
 	
 	public static final String SEARCH_INVITI = "SELECT * FROM Invito WHERE Inoccupato = ?;";
-	public static final String INSERT_INVITO = "INSERT INTO Invito(Titolo,Corpo,Azienda,Inoccupato)"+
+	public static final String INSERT_INVITO = "INSERT INTO Invito(Titolo,Corpo,Annuncio,Inoccupato)"+
 	"VALUES (?,?,?,?);";
+	public static final String ALREADY_INVITED ="SELECT Azienda,Inoccupato FROM Invito WHERE Annuncio=? AND Inoccupato=?;";
+	
 	public synchronized List<Invito> visualizzaInviti(Inoccupato inocc) throws SQLException{
 		
 		/*Dato un inoccupato viene fornita la lista degli inviti*/
@@ -83,5 +85,5 @@ public class ManagerInviti {
 		return false;
 	}
 	
-	
+	private boolean alreadyInvited(int idA)
 }

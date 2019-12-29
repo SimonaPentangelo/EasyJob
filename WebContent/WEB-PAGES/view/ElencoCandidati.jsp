@@ -2,6 +2,7 @@
 
 List<Inoccupato> listaCandidati = (List<Inoccupato>)session.getAttribute("listaCandidati");
 String titoloAnnuncio = (String) session.getAttribute("titoloAnnuncio");
+int idAnnuncio = Integer.parseInt( (String) session.getAttribute("idAnnuncio")); 
 %>
 <%@page import="java.util.*" %>
 <%@page import="easyjob.entity.Inoccupato" %>
@@ -42,10 +43,9 @@ String titoloAnnuncio = (String) session.getAttribute("titoloAnnuncio");
 	<button type="submit">Mostra CV</button>	
 	</form>
 	
-	<form action="${pageContext.request.contextPath}/ContattaCandidatoServlet" method="GET">
-	<input type="hidden" name="candidato" value= "<%=id %>">
+	<a href="contattaCandidato.jsp?idUt=<%=id %>&idAn=<%=idAnnuncio%>">
 	<button type="submit">Contatta il Candidato</button>
-	</form>
+	</a>
 <%
 	}//FINE FOR
 } // FINE ELSE
