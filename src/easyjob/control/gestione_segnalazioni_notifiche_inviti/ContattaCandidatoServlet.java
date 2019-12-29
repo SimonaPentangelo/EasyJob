@@ -57,7 +57,7 @@ public class ContattaCandidatoServlet extends HttpServlet {
 		try{
 		
 			if(mi.contattaCandidato(invito)){
-				redirect="/WEB-PAGES/view/SuccessfulInvite.jsp";
+				redirect="/WEB-PAGES/view/SuccessfullInvite.jsp";
 			}
 			else{
 				redirect ="/WEB-PAGES/view/ErrorInvite.jsp";

@@ -15,7 +15,7 @@ public class ManagerInviti {
 	public static final String SEARCH_INVITI = "SELECT * FROM Invito WHERE Inoccupato = ?;";
 	public static final String INSERT_INVITO = "INSERT INTO Invito(Titolo,Corpo,Annuncio,Inoccupato)"+
 	"VALUES (?,?,?,?);";
-	public static final String ALREADY_INVITED ="SELECT Azienda,Inoccupato FROM Invito WHERE Annuncio=? AND Inoccupato=?;";
+	public static final String ALREADY_INVITED ="SELECT Annuncio,Inoccupato FROM Invito WHERE Annuncio=? AND Inoccupato=?;";
 	
 	public synchronized List<Invito> visualizzaInviti(Inoccupato inocc) throws SQLException{
 		
@@ -36,7 +36,7 @@ public class ManagerInviti {
 				temp.setTitolo(rs.getString("Titolo"));
 				temp.setCorpo(rs.getString("Corpo"));
 				temp.setInoccupato(rs.getInt("Inoccupato"));
-				temp.setAzienda(rs.getInt("Azienda"));
+				temp.setAnnuncio(rs.getInt("Annuncio"));
 				listaInviti.add(temp);
 			}
 			
@@ -61,11 +61,12 @@ public class ManagerInviti {
 		boolean flag = false;
 		
 		try{
+			if (!alreadyInvited(i.getAnnuncio(),i.getInoccupato())){
 			connect = DriverManagerConnectionPool.getConnection();
 			contact = connect.prepareStatement(INSERT_INVITO);
 			contact.setString(1,i.getTitolo());
 			contact.setString(2, i.getCorpo());
-			contact.setInt(3, i.getAzienda());
+			contact.setInt(3, i.getAnnuncio());
 			contact.setInt(4, i.getInoccupato());
 			
 			int risultato = contact.executeUpdate();
@@ -74,6 +75,9 @@ public class ManagerInviti {
 				flag = true;
 				return flag;
 			}
+		}else{
+			return false;
+		}
 		} finally{
 			try{
 				if (contact != null)
@@ -85,5 +89,25 @@ public class ManagerInviti {
 		return false;
 	}
 	
-	private boolean alreadyInvited(int idA)
+	private boolean alreadyInvited(int idAnnuncio,int idInoccupato) throws SQLException{
+		Connection conn = null;
+		PreparedStatement check = null;
+		try{
+			conn = DriverManagerConnectionPool.getConnection();
+			check = conn.prepareStatement(ALREADY_INVITED);
+			check.setInt(1,idAnnuncio);
+			check.setInt(2,idInoccupato);
+			ResultSet rs = check.executeQuery();
+			if(rs.next())
+				return true;
+		}finally{
+			try{
+				if (check!=null)
+					check.close();
+			}finally{
+				DriverManagerConnectionPool.releaseConnection(conn);
+			}
+		}
+		return false;
+	}
 }
