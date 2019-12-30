@@ -26,6 +26,7 @@ public class ManagerUtenti {
 	public static final String BAN_AZIENDA = "UPDATE Azienda SET Banned=? WHERE idUser=?;";
 	public static final String GET_NOME_AZIENDA ="SELECT NomeAzienda FROM Azienda WHERE idUser=?;";
 	public static final String FIND_INOCCUPATO ="SELECT * FROM Inoccupato WHERE idUser=?;";
+	public static final String FIND_AZIENDA ="SELECT * FROM Azienda WHERE idUser=?;";
 			
 			
 	public synchronized boolean isPresent(Utente u) throws SQLException{
@@ -121,6 +122,39 @@ public class ManagerUtenti {
 		}
 		
 		return nome;
+	}
+	
+	public synchronized Azienda findAziendaById(int idUser) throws SQLException{
+		Azienda azienda = new Azienda();
+		Connection connect= null;
+		PreparedStatement findAzienda = null;
+		try{
+			connect = DriverManagerConnectionPool.getConnection();
+			findAzienda = connect.prepareStatement(FIND_AZIENDA);
+			findAzienda.setInt(1,idUser);
+			ResultSet rs = findAzienda.executeQuery();
+			while(rs.next()){
+				azienda.setIdUser(rs.getInt("idUser"));
+				azienda.setUsername(rs.getString("Username"));
+				azienda.setPassword(rs.getString("Password"));
+				azienda.setEmail(rs.getString("Email"));
+				azienda.setNomeAzienda(rs.getString("NomeAzienda"));
+				azienda.setLogoAzienda(rs.getString("LogoAzienda"));
+				azienda.setNumeroDipendenti(rs.getInt("Dipendenti"));
+				azienda.setDataFondazione(rs.getString("DataFondazione"));
+				azienda.setIndirizzoSede(rs.getString("Indirizzo"));
+				azienda.setPartitaIVA(rs.getString("PIva"));
+				azienda.setBanned(rs.getBoolean("Banned"));
+			}
+		}finally{
+			try{
+				if(findAzienda != null)
+					findAzienda.close();
+			}finally{
+				DriverManagerConnectionPool.releaseConnection(connect);
+			}
+		}
+		return azienda;
 	}
 	
 	public synchronized boolean deleteUser (Utente u) throws SQLException{

@@ -1,10 +1,11 @@
 <%@page import="java.util.*"%>
 <%@page import="easyjob.entity.Annuncio"%>
+<%@page import="easyjob.entity.Azienda"%>
 <%
 	List<Annuncio> annunci = new ArrayList<>();
 	annunci = (ArrayList) session.getAttribute("annunci");
 	String tagDellaRicerca =(String) session.getAttribute("tag");
-	
+	List<Azienda> aziende = (ArrayList) session.getAttribute("aziendeAnnunci");
 %>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -33,11 +34,18 @@
 for (int i=0;i<annunci.size();i++){
 	int id = annunci.get(i).getIdAnnuncio();
 	String titolo = annunci.get(i).getTitolo();
+	int idAzienda = annunci.get(i).getAzienda();
+	String pathImage="";
+	for (int j=0;j<aziende.size();j++){
+		if(aziende.get(j).getIdUser() == idAzienda)
+		 pathImage = aziende.get(j).getLogoAzienda();
+	}
 
 %>
 <br>
 <p><a href="../../LeggiAnnuncioServlet?idAnnuncio=<%=id %>"><%=titolo %></a>  </p>
-
+<img src="<%=pathImage %>"> 
+<p> Debugging <%=pathImage %></p>
 <br>
 <%
 	} // fine for

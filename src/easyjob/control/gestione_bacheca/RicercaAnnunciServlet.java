@@ -14,7 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import easyjob.entity.Annuncio;
+import easyjob.entity.Azienda;
 import easyjob.model.ManagerAnnunci;
+import easyjob.model.ManagerUtenti;
 
 /**
  * Servlet implementation class RicercaAnnunciServlet
@@ -25,16 +27,23 @@ public class RicercaAnnunciServlet extends HttpServlet {
 
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Ma qui dentro ci arrivo?");
+		
+		ManagerUtenti managerUt = new ManagerUtenti();
 		ManagerAnnunci manager = new ManagerAnnunci();
 		String redirect = "";
 		String tagDaCercare = request.getParameter("searchTag");
 		List<Annuncio> annunci = new ArrayList<>();
+		List<Azienda> aziende = new ArrayList<>(); // Mi serve per prendere le immagini e farle visualizzare in bacheca
 		
 		try{
 			annunci = manager.searchAd(tagDaCercare);
 			request.getSession().setAttribute("annunci", annunci);
+			for (Annuncio an : annunci){
+				aziende.add(managerUt.findAziendaById(an.getAzienda()));
+				
+			}
 			request.getSession().setAttribute("tag",tagDaCercare);
+			request.getSession().setAttribute("aziendeAnnunci",aziende );
 			redirect = "/WEB-PAGES/view/Bacheca.jsp";
 		}catch (Exception e){
 			e.printStackTrace();
