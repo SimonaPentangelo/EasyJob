@@ -27,7 +27,7 @@ public class CreaSegnalazioneServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int idAzienda =Integer.parseInt(request.getParameter("idAz"));
+		int idAzienda =Integer.parseInt(request.getParameter("az"));
 		String redirect = "";
 		try {
 		request.getSession().setAttribute("idAzienda", idAzienda);

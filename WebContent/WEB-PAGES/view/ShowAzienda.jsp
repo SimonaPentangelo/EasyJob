@@ -1,3 +1,4 @@
+<%@page import="easyjob.entity.Moderatore"%>
 <%@ page import="easyjob.entity.Azienda" %>
 <%
 Azienda azienda = (Azienda) session.getAttribute("aziendaDaVisualizzare");
@@ -19,5 +20,19 @@ Azienda azienda = (Azienda) session.getAttribute("aziendaDaVisualizzare");
 <p>Partita iva: <%=azienda.getPartitaIVA() %> </p>
 <p>Data fondazione: <%=azienda.getDataFondazione() %> </p>
 <p>Indirizzo sede: <%= azienda.getIndirizzoSede() %>
+
+	<% 
+	Moderatore mod = (Moderatore) session.getAttribute("utenteModeratore");
+	if (mod != null) {
+	%>
+	<br>
+	<form action="${pageContext.request.contextPath}/CreazioneSegnalazioneServlet" method="GET">
+	<button type="submit">Segnala </a></button>
+	<input type= "hidden" name="az" value="<%=azienda.getIdUser()%>">
+	</form>
+	<%
+	}
+	%>
+
 </body>
 </html>

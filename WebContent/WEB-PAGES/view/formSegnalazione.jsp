@@ -1,5 +1,5 @@
 <%Moderatore mod = (Moderatore) session.getAttribute("utenteModeratore");
-  int idAzienda = Integer.parseInt(request.getParameter("idAzienda"));
+  int idAzienda = (Integer) session.getAttribute("idAzienda");
   int idMod = mod.getIdUser();
 %>
 
@@ -23,9 +23,8 @@
 	Corpo: <input type="text" name="corpo"> <br>
 	Data: <input type="text" name="data"> <br>
     <input type="hidden" name="azienda" value="<%=idAzienda%>"> <br>
-    <input type="hidden" name= "moderatore" value="<%=idMod%>"> <br> 
-	<br>
-	
+    <input type="hidden" name="moderatore" value="<%=idMod%>"><br> 
+	<br>	
 	<input type="submit" value="Invia Segnalazione">
 	</form>
 
