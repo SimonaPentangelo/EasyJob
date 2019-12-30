@@ -37,11 +37,12 @@ public class RicercaAnnunciServlet extends HttpServlet {
 		
 		try{
 			annunci = manager.searchAd(tagDaCercare);
-			request.getSession().setAttribute("annunci", annunci);
+			
 			for (Annuncio an : annunci){
 				aziende.add(managerUt.findAziendaById(an.getAzienda()));
 				
 			}
+			request.getSession().setAttribute("annunci", annunci);
 			request.getSession().setAttribute("tag",tagDaCercare);
 			request.getSession().setAttribute("aziendeAnnunci",aziende );
 			redirect = "/WEB-PAGES/view/Bacheca.jsp";

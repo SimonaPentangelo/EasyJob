@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import easyjob.entity.Azienda;
+import easyjob.model.ManagerUtenti;
+
 /**
  * Servlet implementation class VisualizzaAziendaServlet
  */
@@ -14,24 +17,26 @@ import javax.servlet.http.HttpServletResponse;
 public class VisualizzaAziendaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * Default constructor. 
-     */
-    public VisualizzaAziendaServlet() {
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		ManagerUtenti manager = new ManagerUtenti();
+		Azienda azienda = new Azienda();
+		int id = Integer.parseInt(request.getParameter("az"));
+		String redirect = "/WEB-PAGES/view/ShowAzienda.jsp";
+		
+		try{
+			azienda = manager.findAziendaById(id);
+			request.getSession().setAttribute("aziendaDaVisualizzare", azienda);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		response.sendRedirect(request.getContextPath()+redirect);
+		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

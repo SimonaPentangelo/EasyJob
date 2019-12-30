@@ -37,18 +37,24 @@ for (int i=0;i<annunci.size();i++){
 	String titolo = annunci.get(i).getTitolo();
 	int idAzienda = annunci.get(i).getAzienda();
 	String pathImage = "";
+	int idAziendaDaVisualizzare =0;
 	for (int j=0;j<aziende.size();j++){
 		if(aziende.get(j).getIdUser() == idAzienda)
 		 pathImage = File.separator + aziende.get(j).getLogoAzienda();
+		idAziendaDaVisualizzare = aziende.get(j).getIdUser();
 	}
 
 %>
 <br>
 <p><a href="../../LeggiAnnuncioServlet?idAnnuncio=<%=id %>"><%=titolo %></a>  </p>
-<img src="${pageContext.request.contextPath}<%=pathImage%>"> 
+<form action="${pageContext.request.contextPath}/VisualizzaAziendaServlet" method="GET">
+<button><img src="${pageContext.request.contextPath}<%=pathImage%>"></button>
+<input type="hidden" name="az" value ="<%=idAziendaDaVisualizzare%>">
+</form> 
 <p> Debugging <%=pathImage %></p>
 <br>
 <%
+	 
 	} // fine for
 }  // fine else
 %>
