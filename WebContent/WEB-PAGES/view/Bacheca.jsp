@@ -37,7 +37,7 @@ for (int i=0;i<annunci.size();i++){
 	String titolo = annunci.get(i).getTitolo();
 	int idAzienda = annunci.get(i).getAzienda();
 	String pathImage = "";
-	int idAziendaDaVisualizzare =0;
+	int idAziendaDaVisualizzare =0; /*Gigi questo è l'id che devi portarti nella jsp della form segnalazione*/
 	for (int j=0;j<aziende.size();j++){
 		if(aziende.get(j).getIdUser() == idAzienda)
 		 pathImage = File.separator + aziende.get(j).getLogoAzienda();
