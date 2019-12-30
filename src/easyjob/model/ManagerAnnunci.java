@@ -13,17 +13,17 @@ import easyjob.entity.Azienda;
 
 public class ManagerAnnunci {
 	
-	public final String FIND_BY_TAG = "SELECT * FROM Annuncio JOIN Tag ON idAnnuncio = Annuncio WHERE NomeTag =?;";
-	public final String FIND_TAGS = "SELECT NomeTag FROM tag WHERE Annuncio = ?;";
-	public final String FIND_ALL_ADS = "SELECT * FROM Annuncio WHERE Azienda = ?;";
-	public final String INSERT_AD = "INSERT INTO Annuncio(Azienda,Titolo,Descrizione,Requisiti,TipoContratto,DataPubblicazione,Città)"+
+	public static final String FIND_BY_TAG = "SELECT * FROM Annuncio JOIN Tag ON idAnnuncio = Annuncio WHERE NomeTag =?;";
+	public static final String FIND_TAGS = "SELECT NomeTag FROM tag WHERE Annuncio = ?;";
+	public static final String FIND_ALL_ADS = "SELECT * FROM Annuncio WHERE Azienda = ?;";
+	public static final String INSERT_AD = "INSERT INTO Annuncio(Azienda,Titolo,Descrizione,Requisiti,TipoContratto,DataPubblicazione,Città)"+
 	"VALUES (?,?,?,?,?,?,?);";
-	public final String SEARCH_BY_ID= "SELECT * FROM Annuncio WHERE idAnnuncio=?;";
-	public final String INSERT_TAG = "INSERT INTO TAG (NomeTag,Annuncio)"+
+	public static final String SEARCH_BY_ID= "SELECT * FROM Annuncio WHERE idAnnuncio=?;";
+	public static final String INSERT_TAG = "INSERT INTO TAG (NomeTag,Annuncio)"+
 	"VALUES (?,?);";
-	public final String DELETE_TAG = "DELETE FROM Tag WHERE Annuncio = ?;";
-	public final String DELETE_AD = "DELETE FROM Annuncio WHERE idAnnuncio = ?;";
-	public final String ADVANCED_SEARCH = "SELECT * FROM Annuncio JOIN Tag ON idAnnuncio = Annuncio WHERE Tag.NomeTag =? AND Annuncio.Città=?;";
+	public static final String DELETE_TAG = "DELETE FROM Tag WHERE Annuncio = ?;";
+	public static final String DELETE_AD = "DELETE FROM Annuncio WHERE idAnnuncio = ?;";
+	public static final String ADVANCED_SEARCH = "SELECT * FROM Annuncio JOIN Tag ON idAnnuncio = Annuncio WHERE Tag.NomeTag =? AND Annuncio.Città=?;";
 	
 	
 	

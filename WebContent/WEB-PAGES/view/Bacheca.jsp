@@ -1,4 +1,5 @@
 <%@page import="java.util.*"%>
+<%@page import="java.io.File"%>
 <%@page import="easyjob.entity.Annuncio"%>
 <%@page import="easyjob.entity.Azienda"%>
 <%
@@ -35,16 +36,16 @@ for (int i=0;i<annunci.size();i++){
 	int id = annunci.get(i).getIdAnnuncio();
 	String titolo = annunci.get(i).getTitolo();
 	int idAzienda = annunci.get(i).getAzienda();
-	String pathImage="";
+	String pathImage = "";
 	for (int j=0;j<aziende.size();j++){
 		if(aziende.get(j).getIdUser() == idAzienda)
-		 pathImage = aziende.get(j).getLogoAzienda();
+		 pathImage = "${pageContext.request.contextPath}" + File.separator + aziende.get(j).getLogoAzienda();
 	}
 
 %>
 <br>
 <p><a href="../../LeggiAnnuncioServlet?idAnnuncio=<%=id %>"><%=titolo %></a>  </p>
-<img src="<%=pathImage %>"> 
+<img src=<%=pathImage %>> 
 <p> Debugging <%=pathImage %></p>
 <br>
 <%
