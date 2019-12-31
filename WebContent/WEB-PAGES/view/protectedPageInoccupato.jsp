@@ -73,7 +73,7 @@
 	<% } } %>
 	
 	<form action="${pageContext.request.contextPath}/VisualizzaInvitiServlet" method="POST">
-		<input type="button" value="Candidature Effettuate"> <br>
+		<input type="submit" value="Inviti ricevuti"> <br> <br>
 	</form>
 	
 	<div>
