@@ -83,17 +83,12 @@ create table if not exists EasyJob.Invito (
 	Corpo varchar(10000) not null,
 	Annuncio int not null,	
 	Inoccupato int not null,
-	Azienda int not null,
 	foreign key(Annuncio)
 	references EasyJob.Annuncio (idAnnuncio)
 	on delete cascade
 	on update cascade,
 	foreign key(Inoccupato)
 	references EasyJob.Inoccupato (idUser)
-	on delete cascade
-	on update cascade,
-	foreign key(Azienda)
-	references EasyJob.Azienda (idUser)
 	on delete cascade
 	on update cascade,
 	primary key(Annuncio, Inoccupato)

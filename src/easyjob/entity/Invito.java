@@ -6,18 +6,14 @@ public class Invito {
 	private String titolo;
 	private String corpo;
 	private int annuncio;
-	private int azienda;
-	private String nomeAzienda;
 	private int inoccupato;
 	
 	//Costruttore
-	public Invito(String titolo, String corpo, int annuncio, int azienda, String nomeAzienda, int inoccupato) {
+	public Invito(String titolo, String corpo, int annuncio, int inoccupato) {
 		super();
 		this.titolo = titolo;
 		this.corpo = corpo;
 		this.annuncio = annuncio;
-		this.azienda = azienda;
-		this.nomeAzienda = nomeAzienda;
 		this.inoccupato = inoccupato;
 	}
 
@@ -49,23 +45,7 @@ public class Invito {
 	public void setAnnuncio(int annuncio) {
 		this.annuncio = annuncio;
 	}
-	
-	public int getAzienda() {
-		return azienda;
-	}
-	
-	public void setAzienda(int azienda) {
-		this.azienda = azienda;
-	}
 
-	public String getNomeAzienda() {
-		return nomeAzienda;
-	}
-	
-	public void setNomeAzienda(String nomeAzienda) {
-		this.nomeAzienda = nomeAzienda;
-	}
-	
 	public int getInoccupato() {
 		return inoccupato;
 	}

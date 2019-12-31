@@ -26,11 +26,11 @@ values(1,"Esempio annuncio 1","Annuncio della prima azineda","req1,req2,req3,...
 (2,"Esempio annuncio 3","Secondo annuncio della seconda azienda","req1,req2,req3,...","Stage","24/10/2019","Fisciano"),
 (1,"Test per canidad","test per la candidatura","req1,2,3","stage","28/12/2019","Battipaglia");
 
-insert into EasyJob.Invito (Titolo,Corpo,Annuncio,Azienda,Inoccupato)
-values("Esempio invito1","Invito per esempio su prima azienda e primo inoccupato",1,1,1),
-("Esempio invito2","Invito per esempio su prima azienda e secondo inoccupato",1,1,2),
-("Esempio invito 3", "Invito su seconda azienda e secondo inoccupato",2,2,2),
-("Esempio invito 4", "Invito su seconda azienda e primo inoccupato",2,2,1);
+insert into EasyJob.Invito (Titolo,Corpo,Annuncio,Inoccupato)
+values("Esempio invito1","Invito per esempio su prima azienda e primo inoccupato",1,1),
+("Esempio invito2","Invito per esempio su prima azienda e secondo inoccupato",1,2),
+("Esempio invito 3", "Invito su seconda azienda e secondo inoccupato",2,2),
+("Esempio invito 4", "Invito su seconda azienda e primo inoccupato",2,1);
 
 
 
