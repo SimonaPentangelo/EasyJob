@@ -28,11 +28,11 @@ public class VisualizzaElencoAnnunciServlet extends HttpServlet {
 		Azienda azienda = (Azienda) request.getSession().getAttribute("utenteAzienda");
 		String redirect = "";
 		try{
-			
+			if(azienda!= null){
 			listaAnnunciPubblicati = (ArrayList<Annuncio>) manager.visualizzaElencoAnnunci(azienda);
 			request.getSession().setAttribute("listaAnnunci",listaAnnunciPubblicati);
 			redirect = "/WEB-PAGES/view/ElencoAnnunci.jsp";
-			
+			}
 		}catch(Exception e){
 			e.printStackTrace();
 		}

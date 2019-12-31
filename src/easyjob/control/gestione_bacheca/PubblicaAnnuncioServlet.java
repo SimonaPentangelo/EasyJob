@@ -52,15 +52,28 @@ public class PubblicaAnnuncioServlet extends HttpServlet {
 		annuncio.setTipoContratto(typeContratto);
 		annuncio.setRequisiti(req);
 		annuncio.setTags(tags);
-		
+		boolean isAValidTypeContract;
+		if(typeContratto.equalsIgnoreCase("full-time") || typeContratto.equalsIgnoreCase("part-time") || typeContratto.equalsIgnoreCase("apprendistato") ||
+				typeContratto.equalsIgnoreCase("stagista") || typeContratto.equalsIgnoreCase("tirocinio") || typeContratto.equalsIgnoreCase("progetto"))
+		{
+		isAValidTypeContract = true;
+		}else{
+			isAValidTypeContract = false;
+		}
 		
 		try{
+			if(titolo!= null && !titolo.equals("")&& titolo.length()>=6 && titolo.length()<=50 && desc != null && !desc.equals("") && desc.length()>=10 && desc.length()<=7000
+					&& req!=null && !req.equals("") && req.length()>=10 && req.length()<=3000 &&
+				typeContratto != null && !typeContratto.equals("") && città!=null && !città.equals("") && tag!=null && !tag.equals("") &&
+				isAValidTypeContract)
+		{
 			if(manager.pubblicaAnnuncio(annuncio))
 			{
 				redirect = "/WEB-PAGES/view/SuccesfulPublish.jsp";
 			}
 			else
 				redirect = "/WEB-PAGES/view/ErrorPublish.jsp";
+		}
 		}catch (Exception e){
 			e.printStackTrace();
 		}

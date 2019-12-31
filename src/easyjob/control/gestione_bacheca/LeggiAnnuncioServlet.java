@@ -25,9 +25,11 @@ public class LeggiAnnuncioServlet extends HttpServlet {
 		
 		int id = Integer.parseInt(request.getParameter("idAnnuncio"));
 		try{
+			if(id>=0){
 			annuncio = manager.searchById(id);
 			request.getSession().setAttribute("annuncioSelezionato",annuncio);
 			redirect ="/WEB-PAGES/view/ShowAnnuncio.jsp";
+			}
 		} catch (Exception e){
 			e.printStackTrace();
 		}

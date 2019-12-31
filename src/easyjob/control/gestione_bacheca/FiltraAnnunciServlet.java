@@ -27,9 +27,11 @@ public class FiltraAnnunciServlet extends HttpServlet {
 		String città = request.getParameter("advancedSearch");
 		String tag = request.getParameter("tag");
 		try{
+			if(città != null && !città.equals("") && tag != null && !tag.equals("")){
 			annunci = manager.searchAdAdvanced(tag, città);
 			request.getSession().setAttribute("annunci", annunci);
 			redirect ="/WEB-PAGES/view/Bacheca.jsp";
+			}
 		} catch (Exception e){
 			e.printStackTrace();
 		}

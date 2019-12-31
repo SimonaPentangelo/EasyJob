@@ -17,7 +17,7 @@
   		<option value="part-time">Part-time</option>
   		<option value="apprendistato">Apprendistato</option>
   		<option value="progetto">Progetto</option>
-  		<option value="tirocinio">Cottimo</option>
+  		<option value="tirocinio">Tirocinio</option>
   		<option value="stagista"> Stagista </option>
 	</select>
 	Città: <input type="text" name="city"> <br>

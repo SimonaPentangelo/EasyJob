@@ -12,6 +12,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 
+import easyjob.entity.Amministratore;
 import easyjob.entity.Annuncio;
 import easyjob.entity.Segnalazione;
 import easyjob.model.ManagerAnnunci;
@@ -39,12 +40,17 @@ public class VisualizzaSegnalazioniServlet extends HttpServlet {
 		ManagerSegnalazioni manager = new ManagerSegnalazioni();
 		String redirect = "";
 		List<Segnalazione> segnalazioni = new ArrayList<>();
+		Amministratore admin = new Amministratore();
+		admin =(Amministratore) request.getSession().getAttribute("utenteAdmin");
 		
 		try{
+			if(admin != null){
 			segnalazioni = manager.visualizzaElencoSegnalazioni();
 			request.getSession().setAttribute("segnalazioni", segnalazioni);
 			redirect = "/WEB-PAGES/view/visualizzaSegnalazioni.jsp";
-		}catch (Exception e){
+			}
+		}
+		catch (Exception e){
 			e.printStackTrace();
 		}
 		response.sendRedirect(request.getContextPath()+ redirect);

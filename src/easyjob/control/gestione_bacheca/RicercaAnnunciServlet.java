@@ -36,11 +36,13 @@ public class RicercaAnnunciServlet extends HttpServlet {
 		List<Azienda> aziende = new ArrayList<>(); // Mi serve per prendere le immagini e farle visualizzare in bacheca
 		
 		try{
+			if(tagDaCercare != null && !tagDaCercare.equals("") && tagDaCercare.length()>=1){
 			annunci = manager.searchAd(tagDaCercare);
 			
 			for (Annuncio an : annunci){
 				aziende.add(managerUt.findAziendaById(an.getAzienda()));
 				
+			}
 			}
 			request.getSession().setAttribute("annunci", annunci);
 			request.getSession().setAttribute("tag",tagDaCercare);

@@ -32,7 +32,7 @@ public class VisualizzaCandidatiServlet extends HttpServlet {
 		List<Candidatura> listaCandidatura = new ArrayList<>();
 		List<Inoccupato> listaCandidati = new ArrayList<>();
 		String redirect="/WEB-PAGES/view/ElencoCandidati.jsp";
-		
+		if(titoloAnnuncio!=null && !titoloAnnuncio.equals("") && idAnnuncio>=0)
 		try{
 			
 			listaCandidatura = managerCand.visualizzaCandidatureRicevute(idAnnuncio);

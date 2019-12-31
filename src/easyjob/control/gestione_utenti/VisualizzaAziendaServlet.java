@@ -20,11 +20,13 @@ public class VisualizzaAziendaServlet extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String redirect ="";
 		ManagerUtenti manager = new ManagerUtenti();
 		Azienda azienda = new Azienda();
 		int id = Integer.parseInt(request.getParameter("az"));
-		String redirect = "/WEB-PAGES/view/ShowAzienda.jsp";
-		
+		if (id>=0){
+		 redirect = "/WEB-PAGES/view/ShowAzienda.jsp";
+		}
 		try{
 			azienda = manager.findAziendaById(id);
 			request.getSession().setAttribute("aziendaDaVisualizzare", azienda);
