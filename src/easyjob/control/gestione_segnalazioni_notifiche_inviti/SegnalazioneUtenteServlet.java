@@ -47,12 +47,16 @@ public class SegnalazioneUtenteServlet extends HttpServlet {
 		segnalazione.setAzienda(azienda);
 
 		try{
+			if(titolo!= null && !titolo.equals("")&& titolo.length()>=5 && titolo.length()<=60 && corpo != null && !corpo.equals("") 
+					&& corpo.length()>=10 && corpo.length()<=1000)
+			{
 			if(manager.segnalaUtente(segnalazione))
 			{
 				redirect = "/WEB-PAGES/view/CorrectSegnalazione.jsp";
 			}
 			else
 				redirect = "/WEB-PAGES/view/ErroreSegnalazione.jsp";
+			}
 		}catch (Exception e){
 			e.printStackTrace();
 		}

@@ -1,5 +1,5 @@
 <%Moderatore mod = (Moderatore) session.getAttribute("utenteModeratore");
-  int idAzienda = (Integer) session.getAttribute("idAzienda");
+  int idAzienda = (Integer) session.getAttribute("az");
   int idMod = mod.getIdUser();
 %>
 

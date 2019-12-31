@@ -26,10 +26,8 @@ Azienda azienda = (Azienda) session.getAttribute("aziendaDaVisualizzare");
 	if (mod != null) {
 	%>
 	<br>
-	<form action="${pageContext.request.contextPath}/CreazioneSegnalazioneServlet" method="GET">
-	<button type="submit">Segnala </a></button>
+	<button><a href="formSegnalazione.jsp"> Segnala</a></button>
 	<input type= "hidden" name="az" value="<%=azienda.getIdUser()%>">
-	</form>
 	<%
 	}
 	%>
