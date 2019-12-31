@@ -7,14 +7,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import easyjob.entity.Annuncio;
+import easyjob.entity.Azienda;
 import easyjob.entity.Inoccupato;
 import easyjob.entity.Invito;
 
 public class ManagerInviti {
 	
 	public static final String SEARCH_INVITI = "SELECT * FROM Invito WHERE Inoccupato = ?;";
-	public static final String INSERT_INVITO = "INSERT INTO Invito(Titolo,Corpo,Annuncio,Inoccupato)"+
-	"VALUES (?,?,?,?);";
+	public static final String INSERT_INVITO = "INSERT INTO Invito(Titolo,Corpo,Annuncio,Azienda,Inoccupato)"+
+	"VALUES (?,?,?,?,?);";
 	public static final String ALREADY_INVITED ="SELECT Annuncio,Inoccupato FROM Invito WHERE Annuncio=? AND Inoccupato=?;";
 	
 	public synchronized List<Invito> visualizzaInviti(Inoccupato inocc) throws SQLException{
@@ -23,6 +25,7 @@ public class ManagerInviti {
 		
 		Connection connect = null;
 		PreparedStatement searchInviti = null;
+		ManagerUtenti mu = new ManagerUtenti();
 		List<Invito> listaInviti = new ArrayList<>();
 		
 		try{
@@ -37,6 +40,8 @@ public class ManagerInviti {
 				temp.setCorpo(rs.getString("Corpo"));
 				temp.setInoccupato(rs.getInt("Inoccupato"));
 				temp.setAnnuncio(rs.getInt("Annuncio"));
+				temp.setAzienda(rs.getInt("Azienda"));
+				temp.setNomeAzienda(mu.getNomeAzienda(temp.getAzienda()));
 				listaInviti.add(temp);
 			}
 			
@@ -67,7 +72,8 @@ public class ManagerInviti {
 			contact.setString(1,i.getTitolo());
 			contact.setString(2, i.getCorpo());
 			contact.setInt(3, i.getAnnuncio());
-			contact.setInt(4, i.getInoccupato());
+			contact.setInt(4, i.getAzienda());
+			contact.setInt(5, i.getInoccupato());
 			
 			int risultato = contact.executeUpdate();
 			connect.commit();
@@ -89,7 +95,7 @@ public class ManagerInviti {
 		return false;
 	}
 	
-	private boolean alreadyInvited(int idAnnuncio,int idInoccupato) throws SQLException{
+	private boolean alreadyInvited(int idAnnuncio,int idInoccupato) throws SQLException {
 		Connection conn = null;
 		PreparedStatement check = null;
 		try{
