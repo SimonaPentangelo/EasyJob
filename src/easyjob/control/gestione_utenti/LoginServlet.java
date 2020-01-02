@@ -85,10 +85,14 @@ public class LoginServlet extends HttpServlet {
 					} 
 					if(user instanceof Azienda) {
 						azienda = (Azienda) user;
-						System.out.println(azienda.getDescrizione());
-						request.getSession().setAttribute("utenteAzienda", azienda);
-						request.getSession().setAttribute("autenticato", true);
-						redirect = "/WEB-PAGES/view/protectedPageAzienda.jsp";
+						if(!((Azienda) user).isBanned()) {
+							System.out.println(azienda.getDescrizione());
+							request.getSession().setAttribute("utenteAzienda", azienda);
+							request.getSession().setAttribute("autenticato", true);
+							redirect = "/WEB-PAGES/view/protectedPageAzienda.jsp";
+						} else {
+							redirect = "/WEB-PAGES/view/bannedPage.jsp";
+						}
 					}
 					if (user instanceof Moderatore){
 						mod = (Moderatore) user;

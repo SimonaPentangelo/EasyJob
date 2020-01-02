@@ -1,11 +1,16 @@
 package easyjob.control.gestione_utenti;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import easyjob.entity.Azienda;
+import easyjob.model.ManagerUtenti;
 
 /**
  * Servlet implementation class RimozioneUtenteServlet
@@ -26,7 +31,7 @@ public class RimozioneUtenteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request, response);
 	}
 
 	/**
@@ -34,7 +39,18 @@ public class RimozioneUtenteServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		int idAzienda = Integer.parseInt(request.getParameter("az"));
+		ManagerUtenti mu = new ManagerUtenti();
+		
+		try {
+			if(!mu.isAlreadyBanned(idAzienda)) {
+				Azienda az = mu.findAziendaById(idAzienda);
+				mu.deleteUser(az);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
