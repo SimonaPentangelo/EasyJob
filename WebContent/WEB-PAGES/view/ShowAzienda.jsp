@@ -25,19 +25,21 @@ Azienda azienda = (Azienda) session.getAttribute("aziendaDaVisualizzare");
 	if (mod != null) {
 	%>
 	<br>
-	<button><a href="formSegnalazione.jsp"> Segnala</a></button>
+	<button><a href="formSegnalazione.jsp"> Segnala <%=azienda.getIdUser()%> </a></button>
 	<input type= "hidden" name="az" value="<%=azienda.getIdUser()%>">
 	<%
 	}
 	%>
 	
 	<% 
-	Amministratore admin = (Amministratore) session.getAttribute("utenteAmministratore");
+	Amministratore admin = (Amministratore) session.getAttribute("utenteAdmin");
 	if (admin != null) {
 	%>
 	<br>
-	<button><a href="${pageContext.request.contextPath}/RimozioneUtenteServlet"> Rimuovi</a></button>
+	<form action="${pageContext.request.contextPath}/RimozioneUtenteServlet" method="POST">
+	<input type= "submit" value="Rimuovi">
 	<input type= "hidden" name="az" value="<%=azienda.getIdUser()%>">
+	</form>
 	<%
 	}
 	%>

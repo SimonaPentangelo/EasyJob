@@ -1,3 +1,23 @@
+<%
+	Boolean autenticato=(Boolean) session.getAttribute("autenticato");
+	if((autenticato==null)||(!autenticato.booleanValue()))
+	{
+		response.sendRedirect("path di tentato accesso alla pagina senza effettuare login!");
+		return;
+		
+	}
+%>
+<%
+	Amministratore utente=(Amministratore) session.getAttribute("utenteAdmin");
+	if(utente==null)
+	{
+		response.sendRedirect("./index.jsp");
+		return;
+		
+	}
+%>
+
+<%@page import="easyjob.entity.Amministratore" %>
 <%@page import="easyjob.entity.Segnalazione"%>
 <%
 	Segnalazione segnalazione = new Segnalazione();
@@ -22,10 +42,12 @@
 	
 %>
 <h2><%=titolo%></h2><br>
+<h2><%=segnalazione.getAzienda()%></h2><br>
 <p><h3>Corpo:</h3></p><br>
 <%=corpo%> <br>
-<form action="${pageContext.request.contextPath}/RimozioneUtenteServlet" method="GET">
-	<button type="submit">Rimuovi Utente</button>
+	<form action="${pageContext.request.contextPath}/VisualizzaAziendaServlet" method="POST">
+	<input type= "submit" value="Vai all'azienda">
+	<input type= "hidden" name="az" value="<%=segnalazione.getAzienda()%>">
 	</form>
  
 </body>

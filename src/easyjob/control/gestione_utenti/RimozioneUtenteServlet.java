@@ -39,7 +39,8 @@ public class RimozioneUtenteServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int idAzienda = Integer.parseInt(request.getParameter("az"));
+		String id = request.getParameter("az");
+		int idAzienda = Integer.parseInt(id);
 		ManagerUtenti mu = new ManagerUtenti();
 		
 		try {

@@ -1,6 +1,26 @@
 <%@page import="java.util.*"%>
 <%@page import="easyjob.entity.Segnalazione"%>
 <%
+	Boolean autenticato=(Boolean) session.getAttribute("autenticato");
+	if((autenticato==null)||(!autenticato.booleanValue()))
+	{
+		response.sendRedirect("path di tentato accesso alla pagina senza effettuare login!");
+		return;
+		
+	}
+%>
+<%
+	Amministratore utente=(Amministratore) session.getAttribute("utenteAdmin");
+	if(utente==null)
+	{
+		response.sendRedirect("./index.jsp");
+		return;
+		
+	}
+%>
+
+<%@page import="easyjob.entity.Amministratore" %>
+<%
 	List<Segnalazione> segnalazioni = new ArrayList<>();
 	segnalazioni = (ArrayList) session.getAttribute("segnalazioni");	
 %>
