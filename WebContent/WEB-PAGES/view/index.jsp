@@ -1,6 +1,6 @@
 
 
-
+<%@page import="easyjob.entity.Moderatore" %>
 <%@page import="easyjob.entity.Azienda" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -28,11 +28,23 @@
 	}
 	%>
 	
+	<%
+	Moderatore moderatore = (Moderatore) session.getAttribute("utenteModeratore");
+	if(moderatore != null){	
+	%>
+	<form action = "${pageContext.request.contextPath}/RicercaAnnunciModeratore" method="GET">
+		<input type="text" name="data"> 
+		<input type="submit" value="Ricerca per data">
+	</form>
+	<%
+	}// FINE IF, SE IN SESSIONE NON C'é UN MODERATORE ALLORA LA RICERCA IN BACHECA è QUELLA CLASSICA
+	else {%>
+	
 	<form action="${pageContext.request.contextPath}/RicercaAnnunciServlet" method="GET">
 		<input type="text" name="searchTag"> <br>
 		<input type="submit" value ="Cerca Annunci"> <br>
 	</form>
-	
+	<% }//Fine ELSE %>
 	<img src="" alt="Immagine sito"> <br>
 	
 	<p>Descrizione del sito</p>

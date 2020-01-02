@@ -2,10 +2,15 @@
 <%@page import="java.io.*"%>
 <%@page import="easyjob.entity.Annuncio"%>
 <%@page import="easyjob.entity.Azienda"%>
+<%@page import="easyjob.entity.Moderatore" %>
 <%
 	List<Annuncio> annunci = new ArrayList<>();
 	annunci = (ArrayList) session.getAttribute("annunci");
-	String tagDellaRicerca =(String) session.getAttribute("tag");
+	Moderatore mod = (Moderatore) session.getAttribute("utenteModeratore");
+	String tagDellaRicerca ="";
+	if(mod == null){
+	 tagDellaRicerca =(String) session.getAttribute("tag");
+	}
 	List<Azienda> aziende = (ArrayList) session.getAttribute("aziendeAnnunci");
 %>
 

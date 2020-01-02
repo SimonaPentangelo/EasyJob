@@ -24,7 +24,7 @@ public class ManagerAnnunci {
 	public static final String DELETE_TAG = "DELETE FROM Tag WHERE Annuncio = ?;";
 	public static final String DELETE_AD = "DELETE FROM Annuncio WHERE idAnnuncio = ?;";
 	public static final String ADVANCED_SEARCH = "SELECT * FROM Annuncio JOIN Tag ON idAnnuncio = Annuncio WHERE Tag.NomeTag =? AND Annuncio.Città=?;";
-	
+	public static final String SEARCH_BY_DATE ="SELECT * FROM Annuncio WHERE DataPubblicazione=?;";
 	
 	
 	public synchronized Annuncio searchById(int idAnnuncio)throws SQLException{
@@ -243,10 +243,42 @@ public class ManagerAnnunci {
 		return flag && flagPerTag;
 	}
 	
-	public synchronized List<Annuncio> filterSearch (String data){
+	public synchronized List<Annuncio> filterSearch (String data) throws SQLException{
 		
 		/* Data una data vengono cercati gli annunci in base alla data selezionata*/
-		return null;
+		Connection connect = null;
+		PreparedStatement searchByDate = null;
+		List<Annuncio> listaAnnunciFiltrati = new ArrayList<>();
+		
+		try{
+			connect = DriverManagerConnectionPool.getConnection();
+			searchByDate = connect.prepareStatement(SEARCH_BY_DATE);
+			searchByDate.setString(1, data);
+			ResultSet rs = searchByDate.executeQuery();
+			while(rs.next()){
+				Annuncio temp = new Annuncio();
+				int id = rs.getInt("idAnnuncio");
+				temp.setIdAnnuncio(rs.getInt(id));
+				temp.setAzienda(rs.getInt("Azienda"));
+				temp.setTitolo(rs.getString("Titolo"));
+				temp.setDescrizione(rs.getString("Descrizione"));
+				temp.setRequisiti(rs.getString("Requisiti"));
+				temp.setTipoContratto(rs.getString("TipoContratto"));
+				temp.setData(rs.getString("DataPubblicazione"));
+				temp.setCittà(rs.getString("Città"));
+				temp.setTags(findTags(id));
+				listaAnnunciFiltrati.add(temp);
+			}
+		}finally{
+			try{
+				if(searchByDate != null){
+					searchByDate.close();
+				}
+			}finally{
+				DriverManagerConnectionPool.releaseConnection(connect);
+			}
+		}
+		return listaAnnunciFiltrati;
 	}
 	
 	public synchronized boolean removeAd (int idAnnuncio) throws SQLException{
@@ -257,20 +289,20 @@ public class ManagerAnnunci {
 		 PreparedStatement deleteAd = null;
 		 boolean flag = false;
 		 
-		 if (! deleteTag(idAnnuncio)) /*Non sono stati cancellati i tag deli annunci*/
-			 return flag;
-		 else{					/*Tag cancellati ora rimuovo l'annuncio*/
-			 
+		
 			 try{
 				 connect = DriverManagerConnectionPool.getConnection();
 				 deleteAd = connect.prepareStatement(DELETE_AD);
 				 deleteAd.setInt(1,idAnnuncio);
 				 int risultato = deleteAd.executeUpdate();
 				 connect.commit();
+				 System.out.println("Risultato= "+ risultato);
 				 if (risultato ==1)
 				 {
 					 flag = true;
+					 System.out.println("Flag nel metodo deleteAd: " + flag);
 					 return flag;
+					 
 				 }
 				 
 			 }finally{
@@ -283,8 +315,6 @@ public class ManagerAnnunci {
 					 DriverManagerConnectionPool.releaseConnection(connect);
 				 }
 			 }
-		 }
-		 
 		return flag;
 	}
 	

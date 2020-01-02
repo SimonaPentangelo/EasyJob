@@ -1,4 +1,5 @@
 <%
+Moderatore moderatore = (Moderatore) session.getAttribute("utenteModeratore");
 Inoccupato inoccupato = (Inoccupato) session.getAttribute("utenteInoccupato");
 Annuncio annuncioSel = (Annuncio) session.getAttribute("annuncioSelezionato");
 String titolo = annuncioSel.getTitolo();
@@ -24,6 +25,7 @@ else{
 %>
 <%@ page import ="easyjob.entity.Inoccupato" %>
 <%@ page import ="easyjob.entity.Annuncio" %>
+<%@ page import="easyjob.entity.Moderatore" %>
 <%@ page import ="java.util.*" %>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -51,6 +53,15 @@ else{
 <p>Tipo Contratto: <%=tipoContratto %> </p>
 <p>Data pubblicazione: <%=dataPubb %> </p>
 
+<% if(moderatore != null) {
+
+%>
+<form action ="${pageContext.request.contextPath}/RimuoviAnnuncioServlet" method="GET">
+	<button type="submit" value="Rimuovi annuncio"> Rimuovi Annuncio
+	</button>
+	<input type="hidden" name="idDaRimuovere" value = "<%=idAnnuncio %>">
+</form>
+<%}else{ %>
 <form action="<%=redirect %>" method="GET">
 <button type="submit" class="class" value="<%=redirect %>" onsubmit="loginForce()">
 Candidati!
@@ -58,6 +69,7 @@ Candidati!
 <input type="hidden" name="idUt" value ="<%=idInocc %>">
 <input type="hidden" name="idAz" value="<%=idAnnuncio %>">
 </form>
+<%} %>
 
 <script>
 $(document).ready(function(){
