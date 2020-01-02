@@ -296,11 +296,9 @@ public class ManagerAnnunci {
 				 deleteAd.setInt(1,idAnnuncio);
 				 int risultato = deleteAd.executeUpdate();
 				 connect.commit();
-				 System.out.println("Risultato= "+ risultato);
 				 if (risultato ==1)
 				 {
 					 flag = true;
-					 System.out.println("Flag nel metodo deleteAd: " + flag);
 					 return flag;
 					 
 				 }
