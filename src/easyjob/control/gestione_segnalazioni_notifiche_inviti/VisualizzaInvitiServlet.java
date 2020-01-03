@@ -39,7 +39,11 @@ public class VisualizzaInvitiServlet extends HttpServlet {
 	}
 
 	/**
+	 * Effettua la visualizzazione della pagina con l'elenco degli inviti.
+	 * 
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * 
+	 * @precondition  val == true && (request.getSession().getAttribute("utenteInoccupato) != null)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("PUDDIPUDDI");
