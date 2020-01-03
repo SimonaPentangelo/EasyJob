@@ -38,7 +38,7 @@ public class ManagerAnnunci {
 	public synchronized Annuncio searchById(int idAnnuncio)throws SQLException{
 		Connection connect = null;
 		PreparedStatement searchById = null;
-		Annuncio annuncio = new Annuncio();
+		Annuncio annuncio = null;
 		ManagerUtenti mu = new ManagerUtenti();
 		try{
 			connect = DriverManagerConnectionPool.getConnection();
@@ -47,16 +47,9 @@ public class ManagerAnnunci {
 			ResultSet result = searchById.executeQuery();
 			while(result.next()){
 				int id = result.getInt("idAnnuncio");
-				annuncio.setIdAnnuncio(id);
-				annuncio.setAzienda(result.getInt("Azienda"));
-				annuncio.setTitolo(result.getString("Titolo"));
-				annuncio.setDescrizione (result.getString("Descrizione"));
-				annuncio.setRequisiti(result.getString("Requisiti"));
-				annuncio.setTipoContratto(result.getString("TipoContratto"));
-				annuncio.setCittà(result.getString("Città"));
-				annuncio.setData(result.getString("DataPubblicazione"));
-				annuncio.setTags(findTags(id));
-				annuncio.setNomeAzienda(mu.getNomeAzienda(annuncio.getAzienda()));
+				ArrayList<String> tags = findTags(id);
+				annuncio = new Annuncio(id,result.getString("Titolo"),result.getString("Descrizione"),result.getString("Requisiti"),
+						tags,result.getString("TipoContratto"),result.getString("DataPubblicazione"),result.getInt("Azienda"),result.getString("Città"));
 			}
 		}finally{
 			try{

@@ -18,7 +18,7 @@ public class DatabaseHelper {
 		DriverManagerConnectionPool.setTest(true);
 		Connection connect = DriverManagerConnectionPool.getConnection();
 		ScriptRunner sr = new ScriptRunner(connect);
-		java.io.Reader reader = new BufferedReader(new FileReader("popolamento-test.sql"));
+		java.io.Reader reader = new BufferedReader(new FileReader("popolamentotest.sql"));
 		sr.runScript(reader);
 		
 		DriverManagerConnectionPool.releaseConnection(connect);

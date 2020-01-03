@@ -1,14 +1,20 @@
 use EasyJobtest;
+SET SQL_SAFE_UPDATES=0;
+DELETE FROM Tag;
+DELETE FROM Segnalazione;
+DELETE FROM Annuncio;
+DELETE FROM Invito;
+DELETE FROM Candidatura;
 DELETE FROM Inoccupato;
 DELETE FROM Azienda;
 DELETE FROM Moderatore;
 DELETE FROM Amministratore;
-DELETE FROM Segnalazione;
-DELETE FROM Annuncio;
-DELETE FROM Invito;
-DELETE FROM Tag;
-DELETE FROM Candidatura;
-insert into EasyJobtest.Inoccupato (Username,Password,Email,Nome,Cognome,DataNascita,Residenza,Citt√†,Curriculum)
+ALTER table Inoccupato AUTO_INCREMENT =1;
+ALTER table Azienda AUTO_INCREMENT =1;
+ALTER table Moderatore AUTO_INCREMENT =1;
+ALTER table Amministratore AUTO_INCREMENT =1;
+ALTER table Annuncio AUTO_INCREMENT =1;
+insert into EasyJobtest.Inoccupato (Username,Password,Email,Nome,Cognome,DataNascita,Residenza,Citt‡,Curriculum)
 values ("gabriele1997","ciaociao","gpisapia97@gmail.com","Gabriele","Pisapia","01/06/1997","Via napoleone 3","Battipaglia","resources\gabriele1997\curriculum1.pdf"),
 ("simona00","ciao12345","spentangelo@gmail.com","Simona","Pentangelo","12/09/1999","Via cinque maggio","Angri","resources\simona00\curriculum2.pdf");
 
@@ -29,7 +35,7 @@ insert into EasyJobtest.Segnalazione(Titolo,Corpo,Azienda,Moderatore)
 values ("Seganalazione esempio1", "Segnalazione per esempio su prima azienda e primo moderatore",1,1),
 ("Segnalazione esempio2","Segnalazione per esempio su seconda azienda e primo moderatore",2,1);
 
-insert into EasyJobtest.Annuncio (Azienda,Titolo,Descrizione,Requisiti,TipoContratto,DataPubblicazione,Citt√†)
+insert into EasyJobtest.Annuncio (Azienda,Titolo,Descrizione,Requisiti,TipoContratto,DataPubblicazione,Citt‡)
 values(1,"Esempio annuncio 1","Annuncio della prima azineda","req1,req2,req3,...","Indeterminato","23/12/2019","Salerno"),
 (2,"Esempio annuncio 2", "Annuncio della seconda azienda","req1,req2,...","Part-time","22/12/2019","Battipaglia"),
 (2,"Esempio annuncio 3","Secondo annuncio della seconda azienda","req1,req2,req3,...","Stage","24/10/2019","Fisciano"),

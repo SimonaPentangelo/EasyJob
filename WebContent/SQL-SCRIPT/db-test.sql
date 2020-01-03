@@ -57,8 +57,8 @@ create table if not exists EasyJobtest.Segnalazione (
 	on update cascade,
 	foreign key(Moderatore)
 	references EasyJobtest.Moderatore (idUser)
-	on delete no action
-	on update no action,
+	on delete cascade
+	on update cascade,
 	primary key(Azienda, Moderatore)
 );
 
