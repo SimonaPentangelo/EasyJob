@@ -15,6 +15,12 @@ public class ManagerSegnalazioni {
 	public static final String INSERT_SEGNALAZIONE = "INSERT INTO Segnalazione(Titolo,Corpo,Azienda,Moderatore)"+
 	"VALUES(?,?,?,?);";
 
+	/**
+	 * Questo metodo mostra tutte le segnalazioni effettuate, se ci sono.
+	 * 
+	 * @return segnalazioni, oggetto di tipo <strong>ArrayList</strong>.
+	 * @throws SQLException
+	 */
 	public synchronized List<Segnalazione> visualizzaElencoSegnalazioni () throws SQLException{
 		
 		/*Select nel db di tutte le segnalazioni*/
@@ -48,6 +54,14 @@ public class ManagerSegnalazioni {
 		return segnalazioni;
 	}
 	
+	/**
+	 * Questo metodo rende persistente nel db la segnalazione passata in input.
+	 * 
+	 * @param s oggetto di tipo <strong>Segnalazione</strong>
+	 * @return true se la persistenza è avvenuta con successo. False altrimenti.
+	 * @throws SQLException
+	 * @precondition (segnalazione != null) && (s.getAzienda().getId >= 1) 
+	 */
 	public synchronized boolean segnalaUtente (Segnalazione s) throws SQLException{
 		/* Nella segnalazione c'è l'azienda segnalata e il moderatore che l'ha effettuata
 		 * quindi la si inserisce per renderla peristente*/
@@ -82,6 +96,14 @@ public class ManagerSegnalazioni {
 		return flag;
 	}
 	
+	/**
+	 * Questo metodo resituisce una segnalazione in base all'id dell'azienda passato come input.
+	 * 
+	 * @param id oggetto di tipo <strong>int</strong>
+	 * @return segnalazione, oggetto di tipo <strong>Segnalazione</strong>
+	 * @throws SQLException
+	 * @precondition id =>1.
+	 */
 	public synchronized Segnalazione retrieveSegnByAz(int id) throws SQLException {
 		
 		Segnalazione segnalazione = new Segnalazione();
