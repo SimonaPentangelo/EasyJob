@@ -21,6 +21,17 @@ public class ManagerCandidature {
 	public final String DELETE_PER_ANN = "DELETE FROM Candidatura WHERE Annuncio = ?;";
 	public final String INSERT_CAND = "INSERT INTO Candidatura(Inoccupato, Annuncio, DataCandidatura) VALUES (?, ?, ?);";
 	
+	
+	
+	/**
+	 * Questo metodo controlla se l'inoccupato passato in input è già candidato all'annuncio passato in input.
+	 * 
+	 * @param idInoccupato oggetto di tipo <strong>int</strong>
+	 * @param idAnnuncio  oggetto di tipo <strong>int</strong>
+	 * @return true se l'inoccupato è già candidato. False altrimenti.
+	 * @throws SQLException
+	 * @precondition idInoccupato >=1 && idAnnuncio >=1.
+	 */
 	public synchronized boolean isAlreadyCandidate (int idInoccupato,int idAnnuncio) throws SQLException {
 		
 		Connection connect = null;
@@ -55,6 +66,14 @@ public class ManagerCandidature {
 	}
 	
 	
+	/**
+	 * Il metodo restituisce, se presente una lista di candidature effettuate dall'inoccupato passato in input.
+	 * 
+	 * @param inocc oggetto di tipo <strong>Inoccupato</strong>
+	 * @return lista, oggetto di tipo <strong>ArrayList</strong>. 
+	 * @throws SQLException
+	 * @precondition inocc != null  && inoc.getId()>=1
+	 */
 	public synchronized List<Candidatura> visualizzaCandidatureEffettuate(Inoccupato inocc) throws SQLException {
 		
 		Connection connect = null;
@@ -93,6 +112,14 @@ public class ManagerCandidature {
 		}
 	}
 	
+/**
+ * Il metodo mostra le candidature ricevute per l'annuncio passato in input.
+ * 
+ * @param idAnn oggetto di tipo <strong>int</strong>
+ * @return lista, oggetto di tipo <strong>ArrayList</strong>
+ * @throws SQLException
+ * @precondition idAnn >=1.
+ */
 public synchronized List<Candidatura> visualizzaCandidatureRicevute(int idAnn) throws SQLException {
 		
 		Connection connect = null;
@@ -131,6 +158,16 @@ public synchronized List<Candidatura> visualizzaCandidatureRicevute(int idAnn) t
 		}
 	}
 	
+	/**
+	 * Il metodo inserisce nel db la candidatura dell'inoccupato passato in input, per l'annuncio passato in input.
+	 * 
+	 * @param idInocc oggetto di tipo <strong>int</strong>
+	 * @param idAnn   oggetto di tipo <strong>int</strong>
+	 * @return true se l'inserimento è avvenuto correttamente. False altrimenti.
+	 * @throws SQLException
+	 * @precondition (inocc != null && inocc.getId()) >=1) && (ann != null && ann.getId()>=1) 
+	 * 				  && !(isAlreadyCandidate (inocc.getId(), ann.getId())
+	 */
 	public synchronized boolean candidate (int idInocc,int idAnn) throws SQLException{
 			
 			Connection connect = null;
@@ -169,6 +206,14 @@ public synchronized List<Candidatura> visualizzaCandidatureRicevute(int idAnn) t
 		
 	}
 	
+	/**
+	 * Il metodo si occupa di eliminare la candidatura dall'annuncio passato in input.
+	 * 
+	 * @param idAnnuncio oggetto di tipo <strong>int<strong>
+	 * @return true se la rimozione è avvenuta. False altrimenti.
+	 * @throws SQLException
+	 * @precondition idAnnuncio >=1.
+	 */
 	public boolean deleteCandidate(int idAnnuncio) throws SQLException {
 		
 		Connection connect = null;
