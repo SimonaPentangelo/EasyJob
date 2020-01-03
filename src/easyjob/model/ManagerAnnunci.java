@@ -27,6 +27,14 @@ public class ManagerAnnunci {
 	public static final String SEARCH_BY_DATE ="SELECT * FROM Annuncio WHERE DataPubblicazione=?;";
 	
 	
+	/**
+	 * Questo metodo si occupa di cercare un annuncio tramite id
+	 * 
+	 * @param idAnnuncio oggetto di tipo <strong>int</strong> che rappresenta l'identificativo dell'annuncio.
+	 * @return annuncio oggetto di tipo <strong>Annuncio</strong>
+	 * @throws SQLException
+	 * @precondition idAnnuncio !=null.
+	 */
 	public synchronized Annuncio searchById(int idAnnuncio)throws SQLException{
 		Connection connect = null;
 		PreparedStatement searchById = null;
@@ -63,6 +71,14 @@ public class ManagerAnnunci {
 	}
 	
 	
+	/**
+	 * Questo metodo restituisce un elenco di annunci in base al tag specificato in input.
+	 * 
+	 * @param ricerca oggetto di tipo <strong>String</strong> che rappresenta il tag da cercare.
+	 * @return listaAnnunci oggetto di tipo <strong>ArrayList</strong>
+	 * @throws SQLException
+	 * @precondition ricerca !=null. Il formato deve essere: ^[A-Z,a-z]{1,}$.
+	 */
 	public synchronized List<Annuncio> searchAd(String ricerca) throws SQLException{
 		
 		Connection connect = null;
@@ -104,9 +120,16 @@ public class ManagerAnnunci {
 		return listaAnnunci;
 	}
 	
-	public synchronized List<Annuncio> searchAdAdvanced (String tag,String città) throws SQLException{ 
 	
-		/*Ricerca per tag e per città insieme*/
+	/**
+	 * Questo metodo restuisce un elenco di annunci in cercati in base al tag e alla città dati come input.
+	 * @param tag oggetto di tipo <strong>String</strong>.
+	 * @param città oggetto di tipo <strong>String</strong>.
+	 * @return listaAnnunci, oggetto di tipo <strong>ArrayList</strong>.
+	 * @throws SQLException
+	 * @precondition tag !=null && città !=null. Il formato deve essere: ^[A-Z,a-z]{1,}$.
+	 */
+	public synchronized List<Annuncio> searchAdAdvanced (String tag,String città) throws SQLException{ 
 	
 		Connection connect = null;
 		PreparedStatement searchAdv = null;
@@ -149,6 +172,14 @@ public class ManagerAnnunci {
 		return listaAnnunci;
 	}
 	
+	/**
+	 * Questo metodo restituisce l'elenco degli annunci pubblicati dall'azienda inserita come input.
+	 * 
+	 * @param azienda oggetto di tipo <strong>Azienda</strong> 
+	 * @return listaAnnunci oggetto di tipo<strong>ArrayList</strong>
+	 * @throws SQLException
+	 * @precondition azienda != null && azienda.getIdUser() >= 1)
+	 */
 	public synchronized List<Annuncio> visualizzaElencoAnnunci(Azienda azienda) throws SQLException{
 		
 		Connection connect = null;
@@ -192,8 +223,14 @@ public class ManagerAnnunci {
 		return listaAnnunci;
 	}
 	
+	/**
+	 * Questo metodo rende persistente nel db l'annuncio dato in input.
+	 * @param ann oggetto di tipo <strong>Annuncio</strong>
+	 * @return flag && flagPerTag entrambe true se la persistenza è avvenuta.
+	 * @throws SQLException
+	 * @precondition ann != null && (annuncio.getAzienda.getId() >= 1)
+	 */
 	public synchronized boolean pubblicaAnnuncio (Annuncio ann) throws SQLException{
-		/*Viene reso peristente un annuncio nel db*/
 		
 		Connection connect = null;
 		PreparedStatement insertAd = null;
@@ -243,6 +280,14 @@ public class ManagerAnnunci {
 		return flag && flagPerTag;
 	}
 	
+	/**
+	 * Questo metodo restituisce un elenco di annunci pubblicati nella data inserita in input.
+	 * 
+	 * @param data oggetto di tipo <strong>String</strong>
+	 * @return listaAnnunciFiltrati, oggetto di tipo <strong>ArrayList</strong>
+	 * @throws SQLException
+	 * @precondition data <= Calendar.getInstance().
+	 */
 	public synchronized List<Annuncio> filterSearch (String data) throws SQLException{
 		
 		/* Data una data vengono cercati gli annunci in base alla data selezionata*/
@@ -281,9 +326,15 @@ public class ManagerAnnunci {
 		return listaAnnunciFiltrati;
 	}
 	
+	/**
+	 * Questo metodo rimuove un annuncio in base all'id passato come parametro.
+	 * 
+	 * @param idAnnuncio oggetto di tipo <strong>Annuncio</strong>.
+	 * @return flag se la rimozione è avvenuta correttamente.
+	 * @throws SQLException
+	 * @precondition idAnnuncio >= 1.
+	 */
 	public synchronized boolean removeAd (int idAnnuncio) throws SQLException{
-		
-		/*Rimuove un annuncio in base all'id passato come parametro*/
 		
 		 Connection connect = null;
 		 PreparedStatement deleteAd = null;
@@ -318,9 +369,15 @@ public class ManagerAnnunci {
 	
 	
 	
+	/**
+	 * Questo metodo restituisce una list di tag dell'annuncio passato in input.
+	 * 
+	 * @param idAnnuncio oggetto di tipo <strong>int</strong>
+	 * @return tagAnnunci, oggetto di tipo <strong>ArrayList</strong>
+	 * @throws SQLException
+	 * @precondition idAnnuncio>=1.
+	 */
 	private ArrayList<String> findTags(int idAnnuncio) throws SQLException{
-		
-		/*Metodo per prendere la lista di tag di un annuncio*/
 		
 		Connection connection = null;
 		PreparedStatement findTags = null;
@@ -348,6 +405,15 @@ public class ManagerAnnunci {
 	}
 	
 	
+	/**
+	 * Questo metodo inserisce il tag dato in input nell'annuncio passato in input
+	 * 
+	 * @param idAnnuncio oggetto di tipo <strong>int</strong>
+	 * @param tag oggetto di tipo <strong>String</strong>
+	 * @return flag se l'inserimento è andato a buon fine. 
+	 * @throws SQLException
+	 * @precondition idAnnuncio>=1 && tag!=null && !tag.equals("").
+	 */
 	private boolean inserimentoTag(int idAnnuncio, String tag) throws SQLException{
 		
 		Connection connection = null;
@@ -377,6 +443,14 @@ public class ManagerAnnunci {
 		return flag;
 	}
 	
+	/**
+	 * Questo metodo rimuove i tag dall'annuncio dato in input.
+	 * 
+	 * @param idAnnuncio oggetto di tipo <strong>int</strong>
+	 * @return flag se la rimozione è avvenuta correttamente.
+	 * @throws SQLException
+	 * @precondition idAnnuncio>=1.
+	 */
 	private boolean deleteTag(int idAnnuncio) throws SQLException{
 		
 		Connection connection = null;
