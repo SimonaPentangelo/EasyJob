@@ -26,6 +26,11 @@ public class RicercaAnnunciServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
    
+	/**
+	 *Si occupa di effettuare la ricerca di un annuncio utilizzando la stringa inserita dall'utente nella barra di ricerca.
+	 *
+	 *request.getParameter("searchTag")!= null && Formato ricerca [A-Z,a-z] {1,}
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		ManagerUtenti managerUt = new ManagerUtenti();

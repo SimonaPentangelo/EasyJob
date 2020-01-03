@@ -22,6 +22,11 @@ import easyjob.model.ManagerUtenti;
 public class RicercaAnnunciModeratore extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
+	/**
+	 *Si occupa di effettuare la ricerca di un annuncio in base alla data inserita.
+	 *
+	 *@precondition dataDaCercare !=null && !dataDaCercare.equals("")
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		ManagerUtenti managerUt = new ManagerUtenti();

@@ -21,6 +21,11 @@ public class VisualizzaElencoAnnunciServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     
+	/**
+	 *Effettua la visualizzazione della pagina con l’elenco degli annunci.
+	 *
+	 *@precondition request.getSession().getAttribute("utenteAzienda") !=null
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		ManagerAnnunci manager = new ManagerAnnunci();

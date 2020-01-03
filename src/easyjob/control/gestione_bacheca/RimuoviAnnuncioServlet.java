@@ -22,6 +22,11 @@ public class RimuoviAnnuncioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
    
+	/**
+	 *Questo metodo si occupa di rimuovere l’annuncio tramite id. 
+	 *
+	 *request.getParameter("idDaRimuovere") >=1
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		ManagerAnnunci manager = new ManagerAnnunci();

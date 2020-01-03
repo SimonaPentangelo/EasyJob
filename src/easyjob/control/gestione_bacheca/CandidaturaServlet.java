@@ -17,6 +17,11 @@ public class CandidaturaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     
+	/**
+	 *Questo metodo si occupa di gestire la richiesta di candidatura di un inoccupato. 
+	 *
+	 * idAzienda >=0 && idInoccupato >=0
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		ManagerCandidature manager = new ManagerCandidature();
