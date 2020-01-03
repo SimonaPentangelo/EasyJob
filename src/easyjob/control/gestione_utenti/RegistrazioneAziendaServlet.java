@@ -50,7 +50,24 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
 	}
 
 	/**
+	 * Questo metodo si occupa di prendere i dati di input inseriti dall’azienda e memorizzarli al fine di renderla registrata al sito.
+	 * 
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @precondition 
+	 * nomeAzienda != null && !nomeAzienda.equals("") && !nomeAzienda.equals(" ") && nome.Azienda.length()>=6 && nomeAzienda.length()<=30 &&
+	 * formato nomeAzienda (^[A-Za-z ]{2,50}$).
+	 * logoAzienda.getSize()>=0.
+	 * partitaIva != null && !partitaIva.equals("") && !partitaIva.equals(" ") && partitaIva.length()==11.
+	 * username != null && !username.equals("") && !username.equals(" ") && username.length() >= 5 && username.length() <= 20 &&
+	 * formato Username ^[A-Za-z0-9]{5,20}$).
+	 * indirizzo != null && !indirizzo.equals("") && !indirizzo.equals(" ") && indirizzo.length() >= 6 && indirizzo.length() <= 30 &&
+	 * formato indirizzo ^[A-Za-z ]{3,6}[A-Za-z ]{2,35}[,]{1}[0-9 ]{2,5}$)
+	 * descrizione != null && !descrizione.equals("") && !descrizione.equals(" ") && descrizione.length() <= 500)
+	 * numeroDipendentiString != null && !numeroDipendentiString.equals("") && !numeroDipendentiString.equals(" ")
+	 * email != null && !email.contentEquals("") && !email.contentEquals(" ") 
+	 * password != null && !password.equals("") && !password.equals(" ") && password.length() >= 8 && password.length() <= 16
+	 * confermaPassword != null && !confermaPassword.equals("") && !confermaPassword.equals(" ") && confermaPassword.length() >= 8 && 
+	 * confermaPassword.length() <= 16
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub

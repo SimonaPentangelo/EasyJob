@@ -25,6 +25,14 @@ public class ContattaCandidatoServlet extends HttpServlet {
 	}
 
 	
+	/**
+	 * Si occupa di effettuare l'invio dell’invito  utilizzando il form compilato dall'azienda.
+	 * 
+	 * @precondition titolo != null && !titolo.equals("") && !titolo.equals(" ") && titolo.length() >= 5 && titolo.length() <= 60
+	 * 				 messaggio != null && !messaggio.contentEquals("") && !messaggio.contentEquals(" ") && messaggio.length() >= 10 && 
+	 * 				 messaggio.length() <= 10000
+	 *
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String redirect="";

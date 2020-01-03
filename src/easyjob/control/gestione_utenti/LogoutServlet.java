@@ -23,6 +23,8 @@ public class LogoutServlet extends HttpServlet {
     }
 
 	/**
+	 * Effettua il logout dell'utente chiudendone la sessione.
+	 * 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

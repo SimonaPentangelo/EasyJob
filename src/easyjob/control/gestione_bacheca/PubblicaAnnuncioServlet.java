@@ -22,6 +22,14 @@ public class PubblicaAnnuncioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
   
+	/**
+	 *Si occupa di effettuare la pubblicazione di un annuncio utilizzando il form compilato dall’azienda.
+	 *
+	 *@precondition un opzione tra : full-time, part-time, apprendistato, stagista, tirocinio, progetto.
+	 *titolo!= null && !titolo.equals("")&& titolo.length()>=6 && titolo.length()<=50 && desc != null && !desc.equals("") 
+	 *&& desc.length()>=10 && desc.length()<=7000 && req!=null && !req.equals("") && req.length()>=10 && req.length()<=3000 &&
+	  typeContratto != null && !typeContratto.equals("") && città!=null && !città.equals("") && tag!=null && !tag.equals("")
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		Annuncio annuncio = new Annuncio();

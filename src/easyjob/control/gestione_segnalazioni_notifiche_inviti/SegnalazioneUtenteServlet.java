@@ -26,7 +26,14 @@ public class SegnalazioneUtenteServlet extends HttpServlet {
     }
 
 	/**
+	 * Si occupa di effettuare l’invio della segnalazione  utilizzando il form  inserito.
+	 * 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * 
+	 * @precondition  request.getParameter("titolo")!=null && request.getParameter("titolO")!= " " &&
+         formato titolo[A-Z,a-z\é\è\ò\à\ù\ì\.,!?’] {5,60} &&
+         request.getParameter("corpo") !=null &&
+         request.getParameter("corpo") !=" " 
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		

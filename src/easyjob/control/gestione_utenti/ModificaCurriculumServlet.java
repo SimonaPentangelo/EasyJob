@@ -47,7 +47,12 @@ public class ModificaCurriculumServlet extends HttpServlet {
 	}
 
 	/**
+	 * Questo metodo si occupa di fornire all’inoccupato la possibilità di modificare il proprio cv.
+	 * 
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * 
+	 * @precondition request.getPart("curriculum") != "" && request.getPart("curriculum") != null 
+
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		

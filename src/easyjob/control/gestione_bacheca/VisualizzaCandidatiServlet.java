@@ -23,6 +23,11 @@ public class VisualizzaCandidatiServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
   
+	/**
+	 *Effettua la visualizzazione della pagina l’elenco dei candidati.
+	 *
+	 *@precondition request.getParameter("idAn") !=null
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int idAnnuncio = Integer.parseInt(request.getParameter("idAn"));

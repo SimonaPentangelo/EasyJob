@@ -33,7 +33,14 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	/**
+	 * Questo metodo si occupa di far visualizzare i dati dell’utente prendendo dall’invio di una form, l’attributo username e 
+	 * l’attributo password
+	 * 
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * 
+	 * @precondition (request.getParameter("username") != null && request.getParameter("username") != "")  && 
+                     (request.getParameter("password") !=null && request.getParameter("password") != " " ) 
+
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		

@@ -33,7 +33,11 @@ public class VisualizzaSegnalazioniServlet extends HttpServlet {
     }
 
 	/**
+	 * Effettua la visualizzazione della pagina con la lista delle segnalazioni.
+	 * 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * 
+	 * @precondition request.getSession().getAttribute(“utenteAdmin”) != null
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	

@@ -19,6 +19,11 @@ public class FiltraAnnunciServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     
+	/**
+	 *Si occupa di effettuare la ricerca avanzata di un annuncio filtrando per la città inserita dall'utente come parametro stringa
+	 *
+	 *città != null && !città.equals("") && tag != null && !tag.equals("")
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		ManagerAnnunci manager =  new ManagerAnnunci();

@@ -18,6 +18,11 @@ public class LeggiAnnuncioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
    
+	/**
+	 *Questo metodo si occupa di fornire all’inoccupato la possibilità di visualizzare l’annuncio su cui ha cliccato
+	 *
+	 * request.getParameter("idAnnuncio") >=1 
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ManagerAnnunci manager = new ManagerAnnunci();
 		Annuncio annuncio = new Annuncio();

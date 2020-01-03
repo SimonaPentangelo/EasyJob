@@ -37,7 +37,11 @@ public class VisualizzaInvitoServlet extends HttpServlet {
 	}
 
 	/**
+	 * Effettua la visualizzazione della pagina con il singolo invito.
+	 * 
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * 
+	 * val==true && (requst.getSession().getAttribute("utenteInoccupato") != null)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub

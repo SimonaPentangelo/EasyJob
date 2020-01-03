@@ -24,7 +24,11 @@ public class VisualizzaSegnalazioneServlet extends HttpServlet {
     }
 
 	/**
+	 * Effettua la visualizzazione della pagina della singola segnalazione.
+	 * 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * 
+	 * @precondition request.getParameter("idAz")>=1
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
