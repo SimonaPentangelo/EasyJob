@@ -20,9 +20,15 @@ public class ManagerInviti {
 	public static final String ALREADY_INVITED ="SELECT Annuncio,Inoccupato FROM Invito WHERE Annuncio=? AND Inoccupato=?;";
 	public static final String SINGLE_INVITE ="SELECT * FROM Invito WHERE Annuncio=? AND Inoccupato=?;";
 	
+	/**
+	 * Il metodo mostra la lista degli inviti corrispondenti all'inoccupato passato in input.
+	 * 
+	 * @param inocc oggetto di tipo <strong>Inoccupato</strong>
+	 * @return listaInviti, oggetto di tipo <strong>ArrayList</strong>
+	 * @throws SQLException
+	 * @precondition inoccupato != null && inoccupato.getId() >= 1
+	 */
 	public synchronized List<Invito> visualizzaInviti(Inoccupato inocc) throws SQLException{
-		
-		/*Dato un inoccupato viene fornita la lista degli inviti*/
 		
 		Connection connect = null;
 		PreparedStatement searchInviti = null;
@@ -59,6 +65,14 @@ public class ManagerInviti {
 		return listaInviti;
 	}
 	
+	/**
+	 * Il metodo rende persistente nel db l'invito passato in input.
+	 * 
+	 * @param i oggetto di tipo <strong>Invito</strong>
+	 * @return true se la persistenza è avvenuta. False altrimenti.
+	 * @throws SQLException
+	 * @precondition invito != null && (i.getInoccupato().getId() >= 1) 
+	 */
 	public synchronized boolean contattaCandidato (Invito i) throws SQLException{
 		/* Dato un invito lo rende persistente */
 		
@@ -96,6 +110,15 @@ public class ManagerInviti {
 		return false;
 	}
 	
+	/**
+	 * Il metodo controlla se l'invito passato in input, è stato già mandato all'inoccupato passato in input.
+	 * 
+	 * @param idAnnuncio oggetto di tipo <strong>int</strong>
+	 * @param idInoccupato oggetto di tipo <strong>int</strong>
+	 * @return true se l'invito risulta già mandato. False altrimenti.
+	 * @throws SQLException
+	 * @precondition idAnnuncio >=1 && idInoccupato >=1.
+	 */
 	private boolean alreadyInvited(int idAnnuncio,int idInoccupato) throws SQLException {
 		Connection conn = null;
 		PreparedStatement check = null;
@@ -118,6 +141,15 @@ public class ManagerInviti {
 		return false;
 	}
 	
+	/**
+	 * Il metodo restituisce un invito corrispondente all'annuncio passato in input ed all'inoccupato passato in input.
+	 * 
+	 * @param idAnnuncio oggetto di tipo <strong>int</strong>
+	 * @param idInoccupato oggetto di tipo <strong>int</strong>
+	 * @return temp, oggetto di tipo <strong>Invito</strong>
+	 * @throws SQLException
+	 * @precondition idAnnuncio >=1 && idInoccupato >=1.
+	 */
 	public Invito getInvito(int idAnnuncio, int idInoccupato) throws SQLException {
 		Connection connect = null;
 		PreparedStatement invito = null;
