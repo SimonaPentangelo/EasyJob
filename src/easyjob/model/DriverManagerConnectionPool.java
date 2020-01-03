@@ -9,6 +9,7 @@ import java.util.List;
 public class DriverManagerConnectionPool  {
 
 	private static List<Connection> freeDbConnections;
+	private static boolean isTest=false;
 
 	static {
 		freeDbConnections = new LinkedList<Connection>();
@@ -23,11 +24,17 @@ public class DriverManagerConnectionPool  {
 		Connection newConnection = null;
 		String ip = "localhost";
 		String port = "3306";
-		String db = "easyjob";
+		String db;
 		String username = "root";
-		String password = "Simoncella_99";
+		String password = "milanello1";
 
-		newConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/easyjob?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", username, password);
+		if(!isTest){
+			db="easyjob";
+		}else
+		{
+			db="easyjobtest";
+		}
+		newConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+db+"?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", username, password);
 
 		newConnection.setAutoCommit(false);
 		return newConnection;
@@ -57,6 +64,14 @@ public class DriverManagerConnectionPool  {
 
 	public static synchronized void releaseConnection(Connection connection) throws SQLException {
 		if(connection != null) freeDbConnections.add(connection);
+	}
+	
+	public static boolean isTest(){
+		return isTest;
+	}
+	
+	public static void setTest(boolean flag){
+		DriverManagerConnectionPool.isTest=flag;
 	}
 }
 
