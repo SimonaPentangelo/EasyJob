@@ -48,7 +48,20 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
 	}
 
 	/**
+	 * Questo metodo si occupa di prendere i dati di input inseriti dall’inoccupatp e memorizzarli al fine di renderlo registrato
+	 *  al sito.
+	 * 
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * 
+	 * @precondition
+	 * (request.getParameter(“nome”) != null) && (formato Nome ^[A-Za-z ]{2,50}$) && 
+	   (request.getParameter(“cognome”) != null) && (formato Cognome  ^[A-Za-z ]{2,50}$) && 
+       (request.getParameter(“username”) != null) &&(formato Username ^[A-Za-z0-9]{5,20}$) &&
+       (request.getParameter(“password”) != null) && (formato Password ^[A-Za-z0-9-._]{8,16}$) && 
+       (request.getParameter(“conferma password”) != null) && (request.getParameter(“Conferma password”).equals(request.getParameter(“Password”))) && 
+       (request.getParameter(“e-mail”) != null) && (formato e-mail ^[A-Za-z0-9_.]+@[a-zA-Z.]{2,}\.[a-zA-Z]{2,3}$) &&
+       (request.getParameter(“città”) != null) && (formato Città ^[A-Za-z' ]{2,20}$) && (request.getParameter(“Indirizzo”) != null) && (formato Indirizzo ^[A-Za-z ]{3,6}[A-Za-z ]{2,35}[,]{1}[0-9 ]{2,5}$)
+
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub

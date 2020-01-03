@@ -11,7 +11,11 @@ import easyjob.entity.Azienda;
 import easyjob.model.ManagerUtenti;
 
 /**
+ * Effettua la visualizzazione della pagina di un’azienda.
+ * 
  * Servlet implementation class VisualizzaAziendaServlet
+ * 
+ * @precondition request.getParameter(“az”) >=0.
  */
 @WebServlet("/VisualizzaAziendaServlet")
 public class VisualizzaAziendaServlet extends HttpServlet {

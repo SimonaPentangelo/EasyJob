@@ -35,7 +35,11 @@ public class RimozioneUtenteServlet extends HttpServlet {
 	}
 
 	/**
+	 * Rimuove l'utente tramite id.
+	 * 
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * 
+	 * @precondition request.getParameter(“az”) >= 1
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub

@@ -41,7 +41,13 @@ public class DisplayCurriculumServlet extends HttpServlet {
 	}
 
 	/**
+	 * Effettua la visualizzazione del curriculum di un candidato.
+	 * 
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @precondition Se lo sta chiedendo un inoccupato attraverso la sua pagina personale allora: 
+	 * request.getParameter(“utenteInoccupato”) !=null.
+       Se lo sta chiedendo un’azienda attraverso la lettuare della lista candidati allora:
+        request.getParameter(“idUtente”) >= 0.
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
