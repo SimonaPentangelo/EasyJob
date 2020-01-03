@@ -29,6 +29,19 @@ public class ManagerUtenti {
 	public static final String FIND_AZIENDA ="SELECT * FROM Azienda WHERE idUser=?;";
 			
 			
+	/**
+	 * Questo metodo controlla se l'utente passato in input è presente nel db.
+	 * 
+	 * @param u oggetto di tipo <strong>Utente</strong>
+	 * @return true se :
+						checkUser(u.getUsername(),”Inoccupato”) OR
+						checkUser (u.getUsername(),”Azienda”) OR
+						checkUser (u.getUsername(),”Amministratore”)OR
+						checkUser(u.getUsername(),”Moderatore”)  => TRUE.
+						FALSE altrimenti.
+	 * @throws SQLException
+	 * @precondition (u != null) && (u.getUsername != “” && u.getUsername != null)
+	 */
 	public synchronized boolean isPresent(Utente u) throws SQLException{
 		/*Spacchettamento di username  poi si controlla se è presente
 		 * nel db*/
@@ -41,6 +54,18 @@ public class ManagerUtenti {
 		return result;
 	}
 	
+	/**
+	 * Questo metodo effettua il login dell'utente con username e password passati in input, se l'utente è presente nel db.
+	 * 
+	 * @param username oggetto di tipo <strong>String</strong>.
+	 * @param password oggetto di tipo <strong>String</strong>.
+	 * @return inocc di tipo <strong>Inoccupato</strong> se retrieveUserInoccupato != null.
+	 * @return azienda di tipo <strong>Azienda</strong> se retrieveUserAzienda != null.
+	 * @return mod di tipo <strong>Moderatore</strong> se retrieveUserModeratore != null.
+	 * @return admin di tipo <strong>Amministratore</strong> se retrieveUserAmministratore != null.    
+	 * @throws SQLException
+	 * @precondition (username != “” && username != null) && (password != “” && password != null).
+	 */
 	public synchronized Utente logIn (String username,String password) throws SQLException{
 		
 		Inoccupato inocc = retriveUserInoccupato(username,password,TABLE_INOCCUPATO);
@@ -61,6 +86,14 @@ public class ManagerUtenti {
 			
 	}
 	
+	/**
+	 * Questo metodo controlla se l'utende passato in input è stato già bannato.
+	 * 
+	 * @param idUser oggetto di tipo <strong>int</strong>.
+	 * @return True se l'utente risulta già bannato. FALSE altrimenti.
+	 * @throws SQLException
+	 * @precondition idUser >=1.
+	 */
 	public synchronized boolean isAlreadyBanned(int idUser) throws SQLException{
 		Connection connect = null;
 		PreparedStatement banned = null;
@@ -93,6 +126,14 @@ public class ManagerUtenti {
 		return flag;
 	}
 	
+	/**
+	 * Questo metodo restituisce il nome dell'azienda in base all'id passato in input.
+	 * 
+	 * @param idUser oggetto di tipo <strong>String</strong>
+	 * @return nome, oggetto di tipo <strong>String</strong>
+	 * @throws SQLException
+	 * @precondition idUser >=1.
+	 */
 	public synchronized String getNomeAzienda(int idUser) throws SQLException{
 		Connection connect = null;
 		PreparedStatement azienda = null;
@@ -124,6 +165,14 @@ public class ManagerUtenti {
 		return nome;
 	}
 	
+	/**
+	 * Questo metodo restituisce un'azienda in base all'id passato come input.
+	 * 
+	 * @param idUser oggetto di tipo <strong>int</strong>
+	 * @return azienda, oggetto di tip <strong>Azienda</strong>
+	 * @throws SQLException
+	 * @precondition idUser >=1.
+	 */
 	public synchronized Azienda findAziendaById(int idUser) throws SQLException{
 		Azienda azienda = new Azienda();
 		Connection connect= null;
@@ -157,6 +206,14 @@ public class ManagerUtenti {
 		return azienda;
 	}
 	
+	/**
+	 * Questo metodo rimuove dal database, se presente,  l'utente passato in input.
+	 * 
+	 * @param u oggetto di tipo <strong>Utente</strong>
+	 * @return true se la rimozione è avvenuta. False altrimenti.
+	 * @throws SQLException
+	 * @precondition (u.getId()>=1) && !(alreadyBanned(u.getId())) 
+	 */
 	public synchronized boolean deleteUser (Utente u) throws SQLException{
 		
 		int idUser = u.getIdUser();
@@ -193,6 +250,15 @@ public class ManagerUtenti {
 	}
 	
 	
+	/**
+	 * Questo metodo permette di modificare il curriculum corrispondente all'utente passato in input.
+	 * 
+	 * @param idUser oggetto di tipo <strong>int</strong>
+	 * @param pathNewCV oggetto di tipo <strong>String</strong>
+	 * @return true se la modifica è avvenuta. False altrimenti.
+	 * @throws SQLException
+	 * @precondition idUtente>=1  && (pathNewCv  != “” && pathNewCv != null)
+	 */
 	public synchronized boolean modificaCurriculum(int idUser,String pathNewCV) throws SQLException{
 
 		Connection connect = null;
@@ -229,6 +295,14 @@ public class ManagerUtenti {
 		
 	
 	
+	/**
+	 * Questo metodo memorizza nel database, se non è già presente, l'inoccupato passato in input.
+	 * 
+	 * @param inocc oggetto di tipo <strong>Inoccupato</strong>
+	 * @return true se la memorizzazione è avvenuta. False altrimenti.
+	 * @throws SQLException
+	 * @precondition !(isPresent(inocc))
+	 */
 	public synchronized boolean registerUserInoccupato (Inoccupato inocc) throws SQLException{
 		
 		Connection connect = null;
@@ -271,6 +345,14 @@ public class ManagerUtenti {
 		return flag;
 	}
 	
+	/**
+	 * Questo metodo memorizza nel database, se non è già presente, l'azienda passata in input.
+	 * 
+	 * @param azienda oggetto di tipo <strong>Azienda</strong>
+	 * @return true se la memorizzazione è avvenuta. False altrimenti.
+	 * @throws SQLException
+	 * @precondition !(isPresent(azienda))
+	 */
 	public synchronized boolean registerUserAzienda (Azienda azienda) throws SQLException{
 		
 		Connection connect = null;
@@ -315,6 +397,15 @@ public class ManagerUtenti {
 	}
 	
 	
+	/**
+	 * Questo metodo controlla se l'utente passato in input con l'username è presente nella tabella passata in input.
+	 * 
+	 * @param username oggetto di tipo <strong>String</strong>
+	 * @param table oggetto di tipo <strong>String</strong>
+	 * @return true se l'utente è nella tabella. False altrimenti.
+	 * @throws SQLException
+	 * @precondition username != null && !username.equals("") && table != null.
+	 */
 	private boolean checkUser (String username,String table) throws SQLException{
 		
 		PreparedStatement checkUserPS = null;
@@ -348,6 +439,16 @@ public class ManagerUtenti {
 	}
 	
 	
+	/**
+	 * Questo metodo restituisce un oggetto inoccupato corrispondente ai parametri dati in input.
+	 * 
+	 * @param username oggetto di tipo <strong>String</strong>
+	 * @param password oggetto di tipo <strong>String</strong>
+	 * @param table    oggetto di tipo <strong>String</strong>
+	 * @return inoc, oggetto di tipo <strong>Inoccupato</strong>
+	 * @throws SQLException
+	 * @precondition username != null && !username.equals("") && password != null && !password.equals("") && table != null.
+	 */
 	private Inoccupato retriveUserInoccupato (String username,String password, String table) throws SQLException{
 		
 		
@@ -389,6 +490,16 @@ public class ManagerUtenti {
 		return inoc;
 	}
 	
+	/**
+	 * Questo metodo restituisce un oggetto azienda corrispondente ai parametri dati in input.
+	 * 
+	 * @param username oggetto di tipo <strong>String</strong>
+	 * @param password oggetto di tipo <strong>String</strong>
+	 * @param table    oggetto di tipo <strong>String</strong>
+	 * @return azienda, oggetto di tipo <strong>Azienda</strong>
+	 * @throws SQLException
+	 * @precondition username != null && !username.equals("") && password != null && !password.equals("") && table != null.
+	 */
 	private Azienda retriveUserAzienda (String username,String password, String table) throws SQLException{
 		
 		
@@ -432,6 +543,16 @@ public class ManagerUtenti {
 	}
 	
 
+	/**
+	 * Questo metodo restituisce un oggetto moderatore corrispondente ai parametri dati in input.
+	 * 
+	 * @param username oggetto di tipo <strong>String</strong>
+	 * @param password oggetto di tipo <strong>String</strong>
+	 * @param table    oggetto di tipo <strong>String</strong>
+	 * @return mod, oggetto di tipo <strong>Moderatore</strong>
+	 * @throws SQLException
+	 * @precondition username != null && !userna.equals("") && password != null && !passowrd.equals("") && table != null.
+	 */
 	private Moderatore retriveUserModeratore (String username,String password, String table) throws SQLException{
 		
 		Moderatore mod = new Moderatore();
@@ -467,6 +588,16 @@ public class ManagerUtenti {
 		return mod;
 	}
 
+	/**
+	 * Questo metodo restituisce un oggetto amministratore corrispondente ai parametri dati in input.
+	 * 
+	 * @param username oggetto di tipo <strong>String</strong>
+	 * @param password oggetto di tipo <strong>String</strong>
+	 * @param table    oggetto di tipo <strong>String</strong>
+	 * @return admin, oggetto di tipo <strong>Amministratore</strong>
+	 * @throws SQLException
+	 * @precondition username != null && !userna.equals("") && password != null && !passowrd.equals("") && table != null.
+	 */
 	private Amministratore retriveUserAmministratore (String username,String password, String table) throws SQLException{
 		
 		
@@ -503,6 +634,14 @@ public class ManagerUtenti {
 		return admin;
 	}
 	
+	/**
+	 * Questo metodo restituisce un oggetto inoccupato in base all'id passato in input.
+	 * 
+	 * @param idUser oggetto di tipo <strong>int</strong>
+	 * @return inocc oggetto di tipo <strong>Inoccupato</strong>
+	 * @throws SQLException
+	 * @precondition idUser >=1.
+	 */
 	public Inoccupato findInoccupato(int idUser) throws SQLException {
 		PreparedStatement retriveUser = null;
 		Connection connect = null;
