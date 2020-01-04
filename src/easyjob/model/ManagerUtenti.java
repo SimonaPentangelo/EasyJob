@@ -174,7 +174,7 @@ public class ManagerUtenti {
 	 * @precondition idUser >=1.
 	 */
 	public synchronized Azienda findAziendaById(int idUser) throws SQLException{
-		Azienda azienda = new Azienda();
+		Azienda azienda = null;
 		Connection connect= null;
 		PreparedStatement findAzienda = null;
 		try{
@@ -183,17 +183,10 @@ public class ManagerUtenti {
 			findAzienda.setInt(1,idUser);
 			ResultSet rs = findAzienda.executeQuery();
 			while(rs.next()){
-				azienda.setIdUser(rs.getInt("idUser"));
-				azienda.setUsername(rs.getString("Username"));
-				azienda.setPassword(rs.getString("Password"));
-				azienda.setEmail(rs.getString("Email"));
-				azienda.setNomeAzienda(rs.getString("NomeAzienda"));
-				azienda.setLogoAzienda(rs.getString("LogoAzienda"));
-				azienda.setNumeroDipendenti(rs.getInt("Dipendenti"));
-				azienda.setDataFondazione(rs.getString("DataFondazione"));
-				azienda.setIndirizzoSede(rs.getString("Indirizzo"));
-				azienda.setPartitaIVA(rs.getString("PIva"));
-				azienda.setBanned(rs.getBoolean("Banned"));
+				azienda = new Azienda(rs.getString("Username"),rs.getString("Password"),rs.getString("Email"),
+						rs.getInt("idUser"),rs.getString("NomeAzienda"),rs.getString("LogoAzienda"),
+						rs.getInt("Dipendenti"),rs.getString("PIva"),rs.getString("DataFondazione"),
+						"desc",rs.getString("Indirizzo"),rs.getBoolean("Banned"));
 			}
 		}finally{
 			try{
