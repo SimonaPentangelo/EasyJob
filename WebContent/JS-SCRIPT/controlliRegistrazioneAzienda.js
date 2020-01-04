@@ -9,40 +9,44 @@
 function checkAll() {
 	
 	if(!checkNomeAzienda()) {
-		alert("ERRORE!");
 		return false;
 	} else if(!checkLogo()) {
-		alert("ERRORE!");
 		return false;
 	} else if(!checkPIva()) {
-		alert("ERRORE!");
 		return false;
 	} else if(!checkUsername()) {
-		alert("ERRORE!");
 		return false;
 	} else if(!checkIndirizzo()) {
-		alert("ERRORE!");
 		return false;
 	} else if(!checkDataFondazione())  {
-		alert("ERRORE!");
 		return false;
 	} else if(!checkDescrizione()) {
-		alert("ERRORE!");
 		return false
 	} else if(!checkDipendenti()) {
-		alert("ERRORE!");
 		return false;
 	} else if(!checkEmail()) {
-		alert("ERRORE!");
 		return false;
 	} else if(!checkPass()) {
-		alert("ERRORE!");
 		return false;
 	} else if(!checkTrattamentoDati()) {
-		alert("ERRORE!");
 		return false;
 	} else {
-		$.post("../../src/easyjob/control/gestione_utenti/RegistrazioneAziendaServlet");
+		var form = $('#regAz')[0]; 
+		var formData = new FormData(form);
+		
+		$.ajax({
+		    url: "../../RegistrazioneAziendaServlet",
+		    enctype: 'multipart/form-data',
+		    data: formData,
+		    type: 'POST',
+		    contentType: false, 
+		    processData: false,
+		    async : false,
+		    success: function(data){
+	             //codice per la redirect
+	         }
+		});
+		return true;
 	}
 }
 
@@ -59,7 +63,17 @@ function checkPIva() {
 }
 
 function checkIndirizzo() {
+	 var indirizzo = $("#indirizzo");
+	 var StringValidator = /^[A-Za-z ]{3,6}[A-Za-z ]{2,35}[,]{1}[0-9 ]{2,5}$/;
 
+     if ($(indirizzo).val().match(StringValidator) || $(indirizzo).val().trim() == "") {
+    	$("#errorIndirizzo").hide();
+        return true;
+     } else {
+    	$("#errorIndirizzo").html("L’indirizzo non rispetta il formato.");
+ 		$("#errorIndirizzo").show();
+	    return false;
+     }
 }
 
 function checkDataFondazione() {
@@ -71,12 +85,13 @@ function checkDataFondazione() {
     {
         if (oggi <= nascita || minDate >= nascita) 
         {
-        	alert("DATA NON VALIDA");
+        	$("#errorData").hide();
             return false;
         } 
         else
         {
-        	hideAlert(date);
+        	$("#errorData").html("La data inserita non rispetta il formato.");
+    		$("#errorData").show();
         	return true;
         }
     }
@@ -87,9 +102,11 @@ function checkEmail() {
     var StringValidator = /^[A-Za-z0-9_.]+@[a-zA-Z.]{2,}\.[a-zA-Z]{2,3}$/;
 
     if ($(email).val().match(StringValidator) || $(email).val().trim() == "") {
+    	$("#errorMail").hide();
         return true;
     } else {
-        alert("ERRORE EMAIL");
+    	$("#errorMail").html("Il formato non è valido.");
+		$("#errorMail").show();
         return false;
     }
 }
@@ -99,9 +116,11 @@ function checkUsername() {
     var StringValidator = /^[A-Za-z0-9]{5,20}$/;
 
     if ($(us).val().match(StringValidator) || $(us).val().trim() == "") {
+    	$("#errorUser").hide();
         return true;
     } else {
-        alert("ERRORE USERNAME");
+    	$("#errorUser").html("L’username deve essere composto da 2 a 50 numeri e lettere.");
+		$("#errorUser").show();
         return false;
     }
 }
@@ -113,26 +132,43 @@ function checkPass() {
     
     if ($(pass).val().match(StringValidator) || $(pass).val().trim() == "") {
         if($(pass).val().match($(confPass).val())) {
+        	$("#errorPass").hide();
+        	$("#errorConfPass").hide();
         	return true;
         } else {
-        	alert("ERRORE CONFERMA PASS");
+        	$("#errorConfPass").html("Password non corrispondente.");
+    		$("#errorConfPass").show();
+    		return false;
         }
     } else {
-    	alert("ERRORE PASSWORD");
+    	$("#errorPass").html("La password deve contenere minimo 8 caratteri e massimo 16.");
+		$("#errorPass").show();
     	return false;
     }
 }
 
 function checkLogo() {
-
+	var logo = $("#logo");
+	var name = logo.val();
+	var ext = name.substring(name.length - 3);
+    if (ext == "jpg" || ext == "png") {
+    	$("#errorLogo").hide();
+       	return true;
+    } else {
+    	$("#errorLogo").html("Il formato dell’immagine deve essere o png o jpg.");
+		$("#errorLogo").show();
+        return false;
+    }
 }
 
 function checkTrattamentoDati() {
-	var checked = $("dati").is(":checked");
+	var checked = $("#dati").is(":checked");
 	if(checked) {
+		$("#errorCheck").hide();
 		return true;
 	} else {
-		alert("CHECK ASSENTE");
+		$("#errorCheck").html("E’ obbligatorio spuntare la casella del trattamento dati.");
+		$("#errorCheck").show();
 		return false;
 	}
 }

@@ -9,7 +9,7 @@ import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -18,6 +18,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+
+import com.google.gson.Gson;
 
 import easyjob.entity.Inoccupato;
 import easyjob.model.ManagerUtenti;
@@ -144,7 +146,9 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
 		
 
 		Part curriculum = request.getPart("curriculum");
-		if(curriculum.getSize() == 0) {
+		if(curriculum == null) {
+			//no CV
+		} else if(curriculum.getSize() == 0) {
 			//non c'è il curriculum
 		}
 		
@@ -183,14 +187,15 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
 				InputStream inputStream = curriculum.getInputStream();
 						
 				Files.copy(inputStream, Paths.get(cvFullPath), StandardCopyOption.REPLACE_EXISTING);
-				inputStream.close();
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		//response.sendRedirect(/*pagina di registrazione avvenuta con successo*/);
+		String redirect = "/WEB-PAGES/view/index.jsp";
+		//String responseGsonString= new Gson().toJson(redirect);
+		//response.getWriter().write(responseGsonString);
+		//response.sendRedirect(redirect);
 	}
 
 }
