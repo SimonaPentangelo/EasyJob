@@ -9,10 +9,10 @@
 <script src="../../JS-SCRIPT/controlliRegistrazioneInoccupato.js"></script>
 </head>
 <body>
-	<form enctype='multipart/form-data' method="POST">
+	<form enctype='multipart/form-data'>
 	Nome: <input id="nome" onchange="checkNome()" type="text" name="nome"> <br>
 	Cognome: <input id="cognome" onchange="checkCognome()" type="text" name="cognome"> <br>
-	Città: <input id="citta" onchange="checkCitta()" type="text" name="cittàNascita"> <br>
+	Città: <input id="citta" onchange="checkCitta()" type="text" name="cittaNascita"> <br>
 	Residenza: <input id="residenza" onchange="checkResidenza()" type="text" name="residenza"> <br>
 	Data di Nascita: <input id="dataNascita" onchange="checkDataNascita()" type="date" name="dataNascita"> <br>
 	e-mail: <input id="email" onchange="checkEmail()" type="email" name="email"> <br>

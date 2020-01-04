@@ -3,6 +3,16 @@
  */
 
 function checkAll() {
+	var user = $("username").val();
+	var pass = $("pass").val();
+	var pass2 = $("confPass").val();
+	var name = $("nome").val();
+	var surname = $("cognome").val();
+	var city = $("citta").val();
+	var resid = $("residenza").val();
+	var mail = $("email").val();
+	var cv = $("curriculum").val();
+	var check = $("dati").val();
 	
 	if(!checkNome()) {
 		alert("ERRORE!");
@@ -32,13 +42,23 @@ function checkAll() {
 		alert("ERRORE!");
 		return false;
 	} else if(!checkTrattamentoDati()) {
-		alert("ERRORE!");
+		alert("ERRORE! CHECKBOX");
 		return false;
 	} else {
-		$.post("../../src/easyjob/control/gestione_utenti/RegistrazioneInoccupatoServlet", function(data) {
-			   // The data here represents the answer from the server
-			   console.log("Data Loaded: " + data);
-			});
+		console.log("UEUE");
+		$.post("../../RegistrazioneInoccupatoServlet", {
+			username: user,
+			password: pass,
+			confermaPassword: pass2,
+			nome: name,
+			cognome: surname,
+			cittaNascita: city,
+			residenza: resid,
+			email: mail,
+			curriculum: cv,
+			trattamentoDati: check
+		}, function(data) {
+		});
 		return true;
 	}
 }
@@ -105,7 +125,6 @@ function checkDataNascita() {
         } 
         else
         {
-        	hideAlert(date);
         	return true;
         }
     }
@@ -165,17 +184,16 @@ function checkCurriculum() {
         	return false;
         }
     } else {
-        alert("ERRORE FILE CURRICULUM")
+        alert("ERRORE FILE CURRICULUM");
         return false;
     }
 }
 
 function checkTrattamentoDati() {
-	var checked = $("dati").is(":checked");
-	if(checked) {
+	console.log($("#dati").is(':checked'));
+	if($("#dati").is(':checked')) {
 		return true;
 	} else {
-		alert("CHECK ASSENTE");
 		return false;
 	}
 }

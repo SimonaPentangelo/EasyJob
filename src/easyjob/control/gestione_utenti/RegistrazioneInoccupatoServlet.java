@@ -83,7 +83,7 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
 			//errore nel cognome
 		}
 		
-		String cittàNascita = request.getParameter("cittàNascita");
+		String cittàNascita = request.getParameter("cittaNascita");
 		if(cittàNascita != null && !cittàNascita.equals("") && !cittàNascita.equals(" ") && cittàNascita.length() >= 2 && cittàNascita.length() <= 20) {
 				inoccupato.setCittà(cittàNascita);
 				System.out.println(inoccupato.getCittà());
@@ -106,16 +106,20 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
 		}
 		
 		String dataNascitaString = request.getParameter("dataNascita");
-		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
-		SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
-		try {
+		if(dataNascitaString != null) {
+			System.out.println(dataNascitaString);
+			SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+			SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
+			try {	
+				String dataNascita = sdf2.format(sdf1.parse(dataNascitaString));
+				inoccupato.setDataNascita(dataNascita);
 			
-			String dataNascita = sdf2.format(sdf1.parse(dataNascitaString));
-			inoccupato.setDataNascita(dataNascita);
-			
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+		} else {
+			//errore data
 		}
 		
 		String email = request.getParameter("email");
