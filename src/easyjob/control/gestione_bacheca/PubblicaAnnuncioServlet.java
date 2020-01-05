@@ -3,6 +3,7 @@ package easyjob.control.gestione_bacheca;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,6 +22,46 @@ import easyjob.model.ManagerAnnunci;
 public class PubblicaAnnuncioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	
+private boolean valida(String titolo, String desc, String req, String città, String tag) {
+	
+	boolean valido = true;
+	String expTitolo= "^[A-Za-z]{6,20}$";
+    String expDesc="^[A-Za-z\\é\\è\\ò\\à\\ù\\ì\\.,!?']{10,7000}$";
+    String expReq="^[A-Za-z\\é\\è\\ò\\à\\ù\\ì\\.,!?']{10,3000}$";
+    String expCittà= "^[A-Za-z']{2,20}$";
+    String expTag="^[A-Za-z]{6,20}$";
+	
+    if (!Pattern.matches(expTitolo, titolo)) {
+		valido=false;
+		System.out.print(titolo);
+	}
+    
+    if (!Pattern.matches(expDesc, desc)) {
+		valido=false;
+		System.out.print(desc);
+	}
+    
+    if (!Pattern.matches(expReq, req)) {
+		valido=false;
+		System.out.print(req);
+	}
+    
+    if (!Pattern.matches(expCittà, città)) {
+		valido=false;
+		System.out.print(città);
+	}
+    
+    if (!Pattern.matches(expTag, tag)) {
+		valido=false;
+		System.out.print(tag);
+	}
+		
+    System.out.println(valido);
+    
+	return valido;
+}
+	
   
 	/**
 	 *Si occupa di effettuare la pubblicazione di un annuncio utilizzando il form compilato dall’azienda.
@@ -51,6 +92,8 @@ public class PubblicaAnnuncioServlet extends HttpServlet {
 		/*Formatto la stringa dei tags in modo tale da gestirli come lista*/
 		ArrayList<String> tags = new ArrayList<String>(Arrays.asList(tag.split(",")));
 		/*Incapsulo i paremtri in un oggetto annuncio da passare al metodo del manager*/
+		
+		boolean validate = valida(titolo, desc, req, città, tag);
 	
 		annuncio.setAzienda(1); // N.B E' FITTIZIO AL FINE DEI TEST PER IL MANAGER E DELLA SERVLET
 		annuncio.setCittà(città);
@@ -70,18 +113,17 @@ public class PubblicaAnnuncioServlet extends HttpServlet {
 		}
 		
 		try{
-			if(titolo!= null && !titolo.equals("")&& titolo.length()>=6 && titolo.length()<=50 && desc != null && !desc.equals("") && desc.length()>=10 && desc.length()<=7000
-					&& req!=null && !req.equals("") && req.length()>=10 && req.length()<=3000 &&
-				typeContratto != null && !typeContratto.equals("") && città!=null && !città.equals("") && tag!=null && !tag.equals("") &&
-				isAValidTypeContract)
+			if(validate)
 		{
 			if(manager.pubblicaAnnuncio(annuncio))
-			{
-				redirect = "/WEB-PAGES/view/SuccesfulPublish.jsp";
-			}
-			else
-				redirect = "/WEB-PAGES/view/ErrorPublish.jsp";
+			
+				redirect = "/WEB-PAGES/view/SuccesfulPublish.jsp";	
 		}
+			else
+			{
+				
+				redirect = "/WEB-PAGES/view/ErrorPublish.jsp";
+			}	
 		}catch (Exception e){
 			e.printStackTrace();
 		}

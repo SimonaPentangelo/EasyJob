@@ -171,6 +171,7 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
 		try {
 			if(!mu.isPresent(inoccupato)) {
 				mu.registerUserInoccupato(inoccupato);
+				request.setAttribute("message","Successo");
 				
 				File dirRoot = new File(rootPath); //cartella delle resources
 				if(!dirRoot.exists())//se la cartella esiste non la crea altrimenti genera la cartella 
@@ -190,6 +191,8 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
 				InputStream inputStream = curriculum.getInputStream();
 						
 				Files.copy(inputStream, Paths.get(cvFullPath), StandardCopyOption.REPLACE_EXISTING);
+			}else {
+				response.getWriter().write("Formato dati errati");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
