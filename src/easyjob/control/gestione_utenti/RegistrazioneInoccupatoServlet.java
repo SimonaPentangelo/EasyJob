@@ -19,6 +19,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import org.apache.catalina.servlet4preview.RequestDispatcher;
+
 import com.google.gson.Gson;
 
 import easyjob.entity.Inoccupato;
@@ -161,6 +163,7 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
 				
 		inoccupato.setCurriculum("resources" + File.separator + inoccupato.getUsername() + File.separator + curriculum.getSubmittedFileName().replaceAll(" ", "_"));
 		System.out.println(inoccupato.getCurriculum());
+		System.out.println(request.getParameter("trattamentoDati"));
 		if(request.getParameter("trattamentoDati") == null) {
 			//deve fare il check
 		}
@@ -196,6 +199,7 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
 		//String responseGsonString= new Gson().toJson(redirect);
 		//response.getWriter().write(responseGsonString);
 		//response.sendRedirect(redirect);
+		request.getRequestDispatcher(redirect).forward(request, response);
 	}
 
 }

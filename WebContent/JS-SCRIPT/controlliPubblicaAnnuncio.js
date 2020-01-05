@@ -2,6 +2,39 @@
  * 
  */
 
+function checkAll() {
+	
+	if(!checkTitolo()) {
+		return false;
+	} else if(!checkDesc()) {
+		return false;
+	} else if(!checkReq()) {
+		return false;
+	} else if(!checkContratto()) {
+		return false;
+	} else if(!checkCitta()) {
+		return false;
+	} else if(!checkTags())  {
+		return false;
+	} else {
+		var form = $('#pubAd')[0]; 
+		var formData = new FormData(form);
+		
+		$.ajax({
+		    url: "../../PubblicaAnnuncioServlet",
+		    data: formData,
+		    type: 'GET',
+		    contentType: false, 
+		    processData: false,
+		    async : false,
+		    success: function(data){
+	             //codice per la redirect
+	         }
+		});
+		return true;
+	}
+}
+
 function checkTitolo() {
     var tit = $("#titolo");
     var StringValidator = /^[A-Za-z]{6,20}$/;
@@ -32,16 +65,9 @@ function checkReq() {
 }
 
 function checkContratto() {
-    var cont = $("#cont");
-
-    if () {
-    	$("#errorTipo").hide();
-    	return true;
-    } else {
-    	$("#errorTipo").html("Devi selezionare una delle opzioni elencate.");
-		$("#errorTipo").show();
-        return false;
-    }
+	var citta = $("#cont");
+	console.log(cont);
+	return false;
 }
 
 function checkCitta() {
@@ -57,6 +83,21 @@ function checkCitta() {
     	$("#errorCitta").show();
         return false;
     }
+}
+
+function checkDesc() {
+	   var desc = $("#desc");
+	    var StringValidator = /^[A-Za-z\é\è\ò\à\ù\ì\ .,!?']{10,7000}$/;
+
+	    if ($(desc).val().match(StringValidator) || $(desc).val().trim() == "") {
+	    	$("#errorDescrizione").hide();
+	    	return true;
+	    } else {
+	    	$("#errorDescrizione").html("La descrizione non può superare i 7.000 caratteri e " +
+	    								"di almeno 10 caratteri");
+	    	$("#errorDescrizione").show();
+	        return false;
+	    }	   
 }
 
 function checkTags() {

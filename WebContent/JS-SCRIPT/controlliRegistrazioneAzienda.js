@@ -51,15 +51,59 @@ function checkAll() {
 }
 
 function checkDescrizione() {
-   
+	   var desc = $("#desc");
+	    var StringValidator = /^[A-Za-z\é\è\ò\à\ù\ì\ .,!?']{10,500}$/;
+
+	    if ($(desc).val().match(StringValidator) || $(desc).val().trim() == "") {
+	    	$("#errorDesc").hide();
+	    	return true;
+	    } else {
+	    	$("#errorDesc").html("La descrizione deve essere di almeno 10 caratteri " +
+	    						"e non deve superare i 500 caratteri.");
+	    	$("#errorDesc").show();
+	        return false;
+	    }	
 }
 
 function checkNomeAzienda() {
-	
+	var nomeAz = $("#nomeAzienda");
+    var StringValidator = /^[A-Za-z0-9-._ ]{5,50}$/;
+
+    if ($(nomeAz).val().match(StringValidator) || $(nomeAz).val().trim() == "") {
+    	$("#errorNome").hide();
+        return true;
+    } else {
+    	$("#errorNome").html("Il nome deve contenere minimo 6 caratteri e massimo 30.");
+		$("#errorNome").show();
+        return false;
+    }
 }
 
 function checkPIva() {
+	var piva = $("#piva");
+    var StringValidator = /^[A-Z0-9]{11,11}$/;
 
+    if ($(piva).val().match(StringValidator) || $(piva).val().trim() == "") {
+    	$("#errorIVA").hide();
+        return true;
+    } else {
+    	$("#errorIVA").html("La partita IVA deve contenere 11 caratteri.");
+		$("#errorIVA").show();
+        return false;
+    }
+}
+
+function checkDipendenti() {
+	var dip = $("#dip");
+	var numbers = /^[0-9]+$/;
+	if(dip.val() > 0 && dip.val().match(numbers)) {
+		$("#errorDip").hide();
+        return true;
+	} else {
+		$("#errorDip").html("Il campo può contenere solo cifre.");
+ 		$("#errorDip").show();
+ 		return false;
+	}
 }
 
 function checkIndirizzo() {
@@ -80,19 +124,18 @@ function checkDataFondazione() {
     var data = $("#dataFond");
     var oggi = new Date();
     var nascita = new Date($(data).val());
-    var minDate = new Date(oggi.getFullYear() - 120, oggi.getMonth(), oggi.getDay());
     if (nascita.getFullYear().toString().length >= 4) 
     {
-        if (oggi <= nascita || minDate >= nascita) 
+        if (oggi > nascita) 
         {
         	$("#errorData").hide();
-            return false;
+            return true;
         } 
         else
         {
         	$("#errorData").html("La data inserita non rispetta il formato.");
     		$("#errorData").show();
-        	return true;
+        	return false;
         }
     }
 }
