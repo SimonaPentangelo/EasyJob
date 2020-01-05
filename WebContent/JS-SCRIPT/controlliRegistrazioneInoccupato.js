@@ -108,19 +108,18 @@ function checkDataNascita() {
     var data = $("#dataNascita");
     var oggi = new Date();
     var nascita = new Date($(data).val());
-    var minDate = new Date(oggi.getFullYear() - 120, oggi.getMonth(), oggi.getDay());
     if (nascita.getFullYear().toString().length >= 4) 
     {
-        if (oggi <= nascita || minDate >= nascita) 
+        if (oggi > nascita) 
         {
         	$("#errorData").hide();
-            return false;
+            return true;
         } 
         else
         {
         	$("#errorData").html("La data inserita non rispetta il formato.");
     		$("#errorData").show();
-        	return true;
+        	return false;
         }
     }
 }

@@ -1,6 +1,6 @@
 <%
 	Boolean autenticato=(Boolean) session.getAttribute("autenticato");
-	if((autenticato==null)||(!autenticato.booleanValue()))
+	if(autenticato == null || !autenticato)
 	{
 		response.sendRedirect("path di tentato accesso alla pagina senza effettuare login!");
 		return;

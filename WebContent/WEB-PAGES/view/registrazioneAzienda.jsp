@@ -43,11 +43,11 @@
 	Conferma Password: <input id="confPass" type="password" onchange="checkPass()" name="confermaPassword"> 
 	<span id="errorConfPass"></span><br>
 	
-	<input type="checkbox" name="trattamentoDati"> Accetto i termini del 
+	<input id="dati" type="checkbox" name="trattamentoDati"> Accetto i termini del 
 	trattamento dati personali. 
 	<span id="errorCheck"></span><br>
 	
-	<input type="submit" value="Conferma Registrazione">
+	<input onclick="checkAll()" type="submit" value="Conferma Registrazione">
 	</form>
 </body>
 </html>
