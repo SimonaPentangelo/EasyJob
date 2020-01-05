@@ -23,6 +23,7 @@ public class ManagerCandidature {
 	
 	
 	
+	
 	/**
 	 * Questo metodo controlla se l'inoccupato passato in input è già candidato all'annuncio passato in input.
 	 * 
@@ -216,6 +217,7 @@ public synchronized List<Candidatura> visualizzaCandidatureRicevute(int idAnn) t
 	 */
 	public boolean deleteCandidate(int idAnnuncio) throws SQLException {
 		
+		boolean flag = false;
 		Connection connect = null;
 		PreparedStatement candidate = null;
 		
@@ -227,7 +229,8 @@ public synchronized List<Candidatura> visualizzaCandidatureRicevute(int idAnn) t
 			
 			candidate.executeUpdate();
 			connect.commit();
-			return true;
+			flag =true;
+			
 			
 		} finally {
 			
@@ -241,5 +244,6 @@ public synchronized List<Candidatura> visualizzaCandidatureRicevute(int idAnn) t
 				DriverManagerConnectionPool.releaseConnection(connect);
 			}
 		}
+	return flag;	
 	}
 }

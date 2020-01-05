@@ -74,4 +74,32 @@ public void testVisualizzaCandRicevute() throws SQLException{
 	assertEquals(listaCandidature.size(),0);
 
 }
+
+/*1)Testo il caso in cui idInoccupato e idAnnuncio esistono e non si è già effettuata un candidatura,restituisce true poi verifico
+ * che sia stato inserito effettivamente nel database*/
+
+@Test
+public void testCandidate()throws SQLException{
+	boolean isCandidateAfter= false;
+	boolean candidato = false;
+	candidato = manager.candidate(1,4);
+	assertEquals(candidato,true);
+	
+	isCandidateAfter= manager.isAlreadyCandidate(1,4);
+	assertEquals(isCandidateAfter,true);
+	
+}
+
+@Test
+/*1) Testo il caso in cui elimino una candidatura con id annuncio esistente,il metodo restituisce true e controllo la corretta rimozione*/
+public void testDeleteCandidatura() throws SQLException{
+	
+	boolean rimosso = false;
+	rimosso = manager.deleteCandidate(1);
+	assertEquals(rimosso,true);
+	
+	List<Candidatura> listaCandidature = new ArrayList<>();
+	listaCandidature = manager.visualizzaCandidatureRicevute(1);
+	assertEquals(listaCandidature.size(),0);
+}
 }
