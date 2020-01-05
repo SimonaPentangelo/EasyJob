@@ -109,7 +109,7 @@ public class ManagerSegnalazioni {
 		Segnalazione segnalazione = new Segnalazione();
 		PreparedStatement retrieveSegn = null;
 		Connection connect = null;
-		String query = "SELECT * FROM Segnalazione WHERE Azienda = ?";
+		String query = "SELECT * FROM Segnalazione WHERE Azienda = ?;";
 		try{
 			
 			connect = DriverManagerConnectionPool.getConnection();

@@ -16,7 +16,8 @@ ALTER table Amministratore AUTO_INCREMENT =1;
 ALTER table Annuncio AUTO_INCREMENT =1;
 insert into EasyJobtest.Inoccupato (Username,Password,Email,Nome,Cognome,DataNascita,Residenza,Città,Curriculum)
 values ("gabriele1997","ciaociao","gpisapia97@gmail.com","Gabriele","Pisapia","01/06/1997","Via napoleone 3","Battipaglia","resources\gabriele1997\curriculum1.pdf"),
-("simona00","ciao12345","spentangelo@gmail.com","Simona","Pentangelo","12/09/1999","Via cinque maggio","Angri","resources\simona00\curriculum2.pdf");
+("simona00","ciao12345","spentangelo@gmail.com","Simona","Pentangelo","12/09/1999","Via cinque maggio","Angri","resources\simona00\curriculum2.pdf"),
+("gigi123","gigi050","gigidm@gmail.com","Gigi","DelMonaco","15/05/1998","Via testing","Salerno","path");
 
 
 insert into EasyJobtest.Azienda(Username,Password,Email,NomeAzienda,LogoAzienda,Dipendenti,DataFondazione,Indirizzo,PIva,Banned)

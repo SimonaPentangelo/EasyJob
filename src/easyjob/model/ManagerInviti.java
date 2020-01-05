@@ -154,7 +154,7 @@ public class ManagerInviti {
 		Connection connect = null;
 		PreparedStatement invito = null;
 		ManagerUtenti mu = new ManagerUtenti();
-		Invito temp = new Invito();
+		Invito temp = null;
 		
 		try{
 			connect = DriverManagerConnectionPool.getConnection();
@@ -164,11 +164,8 @@ public class ManagerInviti {
 			ResultSet rs = invito.executeQuery();
 			
 			while (rs.next()){
-				temp.setTitolo(rs.getString("Titolo"));
-				temp.setCorpo(rs.getString("Corpo"));
-				temp.setInoccupato(rs.getInt("Inoccupato"));
-				temp.setAnnuncio(rs.getInt("Annuncio"));
-				temp.setAzienda(rs.getInt("Azienda"));
+				temp = new Invito(rs.getString("Titolo"),rs.getString("Corpo"),rs.getInt("Annuncio"),rs.getInt("Azienda"),
+						"",rs.getInt("Inoccupato"));
 				temp.setNomeAzienda(mu.getNomeAzienda(temp.getAzienda()));
 			}
 			
