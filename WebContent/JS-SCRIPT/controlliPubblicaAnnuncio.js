@@ -57,17 +57,23 @@ function checkReq() {
     	$("#errorReq").hide();
     	return true;
     } else {
-    	$("#errorReq").html("La descrizione non può superare i 7.000 " +
-    								"caratteri e di almeno 10 caratteri");
+    	$("#errorReq").html("I requisiti non devono superare i 3000 caratteri " +
+    			"e di almeno 10 caratteri.");
 		$("#errorReq").show();
         return false;
     }
 }
 
 function checkContratto() {
-	var citta = $("#cont");
-	console.log(cont);
-	return false;
+	var cont = $("#cont");
+	if($(cont).val()) {
+		$("#errorTipo").hide();
+		return true;
+	} else {
+		$("#errorTipo").html("Devi selezionare una delle opzioni elencate.");
+		$("#errorTipo").show();
+		return false;
+	}
 }
 
 function checkCitta() {

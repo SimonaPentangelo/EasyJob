@@ -10,7 +10,7 @@
 </head>
 <body>
 	<form id="regAz" enctype='multipart/form-data'>
-	Nome Azienda: <input id="nomeAzienda" onchange="checkNomeAzienda" type="text" name="nomeAzienda"> 
+	Nome Azienda: <input id="nomeAzienda" onchange="checkNomeAzienda()" type="text" name="nomeAzienda"> 
 	<span id="errorNome"></span><br>
 	
 	Logo: <input id="logo" onchange="checkLogo()" type="file" accept="image/*" name="logoAzienda"> 

@@ -23,7 +23,7 @@
 	if (azienda != null) {
 	%>
 	<p>DEBUGGING </p>
-	<button><a href="pubblicaAnnuncio.jsp"> Pubblica Annuncio</a></button>
+	<button><a href="WEB-PAGES/view/pubblicaAnnuncio.jsp"> Pubblica Annuncio</a></button>
 	<%
 	}
 	%>

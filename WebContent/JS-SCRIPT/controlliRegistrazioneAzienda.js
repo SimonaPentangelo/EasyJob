@@ -31,6 +31,7 @@ function checkAll() {
 	} else if(!checkTrattamentoDati()) {
 		return false;
 	} else {
+		console.log("CIAOOOO");
 		var form = $('#regAz')[0]; 
 		var formData = new FormData(form);
 		
@@ -56,6 +57,7 @@ function checkDescrizione() {
 
 	    if ($(desc).val().match(StringValidator) || $(desc).val().trim() == "") {
 	    	$("#errorDesc").hide();
+	    	console.log("ok desc");
 	    	return true;
 	    } else {
 	    	$("#errorDesc").html("La descrizione deve essere di almeno 10 caratteri " +
@@ -71,6 +73,7 @@ function checkNomeAzienda() {
 
     if ($(nomeAz).val().match(StringValidator) || $(nomeAz).val().trim() == "") {
     	$("#errorNome").hide();
+    	console.log("ok nome az");
         return true;
     } else {
     	$("#errorNome").html("Il nome deve contenere minimo 6 caratteri e massimo 30.");
@@ -85,6 +88,7 @@ function checkPIva() {
 
     if ($(piva).val().match(StringValidator) || $(piva).val().trim() == "") {
     	$("#errorIVA").hide();
+    	console.log("ok piva");
         return true;
     } else {
     	$("#errorIVA").html("La partita IVA deve contenere 11 caratteri.");
@@ -98,6 +102,7 @@ function checkDipendenti() {
 	var numbers = /^[0-9]+$/;
 	if(dip.val() > 0 && dip.val().match(numbers)) {
 		$("#errorDip").hide();
+		console.log("ok dip");
         return true;
 	} else {
 		$("#errorDip").html("Il campo può contenere solo cifre.");
@@ -112,6 +117,7 @@ function checkIndirizzo() {
 
      if ($(indirizzo).val().match(StringValidator) || $(indirizzo).val().trim() == "") {
     	$("#errorIndirizzo").hide();
+    	console.log("ok index");
         return true;
      } else {
     	$("#errorIndirizzo").html("L’indirizzo non rispetta il formato.");
@@ -129,6 +135,7 @@ function checkDataFondazione() {
         if (oggi > nascita) 
         {
         	$("#errorData").hide();
+        	console.log("ok data");
             return true;
         } 
         else
@@ -146,6 +153,7 @@ function checkEmail() {
 
     if ($(email).val().match(StringValidator) || $(email).val().trim() == "") {
     	$("#errorMail").hide();
+    	console.log("ok mail");
         return true;
     } else {
     	$("#errorMail").html("Il formato non è valido.");
@@ -160,6 +168,7 @@ function checkUsername() {
 
     if ($(us).val().match(StringValidator) || $(us).val().trim() == "") {
     	$("#errorUser").hide();
+    	console.log("ok username");
         return true;
     } else {
     	$("#errorUser").html("L’username deve essere composto da 2 a 50 numeri e lettere.");
@@ -177,6 +186,7 @@ function checkPass() {
         if($(pass).val().match($(confPass).val())) {
         	$("#errorPass").hide();
         	$("#errorConfPass").hide();
+        	console.log("ok pass");
         	return true;
         } else {
         	$("#errorConfPass").html("Password non corrispondente.");
@@ -196,6 +206,7 @@ function checkLogo() {
 	var ext = name.substring(name.length - 3);
     if (ext == "jpg" || ext == "png") {
     	$("#errorLogo").hide();
+    	console.log("ok logo");
        	return true;
     } else {
     	$("#errorLogo").html("Il formato dell’immagine deve essere o png o jpg.");
@@ -208,6 +219,7 @@ function checkTrattamentoDati() {
 	var checked = $("#dati").is(":checked");
 	if(checked) {
 		$("#errorCheck").hide();
+		console.log("ok check");
 		return true;
 	} else {
 		$("#errorCheck").html("E’ obbligatorio spuntare la casella del trattamento dati.");

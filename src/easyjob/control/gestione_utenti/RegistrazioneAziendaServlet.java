@@ -172,7 +172,9 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
 		String userPath = rootPath + File.separator + azienda.getUsername(); //serve per definire la cartella dell'utente se gia esiste non viene creata
 		
 		azienda.setLogoAzienda("resources" + File.separator + azienda.getUsername()+ File.separator + logoAzienda.getSubmittedFileName().replaceAll(" ", "_"));
-		
+		System.out.println(azienda.getNomeAzienda() + azienda.getDataFondazione());
+		System.out.println(azienda.getDescrizione() + azienda.getEmail());
+		System.out.println(azienda.getIndirizzoSede() + azienda.getNumeroDipendenti());
 		try {
 			if(!mu.isPresent(azienda)) {
 				mu.registerUserAzienda(azienda);
