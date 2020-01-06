@@ -51,6 +51,9 @@ public class RimozioneUtenteServlet extends HttpServlet {
 			if(!mu.isAlreadyBanned(idAzienda)) {
 				Azienda az = mu.findAziendaById(idAzienda);
 				mu.deleteUser(az);
+				response.getWriter().write("Rimosso");
+			}else {
+			response.getWriter().write("L'utente risulta già bannato");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

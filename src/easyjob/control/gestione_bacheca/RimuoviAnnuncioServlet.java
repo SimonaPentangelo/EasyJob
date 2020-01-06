@@ -36,14 +36,19 @@ public class RimuoviAnnuncioServlet extends HttpServlet {
 		if (idDaRimuovere>=0){
 			try{
 				if(manager.removeAd(idDaRimuovere)){
+				response.getWriter().write("rimosso");	
 				redirect="/WEB-PAGES/view/SuccessRemove.jsp";
 			}
 				else{
-					System.out.println("C'è qualcosa che non va");
+					response.getWriter().write("unespected");
+					redirect="/WEB-PAGES/view/index.jsp"; //non dovrebbe mai succedere
 				}
 			}catch(Exception e){
 				e.printStackTrace();
 			}
+		}else {
+			response.getWriter().write("id non valido");
+			redirect = "/WEB-PAGES/view/index.jsp"; // non dovrebbe mai succedere
 		}
 		response.sendRedirect(request.getContextPath()+redirect);
 	}

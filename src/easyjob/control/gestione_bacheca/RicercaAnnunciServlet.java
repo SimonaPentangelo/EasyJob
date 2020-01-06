@@ -49,11 +49,20 @@ public class RicercaAnnunciServlet extends HttpServlet {
 				aziende.add(managerUt.findAziendaById(an.getAzienda()));
 				
 			}
-			}
+			
 			request.getSession().setAttribute("annunci", annunci);
 			request.getSession().setAttribute("tag",tagDaCercare);
 			request.getSession().setAttribute("aziendeAnnunci",aziende );
-			redirect = "/WEB-PAGES/view/Bacheca.jsp";
+			response.getWriter().write("ok");
+			redirect = "/WEB-PAGES/view/Bacheca.jsp";			
+			}else {
+				request.getSession().setAttribute("errorTag","Il formato del tag non può contenere solo spazi bianchi");
+				response.getWriter().write("formato errato");
+				redirect="/WEB-PAGES/view/index.jsp";
+				
+				
+			}
+			
 		}catch (Exception e){
 			e.printStackTrace();
 		}

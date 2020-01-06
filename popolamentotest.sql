@@ -22,7 +22,8 @@ values ("gabriele1997","ciaociao","gpisapia97@gmail.com","Gabriele","Pisapia","0
 
 insert into EasyJobtest.Azienda(Username,Password,Email,NomeAzienda,LogoAzienda,Dipendenti,DataFondazione,Indirizzo,PIva,Banned)
 values ("google2019","google19","google@gmail.com","Google","resources\google2019\logo1.jpg",2000,"10/02/1960","Via mezzocannone,19","01234567ABC",false),
-("facebook2019","facebook19","facebook@gmail.com","Facebook","resources\facebook2019\logo2.jpg",1800,"12/03/1999","Via montesi 14","91202849CDB",false);
+("facebook2019","facebook19","facebook@gmail.com","Facebook","resources\facebook2019\logo2.jpg",1800,"12/03/1999","Via montesi 14","91202849CDB",false),
+("IBM","ibm1234","ibm2019@gmail.com","Ibm","resoruces\ibm2019\logo3.jpg",1200,"08/08/1950","Via america","0818289ABCD",true);
 
 insert into EasyJobtest.Moderatore(Username,Password,Email)
 values ("Moderatore1","modmod","moderatoreEJ@gmail.com"),
