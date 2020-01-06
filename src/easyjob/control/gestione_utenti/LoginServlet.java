@@ -62,19 +62,15 @@ public class LoginServlet extends HttpServlet {
 		user.setUsername(username);
 		user.setPassword(password);
 		
-		if((username!=null || username.equals("")) && password!=null || password.equals(""))
-		{
+		
 			try {
 				if(mu.isPresent(user))
 					
 				{
-					/*System.out.println("Sono nell'if");
-					System.out.println(mu.isPresent(user));*/
-					
 					user = mu.logIn(username, password);
-					
+				
 					/*Carichiamo il giusto utente nella sessione*/
-					
+					if(user != null) {
 					if (user instanceof Inoccupato){
 						inoccupato = (Inoccupato) user;
 						System.out.println(inoccupato.getCognome());
@@ -88,6 +84,7 @@ public class LoginServlet extends HttpServlet {
 						request.getSession().setAttribute("utenteInoccupato", inoccupato);
 						request.getSession().setAttribute("autenticato",true);
 						request.getSession().setAttribute("inviti", soloCinque);
+						response.getWriter().write("Successo");
 						redirect = "/WEB-PAGES/view/protectedPageInoccupato.jsp";
 					} 
 					if(user instanceof Azienda) {
@@ -96,6 +93,7 @@ public class LoginServlet extends HttpServlet {
 							System.out.println(azienda.getDescrizione());
 							request.getSession().setAttribute("utenteAzienda", azienda);
 							request.getSession().setAttribute("autenticato", true);
+							response.getWriter().write("Successo");
 							redirect = "/WEB-PAGES/view/protectedPageAzienda.jsp";
 						} else {
 							redirect = "/WEB-PAGES/view/bannedPage.jsp";
@@ -106,26 +104,36 @@ public class LoginServlet extends HttpServlet {
 						System.out.println(mod.getEmail());
 						request.getSession().setAttribute("utenteModeratore", mod);
 						request.getSession().setAttribute("autenticato", true);
+						response.getWriter().write("Successo");
 						redirect="/WEB-PAGES/view/protectedPageModeratore.jsp";
 					}if (user instanceof Amministratore){
 						admin = (Amministratore) user;
 						System.out.println(admin.getEmail());
 						request.getSession().setAttribute("utenteAdmin", admin);
 						request.getSession().setAttribute("autenticato", true);
+						response.getWriter().write("Successo");
 						redirect = "/WEB-PAGES/view/protectedPageAdmin.jsp";
 					}	
 				}
 			
 				else {
+					
 						request.getSession().setAttribute("autenticato",false);
-						redirect="/WEB-PAGES/view/failLogin.jsp";
+						request.getSession().setAttribute("error","Username o password non validi");
+						response.getWriter().write("Username o password non validi");
+						request.setAttribute("message","Username o password non validi");
+						redirect="/WEB-PAGES/view/login.jsp";
 					 }
-			
+				}else {
+					request.getSession().setAttribute("autenticato",false);
+					request.getSession().setAttribute("error","Username o password non validi");
+					response.getWriter().write("Username o password non validi");
+					redirect="/WEB-PAGES/view/login.jsp";
+				}
 				} catch (SQLException e) {
 						// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-		}
 		response.sendRedirect(request.getContextPath()+redirect);
 }
 }

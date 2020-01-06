@@ -49,8 +49,6 @@ public class ContattaCandidatoServlet extends HttpServlet {
 		int idAzienda = aziendaInSessione.getIdUser(); //in qualche modo prendo l'id dell'inoccupato che voglio contattare
 		String titolo = request.getParameter("titolo");
 		String messaggio = request.getParameter("messaggio");
-		boolean test  = validazione(idAnnuncio,idInoccupato,titolo,messaggio,idAzienda);
-		System.out.println("La validazione ha restituito: "+test);
 		if(validazione(idAnnuncio,idInoccupato,titolo,messaggio,idAzienda)) {
 		invito.setAnnuncio(idAnnuncio);
 		invito.setInoccupato(idInoccupato);

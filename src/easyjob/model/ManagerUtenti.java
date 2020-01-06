@@ -75,13 +75,13 @@ public class ManagerUtenti {
 		
 		if (inocc.getUsername()!= null)
 			return inocc;
-		else if (azienda.getUsername() != null)
+		if (azienda.getUsername() != null)
 			return azienda;
-		else if (mod.getUsername()!=null)
+		if (mod.getUsername()!=null)
 			return mod;
-		else if(admin.getUsername() !=null)
+		if(admin.getUsername() !=null)
 			return admin;
-		else return null;
+	 return null;
 
 			
 	}
