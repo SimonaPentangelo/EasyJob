@@ -56,8 +56,7 @@ private boolean valida(String titolo, String desc, String req, String città, Str
 		valido=false;
 		System.out.print(tag);
 	}
-		
-    System.out.println(valido);
+	
     
 	return valido;
 }
@@ -94,6 +93,7 @@ private boolean valida(String titolo, String desc, String req, String città, Str
 		/*Incapsulo i paremtri in un oggetto annuncio da passare al metodo del manager*/
 		
 		boolean validate = valida(titolo, desc, req, città, tag);
+		System.out.println("Validate: "+validate);
 	
 		annuncio.setAzienda(1); // N.B E' FITTIZIO AL FINE DEI TEST PER IL MANAGER E DELLA SERVLET
 		annuncio.setCittà(città);
