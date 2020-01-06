@@ -42,7 +42,8 @@ public class ContattaCandidatoServlet extends HttpServlet {
 		ManagerInviti mi = new ManagerInviti();
 		
 		//Prendo l'azienda dalla sessione, quella che sta contattando il candidato
-		
+
+		System.out.println("id annuncio = " + request.getParameter("idAnnuncio"));
 		int idAnnuncio = Integer.parseInt(request.getParameter("idAnnuncio"));
 		int idInoccupato = Integer.parseInt(request.getParameter("idUtente"));
 		Azienda aziendaInSessione = (Azienda) request.getSession().getAttribute("utenteAzienda");

@@ -14,16 +14,16 @@ int idAn = Integer.parseInt(request.getParameter("idAn"));
 <script src="../../JS-SCRIPT/controlliContattaCandidato.js"></script>
 </head>
 <body>
-	<form id="contatta">
+	<form action="${pageContext.request.contextPath}/ContattaCandidatoServlet" method="POST">
 		Titolo: <input id="titolo" onchange="checkTitolo()" type="text" name="titolo">
 		<span id="errorTit"></span> <br>
 	
 		Messaggio: <input id="msg" onchange="checkMsg()" type="text" name="messaggio">
 		<span id="errorMsg"></span> <br>
 	
-		<input type="hidden" name="idUtente" value="<%=idUt %>">
-		<input type="hidden" name="idAnnuncio" value="<%=idAn %>">
-		<input type="submit" onclick="checkAll()" value="Invia">
+		<input type="hidden" name="idUtente" value="<%=idUt%>">
+		<input type="hidden" name="idAnnuncio" value="<%=idAn%>">
+		<input id="conferma" type="submit" value="Invia">
 	</form>
 </body>
 </html>

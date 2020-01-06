@@ -2,30 +2,6 @@
  * 
  */
 
-function checkAll() {
-	
-	if(!checkTitolo()) {
-		return false;
-	} else if(!checkMsg())  {
-		return false;
-	} else {
-		var form = $('#contatta')[0]; 
-		var formData = new FormData(form);
-		
-		$.ajax({
-		    url: "../../ContattaCandidatoServlet",
-		    data: formData,
-		    type: 'POST',
-		    contentType: false, 
-		    processData: false,
-		    async : false,
-		    success: function(data){
-	             //codice per la redirect
-	         }
-		});
-		return true;
-	}
-}
 		 
 function checkTitolo() {
 	   var tit = $("#titolo");
@@ -33,8 +9,10 @@ function checkTitolo() {
 
 	   if ($(tit).val().match(StringValidator) || $(tit).val().trim() == "") {
 	    	$("#errorTit").hide();
+	    	$("#conferma").attr("disabled", false);
 	    	return true;
 	    } else {
+	    	$("#conferma").attr("disabled", true);
 	    	$("#errorTit").html("Il titolo di invito al colloquio deve contenere minimo 5 caratteri e" +
 	    						" al massimo 60 caratteri.");
 			$("#errorTit").show();
@@ -48,8 +26,10 @@ function checkMsg() {
 
 	   if ($(msg).val().match(StringValidator) || $(msg).val().trim() == "") {
 	    	$("#errorMsg").hide();
+	    	$("#conferma").attr("disabled", false);
 	    	return true;
 	    } else {
+	    	$("#conferma").attr("disabled", true);
 	    	$("#errorMsg").html("Il corpo può contenere minimo 10 caratteri " +
 	    						"e al massimo 10.000 caratteri");
 			$("#errorMsg").show();

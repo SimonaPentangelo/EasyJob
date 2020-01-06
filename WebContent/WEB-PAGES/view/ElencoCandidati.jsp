@@ -43,7 +43,7 @@ int idAnnuncio =  (Integer) session.getAttribute("idAnnuncio");
 	<button type="submit">Mostra CV</button>	
 	</form>
 	
-	<a href="contattaCandidato.jsp?idUt=<%=id %>&idAn=<%=idAnnuncio%>">
+	<a href=<%="./contattaCandidato.jsp?idUt=" + id + "&idAn=" + idAnnuncio%>>
 	<button type="submit">Contatta il Candidato</button>
 	</a>
 <%
