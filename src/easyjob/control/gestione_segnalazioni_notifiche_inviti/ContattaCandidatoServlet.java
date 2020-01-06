@@ -1,6 +1,8 @@
 package easyjob.control.gestione_segnalazioni_notifiche_inviti;
 
 import java.io.IOException;
+import java.util.regex.Pattern;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,38 +44,54 @@ public class ContattaCandidatoServlet extends HttpServlet {
 		//Prendo l'azienda dalla sessione, quella che sta contattando il candidato
 		
 		int idAnnuncio = Integer.parseInt(request.getParameter("idAnnuncio"));
-		int idInoccupato = Integer.parseInt(request.getParameter("idUtente")); //in qualche modo prendo l'id dell'inoccupato che voglio contattare
-			
+		int idInoccupato = Integer.parseInt(request.getParameter("idUtente"));
+		Azienda aziendaInSessione = (Azienda) request.getSession().getAttribute("utenteAzienda");
+		int idAzienda = aziendaInSessione.getIdUser(); //in qualche modo prendo l'id dell'inoccupato che voglio contattare
+		String titolo = request.getParameter("titolo");
+		String messaggio = request.getParameter("messaggio");
+		boolean test  = validazione(idAnnuncio,idInoccupato,titolo,messaggio,idAzienda);
+		System.out.println("La validazione ha restituito: "+test);
+		if(validazione(idAnnuncio,idInoccupato,titolo,messaggio,idAzienda)) {
 		invito.setAnnuncio(idAnnuncio);
 		invito.setInoccupato(idInoccupato);
-		
-		String titolo = request.getParameter("titolo");
-		if(titolo != null && !titolo.equals("") && !titolo.equals(" ") && titolo.length() >= 5 && titolo.length() <= 60) {
-			invito.setTitolo(titolo);
-		} else {
-			//errore nella titolo
-		}
-		
-		String messaggio = request.getParameter("messaggio");
-		if(messaggio != null && !messaggio.contentEquals("") && !messaggio.contentEquals(" ") && messaggio.length() >= 10 && messaggio.length() <= 10000) {
-			invito.setCorpo(messaggio);
-		} else {
-			//errore nel corpo
-		}
-		
-		invito.setInoccupato(idInoccupato);
+		invito.setTitolo(titolo);
+		invito.setCorpo(messaggio);
+		invito.setAzienda(idAzienda);
 		try{
-		
+			
 			if(mi.contattaCandidato(invito)){
 				redirect="/WEB-PAGES/view/SuccessfullInvite.jsp";
 			}
-			else{
-				redirect ="/WEB-PAGES/view/ErrorInvite.jsp";
-			}
-		}catch (Exception e){
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
+		}else{
+			redirect ="/WEB-PAGES/view/ErrorInvite.jsp";
+		}
+		
 		response.sendRedirect(request.getContextPath()+redirect);
 	}
 
+	protected boolean validazione (int idAn,int idUt,String tit,String msg,int idAzienda) {
+		boolean valido = true;
+		String expTit= "^[A-Za-z\\é\\è\\ò\\à\\ù\\ì\\ .,!?']{5,60}$";
+		String expMsg="^[A-Za-z\\é\\è\\ò\\à\\ù\\ì\\ .,!?']{10,10000}$";
+		
+		if(idAn<1) {
+			valido = false;
+		}
+		if(idUt<1) {
+			valido = false;
+		}
+		if(!Pattern.matches(expTit, tit)){
+			valido = false;
+		}
+		if(!Pattern.matches(expMsg, msg)) {
+			valido = false;
+		}
+		if(idAzienda<1) {
+			valido=false;
+		}
+		return valido;
+	}
 }

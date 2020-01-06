@@ -117,7 +117,7 @@ public class LoginServlet extends HttpServlet {
 				}
 			
 				else {
-						request.getSession().setAttribute("autenticato", true);
+						request.getSession().setAttribute("autenticato",false);
 						redirect="/WEB-PAGES/view/failLogin.jsp";
 					 }
 			

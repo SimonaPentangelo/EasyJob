@@ -3,7 +3,7 @@ package easyjob.control.gestione_bacheca;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -39,9 +39,10 @@ public class RicercaAnnunciServlet extends HttpServlet {
 		String tagDaCercare = request.getParameter("searchTag");
 		List<Annuncio> annunci = new ArrayList<>();
 		List<Azienda> aziende = new ArrayList<>(); // Mi serve per prendere le immagini e farle visualizzare in bacheca
-		
+		boolean test = valida(tagDaCercare);
+		System.out.println(test);
 		try{
-			if(tagDaCercare != null && !tagDaCercare.equals("") && tagDaCercare.length()>=1){
+			if(valida(tagDaCercare)){
 			annunci = manager.searchAd(tagDaCercare);
 			
 			for (Annuncio an : annunci){
@@ -68,4 +69,12 @@ public class RicercaAnnunciServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
+	protected boolean valida (String tagDaCercare) {
+		 boolean validato = true;
+		 String regExpTag = "^[A-Za-z]{1,}$";
+		 if(!Pattern.matches(regExpTag, tagDaCercare)) {
+			 validato = false;
+		 }
+		return validato;
+	}
 }
