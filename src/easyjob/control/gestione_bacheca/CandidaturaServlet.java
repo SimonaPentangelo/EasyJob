@@ -31,12 +31,24 @@ public class CandidaturaServlet extends HttpServlet {
 		try{
 			if(idAzienda >= 0 && idInoccupato >= 0){
 			if(!(manager.isAlreadyCandidate(idInoccupato,idAzienda))){
-				if(manager.candidate(idInoccupato,idAzienda))
-				redirect ="/WEB-PAGES/view/SuccesfulCandidate.jsp";
+				if(manager.candidate(idInoccupato,idAzienda)) {
+					response.getWriter().write("candidato");
+					redirect ="/WEB-PAGES/view/SuccesfulCandidate.jsp";
+				}else {
+					request.getSession().setAttribute("error","Non è stato possibile effettuare la candidatura,riprova più tardi");
+					response.getWriter().write("unespected");
+				}
+			}else {
+				request.getSession().setAttribute("candidaturaIllegale","Ti sei già candidato per questo annuncio");
+				response.getWriter().write("già candidato");
+				redirect="/WEB-PAGES/view/ErroreCandidatura.jsp";
 			}
+		}else {
+			request.getSession().setAttribute("errorUtente","L'id dell'utente che sta provando a candidarsi non è valido");
+			response.getWriter().write("id non valido");
+			redirect=  "/WEB-PAGES/view/ErroreCandidatura.jsp";
 		}
-			else
-				redirect= "/WEB-PAGES/view/ErroreCandidatura.jsp";
+		
 		}catch (Exception e){
 			e.printStackTrace();
 		}

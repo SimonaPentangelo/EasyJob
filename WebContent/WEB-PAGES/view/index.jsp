@@ -1,4 +1,4 @@
-
+<% String errorTag = (String) session.getAttribute("errorTag"); %>
 
 <%@page import="easyjob.entity.Moderatore" %>
 <%@page import="easyjob.entity.Azienda" %>
@@ -43,6 +43,10 @@
 	<form action="${pageContext.request.contextPath}/RicercaAnnunciServlet" method="GET">
 		<input type="text" name="searchTag"> <br>
 		<input type="submit" value ="Cerca Annunci"> <br>
+		<%if(errorTag!= null){ 
+		%>
+		<p> <%=errorTag %> </p>
+		<%} %>
 	</form>
 	<% }//Fine ELSE %>
 	<img src="" alt="Immagine sito"> <br>
