@@ -37,13 +37,13 @@ function checkAll() {
 
 function checkTitolo() {
     var tit = $("#titolo");
-    var StringValidator = /^[A-Za-z]{6,20}$/;
+    var StringValidator = /^[A-Za-z0-9,. ]{6,50}$/;
 
     if ($(tit).val().match(StringValidator) || $(tit).val().trim() == "") {
     	$("#errorTitolo").hide();
     	return true;
     } else {
-    	$("#errorTitolo").html("Il titolo deve contenere minimo 6 e massimo 50 numeri e lettere.");
+    	$("#errorTitolo").html("Il titolo deve contenere minimo 5 e massimo 60 numeri e lettere.");
 		$("#errorTitolo").show();
         return false;
     }
