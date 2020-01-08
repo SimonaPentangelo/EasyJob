@@ -122,7 +122,7 @@ private static ManagerAnnunci manager = new ManagerAnnunci();
 	@Test 
 	public void testFilterSearch() throws SQLException{
 		List<Annuncio> listaAnnunci = new ArrayList<>();
-		listaAnnunci = manager.filterSearch("23/12/2019");
+		listaAnnunci = manager.filterSearch("24/10/2019");
 		assertEquals(listaAnnunci.size(),1);
 		
 		listaAnnunci = manager.filterSearch("11/11/2012");

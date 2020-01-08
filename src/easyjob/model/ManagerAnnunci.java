@@ -296,7 +296,7 @@ public class ManagerAnnunci {
 			while(rs.next()){
 				Annuncio temp = new Annuncio();
 				int id = rs.getInt("idAnnuncio");
-				temp.setIdAnnuncio(rs.getInt(id));
+				temp.setIdAnnuncio(id);
 				temp.setAzienda(rs.getInt("Azienda"));
 				temp.setTitolo(rs.getString("Titolo"));
 				temp.setDescrizione(rs.getString("Descrizione"));

@@ -46,7 +46,7 @@ public class RicercaAnnunciModeratore extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} 
-		System.out.println(dataDaCercare);
+		System.out.println(dataDaCercare+" Classe: "+ dataDaCercare.getClass());
 		String redirect = "";
 		List<Annuncio> annunci = new ArrayList<>();	
 		List<Azienda> aziende = new ArrayList<>();
