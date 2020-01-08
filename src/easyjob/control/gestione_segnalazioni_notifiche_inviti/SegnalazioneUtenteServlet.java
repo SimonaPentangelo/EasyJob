@@ -1,8 +1,12 @@
 package easyjob.control.gestione_segnalazioni_notifiche_inviti;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.regex.Pattern;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +21,23 @@ import easyjob.model.ManagerSegnalazioni;
 @WebServlet("/SegnalazioneUtenteServlet")
 public class SegnalazioneUtenteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private boolean valida(String titolo, String body) {
+		
+		boolean valido = true;
+		String expTitolo= "^[A-Za-zéèòàùì .,!?']{5,60}$";
+	    String expBody="^[A-Za-zéèòàùì .,!?']{10,10000}$";
+		
+	    if (!Pattern.matches(expTitolo, titolo)) {
+			valido=false;
+		}
+	    
+	    if (!Pattern.matches(expBody, body)) {
+			valido=false;
+		}
+	    
+		return valido; 
+	}
 
     /**
      * Default constructor. 
@@ -45,24 +66,34 @@ public class SegnalazioneUtenteServlet extends HttpServlet {
 		
 		String titolo = request.getParameter("titolo");
 		String corpo = request.getParameter("corpo");
-		String data = request.getParameter("data");
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		String localDate = dtf.format(LocalDate.now());
 		
-		segnalazione.setTitolo(titolo);
-		segnalazione.setCorpo(corpo);
-		segnalazione.setData(data);
-		segnalazione.setModeratore(mod);
-		segnalazione.setAzienda(azienda);
+		if(titolo != null && corpo != null) {
+			segnalazione.setTitolo(titolo);
+			segnalazione.setCorpo(corpo);
+			segnalazione.setData(localDate);
+			segnalazione.setModeratore(mod);
+			segnalazione.setAzienda(azienda);
+		}
 
 		try{
-			if(titolo!= null && !titolo.equals("")&& titolo.length()>=5 && titolo.length()<=60 && corpo != null && !corpo.equals("") 
-					&& corpo.length()>=10 && corpo.length()<=1000)
+			System.out.println(valida(titolo, corpo));
+			if(valida(titolo, corpo))
 			{
-			if(manager.segnalaUtente(segnalazione))
-			{
-				redirect = "/WEB-PAGES/view/CorrectSegnalazione.jsp";
-			}
-			else
-				redirect = "/WEB-PAGES/view/ErroreSegnalazione.jsp";
+				if(!manager.alreadyReported(mod, azienda)) {
+					if(manager.segnalaUtente(segnalazione))
+					{
+						redirect = "/WEB-PAGES/view/CorrectSegnalazione.jsp";
+						response.getWriter().write("segnalato");
+					} else {
+						redirect = "/WEB-PAGES/view/ErroreSegnalazione.jsp";
+					}
+				} else {
+					response.getWriter().write("è già stato segnalato");
+				}
+			} else {
+				 response.getWriter().write("formato non valido");
 			}
 		}catch (Exception e){
 			e.printStackTrace();

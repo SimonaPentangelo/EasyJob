@@ -5,7 +5,7 @@
 
 function checkTitolo() {
     var tit = $("#titolo");
-    var StringValidator = /^[A-Za-z\é\è\ò\à\ù\ì\ .,!?']{5,60}$/;
+    var StringValidator = /^[A-Za-zàèìòù .,!?' ]{5,60}$/;
 
     if ($(tit).val().match(StringValidator) || $(tit).val().trim() == "") {
     	$("#errorTit").hide();
@@ -20,8 +20,8 @@ function checkTitolo() {
 }
 
 function checkBody() {
-    var body = $("body");
-    var StringValidator = /^[A-Za-z\é\è\ò\à\ù\ì\ .,!?']{10,10000}$/;
+    var body = $("corpo");
+    var StringValidator = /^[A-Za-zàèìòù .,!?']{10,10000}$/;
 
     if ($(body).val().match(StringValidator) || $(body).val().trim() == "") {
     	$("#errorBody").hide();

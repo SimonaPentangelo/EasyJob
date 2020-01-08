@@ -146,7 +146,6 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
 			}
 		}
 		
-
 		Part curriculum = request.getPart("curriculum");
 		if(curriculum == null) {
 			//no CV

@@ -39,7 +39,6 @@ public class TestContattaCandidato {
 		request.addParameter("messaggio","cerchiamo persone per il nostro organico");
 		servlet.doPost(request, response);
 		assertEquals(message,response.getContentAsString());
-		
 	}
 	
 	@Test //messaggio non valido

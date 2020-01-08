@@ -24,11 +24,8 @@
 	Titolo: <input id="titolo" onchange="checkTitolo()" type="text" name="titolo"> 
 	<span id="errorTit"></span><br>
 	
-	Corpo: <input id="body" onchange="checkCorpo()" type="text" name="corpo"> 
+	Corpo: <input id="corpo" onchange="checkBody()" type="text" name="corpo"> 
 	<span id="errorBody"></span><br>
-	
-	Data: <input id="data" onchange= type="text" name="data"> 
-	<span id="errorData"></span><br>
 	
     <input type="hidden" name="azienda" value="<%=idAzienda%>"> <br>
     <input type="hidden" name="moderatore" value="<%=idMod%>"><br> 

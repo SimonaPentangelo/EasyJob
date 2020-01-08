@@ -14,6 +14,7 @@ public class ManagerSegnalazioni {
 	public static final String FIND_SEGNALAZIONI ="SELECT * FROM Segnalazione;";
 	public static final String INSERT_SEGNALAZIONE = "INSERT INTO Segnalazione(Titolo,Corpo,Azienda,Moderatore)"+
 	"VALUES(?,?,?,?);";
+	public static final String ALREADY_REPORTED = "SELECT * FROM Segnalazione WHERE Azienda = ? AND Moderatore = ?;";
 
 	/**
 	 * Questo metodo mostra tutte le segnalazioni effettuate, se ci sono.
@@ -52,6 +53,44 @@ public class ManagerSegnalazioni {
 		}
 		
 		return segnalazioni;
+	}
+	
+	/**
+	 * Questo metodo controlla che il moderatore non abbia già segnalato l'azienda
+	 * presa in considerazione.
+	 * 
+	 * @param idMod oggetto di tipo <strong>int</strong>
+	 * @param idAz oggetto di tipo <strong>int</strong>
+	 * @return true se c'è già una segnalazione. False altrimenti.
+	 * @throws SQLException
+	 * @precondition (idMod >= 1) && (idAz >= 1) 
+	 */
+	public synchronized boolean alreadyReported(int idMod, int idAz) throws SQLException {
+		Connection connect = null;
+		PreparedStatement searchSegnalazioni = null;
+		
+		try{
+			connect = DriverManagerConnectionPool.getConnection();
+			searchSegnalazioni = connect.prepareStatement(ALREADY_REPORTED);
+			searchSegnalazioni.setInt(1, idAz);
+			searchSegnalazioni.setInt(2, idMod);
+			ResultSet risultati  = searchSegnalazioni.executeQuery();
+			
+			if(risultati.next()){
+				return true;
+			}
+		}
+		finally{
+			try{
+			if(searchSegnalazioni != null)
+				searchSegnalazioni.close();
+			}
+			finally{
+				DriverManagerConnectionPool.releaseConnection(connect);
+			}
+		}
+		
+		return false;
 	}
 	
 	/**
