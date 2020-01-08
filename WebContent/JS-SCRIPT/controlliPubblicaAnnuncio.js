@@ -2,38 +2,6 @@
  * 
  */
 
-function checkAll() {
-	
-	if(!checkTitolo()) {
-		return false;
-	} else if(!checkDesc()) {
-		return false;
-	} else if(!checkReq()) {
-		return false;
-	} else if(!checkContratto()) {
-		return false;
-	} else if(!checkCitta()) {
-		return false;
-	} else if(!checkTags())  {
-		return false;
-	} else {
-		var form = $('#pubAd')[0]; 
-		var formData = new FormData(form);
-		
-		$.ajax({
-		    url: "../../PubblicaAnnuncioServlet",
-		    data: formData,
-		    type: 'GET',
-		    contentType: false, 
-		    processData: false,
-		    async : false,
-		    success: function(data){
-	             //codice per la redirect
-	         }
-		});
-		return true;
-	}
-}
 
 function checkTitolo() {
     var tit = $("#titolo");
@@ -41,8 +9,10 @@ function checkTitolo() {
 
     if ($(tit).val().match(StringValidator) || $(tit).val().trim() == "") {
     	$("#errorTitolo").hide();
+    	$("#conferma").attr("disabled", false);
     	return true;
     } else {
+    	$("#conferma").attr("disabled", true);
     	$("#errorTitolo").html("Il titolo deve contenere minimo 5 e massimo 60 numeri e lettere.");
 		$("#errorTitolo").show();
         return false;
@@ -55,8 +25,10 @@ function checkReq() {
 
     if ($(req).val().match(StringValidator) || $(req).val().trim() == "") {
     	$("#errorReq").hide();
+    	$("#conferma").attr("disabled", false);
     	return true;
     } else {
+    	$("#conferma").attr("disabled", true);
     	$("#errorReq").html("I requisiti non devono superare i 3000 caratteri " +
     			"e di almeno 10 caratteri.");
 		$("#errorReq").show();
@@ -68,8 +40,10 @@ function checkContratto() {
 	var cont = $("#cont");
 	if($(cont).val()) {
 		$("#errorTipo").hide();
+		$("#conferma").attr("disabled", false);
 		return true;
 	} else {
+		$("#conferma").attr("disabled", true);
 		$("#errorTipo").html("Devi selezionare una delle opzioni elencate.");
 		$("#errorTipo").show();
 		return false;
@@ -82,8 +56,10 @@ function checkCitta() {
 
     if ($(citta).val().match(StringValidator) || $(citta).val().trim() == "") {
     	$("#errorCitta").hide();
+    	$("#conferma").attr("disabled", false);
     	return true;
     } else {
+    	$("#conferma").attr("disabled", true);
     	$("#errorCitta").html("La città deve contenere solo lettere e " +
     			"formata minimo da 2 lettere e massimo da 20.");
     	$("#errorCitta").show();
@@ -97,8 +73,10 @@ function checkDesc() {
 
 	    if ($(desc).val().match(StringValidator) || $(desc).val().trim() == "") {
 	    	$("#errorDescrizione").hide();
+	    	$("#conferma").attr("disabled", false);
 	    	return true;
 	    } else {
+	    	$("#conferma").attr("disabled", true);
 	    	$("#errorDescrizione").html("La descrizione non può superare i 7.000 caratteri e " +
 	    								"di almeno 10 caratteri");
 	    	$("#errorDescrizione").show();
@@ -112,8 +90,10 @@ function checkTags() {
 
     if ($(tags).val().match(StringValidator) || $(tags).val().trim() == "") {
     	$("#errorTags").hide();
+    	$("#conferma").attr("disabled", false);
     	return true;
     } else {
+    	$("#conferma").attr("disabled", true);
     	$("#errorTags").html("Il tag deve contenere solo lettere.");
     	$("#errorTags").show();
         return false;

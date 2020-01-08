@@ -2,30 +2,6 @@
  * 
  */
 
-function checkAll() {
-	
-	if(!checkTitolo()) {
-		return false;
-	} else if(!checkBody())  {
-		return false;
-	} else {
-		var form = $('#segnala')[0]; 
-		var formData = new FormData(form);
-		
-		$.ajax({
-		    url: "../../SegnalazioneUtenteServlet",
-		    data: formData,
-		    type: 'GET',
-		    contentType: false, 
-		    processData: false,
-		    async : false,
-		    success: function(data){
-	             //codice per la redirect
-	         }
-		});
-		return true;
-	}
-}
 
 function checkTitolo() {
     var tit = $("#titolo");
@@ -33,8 +9,10 @@ function checkTitolo() {
 
     if ($(tit).val().match(StringValidator) || $(tit).val().trim() == "") {
     	$("#errorTit").hide();
+    	$("#conferma").attr("disabled", false);
     	return true;
     } else {
+    	$("#conferma").attr("disabled", true);
     	$("#errorTit").html("Il titolo deve contenere minimo 5 e massimo 50 numeri e lettere.");
 		$("#errorTit").show();
         return false;
@@ -47,8 +25,10 @@ function checkBody() {
 
     if ($(body).val().match(StringValidator) || $(body).val().trim() == "") {
     	$("#errorBody").hide();
+    	$("#conferma").attr("disabled", false);
     	return true;
     } else {
+    	$("#conferma").attr("disabled", true);
     	$("#errorBody").html("Il corpo può contenere minimo 10 caratteri e al massimo 10.000 caratteri.");
 		$("#errorBody").show();
         return false;

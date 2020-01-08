@@ -9,7 +9,7 @@
 <script src="../../JS-SCRIPT/controlliRegistrazioneInoccupato.js"></script>
 </head>
 <body>
-	<form id="regInocc" enctype='multipart/form-data'>
+	<form action="${pageContext.request.contextPath}/RegistrazioneInoccupatoServlet" method="POST" enctype='multipart/form-data'>
 	Nome: <input id="nome" onchange="checkNome()" type="text" name="nome">
 	<span id="errorNome"></span><br>
 	
@@ -44,7 +44,7 @@
 	trattamento dati personali. 
 	<span id="errorCheck"></span><br>
 	
-	<input onclick="checkAll()" type="submit" value="Conferma Registrazione">
+	<input id="conferma" type="submit" value="Conferma Registrazione">
 	</form>
 </body>
 </html>

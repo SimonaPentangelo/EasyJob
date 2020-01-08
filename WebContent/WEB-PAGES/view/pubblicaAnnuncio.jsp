@@ -9,7 +9,7 @@
 <script src="../../JS-SCRIPT/controlliPubblicaAnnuncio.js"></script>
 </head>
 <body>
-	<form id="pubAd">
+	<form action="${pageContext.request.contextPath}/PubblicaAnnuncioServlet" method="POST">
 	Titolo: <input id="titolo" onchange="checkTitolo()" type="text" name="titolo"> 
 	<span id="errorTitolo"></span><br>
 	
@@ -36,7 +36,7 @@
 	Tags: <input id="tags" onchange="checkTags()" type="text" name= "tags" placeholder="Inserisci uno o più tag susseguiti dalla virgola"> 
 	<span id="errorTags"></span><br>
 	
-	<input type="submit" onclick="checkAll()" value="Pubblica Annuncio">
+	<input id="conferma" type="submit" value="Pubblica Annuncio">
 	</form>
 </body>
 </html>

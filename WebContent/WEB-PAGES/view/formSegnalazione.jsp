@@ -20,7 +20,7 @@
 <script src="../../JS-SCRIPT/controlliFormSegnalazione.js"></script>
 </head>
 <body>
-<form id="segnala">
+<form action="${pageContext.request.contextPath}/SegnalazioneUtenteServlet" method="POST">
 	Titolo: <input id="titolo" onchange="checkTitolo()" type="text" name="titolo"> 
 	<span id="errorTit"></span><br>
 	
@@ -33,7 +33,7 @@
     <input type="hidden" name="azienda" value="<%=idAzienda%>"> <br>
     <input type="hidden" name="moderatore" value="<%=idMod%>"><br> 
 	<br>	
-	<input type="submit" value="Invia Segnalazione">
+	<input id="conferma" type="submit" value="Invia Segnalazione">
 	</form>
 
 </body>

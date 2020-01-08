@@ -9,7 +9,7 @@
 <script src="../../JS-SCRIPT/controlliRegistrazioneAzienda.js"></script>
 </head>
 <body>
-	<form id="regAz" enctype='multipart/form-data'>
+	<form action="${pageContext.request.contextPath}/RegistrazioneAziendaServlet" method="POST" enctype='multipart/form-data'>
 	Nome Azienda: <input id="nomeAzienda" onchange="checkNomeAzienda()" type="text" name="nomeAzienda"> 
 	<span id="errorNome"></span><br>
 	
@@ -47,7 +47,7 @@
 	trattamento dati personali. 
 	<span id="errorCheck"></span><br>
 	
-	<input onclick="checkAll()" type="submit" value="Conferma Registrazione">
+	<input id="conferma" type="submit" value="Conferma Registrazione">
 	</form>
 </body>
 </html>

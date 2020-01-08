@@ -2,48 +2,6 @@
  * 
  */
 
-function checkAll() {
-
-	
-	if(!checkNome()) {
-		return false;
-	} else if(!checkCognome()) {
-		return false;
-	} else if(!checkCitta()) {
-		return false;
-	} else if(!checkResidenza()) {
-		return false;
-	} else if(!checkDataNascita()) {
-		return false;
-	} else if(!checkEmail())  {
-		return false;
-	} else if(!checkUsername()) {
-		return false
-	} else if(!checkPass()) {
-		return false;
-	} else if(!checkCurriculum()) {
-		return false;
-	} else if(!checkTrattamentoDati()) {
-		return false;
-	} else {
-		var form = $('#regInocc')[0]; 
-		var formData = new FormData(form);
-		
-		$.ajax({
-		    url: "../../RegistrazioneInoccupatoServlet",
-		    enctype: 'multipart/form-data',
-		    data: formData,
-		    type: 'POST',
-		    contentType: false, 
-		    processData: false,
-		    async : false,
-		    success: function(data){
-	             //codice per la redirect
-	         }
-		});
-		return true;
-	}
-}
 
 function checkNome() {
     var nome = $("#nome");
@@ -51,8 +9,10 @@ function checkNome() {
 
     if ($(nome).val().match(StringValidator) || $(nome).val().trim() == "") {
     	$("#errorNome").hide();
+    	$("#conferma").attr("disabled", false);
     	return true;
     } else {
+    	$("#conferma").attr("disabled", true);
     	$("#errorNome").html("Il nome deve contenere solo lettere e " +
     						"deve essere composto da 2 a 50 lettere.");
 		$("#errorNome").show();
@@ -66,8 +26,10 @@ function checkCognome() {
 
     if ($(cognome).val().match(StringValidator) || $(cognome).val().trim() == "") {
     	$("#errorCognome").hide();
+    	$("#conferma").attr("disabled", false);
     	return true;
     } else {
+    	$("#conferma").attr("disabled", true);
     	$("#errorCognome").html("Il cognome deve contenere solo lettere e " +
 							"deve essere composto da 2 a 50 lettere.");
     	$("#errorCognome").show();
@@ -81,8 +43,10 @@ function checkCitta() {
 
     if ($(citta).val().match(StringValidator) || $(citta).val().trim() == "") {
     	$("#errorCitta").hide();
+    	$("#conferma").attr("disabled", false);
     	return true;
     } else {
+    	$("#conferma").attr("disabled", true);
     	$("#errorCitta").html("La città deve contenere solo lettere e " +
     			"formata minimo da 2 lettere e massimo da 20.");
     	$("#errorCitta").show();
@@ -96,8 +60,10 @@ function checkResidenza() {
 
     if ($(residenza).val().match(StringValidator) || $(residenza).val().trim() == "") {
     	$("#errorResidenza").hide();
+    	$("#conferma").attr("disabled", false);
     	return true;
     } else {
+    	$("#conferma").attr("disabled", true);
     	$("#errorResidenza").html("L’indirizzo non rispetta il formato.");
     	$("#errorResidenza").show();
         return false;
@@ -113,10 +79,12 @@ function checkDataNascita() {
         if (oggi > nascita) 
         {
         	$("#errorData").hide();
+        	$("#conferma").attr("disabled", false);
             return true;
         } 
         else
         {
+        	$("#conferma").attr("disabled", true);
         	$("#errorData").html("La data inserita non rispetta il formato.");
     		$("#errorData").show();
         	return false;
@@ -130,8 +98,10 @@ function checkEmail() {
 
     if ($(email).val().match(StringValidator) || $(email).val().trim() == "") {
     	$("#errorMail").hide();
+    	$("#conferma").attr("disabled", false);
     	return true;
     } else {
+    	$("#conferma").attr("disabled", true);
     	$("#errorMail").html("Il formato non è valido.");
 		$("#errorMail").show();
         return false;
@@ -144,8 +114,10 @@ function checkUsername() {
 
     if ($(us).val().match(StringValidator) || $(us).val().trim() == "") {
     	$("#errorUser").hide();
+    	$("#conferma").attr("disabled", false);
     	return true;
     } else {
+    	$("#conferma").attr("disabled", true);
     	$("#errorUser").html("L’username deve essere composto da 2 a 50 numeri e lettere.");
 		$("#errorUser").show();
         return false;
@@ -161,13 +133,16 @@ function checkPass() {
         if($(pass).val().match($(confPass).val())) {
         	$("#errorPass").hide();
         	$("#errorConfPass").hide();
+        	$("#conferma").attr("disabled", false);
         	return true;
         } else {
+        	$("#conferma").attr("disabled", true);
         	$("#errorConfPass").html("Password non corrispondente.");
     		$("#errorConfPass").show();
     		return false;
         }
     } else {
+    	$("#conferma").attr("disabled", true);
     	$("#errorPass").html("La password deve contenere minimo 8 caratteri e massimo 16.");
 		$("#errorPass").show();
     	return false;
@@ -182,13 +157,16 @@ function checkCurriculum() {
     	var sizeInMB = curr[0].size / Math.pow(1024,2)
         if(sizeInMB <= 10.00) {
         	$("#errorCurriculum").hide();
+        	$("#conferma").attr("disabled", false);
         	return true;
         } else {
+        	$("#conferma").attr("disabled", true);
         	$("#errorCurriculum").html("La dimensione non deve superare i 10MB.");
     		$("#errorCurriculum").show();
         	return false;
         }
     } else {
+    	$("#conferma").attr("disabled", true);
     	$("#errorCurriculum").html("Il file deve essere in formato PDF.");
 		$("#errorCurriculum").show();
         return false;
@@ -199,8 +177,10 @@ function checkTrattamentoDati() {
 	var checked = $("#dati").is(":checked");
 	if(checked) {
 		$("#errorCheck").hide();
+		$("#conferma").attr("disabled", false);
 		return true;
 	} else {
+		$("#conferma").attr("disabled", true);
 		$("#errorCheck").html("E’ obbligatorio spuntare la casella del trattamento dati.");
 		$("#errorCheck").show();
 		return false;

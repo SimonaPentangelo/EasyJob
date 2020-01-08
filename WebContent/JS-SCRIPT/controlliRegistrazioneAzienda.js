@@ -6,50 +6,7 @@
  * 
  */
 
-function checkAll() {
-	
-	if(!checkNomeAzienda()) {
-		return false;
-	} else if(!checkLogo()) {
-		return false;
-	} else if(!checkPIva()) {
-		return false;
-	} else if(!checkUsername()) {
-		return false;
-	} else if(!checkIndirizzo()) {
-		return false;
-	} else if(!checkDataFondazione())  {
-		return false;
-	} else if(!checkDescrizione()) {
-		return false
-	} else if(!checkDipendenti()) {
-		return false;
-	} else if(!checkEmail()) {
-		return false;
-	} else if(!checkPass()) {
-		return false;
-	} else if(!checkTrattamentoDati()) {
-		return false;
-	} else {
-		console.log("CIAOOOO");
-		var form = $('#regAz')[0]; 
-		var formData = new FormData(form);
-		
-		$.ajax({
-		    url: "../../RegistrazioneAziendaServlet",
-		    enctype: 'multipart/form-data',
-		    data: formData,
-		    type: 'POST',
-		    contentType: false, 
-		    processData: false,
-		    async : false,
-		    success: function(data){
-	             //codice per la redirect
-	         }
-		});
-		return true;
-	}
-}
+
 
 function checkDescrizione() {
 	   var desc = $("#desc");
@@ -58,8 +15,10 @@ function checkDescrizione() {
 	    if ($(desc).val().match(StringValidator) || $(desc).val().trim() == "") {
 	    	$("#errorDesc").hide();
 	    	console.log("ok desc");
+	    	$("#conferma").attr("disabled", false);
 	    	return true;
 	    } else {
+	    	$("#conferma").attr("disabled", true);
 	    	$("#errorDesc").html("La descrizione deve essere di almeno 10 caratteri " +
 	    						"e non deve superare i 500 caratteri.");
 	    	$("#errorDesc").show();
@@ -74,8 +33,10 @@ function checkNomeAzienda() {
     if ($(nomeAz).val().match(StringValidator) || $(nomeAz).val().trim() == "") {
     	$("#errorNome").hide();
     	console.log("ok nome az");
+    	$("#conferma").attr("disabled", false);
         return true;
     } else {
+    	$("#conferma").attr("disabled", true);
     	$("#errorNome").html("Il nome deve contenere minimo 6 caratteri e massimo 30.");
 		$("#errorNome").show();
         return false;
@@ -89,8 +50,10 @@ function checkPIva() {
     if ($(piva).val().match(StringValidator) || $(piva).val().trim() == "") {
     	$("#errorIVA").hide();
     	console.log("ok piva");
+    	$("#conferma").attr("disabled", false);
         return true;
     } else {
+    	$("#conferma").attr("disabled", true);
     	$("#errorIVA").html("La partita IVA deve contenere 11 caratteri.");
 		$("#errorIVA").show();
         return false;
@@ -103,8 +66,10 @@ function checkDipendenti() {
 	if(dip.val() > 0 && dip.val().match(numbers)) {
 		$("#errorDip").hide();
 		console.log("ok dip");
+		$("#conferma").attr("disabled", false);
         return true;
 	} else {
+		$("#conferma").attr("disabled", true);
 		$("#errorDip").html("Il campo può contenere solo cifre.");
  		$("#errorDip").show();
  		return false;
@@ -117,9 +82,10 @@ function checkIndirizzo() {
 
      if ($(indirizzo).val().match(StringValidator) || $(indirizzo).val().trim() == "") {
     	$("#errorIndirizzo").hide();
-    	console.log("ok index");
+    	$("#conferma").attr("disabled", false);
         return true;
      } else {
+    	 $("#conferma").attr("disabled", true);
     	$("#errorIndirizzo").html("L’indirizzo non rispetta il formato.");
  		$("#errorIndirizzo").show();
 	    return false;
@@ -135,11 +101,12 @@ function checkDataFondazione() {
         if (oggi > nascita) 
         {
         	$("#errorData").hide();
-        	console.log("ok data");
+        	$("#conferma").attr("disabled", false);
             return true;
         } 
         else
         {
+        	$("#conferma").attr("disabled", true);
         	$("#errorData").html("La data inserita non rispetta il formato.");
     		$("#errorData").show();
         	return false;
@@ -153,9 +120,10 @@ function checkEmail() {
 
     if ($(email).val().match(StringValidator) || $(email).val().trim() == "") {
     	$("#errorMail").hide();
-    	console.log("ok mail");
+    	$("#conferma").attr("disabled", false);
         return true;
     } else {
+    	$("#conferma").attr("disabled", true);
     	$("#errorMail").html("Il formato non è valido.");
 		$("#errorMail").show();
         return false;
@@ -168,9 +136,10 @@ function checkUsername() {
 
     if ($(us).val().match(StringValidator) || $(us).val().trim() == "") {
     	$("#errorUser").hide();
-    	console.log("ok username");
+    	$("#conferma").attr("disabled", false);
         return true;
     } else {
+    	$("#conferma").attr("disabled", true);
     	$("#errorUser").html("L’username deve essere composto da 2 a 50 numeri e lettere.");
 		$("#errorUser").show();
         return false;
@@ -186,14 +155,16 @@ function checkPass() {
         if($(pass).val().match($(confPass).val())) {
         	$("#errorPass").hide();
         	$("#errorConfPass").hide();
-        	console.log("ok pass");
+        	$("#conferma").attr("disabled", false);
         	return true;
         } else {
+        	$("#conferma").attr("disabled", true);
         	$("#errorConfPass").html("Password non corrispondente.");
     		$("#errorConfPass").show();
     		return false;
         }
     } else {
+    	$("#conferma").attr("disabled", true);
     	$("#errorPass").html("La password deve contenere minimo 8 caratteri e massimo 16.");
 		$("#errorPass").show();
     	return false;
@@ -206,9 +177,10 @@ function checkLogo() {
 	var ext = name.substring(name.length - 3);
     if (ext == "jpg" || ext == "png") {
     	$("#errorLogo").hide();
-    	console.log("ok logo");
+    	$("#conferma").attr("disabled", false);
        	return true;
     } else {
+    	$("#conferma").attr("disabled", true);
     	$("#errorLogo").html("Il formato dell’immagine deve essere o png o jpg.");
 		$("#errorLogo").show();
         return false;
@@ -219,9 +191,10 @@ function checkTrattamentoDati() {
 	var checked = $("#dati").is(":checked");
 	if(checked) {
 		$("#errorCheck").hide();
-		console.log("ok check");
+		$("#conferma").attr("disabled", false);
 		return true;
 	} else {
+		$("#conferma").attr("disabled", true);
 		$("#errorCheck").html("E’ obbligatorio spuntare la casella del trattamento dati.");
 		$("#errorCheck").show();
 		return false;
