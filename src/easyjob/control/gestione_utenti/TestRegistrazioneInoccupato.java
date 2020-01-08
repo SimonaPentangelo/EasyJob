@@ -3,10 +3,14 @@ package easyjob.control.gestione_utenti;
 import org.springframework.mock.web.MockHttpServletRequest;
 import static org.junit.Assert.assertEquals;
 import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.util.FileCopyUtils;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.http.Part;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,6 +18,7 @@ import org.junit.jupiter.api.Test;
 import easyjob.control.gestione_utenti.RegistrazioneInoccupatoServlet;
 import easyjob.test.DatabaseHelper;
 
+@MultipartConfig
 public class TestRegistrazioneInoccupato {
 private RegistrazioneInoccupatoServlet servlet;
 private MockHttpServletRequest request;
@@ -42,9 +47,9 @@ public void TC_1_1_0()throws ServletException, IOException{
 	request.addParameter("confermaPassword","giuseppe123");
 	request.addParameter("curriculum","c:/path/cv.pdf");
 	request.addParameter("trattamentoDati","on");
-	
 	servlet.doPost(request,response);
 	assertEquals(message,response.getContentAsString());
 	
 }
+
 }

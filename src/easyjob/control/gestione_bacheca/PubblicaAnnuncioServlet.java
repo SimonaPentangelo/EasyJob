@@ -25,12 +25,12 @@ public class PubblicaAnnuncioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	
-private boolean valida(String titolo, String desc, String req, String città, String tag, String typeContratto) {
+public boolean valida(String titolo, String desc, String req, String città, String tag, String typeContratto) {
 	
 	boolean valido = true;
 	String expTitolo= "^[A-Za-z0-9,. ]{6,50}$";
-    String expDesc="^[A-Za-z\\é\\è\\ò\\à\\ù\\ì\\ .,!?']{10,7000}$";
-    String expReq="^[A-Za-z\\é\\è\\ò\\à\\ù\\ì\\ .,!?']{10,3000}$";
+    String expDesc="^[A-Za-zàèìòù.,!?' ]{10,7000}$";
+    String expReq="^[A-Za-zàèìòù0-9, ]{10,3000}$";
     String expCittà= "^[A-Za-z' ]{2,20}$";
     String expTag="^[A-Za-z, ]{4,50}$";
 	
@@ -61,10 +61,9 @@ private boolean valida(String titolo, String desc, String req, String città, Str
     
 	if(typeContratto.equalsIgnoreCase("full-time") || typeContratto.equalsIgnoreCase("part-time") || typeContratto.equalsIgnoreCase("apprendistato") ||
 			typeContratto.equalsIgnoreCase("stagista") || typeContratto.equalsIgnoreCase("tirocinio") || typeContratto.equalsIgnoreCase("progetto")) {
-	} else {
+	}else {
 		valido = false;
 	}
-	
     
 	return valido;
 }
@@ -83,8 +82,8 @@ private boolean valida(String titolo, String desc, String req, String città, Str
 		Annuncio annuncio = new Annuncio();
 		String redirect = "";
 		ManagerAnnunci manager = new ManagerAnnunci();
-		/*Prendo dalla sessione l'id dell'azienda che è loggata*/
-		//Azienda azienda = (Azienda) request.getSession().getAttribute("utenteAzienda");
+		
+		Azienda azienda = (Azienda) request.getSession().getAttribute("utenteAzienda");
 		
 		/*Prelevo dall'azienda l'id per agganciare l'annuncio alla azienda che lo sta pubblicando*/
 		//int id = azienda.getIdUser();
@@ -106,7 +105,7 @@ private boolean valida(String titolo, String desc, String req, String città, Str
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		String localDate = dtf.format(LocalDate.now());
 		
-		annuncio.setAzienda(1); // N.B E' FITTIZIO AL FINE DEI TEST PER IL MANAGER E DELLA SERVLET
+		annuncio.setAzienda(azienda.getIdUser()); // N.B E' FITTIZIO AL FINE DEI TEST PER IL MANAGER E DELLA SERVLET
 		annuncio.setCittà(città);
 		annuncio.setData(localDate);
 		annuncio.setTitolo(titolo);
@@ -118,15 +117,22 @@ private boolean valida(String titolo, String desc, String req, String città, Str
 		try{
 			if(validate)
 		{
-			if(manager.pubblicaAnnuncio(annuncio))
-			
-				redirect = "/WEB-PAGES/view/SuccesfulPublish.jsp";	
-		}
+			if(manager.pubblicaAnnuncio(annuncio)) {
+				response.getWriter().write("Pubblicato");
+				redirect = "/WEB-PAGES/view/SuccesfulPublish.jsp";
+			}
+		
 			else
 			{
-				
+				response.getWriter().write("Errore");
 				redirect = "/WEB-PAGES/view/ErrorPublish.jsp";
-			}	
+			}
+		}else {
+			response.getWriter().write("Errore nel formato");
+			request.getSession().setAttribute("errore","Formato dato errati");
+			redirect="/WEB-PAGES/view/pubblicaAnnuncio.jsp";
+			
+		}
 		}catch (Exception e){
 			e.printStackTrace();
 		}

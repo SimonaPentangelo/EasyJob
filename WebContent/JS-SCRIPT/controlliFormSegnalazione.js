@@ -4,10 +4,9 @@
 
 
 function checkTitolo() {
-    var tit = $("#titolo");
+    var tit = $("#titolo").val();
     var StringValidator = /^[A-Za-zàèìòù .,!?' ]{5,60}$/;
-
-    if ($(tit).val().match(StringValidator) || $(tit).val().trim() == "") {
+    if (tit.match(StringValidator) || tit.trim() == "") {
     	$("#errorTit").hide();
     	$("#conferma").attr("disabled", false);
     	return true;
@@ -20,10 +19,10 @@ function checkTitolo() {
 }
 
 function checkBody() {
-    var body = $("corpo");
+    var body = $("#corpo").val();
     var StringValidator = /^[A-Za-zàèìòù .,!?']{10,10000}$/;
 
-    if ($(body).val().match(StringValidator) || $(body).val().trim() == "") {
+    if (body.match(StringValidator) || body.trim() == "") {
     	$("#errorBody").hide();
     	$("#conferma").attr("disabled", false);
     	return true;

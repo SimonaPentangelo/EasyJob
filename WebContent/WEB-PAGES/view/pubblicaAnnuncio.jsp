@@ -1,3 +1,4 @@
+<% String errorFormat = (String) session.getAttribute("errore"); %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -35,6 +36,9 @@
 	
 	Tags: <input id="tags" onchange="checkTags()" type="text" name= "tags" placeholder="Inserisci uno o più tag susseguiti dalla virgola"> 
 	<span id="errorTags"></span><br>
+	<%if (errorFormat!=null){
+		%><p> <%=errorFormat %></p>
+	<%} %>
 	
 	<input id="conferma" type="submit" value="Pubblica Annuncio">
 	</form>
