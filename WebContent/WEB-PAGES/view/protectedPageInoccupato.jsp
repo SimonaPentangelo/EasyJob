@@ -42,6 +42,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Pagina Personale Inoccupato</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="../../JS-SCRIPT/controlliRegistrazioneInoccupato.js"></script>
 </head>
 <body>
 	<p> Benvenuto nella tua area private <%= nameString %></p>
@@ -82,8 +84,8 @@
 		</form> 
 		
 		<form action="${pageContext.request.contextPath}/ModificaCurriculumServlet" method="POST" enctype='multipart/form-data'>
-			 Nuovo Curriculum: <input type="file" name="curriculum"> <br>
-			<input type="submit" value="Modifica Curriculum">
+			 Nuovo Curriculum: <input id="curriculum" onchange="checkCurriculum" type="file" name="curriculum"> <br>
+			<input id="conferma" type="submit" value="Modifica Curriculum">
 		</form> 
     </div>
 </body>
