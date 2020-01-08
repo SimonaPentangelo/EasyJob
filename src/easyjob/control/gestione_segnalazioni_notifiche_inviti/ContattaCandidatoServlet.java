@@ -80,8 +80,8 @@ public class ContattaCandidatoServlet extends HttpServlet {
 
 	protected boolean validazione (int idAn,int idUt,String tit,String msg,int idAzienda) {
 		boolean valido = true;
-		String expTit= "^[A-Za-z\\י\\ט\\ע\\א\\ש\\ל\\ .,!?']{5,60}$";
-		String expMsg="^[A-Za-z\\י\\ט\\ע\\א\\ש\\ל\\ .,!?']{10,10000}$";
+		String expTit= "^[A-Za-zאטלעש .,!?']{5,60}$";
+		String expMsg="^[A-Za-zאטלעש .,!?']{10,10000}$";
 		
 		if(idAn<1) {
 			valido = false;
