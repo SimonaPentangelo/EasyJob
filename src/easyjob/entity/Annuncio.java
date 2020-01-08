@@ -29,7 +29,7 @@ public class Annuncio {
 		this.data = data;
 		this.azienda = azienda;
 		this.città = città;
-		;
+		this.nomeAzienda = nomeAzienda;
 	}
 	
 	public Annuncio() {

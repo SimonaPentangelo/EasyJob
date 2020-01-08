@@ -1,6 +1,6 @@
 <%Moderatore mod = (Moderatore) session.getAttribute("utenteModeratore");
   int idAzienda = (Integer) session.getAttribute("az");
-  int idMod = mod.getIdUser();
+ int idMod = mod.getIdUser();
 %>
 
 <%@ page import ="easyjob.entity.Moderatore" %>

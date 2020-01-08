@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import easyjob.entity.Annuncio;
 import easyjob.model.ManagerAnnunci;
+import easyjob.model.ManagerUtenti;
 
 /**
  * Servlet implementation class LeggiAnnuncioServlet
@@ -25,6 +26,7 @@ public class LeggiAnnuncioServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ManagerAnnunci manager = new ManagerAnnunci();
+		ManagerUtenti mu = new ManagerUtenti();
 		Annuncio annuncio = new Annuncio();
 		String redirect = "";
 		
@@ -32,6 +34,7 @@ public class LeggiAnnuncioServlet extends HttpServlet {
 		try{
 			if(id>=0){
 			annuncio = manager.searchById(id);
+			annuncio.setNomeAzienda(mu.getNomeAzienda(annuncio.getAzienda()));
 			request.getSession().setAttribute("annuncioSelezionato",annuncio);
 			redirect ="/WEB-PAGES/view/ShowAnnuncio.jsp";
 			}

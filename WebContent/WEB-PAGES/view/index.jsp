@@ -35,7 +35,7 @@
 	if(moderatore != null){	
 	%>
 	<form action = "${pageContext.request.contextPath}/RicercaAnnunciModeratore" method="GET">
-		<input id="data" onchange="checkData()" type="date" name="data"> 
+		<input id="dataID" onchange="checkData()" type="date" name="data"> 
 		<span id="errorData"></span><br>
 		<input id="conferma" type="submit" value="Ricerca per data">
 	</form>

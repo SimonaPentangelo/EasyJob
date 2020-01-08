@@ -3,7 +3,7 @@
  */
 
 function checkData() {
-    var data = $("#data");
+    var data = $("#dataID");
     var oggi = new Date();
     var dataRic = new Date($(data).val());
     console.log(dataRic);

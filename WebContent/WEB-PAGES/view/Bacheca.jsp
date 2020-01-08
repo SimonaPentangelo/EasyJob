@@ -30,14 +30,16 @@
 
 <%} else{
 
+	if(mod == null) {
 %>
 <form action="${pageContext.request.contextPath}/FiltraAnnunciServlet" method="GET">
 	 <input type="text" name="advancedSearch">
 	 <input type="hidden" name="tag" value="<%=tagDellaRicerca %>">
 	 <input type="submit" value="Cerca per città">
 </form>
-<% 	
-for (int i=0;i<annunci.size();i++){
+<% 	 }
+	
+	for (int i=0;i<annunci.size();i++){
 	int id = annunci.get(i).getIdAnnuncio();
 	String titolo = annunci.get(i).getTitolo();
 	int idAzienda = annunci.get(i).getAzienda();

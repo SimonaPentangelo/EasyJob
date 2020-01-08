@@ -25,8 +25,7 @@ Azienda azienda = (Azienda) session.getAttribute("aziendaDaVisualizzare");
 	if (mod != null) {
 	%>
 	<br>
-	<button><a href="formSegnalazione.jsp"> Segnala <%=azienda.getIdUser()%> </a></button>
-	<input type= "hidden" name="az" value="<%=azienda.getIdUser()%>">
+	<button><a href="formSegnalazione.jsp?az=<%=azienda.getIdUser()%>"> Segnala </a></button>
 	<%
 	}
 	%>
