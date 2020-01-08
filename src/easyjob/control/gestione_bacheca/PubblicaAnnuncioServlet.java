@@ -1,6 +1,8 @@
 package easyjob.control.gestione_bacheca;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.regex.Pattern;
@@ -23,14 +25,14 @@ public class PubblicaAnnuncioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	
-private boolean valida(String titolo, String desc, String req, String città, String tag) {
+private boolean valida(String titolo, String desc, String req, String città, String tag, String typeContratto) {
 	
 	boolean valido = true;
-	String expTitolo= "^[A-Za-z]{6,20}$";
-    String expDesc="^[A-Za-z\\é\\è\\ò\\à\\ù\\ì\\.,!?']{10,7000}$";
-    String expReq="^[A-Za-z\\é\\è\\ò\\à\\ù\\ì\\.,!?']{10,3000}$";
-    String expCittà= "^[A-Za-z']{2,20}$";
-    String expTag="^[A-Za-z]{6,20}$";
+	String expTitolo= "^[A-Za-z0-9,. ]{6,50}$";
+    String expDesc="^[A-Za-z\\é\\è\\ò\\à\\ù\\ì\\ .,!?']{10,7000}$";
+    String expReq="^[A-Za-z\\é\\è\\ò\\à\\ù\\ì\\ .,!?']{10,3000}$";
+    String expCittà= "^[A-Za-z' ]{2,20}$";
+    String expTag="^[A-Za-z, ]{4,50}$";
 	
     if (!Pattern.matches(expTitolo, titolo)) {
 		valido=false;
@@ -55,6 +57,12 @@ private boolean valida(String titolo, String desc, String req, String città, Str
     if (!Pattern.matches(expTag, tag)) {
 		valido=false;
 		System.out.print(tag);
+	}
+    
+	if(typeContratto.equalsIgnoreCase("full-time") || typeContratto.equalsIgnoreCase("part-time") || typeContratto.equalsIgnoreCase("apprendistato") ||
+			typeContratto.equalsIgnoreCase("stagista") || typeContratto.equalsIgnoreCase("tirocinio") || typeContratto.equalsIgnoreCase("progetto")) {
+	} else {
+		valido = false;
 	}
 	
     
@@ -92,25 +100,20 @@ private boolean valida(String titolo, String desc, String req, String città, Str
 		ArrayList<String> tags = new ArrayList<String>(Arrays.asList(tag.split(",")));
 		/*Incapsulo i paremtri in un oggetto annuncio da passare al metodo del manager*/
 		
-		boolean validate = valida(titolo, desc, req, città, tag);
+		boolean validate = valida(titolo, desc, req, città, tag, typeContratto);
 		System.out.println("Validate: "+validate);
 	
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		String localDate = dtf.format(LocalDate.now());
+		
 		annuncio.setAzienda(1); // N.B E' FITTIZIO AL FINE DEI TEST PER IL MANAGER E DELLA SERVLET
 		annuncio.setCittà(città);
-		annuncio.setData("26/12/2019");
+		annuncio.setData(localDate);
 		annuncio.setTitolo(titolo);
 		annuncio.setDescrizione(desc);
 		annuncio.setTipoContratto(typeContratto);
 		annuncio.setRequisiti(req);
 		annuncio.setTags(tags);
-		boolean isAValidTypeContract;
-		if(typeContratto.equalsIgnoreCase("full-time") || typeContratto.equalsIgnoreCase("part-time") || typeContratto.equalsIgnoreCase("apprendistato") ||
-				typeContratto.equalsIgnoreCase("stagista") || typeContratto.equalsIgnoreCase("tirocinio") || typeContratto.equalsIgnoreCase("progetto"))
-		{
-		isAValidTypeContract = true;
-		}else{
-			isAValidTypeContract = false;
-		}
 		
 		try{
 			if(validate)

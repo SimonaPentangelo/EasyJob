@@ -86,7 +86,7 @@ function checkDesc() {
 
 function checkTags() {
     var tags = $("#tags");
-    var StringValidator = /^[A-Za-z]{6,20}$/;
+    var StringValidator = /^[A-Za-z, ]{4,50}$/;
 
     if ($(tags).val().match(StringValidator) || $(tags).val().trim() == "") {
     	$("#errorTags").hide();

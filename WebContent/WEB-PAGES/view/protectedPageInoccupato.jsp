@@ -43,7 +43,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Pagina Personale Inoccupato</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="../../JS-SCRIPT/controlliRegistrazioneInoccupato.js"></script>
+<script src="../../JS-SCRIPT/controlliModificaCurriculum.js"></script>
 </head>
 <body>
 	<p> Benvenuto nella tua area private <%= nameString %></p>

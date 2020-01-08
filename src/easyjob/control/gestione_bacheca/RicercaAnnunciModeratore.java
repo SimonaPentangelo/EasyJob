@@ -1,6 +1,8 @@
 package easyjob.control.gestione_bacheca;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +33,19 @@ public class RicercaAnnunciModeratore extends HttpServlet {
 		
 		ManagerUtenti managerUt = new ManagerUtenti();
 		ManagerAnnunci managerAn = new ManagerAnnunci();
-		String dataDaCercare = request.getParameter("data");
+		String dataDaCercareS = request.getParameter("data");
+		String dataDaCercare = null;
+		
+		if(dataDaCercareS != null) {
+			System.out.println(dataDaCercareS);
+			SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+			SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
+			try {	
+				dataDaCercare = sdf2.format(sdf1.parse(dataDaCercareS));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
 		System.out.println(dataDaCercare);
 		String redirect = "";
 		List<Annuncio> annunci = new ArrayList<>();	
@@ -53,7 +67,7 @@ public class RicercaAnnunciModeratore extends HttpServlet {
 		}
 		
 		response.sendRedirect(request.getContextPath()+redirect);
-
+		}
 	}
 
 	/**

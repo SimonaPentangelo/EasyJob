@@ -9,6 +9,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Homepage</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="../../JS-SCRIPT/controlliRicercaAnnunciModeratore.js"></script>
 </head>
 <body>
 	<ul>
@@ -23,7 +25,7 @@
 	if (azienda != null) {
 	%>
 	<p>DEBUGGING </p>
-	<button><a href="WEB-PAGES/view/pubblicaAnnuncio.jsp"> Pubblica Annuncio</a></button>
+	<button><a href="pubblicaAnnuncio.jsp"> Pubblica Annuncio</a></button>
 	<%
 	}
 	%>
@@ -33,8 +35,9 @@
 	if(moderatore != null){	
 	%>
 	<form action = "${pageContext.request.contextPath}/RicercaAnnunciModeratore" method="GET">
-		<input type="text" name="data"> 
-		<input type="submit" value="Ricerca per data">
+		<input id="data" onchange="checkData()" type="date" name="data"> 
+		<span id="errorData"></span><br>
+		<input id="conferma" type="submit" value="Ricerca per data">
 	</form>
 	<%
 	}// FINE IF, SE IN SESSIONE NON C'é UN MODERATORE ALLORA LA RICERCA IN BACHECA è QUELLA CLASSICA
