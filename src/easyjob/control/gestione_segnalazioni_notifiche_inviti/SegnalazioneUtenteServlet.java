@@ -25,8 +25,8 @@ public class SegnalazioneUtenteServlet extends HttpServlet {
 	private boolean valida(String titolo, String body) {
 		
 		boolean valido = true;
-		String expTitolo= "^[A-Za-zיטעאשל .,!?']{5,60}$";
-	    String expBody="^[A-Za-zיטעאשל .,!?']{10,10000}$";
+		String expTitolo= "^[A-Za-zאטלעש .,!?']{5,60}$";
+	    String expBody="^[A-Za-zאטלעש .,!?']{10,10000}$";
 		
 	    if (!Pattern.matches(expTitolo, titolo)) {
 			valido=false;

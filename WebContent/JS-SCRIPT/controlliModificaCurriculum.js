@@ -10,7 +10,9 @@ function checkCurriculum() {
     	var sizeInMB = curr[0].size / Math.pow(1024,2)
         if(sizeInMB <= 10.00) {
         	$("#errorCurriculum").hide();
-        	$("#conferma").attr("disabled", false);
+        	if(!$("#conferma").is(":disabled")) {
+        		$("#conferma").attr("disabled", false);
+        	}
         	return true;
         } else {
         	$("#conferma").attr("disabled", true);

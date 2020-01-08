@@ -26,7 +26,7 @@ public class DriverManagerConnectionPool  {
 		String port = "3306";
 		String db;
 		String username = "root";
-		String password = "milanello1";
+		String password = "Simoncella_99";
 
 		if(!isTest){
 			db="easyjob";

@@ -5,11 +5,13 @@
 		 
 function checkTitolo() {
 	   var tit = $("#titolo");
-	   var StringValidator = /^[A-Za-z\é\è\ò\à\ù\ì\ .,!?']{5,60}$/;
+	   var StringValidator = /^[A-Za-z\xE0\xE8\xEC\xF2\xF9 .,!?']{5,60}$/;
 
 	   if ($(tit).val().match(StringValidator) || $(tit).val().trim() == "") {
 	    	$("#errorTit").hide();
-	    	$("#conferma").attr("disabled", false);
+	    	if(!$("#conferma").is(":disabled")) {
+	    		$("#conferma").attr("disabled", false);
+	    	}
 	    	return true;
 	    } else {
 	    	$("#conferma").attr("disabled", true);
@@ -22,11 +24,13 @@ function checkTitolo() {
 
 function checkMsg() {
 	var msg = $("#msg");
-	   var StringValidator = /^[A-Za-z\é\è\ò\à\ù\ì\ .,!?']{10,10000}$/;
+	   var StringValidator = /^[A-Za-z\xE0\xE8\xEC\xF2\xF9 .,!?']{10,10000}$/;
 
 	   if ($(msg).val().match(StringValidator) || $(msg).val().trim() == "") {
 	    	$("#errorMsg").hide();
-	    	$("#conferma").attr("disabled", false);
+	    	if(!$("#conferma").is(":disabled")) {
+	    		$("#conferma").attr("disabled", false);
+	    	}
 	    	return true;
 	    } else {
 	    	$("#conferma").attr("disabled", true);
