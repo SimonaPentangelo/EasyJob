@@ -10,12 +10,14 @@
 
 function checkDescrizione() {
 	   var desc = $("#desc");
-	    var StringValidator = /^[A-Za-z\é\è\ò\à\ù\ì\ .,!?']{10,500}$/;
+	    var StringValidator = /^[A-Za-z\xE0\xE8\xEC\xF2\xF9 .,!?']{10,500}$/;
 
 	    if ($(desc).val().match(StringValidator) || $(desc).val().trim() == "") {
 	    	$("#errorDesc").hide();
 	    	console.log("ok desc");
-	    	$("#conferma").attr("disabled", false);
+	    	if(!$("#conferma").is(":disabled")) {
+	    		$("#conferma").attr("disabled", false);
+	    	}
 	    	return true;
 	    } else {
 	    	$("#conferma").attr("disabled", true);
@@ -28,12 +30,14 @@ function checkDescrizione() {
 
 function checkNomeAzienda() {
 	var nomeAz = $("#nomeAzienda");
-    var StringValidator = /^[A-Za-z0-9-._ ]{5,50}$/;
+    var StringValidator = /^[A-Za-z\xE0\xE8\xEC\xF2\xF90-9-._ ]{5,50}$/;
 
     if ($(nomeAz).val().match(StringValidator) || $(nomeAz).val().trim() == "") {
     	$("#errorNome").hide();
     	console.log("ok nome az");
-    	$("#conferma").attr("disabled", false);
+    	if(!$("#conferma").is(":disabled")) {
+    		$("#conferma").attr("disabled", false);
+    	}
         return true;
     } else {
     	$("#conferma").attr("disabled", true);
@@ -50,7 +54,9 @@ function checkPIva() {
     if ($(piva).val().match(StringValidator) || $(piva).val().trim() == "") {
     	$("#errorIVA").hide();
     	console.log("ok piva");
-    	$("#conferma").attr("disabled", false);
+    	if(!$("#conferma").is(":disabled")) {
+    		$("#conferma").attr("disabled", false);
+    	}
         return true;
     } else {
     	$("#conferma").attr("disabled", true);
@@ -66,7 +72,9 @@ function checkDipendenti() {
 	if(dip.val() > 0 && dip.val().match(numbers)) {
 		$("#errorDip").hide();
 		console.log("ok dip");
-		$("#conferma").attr("disabled", false);
+		if(!$("#conferma").is(":disabled")) {
+    		$("#conferma").attr("disabled", false);
+    	}
         return true;
 	} else {
 		$("#conferma").attr("disabled", true);
@@ -78,11 +86,13 @@ function checkDipendenti() {
 
 function checkIndirizzo() {
 	 var indirizzo = $("#indirizzo");
-	 var StringValidator = /^[A-Za-z ]{3,6}[A-Za-z ]{2,35}[,]{1}[0-9 ]{2,5}$/;
+	 var StringValidator = /^[A-Za-z ]{3,6}[A-Za-z\xE0\xE8\xEC\xF2\xF9 ]{2,35}[,]{1}[0-9 ]{2,5}$/;
 
      if ($(indirizzo).val().match(StringValidator) || $(indirizzo).val().trim() == "") {
     	$("#errorIndirizzo").hide();
-    	$("#conferma").attr("disabled", false);
+    	if(!$("#conferma").is(":disabled")) {
+    		$("#conferma").attr("disabled", false);
+    	}
         return true;
      } else {
     	 $("#conferma").attr("disabled", true);
@@ -101,7 +111,9 @@ function checkDataFondazione() {
         if (oggi > nascita) 
         {
         	$("#errorData").hide();
-        	$("#conferma").attr("disabled", false);
+        	if(!$("#conferma").is(":disabled")) {
+        		$("#conferma").attr("disabled", false);
+        	}
             return true;
         } 
         else
@@ -120,7 +132,9 @@ function checkEmail() {
 
     if ($(email).val().match(StringValidator) || $(email).val().trim() == "") {
     	$("#errorMail").hide();
-    	$("#conferma").attr("disabled", false);
+    	if(!$("#conferma").is(":disabled")) {
+    		$("#conferma").attr("disabled", false);
+    	}
         return true;
     } else {
     	$("#conferma").attr("disabled", true);
@@ -136,7 +150,9 @@ function checkUsername() {
 
     if ($(us).val().match(StringValidator) || $(us).val().trim() == "") {
     	$("#errorUser").hide();
-    	$("#conferma").attr("disabled", false);
+    	if(!$("#conferma").is(":disabled")) {
+    		$("#conferma").attr("disabled", false);
+    	}
         return true;
     } else {
     	$("#conferma").attr("disabled", true);
@@ -155,7 +171,9 @@ function checkPass() {
         if($(pass).val().match($(confPass).val())) {
         	$("#errorPass").hide();
         	$("#errorConfPass").hide();
-        	$("#conferma").attr("disabled", false);
+        	if(!$("#conferma").is(":disabled")) {
+        		$("#conferma").attr("disabled", false);
+        	}
         	return true;
         } else {
         	$("#conferma").attr("disabled", true);
@@ -177,7 +195,9 @@ function checkLogo() {
 	var ext = name.substring(name.length - 3);
     if (ext == "jpg" || ext == "png") {
     	$("#errorLogo").hide();
-    	$("#conferma").attr("disabled", false);
+    	if(!$("#conferma").is(":disabled")) {
+    		$("#conferma").attr("disabled", false);
+    	}
        	return true;
     } else {
     	$("#conferma").attr("disabled", true);
@@ -191,7 +211,9 @@ function checkTrattamentoDati() {
 	var checked = $("#dati").is(":checked");
 	if(checked) {
 		$("#errorCheck").hide();
-		$("#conferma").attr("disabled", false);
+		if(!$("#conferma").is(":disabled")) {
+    		$("#conferma").attr("disabled", false);
+    	}
 		return true;
 	} else {
 		$("#conferma").attr("disabled", true);

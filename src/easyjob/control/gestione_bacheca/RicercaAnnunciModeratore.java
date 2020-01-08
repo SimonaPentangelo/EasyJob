@@ -36,7 +36,7 @@ public class RicercaAnnunciModeratore extends HttpServlet {
 		String dataDaCercareS = request.getParameter("data");
 		String dataDaCercare = null;
 		
-		if(dataDaCercareS != null) {
+		if(dataDaCercareS != null && !dataDaCercareS.equals("")) {
 			System.out.println(dataDaCercareS);
 			SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
 			SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
@@ -65,8 +65,10 @@ public class RicercaAnnunciModeratore extends HttpServlet {
 		}catch (Exception e){
 			e.printStackTrace();
 		}
-		
+		response.getWriter().write("selezione effettuata");
 		response.sendRedirect(request.getContextPath()+redirect);
+		} else {
+			response.getWriter().write("non è stata selezionata la data");
 		}
 	}
 

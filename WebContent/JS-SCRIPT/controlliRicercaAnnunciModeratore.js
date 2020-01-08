@@ -13,7 +13,9 @@ function checkData() {
         if (oggi > dataRic) 
         {
         	$("#errorData").hide();
-        	$("#conferma").attr("disabled", false);
+        	if(!$("#conferma").is(":disabled")) {
+        		$("#conferma").attr("disabled", false);
+        	}
             return true;
         } 
         else
