@@ -1,6 +1,7 @@
 <% 
 int idUt = Integer.parseInt(request.getParameter("idUt"));
 int idAn = Integer.parseInt(request.getParameter("idAn"));
+String messageError = (String) session.getAttribute("message");
 %>
 <%@page import="javax.servlet.*" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -20,7 +21,9 @@ int idAn = Integer.parseInt(request.getParameter("idAn"));
 	
 		Messaggio: <input id="msg" onchange="checkMsg()" type="text" name="messaggio">
 		<span id="errorMsg"></span> <br>
-	
+		<%if(messageError!=null){
+		%><p><%=messageError %></p>
+		<%} %>
 		<input type="hidden" name="idUtente" value="<%=idUt%>">
 		<input type="hidden" name="idAnnuncio" value="<%=idAn%>">
 		<input id="conferma" type="submit" value="Invia">

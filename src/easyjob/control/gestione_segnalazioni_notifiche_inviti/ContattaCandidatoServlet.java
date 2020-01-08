@@ -1,6 +1,7 @@
 package easyjob.control.gestione_segnalazioni_notifiche_inviti;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
@@ -59,14 +60,20 @@ public class ContattaCandidatoServlet extends HttpServlet {
 		try{
 			
 			if(mi.contattaCandidato(invito)){
+				response.getWriter().write("invitato");
 				redirect="/WEB-PAGES/view/SuccessfullInvite.jsp";
+			}else {
+				response.getWriter().write("già invitato");
+				redirect ="/WEB-PAGES/view/ErrorInvite.jsp";
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		}else{
-			redirect ="/WEB-PAGES/view/ErrorInvite.jsp";
-		}
+					response.getWriter().write("formato non valido");
+					request.setAttribute("message","formato non valido");
+					redirect ="/WEB-PAGES/view/contattaCandidato.jsp";
+			}
 		
 		response.sendRedirect(request.getContextPath()+redirect);
 	}
@@ -91,6 +98,7 @@ public class ContattaCandidatoServlet extends HttpServlet {
 		if(idAzienda<1) {
 			valido=false;
 		}
+		System.out.println("print valido:"+ valido);
 		return valido;
 	}
 }
