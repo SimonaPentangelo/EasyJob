@@ -23,11 +23,16 @@
 		
 		
 	}
+	
+%>
+<%
+Annuncio annuncioSel = (Annuncio) session.getAttribute("annuncioSelezionato");
 %>
 
 <%@page import="easyjob.entity.Inoccupato" %>
 <%@page import="easyjob.entity.Invito" %>
 <%@page import="java.util.*"%>
+<%@page import="easyjob.entity.Annuncio" %>
 
 <%
 	List<Invito> inviti = new ArrayList<>();
@@ -92,5 +97,10 @@
 		<input type="submit" value="Visualizza candidature effettuate">
 		</form>
     </div>
+    
+    <% if(annuncioSel != null){
+    	%>
+    	<a href="ShowAnnuncio.jsp">Torna all'annuncio</a>
+    <% }%>
 </body>
 </html>
