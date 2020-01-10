@@ -106,7 +106,7 @@ function checkTags() {
     	return true;
     } else {
     	$("#conferma").attr("disabled", true);
-    	$("#errorTags").html("Il tag deve contenere solo lettere.");
+    	$("#errorTags").html("Il tag deve contenere solo lettere e ogni parola deve essere separata da virgola.");
     	$("#errorTags").show();
         return false;
     }
