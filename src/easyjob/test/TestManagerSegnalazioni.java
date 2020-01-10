@@ -61,4 +61,20 @@ public class TestManagerSegnalazioni {
 		
 		
 	}
+	
+	@Test 
+	/*1) Caso in cui l'utente Ë stato gi‡ segnalato dallo stesso moderatore
+	 *2) Caso in cui l'utente non Ë stato segnalato ancora dal moderatore*/
+	public void testAlreadySegnalato() throws SQLException{
+		boolean gi‡Segnalato= false;
+		int idUtente = 1;
+		int idMod = 1;
+		gi‡Segnalato = manager.alreadyReported(idMod, idUtente);
+		assertEquals(gi‡Segnalato,true);
+		
+		int idUt2 = 3;
+		int idMod2= 1;
+		gi‡Segnalato = manager.alreadyReported(idMod2, idUt2);
+		assertEquals(gi‡Segnalato,false);
+	}
 }

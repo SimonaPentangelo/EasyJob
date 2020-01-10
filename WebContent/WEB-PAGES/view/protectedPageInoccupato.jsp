@@ -87,6 +87,10 @@
 			 Nuovo Curriculum: <input id="curriculum" onchange="checkCurriculum" type="file" name="curriculum"> <br>
 			<input id="conferma" type="submit" value="Modifica Curriculum">
 		</form> 
+		
+		<form action="${pageContext.request.contextPath}/VisualizzaCandidatureServlet" method ="GET">
+		<input type="submit" value="Visualizza candidature effettuate">
+		</form>
     </div>
 </body>
 </html>
