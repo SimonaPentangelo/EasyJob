@@ -1,6 +1,13 @@
 <% 
 ArrayList<Candidatura> elenco = (ArrayList<Candidatura>) session.getAttribute("candidature");
-ArrayList<Annuncio> elencoAn = (ArrayList<Annuncio>) session.getAttribute("elencoAnn");%>
+if(elenco== null){
+	System.out.println("è null");
+	elenco = new ArrayList<>();
+}
+ArrayList<Annuncio> elencoAn = (ArrayList<Annuncio>) session.getAttribute("elencoAnn");
+if(elencoAn==null){
+System.out.println("anche qusto è null");
+}%>
 <%@page import="easyjob.entity.Inoccupato" %>
 <%@page import="easyjob.entity.Candidatura" %>
 <%@page import="java.util.*" %>

@@ -44,12 +44,12 @@ public class VisualizzaCandidatureServlet extends HttpServlet {
 		if(inocc.getIdUser()>0) {
 			try {
 				elencoCand = manager.visualizzaCandidatureEffettuate(inocc);
-				for(Candidatura c: elencoCand) {
-					elencoAnn.add(ma.searchById(c.getAnnuncio()));
+				for(int i=0;i<elencoCand.size();i++) {
+					elencoAnn.add(ma.searchById(elencoCand.get(i).getAnnuncio()));
 					System.out.println("Dim arrey: "+elencoAnn.size());
 				}
-				request.setAttribute("elencoAnn",elencoAnn);
-				request.setAttribute("candidature",elencoCand);
+				request.getSession().setAttribute("elencoAnn",elencoAnn);
+				request.getSession().setAttribute("candidature",elencoCand);
 				redirect="/WEB-PAGES/view/ElencoCandidature.jsp";
 			}catch(Exception e) {
 				

@@ -97,7 +97,6 @@ public class ManagerCandidature {
 				lista.add(c);
 			}
 			
-			return lista;
 			
 		} finally {
 			
@@ -111,6 +110,7 @@ public class ManagerCandidature {
 				DriverManagerConnectionPool.releaseConnection(connect);
 			}
 		}
+		return lista;
 	}
 	
 /**
