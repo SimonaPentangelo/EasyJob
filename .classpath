@@ -8,18 +8,5 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Users/Simona/api java/servlet-api-2.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Simona/api java/javax.servlet-api-3.0.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Simona/api java/junit5-1.26.115.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Simona/api java/mockito-core-2.28.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Simona/api java/mockito-kotlin-1.6.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Simona/api java/mybatis-3.5.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Simona/api java/spring-core-5.2.0.RELEASE.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Simona/api java/spring-jcl-5.2.0.RELEASE.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Simona/api java/spring-test-4.0.5.RELEASE.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Simona/api java/commons-net-3.6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Simona/api java/gson-2.8.5.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Simona/api java/javax.mail.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
