@@ -41,5 +41,9 @@
 <body>
 <p>Benvenuto <%= nameString %> </p>
 <button><a href="index.jsp"> Torna alla home</a></button>
+
+ <form action = "${pageContext.request.contextPath }/LogoutServlet">
+    <input type="submit" value="Logout">
+    </form>
 </body>
 </html>

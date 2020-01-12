@@ -97,7 +97,9 @@ Annuncio annuncioSel = (Annuncio) session.getAttribute("annuncioSelezionato");
 		<input type="submit" value="Visualizza candidature effettuate">
 		</form>
     </div>
-    
+    <form action = "${pageContext.request.contextPath }/LogoutServlet">
+    <input type="submit" value="Logout">
+    </form>
     <% if(annuncioSel != null){
     	%>
     	<a href="ShowAnnuncio.jsp">Torna all'annuncio</a>

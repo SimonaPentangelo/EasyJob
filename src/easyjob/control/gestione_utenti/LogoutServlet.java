@@ -29,12 +29,14 @@ public class LogoutServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession session = request.getSession(false);
-		if(session != null)
-		    session.invalidate();
-		request.setAttribute("logoutDone", true);
-		request.getRequestDispatcher(/*path jsp da fare*/"").forward(request,response);
 		
+		request.getSession().removeAttribute("autenticato");
+		request.getSession().removeAttribute("utenteInoccupato");
+		request.getSession().removeAttribute("utenteAzienda");
+		request.getSession().removeAttribute("utenteModeratore");
+		request.getSession().removeAttribute("utenteAdmin");
+		request.getSession().invalidate();
+		response.sendRedirect(request.getContextPath()+"/WEB-PAGES/view/index.jsp");
 	}
 
 	/**

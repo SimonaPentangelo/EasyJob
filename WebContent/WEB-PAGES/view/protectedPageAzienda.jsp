@@ -44,5 +44,9 @@
 <button type="submit">Visualizza annunci pubblicati </button>
 </form>
 
+ <form action = "${pageContext.request.contextPath }/LogoutServlet">
+    <input type="submit" value="Logout">
+    </form>
+
 </body>
 </html>

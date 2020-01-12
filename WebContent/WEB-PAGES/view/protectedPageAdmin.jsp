@@ -41,5 +41,9 @@
 <form  action="../../VisualizzaSegnalazioniServlet" method="GET">
 	<input type="submit" value="Visualizza Segnalazioni">
 </form>
+
+ <form action = "${pageContext.request.contextPath }/LogoutServlet">
+    <input type="submit" value="Logout">
+    </form>
 </body>
 </html>
