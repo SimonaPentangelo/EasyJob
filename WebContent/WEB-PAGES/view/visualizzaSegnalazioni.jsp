@@ -43,7 +43,7 @@
 	
 	String titolo = segnalazioni.get(i).getTitolo();
 	String corpo = segnalazioni.get(i).getCorpo();
-	String ahref= "../../VisualizzaSegnalazioneServlet?idAz="+segnalazioni.get(i).getAzienda();
+	String ahref= "../../VisualizzaSegnalazioneServlet?idAz="+segnalazioni.get(i).getAzienda() + "&idMod=" + segnalazioni.get(i).getModeratore();
 %>
 <a href="<%=ahref%>"> <p> Titolo: <%=titolo %></p></a>
 <p><h3>Corpo:</h3></p><br>

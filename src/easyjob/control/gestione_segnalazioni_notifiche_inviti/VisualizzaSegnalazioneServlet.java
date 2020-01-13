@@ -33,11 +33,12 @@ public class VisualizzaSegnalazioneServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int idAzienda =Integer.parseInt(request.getParameter("idAz"));
+		int idModeratore =Integer.parseInt(request.getParameter("idMod"));
 		ManagerSegnalazioni manager = new ManagerSegnalazioni();
 		Segnalazione segnalazione = new Segnalazione();
 		String redirect = "";
 		try{
-			segnalazione  = manager.retrieveSegnByAz(idAzienda);
+			segnalazione  = manager.retrieveSingleReport(idAzienda, idModeratore);
 			request.getSession().setAttribute("segnalazione", segnalazione);
 			redirect = "/WEB-PAGES/view/visualizzaSegnalazione.jsp";
 		}catch (Exception e){

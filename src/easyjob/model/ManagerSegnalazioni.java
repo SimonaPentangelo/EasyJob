@@ -136,24 +136,26 @@ public class ManagerSegnalazioni {
 	}
 	
 	/**
-	 * Questo metodo resituisce una segnalazione in base all'id dell'azienda passato come input.
+	 * Questo metodo resituisce una segnalazione in base all'id dell'azienda e del moteratore (passati come input).
 	 * 
-	 * @param id oggetto di tipo <strong>int</strong>
+	 * @param idAz oggetto di tipo <strong>int</strong>
+	 * @param idMod oggetto di tipo <strong>int</strong>
 	 * @return segnalazione, oggetto di tipo <strong>Segnalazione</strong>
 	 * @throws SQLException
 	 * @precondition id =>1.
 	 */
-	public synchronized Segnalazione retrieveSegnByAz(int id) throws SQLException {
+	public synchronized Segnalazione retrieveSingleReport(int idAz, int idMod) throws SQLException {
 		
 		Segnalazione segnalazione = new Segnalazione();
 		PreparedStatement retrieveSegn = null;
 		Connection connect = null;
-		String query = "SELECT * FROM Segnalazione WHERE Azienda = ?;";
+		String query = "SELECT * FROM Segnalazione WHERE Azienda = ? AND Moderatore = ?;";
 		try{
 			
 			connect = DriverManagerConnectionPool.getConnection();
 			retrieveSegn = connect.prepareStatement(query);
-			retrieveSegn.setInt(1, id);
+			retrieveSegn.setInt(1, idAz);
+			retrieveSegn.setInt(1, idMod);
 			ResultSet result = retrieveSegn.executeQuery();
 			while(result.next()){
 				segnalazione.setTitolo(result.getString("Titolo"));
