@@ -1,0 +1,119 @@
+@charset "ISO-8859-1";
+html,
+body {
+	width: 100%;
+	overflow-x: hidden;
+	min-height:100%;
+	
+}
+
+span #vai-btn {
+	float: left;
+}
+
+.back-food {
+	background-image: url("../css/images/hero_1.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment:fixed ;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;	
+	background-position: center center;
+	
+}
+
+.zona {
+	height: 35rem;
+	padding-top: 18%;
+	padding-bottom: 15%;
+	margin-left: 15%;
+}
+
+.zona h3 {
+	color: black;
+	font-size: 30px;
+}
+
+form.group input[type=text] {
+	padding: 10px;
+	font-size: 17px;
+	border: 1px solid grey;
+	float: left;
+	width: 80%;
+	background: #f1f1f1;
+}
+
+form.group button {
+	float: left;
+	width: 5%;
+	padding: 10px;
+	background: #26C97B;
+	color: white;
+	font-size: 17px;
+	border: 1px solid grey;
+	border-left: none;
+	/* Prevent double borders */
+	cursor: pointer;
+}
+
+
+form::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+.howitworks h2 {
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.howitworks h3,
+p {
+	text-align: center;
+}
+
+.howitworks {
+	background-color: #DEDEDE;
+	padding-top: 1.2rem;
+}
+
+.icons-setting span {
+	margin-left: 40%;
+	margin-bottom: 15px;
+	margin-top: 10px;
+}
+
+.fa-map-marked-alt,
+.fa-truck {
+	color: #1EB3CB;
+}
+
+.howitworks img {
+	display: block;
+	margin: auto;
+	margin-bottom: 15px;
+	margin-top: 10px;
+}
+
+.icons-setting img {
+	width: 25%;
+	color: #1EB3CB;
+}
+
+.ordina {
+	text-align: center;
+	text-transform: uppercase;
+	margin-top: 4rem;
+	padding-bottom: 0rem;
+}
+
+/*
+.ordina .btn {
+	background-color: #26C97B;
+}
+*/
+.errore {
+	color:red;
+}

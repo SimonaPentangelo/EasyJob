@@ -38,6 +38,7 @@ public class TestManagerSegnalazioni {
 		assertEquals(listaSegnalazioni.isEmpty(),false);
 	}
 	
+	/*
 	@Test 
 	public void testRetriveSegnalazione() throws SQLException{
 		Segnalazione s = new Segnalazione();
@@ -60,7 +61,7 @@ public class TestManagerSegnalazioni {
 		assertNotNull(nuovaSegnalazione.getTitolo());
 		
 		
-	}
+	}*/
 	
 	@Test 
 	/*1) Caso in cui l'utente è stato già segnalato dallo stesso moderatore

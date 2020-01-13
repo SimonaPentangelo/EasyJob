@@ -197,7 +197,7 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String redirect = "/WEB-PAGES/view/index.jsp";
+		String redirect = "/index.jsp";
 		//String responseGsonString= new Gson().toJson(redirect);
 		//response.getWriter().write(responseGsonString);
 		//response.sendRedirect(redirect);

@@ -119,18 +119,18 @@ public boolean valida(String titolo, String desc, String req, String città, Stri
 		{
 			if(manager.pubblicaAnnuncio(annuncio)) {
 				response.getWriter().write("Pubblicato");
-				redirect = "/WEB-PAGES/view/SuccesfulPublish.jsp";
+				redirect = "/SuccesfulPublish.jsp";
 			}
 		
 			else
 			{
 				response.getWriter().write("Errore");
-				redirect = "/WEB-PAGES/view/ErrorPublish.jsp";
+				redirect = "/ErrorPublish.jsp";
 			}
 		}else {
 			response.getWriter().write("Errore nel formato");
 			request.getSession().setAttribute("errore","Formato dato errati");
-			redirect="/WEB-PAGES/view/pubblicaAnnuncio.jsp";
+			redirect="/pubblicaAnnuncio.jsp";
 			
 		}
 		}catch (Exception e){

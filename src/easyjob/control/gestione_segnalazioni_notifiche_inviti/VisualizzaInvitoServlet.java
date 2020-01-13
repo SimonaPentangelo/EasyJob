@@ -50,7 +50,7 @@ public class VisualizzaInvitoServlet extends HttpServlet {
 			int idAnnuncio = Integer.parseInt(request.getParameter("idAd"));	
 			Inoccupato inocc = (Inoccupato) request.getSession().getAttribute("utenteInoccupato");
 			ManagerInviti mi = new ManagerInviti();
-			String redirect = "/WEB-PAGES/view/visualizzaInvito.jsp";
+			String redirect = "/visualizzaInvito.jsp";
 			Invito i = new Invito();
 			
 			try {

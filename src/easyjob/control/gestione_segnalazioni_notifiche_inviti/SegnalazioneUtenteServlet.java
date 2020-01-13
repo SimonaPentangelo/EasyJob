@@ -84,10 +84,10 @@ public class SegnalazioneUtenteServlet extends HttpServlet {
 				if(!manager.alreadyReported(mod, azienda)) {
 					if(manager.segnalaUtente(segnalazione))
 					{
-						redirect = "/WEB-PAGES/view/CorrectSegnalazione.jsp";
+						redirect = "/CorrectSegnalazione.jsp";
 						response.getWriter().write("segnalato");
 					} else {
-						redirect = "/WEB-PAGES/view/ErroreSegnalazione.jsp";
+						redirect = "/ErroreSegnalazione.jsp";
 					}
 				} else {
 					response.getWriter().write("è già stato segnalato");

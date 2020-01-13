@@ -36,7 +36,7 @@ public class VisualizzaElencoAnnunciServlet extends HttpServlet {
 			if(azienda!= null){
 			listaAnnunciPubblicati = (ArrayList<Annuncio>) manager.visualizzaElencoAnnunci(azienda);
 			request.getSession().setAttribute("listaAnnunci",listaAnnunciPubblicati);
-			redirect = "/WEB-PAGES/view/ElencoAnnunci.jsp";
+			redirect = "/ElencoAnnunci.jsp";
 			}
 		}catch(Exception e){
 			e.printStackTrace();

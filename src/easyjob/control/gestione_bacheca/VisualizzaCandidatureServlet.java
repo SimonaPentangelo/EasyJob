@@ -50,12 +50,12 @@ public class VisualizzaCandidatureServlet extends HttpServlet {
 				}
 				request.getSession().setAttribute("elencoAnn",elencoAnn);
 				request.getSession().setAttribute("candidature",elencoCand);
-				redirect="/WEB-PAGES/view/ElencoCandidature.jsp";
+				redirect="/ElencoCandidature.jsp";
 			}catch(Exception e) {
 				
 			}
 		}else {
-			redirect="/WEB-PAGES/view/ErroreElencoCandidature.jsp";
+			redirect="/ErroreElencoCandidature.jsp";
 		}
 		response.sendRedirect(request.getContextPath()+redirect);
 	}

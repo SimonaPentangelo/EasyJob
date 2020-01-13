@@ -36,7 +36,7 @@ public class VisualizzaCandidatiServlet extends HttpServlet {
 		ManagerUtenti managerUt = new ManagerUtenti();
 		List<Candidatura> listaCandidatura = new ArrayList<>();
 		List<Inoccupato> listaCandidati = new ArrayList<>();
-		String redirect="/WEB-PAGES/view/ElencoCandidati.jsp";
+		String redirect="/ElencoCandidati.jsp";
 		if(titoloAnnuncio!=null && !titoloAnnuncio.equals("") && idAnnuncio>=0)
 		try{
 			

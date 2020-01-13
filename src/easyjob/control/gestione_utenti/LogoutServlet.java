@@ -36,7 +36,7 @@ public class LogoutServlet extends HttpServlet {
 		request.getSession().removeAttribute("utenteModeratore");
 		request.getSession().removeAttribute("utenteAdmin");
 		request.getSession().invalidate();
-		response.sendRedirect(request.getContextPath()+"/WEB-PAGES/view/index.jsp");
+		response.sendRedirect("index.jsp");
 	}
 
 	/**

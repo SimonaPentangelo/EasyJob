@@ -54,11 +54,11 @@ public class RicercaAnnunciServlet extends HttpServlet {
 			request.getSession().setAttribute("tag",tagDaCercare);
 			request.getSession().setAttribute("aziendeAnnunci",aziende );
 			response.getWriter().write("ok");
-			redirect = "/WEB-PAGES/view/Bacheca.jsp";			
+			redirect = "/Bacheca.jsp";			
 			}else {
 				request.getSession().setAttribute("errorTag","Il formato del tag non può contenere solo spazi bianchi");
 				response.getWriter().write("formato errato");
-				redirect="/WEB-PAGES/view/index.jsp";
+				redirect="/index.jsp";
 				
 				
 			}

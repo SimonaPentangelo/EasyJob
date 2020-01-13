@@ -1,0 +1,40 @@
+@charset "ISO-8859-1";
+.umb-btn {
+    background-color: #26C97B;
+    border: 2px solid #26c97b;
+    color: white;
+    padding: 10px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 15px;
+}
+
+.umb-btn:hover {
+    background-color: white;
+    /* Green */
+    color: black;
+    border: 2px solid #26C97B;
+
+    -webkit-transition-duration: 0.77s;
+    /*Safari*/
+    transition-duration: 0.77s;
+    cursor: pointer;
+
+}
+
+a.umb-btn {
+    text-decoration: none;
+}
+
+.umb-btn {
+    margin-top: 0.5rem;
+    margin-bottom: 0.2rem;
+}
+
+
+.umb-btn-position {
+    position: relative;
+    left: 45%;
+}

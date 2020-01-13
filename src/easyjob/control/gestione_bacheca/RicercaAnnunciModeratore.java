@@ -60,7 +60,7 @@ public class RicercaAnnunciModeratore extends HttpServlet {
 				
 				request.getSession().setAttribute("annunci",annunci);
 				request.getSession().setAttribute("aziendeAnnunci",aziende );
-				redirect="/WEB-PAGES/view/Bacheca.jsp";
+				redirect="/Bacheca.jsp";
 			}
 		}catch (Exception e){
 			e.printStackTrace();

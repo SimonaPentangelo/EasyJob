@@ -85,7 +85,7 @@ public class LoginServlet extends HttpServlet {
 						request.getSession().setAttribute("autenticato",true);
 						request.getSession().setAttribute("inviti", soloCinque);
 						response.getWriter().write("Successo");
-						redirect = "/WEB-PAGES/view/protectedPageInoccupato.jsp";
+						redirect = "/protectedPageInoccupato.jsp";
 					} 
 					if(user instanceof Azienda) {
 						azienda = (Azienda) user;
@@ -94,9 +94,9 @@ public class LoginServlet extends HttpServlet {
 							request.getSession().setAttribute("utenteAzienda", azienda);
 							request.getSession().setAttribute("autenticato", true);
 							response.getWriter().write("Successo");
-							redirect = "/WEB-PAGES/view/protectedPageAzienda.jsp";
+							redirect = "/protectedPageAzienda.jsp";
 						} else {
-							redirect = "/WEB-PAGES/view/bannedPage.jsp";
+							redirect = "/bannedPage.jsp";
 						}
 					}
 					if (user instanceof Moderatore){
@@ -105,14 +105,14 @@ public class LoginServlet extends HttpServlet {
 						request.getSession().setAttribute("utenteModeratore", mod);
 						request.getSession().setAttribute("autenticato", true);
 						response.getWriter().write("Successo");
-						redirect="/WEB-PAGES/view/protectedPageModeratore.jsp";
+						redirect="/protectedPageModeratore.jsp";
 					}if (user instanceof Amministratore){
 						admin = (Amministratore) user;
 						System.out.println(admin.getEmail());
 						request.getSession().setAttribute("utenteAdmin", admin);
 						request.getSession().setAttribute("autenticato", true);
 						response.getWriter().write("Successo");
-						redirect = "/WEB-PAGES/view/protectedPageAdmin.jsp";
+						redirect = "/protectedPageAdmin.jsp";
 					}	
 				}
 			
@@ -122,13 +122,13 @@ public class LoginServlet extends HttpServlet {
 						request.getSession().setAttribute("error","Username o password non validi");
 						response.getWriter().write("Username o password non validi");
 						request.setAttribute("message","Username o password non validi");
-						redirect="/WEB-PAGES/view/login.jsp";
+						redirect="/login.jsp";
 					 }
 				}else {
 					request.getSession().setAttribute("autenticato",false);
 					request.getSession().setAttribute("error","Username o password non validi");
 					response.getWriter().write("Username o password non validi");
-					redirect="/WEB-PAGES/view/login.jsp";
+					redirect="/login.jsp";
 				}
 				} catch (SQLException e) {
 						// TODO Auto-generated catch block

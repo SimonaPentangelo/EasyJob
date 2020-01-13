@@ -54,7 +54,7 @@ public class VisualizzaInvitiServlet extends HttpServlet {
 			ManagerInviti mi = new ManagerInviti();
 			List<Invito> result = new ArrayList<Invito>();
 			List<Azienda> aziende = new ArrayList<Azienda>();
-			String redirect = "/WEB-PAGES/view/visualizzaElencoInviti.jsp";
+			String redirect = "/visualizzaElencoInviti.jsp";
 			
 			try {
 				result = mi.visualizzaInviti(inocc);

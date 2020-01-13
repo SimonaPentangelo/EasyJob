@@ -61,10 +61,10 @@ public class ContattaCandidatoServlet extends HttpServlet {
 			
 			if(mi.contattaCandidato(invito)){
 				response.getWriter().write("invitato");
-				redirect="/WEB-PAGES/view/SuccessfullInvite.jsp";
+				redirect="/SuccessfullInvite.jsp";
 			}else {
 				response.getWriter().write("già invitato");
-				redirect ="/WEB-PAGES/view/ErrorInvite.jsp";
+				redirect ="/ErrorInvite.jsp";
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -72,7 +72,7 @@ public class ContattaCandidatoServlet extends HttpServlet {
 		}else{
 					response.getWriter().write("formato non valido");
 					request.setAttribute("message","formato non valido");
-					redirect ="/WEB-PAGES/view/contattaCandidato.jsp";
+					redirect ="/contattaCandidato.jsp";
 			}
 		
 		response.sendRedirect(request.getContextPath()+redirect);

@@ -13,7 +13,7 @@
 	Inoccupato utente=(Inoccupato) session.getAttribute("utenteInoccupato");
 	if(utente==null)
 	{
-		response.sendRedirect("./index.jsp");
+		response.sendRedirect("index.jsp");
 		return;
 		
 	}

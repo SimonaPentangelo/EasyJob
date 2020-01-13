@@ -29,7 +29,7 @@ public class VisualizzaAziendaServlet extends HttpServlet {
 		Azienda azienda = new Azienda();
 		int id = Integer.parseInt(request.getParameter("az"));
 		if (id>=0){
-		 redirect = "/WEB-PAGES/view/ShowAzienda.jsp";
+		 redirect = "/ShowAzienda.jsp";
 		}
 		try{
 			azienda = manager.findAziendaById(id);

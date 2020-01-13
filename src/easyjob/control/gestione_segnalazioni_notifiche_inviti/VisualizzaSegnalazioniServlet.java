@@ -51,7 +51,7 @@ public class VisualizzaSegnalazioniServlet extends HttpServlet {
 			if(admin != null){
 			segnalazioni = manager.visualizzaElencoSegnalazioni();
 			request.getSession().setAttribute("segnalazioni", segnalazioni);
-			redirect = "/WEB-PAGES/view/visualizzaSegnalazioni.jsp";
+			redirect = "/visualizzaSegnalazioni.jsp";
 			}
 		}
 		catch (Exception e){

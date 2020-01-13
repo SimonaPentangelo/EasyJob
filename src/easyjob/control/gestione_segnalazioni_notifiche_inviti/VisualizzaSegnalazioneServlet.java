@@ -40,7 +40,7 @@ public class VisualizzaSegnalazioneServlet extends HttpServlet {
 		try{
 			segnalazione  = manager.retrieveSingleReport(idAzienda, idModeratore);
 			request.getSession().setAttribute("segnalazione", segnalazione);
-			redirect = "/WEB-PAGES/view/visualizzaSegnalazione.jsp";
+			redirect = "/visualizzaSegnalazione.jsp";
 		}catch (Exception e){
 			e.printStackTrace();
 		}
