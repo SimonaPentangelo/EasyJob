@@ -19,10 +19,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import org.apache.catalina.servlet4preview.RequestDispatcher;
-
-import com.google.gson.Gson;
-
 import easyjob.entity.Inoccupato;
 import easyjob.model.ManagerUtenti;
 
