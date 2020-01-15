@@ -14,12 +14,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%@include file ="librerie.html"%>
 <meta charset="ISO-8859-1">
 <title>Invia Segnalazione</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="../../JS-SCRIPT/controlliFormSegnalazione.js"></script>
 </head>
 <body>
+<%@include file ="header.jsp"%>
 <form action="${pageContext.request.contextPath}/SegnalazioneUtenteServlet" method="POST">
 	Titolo: <input id="titolo" onchange="checkTitolo()" type="text" name="titolo"> 
 	<span id="errorTit"></span><br>
@@ -33,5 +35,6 @@
 	<input id="conferma" type="submit" value="Invia Segnalazione">
 	</form>
 
+<%@include file ="footer.jsp"%>
 </body>
 </html>

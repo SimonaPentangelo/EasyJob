@@ -32,8 +32,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Visualizza Segnalazioni</title>
+<%@include file ="librerie.html"%>
 </head>
 <body>
+<%@include file ="header.jsp"%>
 <% if (segnalazioni.isEmpty()) {%>
 <p> Non ci sono segnalazioni</p>
 
@@ -53,5 +55,6 @@
 }
 }
  %>
+ <%@include file ="footer.jsp"%>
 </body>
 </html>

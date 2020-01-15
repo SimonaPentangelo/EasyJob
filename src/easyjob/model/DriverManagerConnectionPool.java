@@ -70,7 +70,7 @@ public class DriverManagerConnectionPool  {
 		return isTest;
 	}
 	
-	public static void setTest(boolean flag){
+	public synchronized static void setTest(boolean flag){
 		DriverManagerConnectionPool.isTest=flag;
 	}
 }

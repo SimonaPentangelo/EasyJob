@@ -15,9 +15,12 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 <link rel="stylesheet" type="text/css" href="css/umbtn.css">
 <link rel="stylesheet" type="text/css" href="css/index.css">
+<link rel ="stylesheet" type="text/css" href="css/header.css">
+<link rel ="stylesheet" type="text/css" href="css/responsabbbile.css">
 </head>
 <body>
-	  <%@include file ="headerNotLogged.jsp"%>
+
+	  <%@include file ="header.jsp"%>
 	
 	<div class="container-fluid padding back-food">
 		<div class="zona" id="insert-address">

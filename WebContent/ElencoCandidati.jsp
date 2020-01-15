@@ -14,8 +14,10 @@ int idAnnuncio =  (Integer) session.getAttribute("idAnnuncio");
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<%@include file ="librerie.html"%>
 </head>
 <body>
+<%@include file ="header.jsp"%>
 <p> Ecco i candidati per l'annuncio <%=titoloAnnuncio %> </p>
 <%if (listaCandidati.isEmpty()){
 %>
@@ -50,5 +52,6 @@ int idAnnuncio =  (Integer) session.getAttribute("idAnnuncio");
 	}//FINE FOR
 } // FINE ELSE
 %>
+<%@include file ="footer.jsp"%>
 </body>
 </html>

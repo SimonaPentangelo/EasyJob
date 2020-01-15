@@ -19,8 +19,10 @@ System.out.println("anche qusto è null");
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<%@include file ="librerie.html"%>
 </head>
 <body>
+<%@include file ="header.jsp"%>
 <p> Ciao , ecco l'elenco delle tue candidature:</p>
 <%if(elenco.size()==0){
 %>
@@ -41,7 +43,7 @@ System.out.println("anche qusto è null");
 	}
 }
 	%>
-	
-	<p>
+
+	<%@include file ="footer.jsp"%>
 </body>
 </html>

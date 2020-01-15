@@ -37,8 +37,10 @@ else{
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<%@include file ="librerie.html"%>
 </head>
 <body>
+<%@include file ="header.jsp"%>
 <p>Azienda: <%=azienda %></p>
 <p>Titolo annuncio: <%=titolo %> </p>
 <p>Descrizione: <%=descrizione %> </p>
@@ -71,6 +73,7 @@ Candidati!
 </form>
 <%} %>
 
+<%@include file ="footer.jsp"%>
 <script>
 $(document).ready(function(){
 	var stringlog ="login.jsp";
@@ -82,5 +85,6 @@ $(document).ready(function(){
 	});
 });
 </script>
+
 </body>
 </html>

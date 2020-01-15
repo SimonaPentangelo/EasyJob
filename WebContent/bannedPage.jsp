@@ -23,8 +23,11 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Bannato</title>
+<%@include file ="librerie.html"%>
 </head>
 <body>
+<%@include file ="header.jsp"%>
 SEI STATO BANNATO.
+<%@include file ="footer.jsp"%>
 </body>
 </html>

@@ -4,12 +4,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%@include file ="librerie.html"%>
 <meta charset="ISO-8859-1">
 <title>Pubblica Annuncio</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="../../JS-SCRIPT/controlliPubblicaAnnuncio.js"></script>
 </head>
 <body>
+<%@include file ="header.jsp"%>
 	<form action="${pageContext.request.contextPath}/PubblicaAnnuncioServlet" method="POST">
 	Titolo: <input id="titolo" onchange="checkTitolo()" type="text" name="titolo"> 
 	<span id="errorTitolo"></span><br>
@@ -42,5 +44,6 @@
 	
 	<input id="conferma" type="submit" value="Pubblica Annuncio">
 	</form>
+<%@include file ="footer.jsp"%>
 </body>
 </html>

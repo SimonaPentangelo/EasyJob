@@ -41,8 +41,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Elenco Inviti</title>
+<%@include file ="librerie.html"%>
 </head>
 <body>
+<%@include file ="header.jsp"%>
 	<% if (inviti.isEmpty()) {%>
 	
 	<p> Non ci sono inviti</p>
@@ -61,5 +63,6 @@
 	<a href="<%=ahref1%>"> <p> Titolo: <%=titolo %></p></a>
 	<a href="<%=ahref2%>"> <p> Mittente: <%=azienda %></p></a>
 	<% } } %>
+	<%@include file ="footer.jsp"%>
 </body>
 </html>

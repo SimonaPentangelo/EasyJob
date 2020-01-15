@@ -3,12 +3,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%@include file ="librerie.html"%>
 <meta charset="ISO-8859-1">
 <title>Registrazione Inoccupato</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="../../JS-SCRIPT/controlliRegistrazioneInoccupato.js"></script>
 </head>
 <body>
+<%@include file ="header.jsp"%>
 	<form action="${pageContext.request.contextPath}/RegistrazioneInoccupatoServlet" method="POST" enctype='multipart/form-data'>
 	Nome: <input id="nome" onchange="checkNome()" type="text" name="nome">
 	<span id="errorNome"></span><br>
@@ -46,5 +48,6 @@
 	
 	<input id="conferma" type="submit" value="Conferma Registrazione">
 	</form>
+<%@include file ="footer.jsp"%>
 </body>
 </html>

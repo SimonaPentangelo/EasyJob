@@ -5,8 +5,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Visualizza Annuncio</title>
+<%@include file ="librerie.html"%>
 </head>
 <body>
+<%@include file ="header.jsp"%>
 	  <h1>Titolo Annuncio</h1> <br>
 	  
 	  <h2>Descrizione:</h2> <br>
@@ -26,6 +28,7 @@
 	  <p>tipo contratto visualizzato</p>
 	  
 	  <input type="button" value="Candidati Ora!">
-	  	
+
+	  	<%@include file ="footer.jsp"%>
 </body>
 </html>

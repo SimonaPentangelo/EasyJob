@@ -49,8 +49,10 @@ Annuncio annuncioSel = (Annuncio) session.getAttribute("annuncioSelezionato");
 <title>Pagina Personale Inoccupato</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="../../JS-SCRIPT/controlliModificaCurriculum.js"></script>
+<%@include file ="librerie.html"%>
 </head>
 <body>
+<%@include file ="header.jsp"%>
 	<p> Benvenuto nella tua area private <%= nameString %></p>
 	<button><a href="index.jsp"> Torna alla home</a></button>
 
@@ -104,5 +106,6 @@ Annuncio annuncioSel = (Annuncio) session.getAttribute("annuncioSelezionato");
     	%>
     	<a href="ShowAnnuncio.jsp">Torna all'annuncio</a>
     <% }%>
+    <%@include file ="footer.jsp"%>
 </body>
 </html>

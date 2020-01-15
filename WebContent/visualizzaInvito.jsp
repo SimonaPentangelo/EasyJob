@@ -27,14 +27,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%@include file ="librerie.html"%>
 <meta charset="ISO-8859-1">
 <title>Invito</title>
 </head>
 <body>
+<%@include file ="header.jsp"%>
 <ul>
 	<li>Oggetto: <%=i.getTitolo()%></li>
 	<li>Mittente: <%=i.getNomeAzienda()%></li>
 	<li><%=i.getCorpo()%></li>
 	</ul> <br>
+<%@include file ="footer.jsp"%>
 </body>
 </html>

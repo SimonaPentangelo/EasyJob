@@ -12,8 +12,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<%@include file ="librerie.html"%>
 </head>
 <body>
+<%@include file ="header.jsp"%>
 <p>Ciao <%= azienda.getNomeAzienda() %>, ecco l'elenco degli annunci pubblicati </p>
 <%
 if (listaAnnunci.isEmpty()){
@@ -39,5 +41,6 @@ if (listaAnnunci.isEmpty()){
 	}// FINE FOR
 }// FINE ELSE
 %>
+<%@include file ="footer.jsp"%>
 </body>
 </html>

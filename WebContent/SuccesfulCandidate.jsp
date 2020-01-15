@@ -5,9 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<%@include file ="librerie.html"%>
 </head>
 <body>
+<%@include file ="header.jsp"%>
 <p>Candidatura effettuata con successo, se l'azienda sarà interessata al tuo profilo potrai trovare un invito che potrai visualizzare
 nella tua pagina personale!</p>
+<%@include file ="footer.jsp"%>
 </body>
 </html>

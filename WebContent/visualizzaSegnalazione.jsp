@@ -29,10 +29,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%@include file ="librerie.html"%>
 <meta charset="ISO-8859-1">
 <title>Visualizza Segnalazione</title>
 </head>
 <body>
+<%@include file ="header.jsp"%>
 
 <h2>Segnalazione:</h2> <br>
 <%
@@ -49,6 +51,6 @@
 	<input type= "submit" value="Vai all'azienda">
 	<input type= "hidden" name="az" value="<%=segnalazione.getAzienda()%>">
 	</form>
- 
+ <%@include file ="footer.jsp"%>
 </body>
 </html>

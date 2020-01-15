@@ -13,8 +13,10 @@ String messageError = (String) session.getAttribute("message");
 <title>Contatta Candidato</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="../../JS-SCRIPT/controlliContattaCandidato.js"></script>
+<%@include file ="librerie.html"%>
 </head>
 <body>
+<%@include file ="header.jsp"%>
 	<form action="${pageContext.request.contextPath}/ContattaCandidatoServlet" method="POST">
 		Titolo: <input id="titolo" onchange="checkTitolo()" type="text" name="titolo">
 		<span id="errorTit"></span> <br>
@@ -28,5 +30,6 @@ String messageError = (String) session.getAttribute("message");
 		<input type="hidden" name="idAnnuncio" value="<%=idAn%>">
 		<input id="conferma" type="submit" value="Invia">
 	</form>
+	<%@include file ="footer.jsp"%>
 </body>
 </html>
