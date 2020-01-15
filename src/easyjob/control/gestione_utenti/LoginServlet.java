@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.RequestDispatcher;
-import org.apache.catalina.Manager;
-import org.eclipse.jdt.internal.compiler.ast.AND_AND_Expression;
 
 import easyjob.entity.*;
 import easyjob.model.ManagerInviti;
