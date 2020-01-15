@@ -62,5 +62,6 @@ public class TestManagerInviti {
 		Invito invito2 = new Invito("titolo","corpo",1,1,"bho",1);
 		contattato = manager.contattaCandidato(invito2);
 		assertEquals(contattato,false);
+		
 	}
 }

@@ -17,12 +17,8 @@
 <link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
 <body>
-	<ul>
-		<li><a href="registrazioneInoccupato.jsp">Registrazione Inoccupato</a></li>
-		<li><a href="registrazioneAzienda.jsp">Registrazione Azienda</a></li>
-		<li><a href="login.jsp">Login</a></li>
-	</ul>
-			
+	  <%@include file ="headerNotLogged.jsp"%>
+	
 	<div class="container-fluid padding back-food">
 		<div class="zona" id="insert-address">
 	<% 
@@ -59,6 +55,6 @@
 		</div>
 	</div>
 	<% }//Fine ELSE %>
-
+<%@include file ="footer.jsp"  %>
 </body>
 </html>

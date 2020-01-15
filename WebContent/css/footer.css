@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
+
+html,
+body {
+    height: 100vh;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    color: #222222;
+}
+
+hr.light {
+    border-top: 1px solid #d5d5d5;
+    width: 85%;
+    margin-top: .8rem;
+    margin-bottom: 1rem;
+}
+
+footer {
+    background-color: #3f3f3f;
+    color: #d5d5d5;
+    padding-left: 12rem;
+    font-size: 85%;
+
+    position: relative;
+    clear: both;
+
+    padding-top: 1.7rem;
+    margin-top: 5rem;
+    bottom: 0;
+}
+
+
+footer .fab {
+    font-size: 1.6rem;
+    margin: 1.2rem .5rem 0 0;
+}
+
+footer .fab:hover {
+    color: #26C97B !important;
+}
+
+footer a {
+    color: #d5d5d5;
+    text-decoration: none !important;
+}
+
+footer a:hover {
+    color: #26C97B !important;
+}
+
+footer h6 {
+    /*text-transform: uppercase;*/
+}
+
+@media (max-width: 992px) {
+    footer {
+        padding-left: 5%;
+    }
+}
+
+@media (max-width: 768px) {
+    footer {
+        padding-left: 0%;
+    }
+
+    .padding {
+        padding-left: .1rem;
+        padding-right: 1.4rem;
+    }
+}
+
+@media (max-width: 576px) {
+    footer {
+        padding-left: 0%;
+    }
+
+    .padding {
+        padding-left: .1rem;
+        padding-right: 1.4rem;
+    }
+}
+
+/*--- Bootstrap Padding Fix --*/
+[class*="col-"] {
+    padding: 1rem;
+}

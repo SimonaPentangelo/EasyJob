@@ -14,13 +14,15 @@ import easyjob.model.DriverManagerConnectionPool;
  * per non creare scompenso tra più casi di test ripetuti */
 
 public class DatabaseHelper {
+	static Connection connect;
 	public static void initializeDatabase() throws SQLException, FileNotFoundException {
 		DriverManagerConnectionPool.setTest(true);
-		Connection connect = DriverManagerConnectionPool.getConnection();
+		 connect = DriverManagerConnectionPool.getConnection();
 		ScriptRunner sr = new ScriptRunner(connect);
 		java.io.Reader reader = new BufferedReader(new FileReader("popolamentotest.sql"));
 		sr.runScript(reader);
 		
-		DriverManagerConnectionPool.releaseConnection(connect);
+		//DriverManagerConnectionPool.releaseConnection(connect);
+		connect.close();
 	}
 }

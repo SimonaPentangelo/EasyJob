@@ -399,7 +399,7 @@ public class ManagerUtenti {
 	 * @throws SQLException
 	 * @precondition username != null && !username.equals("") && table != null.
 	 */
-	private boolean checkUser (String username,String table) throws SQLException{
+	private synchronized boolean checkUser (String username,String table) throws SQLException{
 		
 		PreparedStatement checkUserPS = null;
 		Connection connect = null;
@@ -442,7 +442,7 @@ public class ManagerUtenti {
 	 * @throws SQLException
 	 * @precondition username != null && !username.equals("") && password != null && !password.equals("") && table != null.
 	 */
-	private Inoccupato retriveUserInoccupato (String username,String password, String table) throws SQLException{
+	private synchronized Inoccupato retriveUserInoccupato (String username,String password, String table) throws SQLException{
 		
 		
 		Inoccupato inoc = new Inoccupato();
@@ -493,7 +493,7 @@ public class ManagerUtenti {
 	 * @throws SQLException
 	 * @precondition username != null && !username.equals("") && password != null && !password.equals("") && table != null.
 	 */
-	private Azienda retriveUserAzienda (String username,String password, String table) throws SQLException{
+	private synchronized Azienda retriveUserAzienda (String username,String password, String table) throws SQLException{
 		
 		
 		Azienda azienda = new Azienda();
@@ -546,7 +546,7 @@ public class ManagerUtenti {
 	 * @throws SQLException
 	 * @precondition username != null && !userna.equals("") && password != null && !passowrd.equals("") && table != null.
 	 */
-	private Moderatore retriveUserModeratore (String username,String password, String table) throws SQLException{
+	private synchronized Moderatore retriveUserModeratore (String username,String password, String table) throws SQLException{
 		
 		Moderatore mod = new Moderatore();
 		PreparedStatement retriveUser = null;
@@ -591,7 +591,7 @@ public class ManagerUtenti {
 	 * @throws SQLException
 	 * @precondition username != null && !userna.equals("") && password != null && !passowrd.equals("") && table != null.
 	 */
-	private Amministratore retriveUserAmministratore (String username,String password, String table) throws SQLException{
+	private synchronized Amministratore retriveUserAmministratore (String username,String password, String table) throws SQLException{
 		
 		
 		Amministratore admin = new Amministratore();
@@ -635,7 +635,7 @@ public class ManagerUtenti {
 	 * @throws SQLException
 	 * @precondition idUser >=1.
 	 */
-	public Inoccupato findInoccupato(int idUser) throws SQLException {
+	public synchronized Inoccupato findInoccupato(int idUser) throws SQLException {
 		PreparedStatement retriveUser = null;
 		Connection connect = null;
 		Inoccupato inocc = new Inoccupato();

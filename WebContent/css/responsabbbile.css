@@ -1,0 +1,197 @@
+.card.productItem {
+    max-width: 16.1rem;
+}
+
+footer .fab:hover {
+    color: #de3831 !important;
+}
+
+footer a:hover {
+    color: #de3831 !important
+}
+
+.umb-btn {
+    background-color: #de3831;
+    border: 2px solid #de3831;
+}
+
+.umb-btn:hover {
+    background-color: #f4efc9;
+    border: 2px solid #de3831
+}
+
+.navbar{
+    background-color: #e0e2e4 ! important;
+    opacity:90%;
+}
+
+.card-header {
+    background-color: #de3831;
+}
+
+body {
+    background-color:#e0e2e4;
+}
+
+button {
+    background-color: #de3831;
+}
+
+.card {
+    background-color: #f4efc9;
+}
+
+.filter-btn {
+    background-color: #f4efc9;
+}
+
+.filter-btn:hover {
+    background-color: #f4efc9;
+    color: #de3831
+}
+
+a:hover {
+    color: #de3831;
+}
+
+.dropdown-menu {
+    background-color: #f4efc9;
+}
+
+.dropdown-toggle {
+    background-color: #de3831;
+}
+
+a.dropdown-item:hover {
+    color: #de3831;
+}
+
+button.dropdown-item.likeaLink:hover {
+    color: #de3831;
+}
+
+#dropdownMenuLink {
+    background-color: #de3831;
+    border: #222222;
+}
+
+.fa-user {
+    color: #222222;
+    background-color: #de3831;
+}
+
+.fa-2x:hover {
+    color: #de3831
+}
+
+.myCard {
+    background-color: #f4efc9;
+}
+
+.likeaLink:hover {
+    color: #de3831
+}
+
+.table {
+    border-color: #9ca2a8;
+}
+
+.table td,
+.table th {
+    border-top: 1px solid #9ca2a8;
+}
+
+.table thead th {
+    border-bottom: 2px solid #9ca2a8;
+}
+
+.login {
+    border: 3px solid #9ca2a8;
+}
+
+.fa-map-marked-alt {
+    color: #26C97B;
+}
+
+.fa-truck {
+    color: #de3831
+}
+
+.icons-setting img {
+    width: 20%;
+}
+
+#formstrano{
+	visibility:hidden;
+}
+input:focus,
+textarea:focus {
+    @include box-shadow(0 0 5px rgba(81, 203, 238, 1));
+    border: 3px solid #de3831;
+    /* #615fc7 */
+    opacity: 0.7;
+}
+
+@media(min-width: 1361px) {
+    .myCol {
+        display: block;
+    }
+}
+
+@media(max-width: 1360px) {
+    .adestra {
+        display: none;
+    }
+}
+
+@media(max-width: 1050px) {
+    .card-columns {
+        column-count: 2;
+    }
+
+    .summary {
+        position: absolute;
+        left: 35%;
+    }
+
+    .myCol {
+        width: 75%;
+        display: block;
+        margin-bottom: 20px;
+        margin-left: -5rem;
+    }
+
+    .zona {
+        padding-top: 30%;
+    }
+}
+
+@media(max-width: 790px) {
+    .card-columns {
+        column-count: 1;
+    }
+
+    .zona {
+        padding-top: 35%;
+    }
+}
+
+@media(max-width: 520px) {
+
+    .asinistra,
+    .adestra {
+        display: none;
+    }
+
+    #sezioneRistoranti {
+        margin-left: 17%;
+    }
+
+    #sezioneProdotti {
+        margin-left: 17%;
+    }
+
+    .card-columns {
+        column-count: 1;
+    }
+}
