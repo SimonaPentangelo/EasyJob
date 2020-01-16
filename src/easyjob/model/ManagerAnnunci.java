@@ -241,7 +241,7 @@ public class ManagerAnnunci {
 			insertAd.setString(7, ann.getCittà());
 			
 			int risultato = insertAd.executeUpdate();
-			connect.commit();
+			
 			
 				ResultSet generatedKeys = insertAd.getGeneratedKeys();
 				if (generatedKeys.next()){
@@ -339,7 +339,6 @@ public class ManagerAnnunci {
 				 deleteAd = connect.prepareStatement(DELETE_AD);
 				 deleteAd.setInt(1,idAnnuncio);
 				 int risultato = deleteAd.executeUpdate();
-				 connect.commit();
 				 if (risultato ==1)
 				 {
 					 flag = true;
@@ -418,7 +417,6 @@ public class ManagerAnnunci {
 			insertTag.setString(1,tag);
 			insertTag.setInt(2, idAnnuncio);
 			int ris = insertTag.executeUpdate();
-			connection.commit();
 			if (ris == 1){
 				flag = true;
 				return flag;
@@ -455,7 +453,6 @@ public class ManagerAnnunci {
 			deleteTags = connection.prepareStatement(DELETE_TAG);
 			deleteTags.setInt(1,idAnnuncio);
 			int ris = deleteTags.executeUpdate();
-			connection.commit();
 			if (ris ==1 ){
 				flag = true;
 				return flag;

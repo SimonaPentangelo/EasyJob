@@ -186,7 +186,6 @@ public synchronized List<Candidatura> visualizzaCandidatureRicevute(int idAnn) t
 				insertCandidate.setString(3, localDate); //non so se funziona!!
 				System.out.println("Sto cercando di aggiunger l'id inocc: " + idInocc+ " e idAnnuncio: " + idAnn);
 				int ris = insertCandidate.executeUpdate();
-				connect.commit();
 				if(ris==1)
 				return true;
 				else
@@ -228,7 +227,6 @@ public synchronized List<Candidatura> visualizzaCandidatureRicevute(int idAnn) t
 			candidate.setInt(1, idAnnuncio);
 			
 			candidate.executeUpdate();
-			connect.commit();
 			flag =true;
 			
 			

@@ -118,7 +118,6 @@ public class ManagerSegnalazioni {
 			segnala.setInt(4, s.getModeratore());
 			
 			int ris = segnala.executeUpdate();
-			connect.commit();
 			if (ris==1){
 				flag = true;
 				return flag;

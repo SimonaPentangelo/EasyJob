@@ -34,7 +34,7 @@ public void setUp()throws Exception{
 	DatabaseHelper.initializeDatabase();
 }
 
-/*
+
 @Test //formato nome errato
 public void TC_1_1_0()throws ServletException, IOException{
 	request.addParameter("nome","g1us3pp3");
@@ -52,5 +52,5 @@ public void TC_1_1_0()throws ServletException, IOException{
 	assertEquals(message,response.getContentAsString());
 	
 }
-*/
+
 }

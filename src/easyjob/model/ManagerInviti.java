@@ -91,7 +91,6 @@ public class ManagerInviti {
 			contact.setInt(5, i.getInoccupato());
 			
 			int risultato = contact.executeUpdate();
-			connect.commit();
 			if (risultato ==1){
 				flag = true;
 				return flag;

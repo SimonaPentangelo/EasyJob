@@ -229,7 +229,7 @@ public class ManagerUtenti {
 			ban.setInt(2, idUser);
 			
 			int risultato= ban.executeUpdate();
-			connect.commit();  /*Se non funziona provare con connect.setAutoCommit(false) quando si prende la connessione*/
+			 /*Se non funziona provare con connect.setAutoCommit(false) quando si prende la connessione*/
 			
 			if(risultato==1){
 				flag = true;
@@ -273,7 +273,7 @@ public class ManagerUtenti {
 			modificaCV.setInt(2, idUser);
 			
 			int risultato = modificaCV.executeUpdate();
-			connect.commit();  /*Se non funziona provare con connect.setAutoCommit(false) quando si prende la connessione*/
+			  /*Se non funziona provare con connect.setAutoCommit(false) quando si prende la connessione*/
 			
 			if(risultato==1){
 				flag = true;
@@ -324,7 +324,6 @@ public class ManagerUtenti {
 			insertUser.setString(9,inocc.getCurriculum());
 			
 			int risultato =  insertUser.executeUpdate();
-			connect.commit();
 			if (risultato==1){
 				flag = true;
 				return flag;
@@ -375,7 +374,7 @@ public class ManagerUtenti {
 			insertUser.setBoolean(10,azienda.isBanned());
 			
 			int risultato =  insertUser.executeUpdate();
-			connect.commit();
+
 			if (risultato==1){
 				flag = true;
 				return flag;
