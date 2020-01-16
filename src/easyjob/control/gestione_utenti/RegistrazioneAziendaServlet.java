@@ -14,6 +14,9 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.regex.Pattern;
 import javax.servlet.http.Part;
+
+import org.apache.catalina.servlet4preview.RequestDispatcher;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -49,37 +52,44 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
 		String IVAexp = "^[A-Z0-9]{11,11}$";
 		String emailexp = "^[A-Za-z0-9_.]+@[a-zA-Z.]{2,}\\.[a-zA-Z]{2,3}$";
 		
-		if(!Pattern.matches(nomeAzExp, nomeAzienda)) {
+		if(!Pattern.matches(nomeAzExp, nomeAzienda) || nomeAzienda == null || nomeAzienda.equals("")) {
 			valido = false;
 		}
-		if(!Pattern.matches(IVAexp, partitaIVA)) {
+		if(!Pattern.matches(IVAexp, partitaIVA) || partitaIVA == null || partitaIVA.equals("")) {
 			valido = false;
 		}
-		if(!Pattern.matches(userexp, username)){
+		if(!Pattern.matches(userexp, username) || username == null || username.equals("")){
 			valido = false;
 		}
-		LocalDateTime dateInput = LocalDateTime.parse(dataFondazioneString);
+		LocalDateTime dateInput = LocalDateTime.now();
 		LocalDateTime currentDate = LocalDateTime.now();
+		if(dataFondazioneString != null && !dataFondazioneString.equals("")) {
+			dateInput = LocalDateTime.parse(dataFondazioneString);
+		}
 		if(!dateInput.isBefore(currentDate)) {
 			valido = false;
 		}
-		if(!Pattern.matches(passexp, password)) {
+		
+		if(!Pattern.matches(passexp, password) || password == null || password.equals("")) {
+			valido = false;
+		} else if(!password.equals(confermaPassword) || confermaPassword == null || confermaPassword.equals("")) {
+			valido = false;
+		} else if(!password.equals(confermaPassword)) {
 			valido = false;
 		}
-		if(!password.equals(confermaPassword)) {
+		if(!Pattern.matches(indexp, indirizzo) || indirizzo == null || indirizzo.equals("")) {
 			valido = false;
 		}
-		if(!Pattern.matches(indexp, indirizzo)) {
-			valido = false;
-		}
-		if(!Pattern.matches(emailexp, email)) {
+		if(!Pattern.matches(emailexp, email) || email == null || email.equals("")) {
 			valido = false;
 		}
 		if(!check) {
 			valido = false;
 		}
-		if(!Paths.get(logoAzienda.getSubmittedFileName()).getFileName().toString().substring(Paths.get(logoAzienda.getSubmittedFileName()).getFileName().toString().length() - 3).equals("pdf")) {
-			valido = false;
+		if(logoAzienda != null && logoAzienda.getSize() > 0) {
+			if(!Paths.get(logoAzienda.getSubmittedFileName()).getFileName().toString().substring(Paths.get(logoAzienda.getSubmittedFileName()).getFileName().toString().length() - 3).equals("pdf")) {
+				valido = false;
+			}
 		}
 		long fileSizeInMB = logoAzienda.getSize() / 1024;
 
@@ -123,6 +133,7 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
 		
 		Azienda azienda = new Azienda();
 		ManagerUtenti mu = new ManagerUtenti();
+		String redirect = "";
 		
 		String nomeAzienda = request.getParameter("nomeAzienda");
 		Part logoAzienda = request.getPart("logoAzienda");
@@ -141,8 +152,11 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
 		String userPath = "";
 		
 		if(!validazione(nomeAzienda, logoAzienda, partitaIVA, username, indirizzo, dataFondazioneString, numeroDipendentiString, email, password, confermaPassword, check)) {
-			
+			redirect = "/registrazioneAzienda.jsp";
+			response.setHeader("errorReg", "Uno o più campi del form non sono validi!");
+			request.getRequestDispatcher(redirect).forward(request, response);
 		} else {
+			System.out.println("PUDDIPUDDI");
 			rootFolder = "resources"; //serve a dare il nome della cartella di root per salvare i file se gia c'è non la crea
 			rootPath = request.getServletContext().getRealPath("") + rootFolder; //costruisce la stringa contenete il percorso della root dove salviamo i file 
 			userPath = rootPath + File.separator + azienda.getUsername(); //serve per definire la cartella dell'utente se gia esiste non viene creata
@@ -165,37 +179,44 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
 			azienda.setNomeAzienda(nomeAzienda);
 			azienda.setLogoAzienda("resources" + File.separator + azienda.getUsername()+ File.separator + logoAzienda.getSubmittedFileName().replaceAll(" ", "_"));
 			azienda.setBanned(false);
-		}
-		
-		try {
-			if(!mu.isPresent(azienda)) {
-				mu.registerUserAzienda(azienda);
-				
-				File dirRoot = new File(rootPath); //cartella delle resources
-				if(!dirRoot.exists())//se la cartella esiste non la crea altrimenti genera la cartella 
-				{
-					dirRoot.mkdirs();
-				}
-				
-				File userDir = new File(userPath); //cartella propria dell'utente
-				if(!userDir.exists())//serve a creare la cartella dell'utente
-				{
-					userDir.mkdir();
-					
-				}
-				
-				String imageFullPath = userPath + File.separator + logoAzienda.getSubmittedFileName().replaceAll(" ", "_");
-				InputStream inputStream = logoAzienda.getInputStream();
 			
-				Files.copy(inputStream, Paths.get(imageFullPath), StandardCopyOption.REPLACE_EXISTING);
-				inputStream.close();
+			try {
+				if(!mu.isPresent(azienda)) {
+					mu.registerUserAzienda(azienda);
+					
+					File dirRoot = new File(rootPath); //cartella delle resources
+					if(!dirRoot.exists())//se la cartella esiste non la crea altrimenti genera la cartella 
+					{
+						dirRoot.mkdirs();
+					}
+					
+					File userDir = new File(userPath); //cartella propria dell'utente
+					if(!userDir.exists())//serve a creare la cartella dell'utente
+					{
+						userDir.mkdir();
+						
+					}
+					
+					String imageFullPath = userPath + File.separator + logoAzienda.getSubmittedFileName().replaceAll(" ", "_");
+					InputStream inputStream = logoAzienda.getInputStream();
+				
+					Files.copy(inputStream, Paths.get(imageFullPath), StandardCopyOption.REPLACE_EXISTING);
+					inputStream.close();
+					
+					redirect = "/SuccessfulReg.jsp";
+					request.getRequestDispatcher(redirect).forward(request, response);
+				} else {
+					redirect = "/registrazioneAzienda.jsp";
+					response.setHeader("errorReg", "Username o email già in uso!");
+					request.getRequestDispatcher(redirect).forward(request, response);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+				redirect = "/registrazioneAzienda.jsp";
+				response.setHeader("errorReg", "Errore nella registrazione");
+				request.getRequestDispatcher(redirect).forward(request, response);
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-		
-		//response.sendRedirect(/*pagina di registrazione avvenuta con successo*/);
 	}
 
 }

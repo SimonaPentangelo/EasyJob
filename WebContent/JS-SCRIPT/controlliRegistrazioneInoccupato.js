@@ -2,6 +2,17 @@
  * 
  */
 
+$('#curriculum').on('change', function(){
+$('.fileSpan').html('');
+$('.fileSpan').html(document.getElementById("curriculum").files[0].name)
+}); 
+
+$('#logoAzienda').on('change', function(){
+  $('.fileSpan').html('');
+  
+  $('.fileSpan').html(document.getElementById("curriculum").files[0].name)
+  
+});
 
 function checkNome() {
     var nome = $("#nome");

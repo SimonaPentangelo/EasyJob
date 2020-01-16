@@ -59,7 +59,7 @@
 	%>
 	<br>
 	<p>
-		<a href="../../LeggiAnnuncioServlet?idAnnuncio=<%=id%>"><%=titolo%></a>
+		<a href="./LeggiAnnuncioServlet?idAnnuncio=<%=id%>"><%=titolo%></a>
 	</p>
 	<form
 		action="${pageContext.request.contextPath}/VisualizzaAziendaServlet"
