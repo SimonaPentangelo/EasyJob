@@ -42,27 +42,42 @@
 <meta charset="ISO-8859-1">
 <title>Elenco Inviti</title>
 <%@include file ="librerie.html"%>
+<link rel="stylesheet" type="text/css" href="css/ordini.css">
 </head>
 <body>
 <%@include file ="header.jsp"%>
+<div style="height:60px" ></div>
 	<% if (inviti.isEmpty()) {%>
 	
 	<p> Non ci sono inviti</p>
 
 	<%} else{ %>
 	
-	<h2>Elenco Inviti:</h2> <br>
-	
+	<h1 class="testoh">Elenco Inviti:</h1> 
+	<div class="tabbbella">
+		<table class="table table-sm">
+			<thead>
+				<tr>
+					<th scope="col"> Titolo </th>
+					<th scope="col"> Mittente </th>
+				</tr>
+			</thead>
+	<tbody>	
 	<%for(int i=0; i<inviti.size() ;i++){
 		String titolo = inviti.get(i).getTitolo();
 		String azienda = inviti.get(i).getNomeAzienda();
-		String ahref1= "../../VisualizzaInvitoServlet?ad="+inviti.get(i).getAnnuncio();
-		String ahref2="../../VisualizzaAziendaServlet?az="+inviti.get(i).getAzienda();
+		String ahref1= "VisualizzaInvitoServlet?ad="+inviti.get(i).getAnnuncio();
+		String ahref2="VisualizzaAziendaServlet?az="+inviti.get(i).getAzienda();
 	%>
-	
-	<a href="<%=ahref1%>"> <p> Titolo: <%=titolo %></p></a>
-	<a href="<%=ahref2%>"> <p> Mittente: <%=azienda %></p></a>
+	<tr>
+	<th scope="row"><a href="<%=ahref1%>"><%=titolo %></a></th>
+	<td> <a href="<%=ahref2%>"><%=azienda %></a></td>
+	</tr>
 	<% } } %>
+	</tbody>
+</table>
+</div>
+<div style="height:160px"></div>
 	<%@include file ="footer.jsp"%>
 </body>
 </html>

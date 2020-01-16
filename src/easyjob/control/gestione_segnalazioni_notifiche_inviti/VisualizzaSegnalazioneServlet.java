@@ -34,6 +34,7 @@ public class VisualizzaSegnalazioneServlet extends HttpServlet {
 		
 		int idAzienda =Integer.parseInt(request.getParameter("idAz"));
 		int idModeratore =Integer.parseInt(request.getParameter("idMod"));
+		System.out.println("id mod: " + idModeratore);
 		ManagerSegnalazioni manager = new ManagerSegnalazioni();
 		Segnalazione segnalazione = new Segnalazione();
 		String redirect = "";

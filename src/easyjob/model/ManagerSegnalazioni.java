@@ -155,7 +155,7 @@ public class ManagerSegnalazioni {
 			connect = DriverManagerConnectionPool.getConnection();
 			retrieveSegn = connect.prepareStatement(query);
 			retrieveSegn.setInt(1, idAz);
-			retrieveSegn.setInt(1, idMod);
+			retrieveSegn.setInt(2, idMod);
 			ResultSet result = retrieveSegn.executeQuery();
 			while(result.next()){
 				segnalazione.setTitolo(result.getString("Titolo"));
