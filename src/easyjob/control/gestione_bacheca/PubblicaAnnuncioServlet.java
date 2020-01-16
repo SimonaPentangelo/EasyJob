@@ -45,27 +45,27 @@ private boolean valida(String titolo, String desc, String req, String città, Str
     String expCittà= "^[A-Za-z' ]{2,20}$";
     String expTag="^[A-Za-z, ]{4,50}$";
 	
-    if (!Pattern.matches(expTitolo, titolo)) {
+    if (!Pattern.matches(expTitolo, titolo) || titolo == null || titolo.equals("")) {
 		valido=false;
 		System.out.print(titolo);
 	}
     
-    if (!Pattern.matches(expDesc, desc)) {
+    if (!Pattern.matches(expDesc, desc) || desc == null || desc.equals("")) {
 		valido=false;
 		System.out.print(desc);
 	}
     
-    if (!Pattern.matches(expReq, req)) {
+    if (!Pattern.matches(expReq, req) || req == null || req.equals("")) {
 		valido=false;
 		System.out.print(req);
 	}
     
-    if (!Pattern.matches(expCittà, città)) {
+    if (!Pattern.matches(expCittà, città) || città == null || città.equals("")) {
 		valido=false;
 		System.out.print(città);
 	}
     
-    if (!Pattern.matches(expTag, tag)) {
+    if (!Pattern.matches(expTag, tag) || tag == null || tag.equals("")) {
 		valido=false;
 		System.out.print(tag);
 	}
@@ -127,28 +127,32 @@ private boolean valida(String titolo, String desc, String req, String città, Str
 		
 		try{
 			if(validate)
-		{
-			if(manager.pubblicaAnnuncio(annuncio)) {
-				response.getWriter().write("Pubblicato");
-				redirect = "/SuccesfulPublish.jsp";
-			}
-		
-			else
 			{
-				response.getWriter().write("Errore");
-				redirect = "/ErrorPublish.jsp";
+				if(manager.pubblicaAnnuncio(annuncio)) {
+					response.getWriter().write("Pubblicato");
+					redirect = "/SuccesfulPublish.jsp";
+					request.getRequestDispatcher(redirect).forward(request, response);
+				}
+				else
+				{
+					response.getWriter().write("Errore");
+					redirect="/pubblicaAnnuncio.jsp";
+					response.setHeader("errore", "Si è verificato un errore");
+					request.getRequestDispatcher(redirect).forward(request, response);
+				}
+			} else {
+				response.getWriter().write("Errore nel formato");
+				response.setHeader("errore", "Formato dati errato");
+				redirect="/pubblicaAnnuncio.jsp";
+				request.getRequestDispatcher(redirect).forward(request, response);
 			}
-		}else {
-			response.getWriter().write("Errore nel formato");
-			request.getSession().setAttribute("errore","Formato dato errati");
-			redirect="/pubblicaAnnuncio.jsp";
-			
-		}
 		}catch (Exception e){
 			e.printStackTrace();
+			redirect="/pubblicaAnnuncio.jsp";
+			response.setHeader("errore", "Si è verificato un errore");
+			request.getRequestDispatcher(redirect).forward(request, response);
 		}
 		
-		response.sendRedirect(redirect);
 	}
 
 	/**
