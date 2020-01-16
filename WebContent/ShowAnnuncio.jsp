@@ -37,24 +37,29 @@ else{
 <title>Annuncio</title>
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/responsabbbile.css">
 <%@include file ="librerie.html"%>
 </head>
 <body>
 <%@include file ="header.jsp"%>
-<p>Azienda: <%=azienda %></p>
-<p>Titolo annuncio: <%=titolo %> </p>
-<p>Descrizione: <%=descrizione %> </p>
-<p>Requisti: <%= requisiti %> </p>
-<p>Tag: 
+
+<div style="margin-top:80px">
+
+<p> <h4 style="margin-left:490px">Azienda: <%=azienda %></h4></p>
+<div class="list">
+<li style="list-style:none">Titolo annuncio: <%=titolo %> </li>
+<li style="list-style:none">Descrizione: <%=descrizione %> </li>
+<li style="list-style:none">Requisti: <%= requisiti %> </li>
+<li style="list-style:none">Tag: 
 <% for(int i=0;i<tags.size();i++){
 	String tag = tags.get(i);
 	%>
 	<%=tag %>,
 	<%} // fine for %>
-</p>
-<p>Tipo Contratto: <%=tipoContratto %> </p>
-<p>Data pubblicazione: <%=dataPubb %> </p>
-
+</li>
+<li style="list-style:none">Tipo Contratto: <%=tipoContratto %> </li>
+<li style="list-style:none">Data pubblicazione: <%=dataPubb %> </li>
+</ul>
 <% if(moderatore != null) {
 
 %>
@@ -65,14 +70,15 @@ else{
 </form>
 <%}else{ %>
 <form action="<%=redirect %>" method="GET">
-<button type="submit" class="class" value="<%=redirect %>" onsubmit="loginForce()">
+<button style ="margin-left:100px"type="submit" class="class" value="<%=redirect %>" onsubmit="loginForce()">
 Candidati!
 </button>
 <input type="hidden" name="idUt" value ="<%=idInocc %>">
 <input type="hidden" name="idAz" value="<%=idAnnuncio %>">
 </form>
 <%} %>
-
+</div>
+</div>
 <%@include file ="footer.jsp"%>
 <script>
 $(document).ready(function(){

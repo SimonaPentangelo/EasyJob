@@ -133,6 +133,10 @@ textarea:focus {
     opacity: 0.7;
 }
 
+div.list {margin-left:500px;
+		  margin-bottom:15px;
+		  border-bottom:20px;}
+
 @media(min-width: 1361px) {
     .myCol {
         display: block;
