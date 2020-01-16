@@ -1,0 +1,38 @@
+.tabbella {
+    margin-left: 10rem;
+    margin-right: 10rem;
+    align-content: center;
+    width: 50%;
+    text-align: center;
+}
+
+.table {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    align-content: center;
+    width: 50%;
+    border-right: 1px solid #dee2e6;
+    border-left: 1px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.testoh {
+    margin-left: 4rem;
+    margin-bottom: 2rem;
+}
+
+.asna {
+    width: 100%;
+
+}
+
+.umb-btn {
+    position: relative;
+    left: 45%;
+}
+
+.sezFine {
+    padding-bottom: 7rem;
+}

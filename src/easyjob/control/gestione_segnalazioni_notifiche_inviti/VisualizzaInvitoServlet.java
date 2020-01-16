@@ -47,7 +47,8 @@ public class VisualizzaInvitoServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		boolean val = (boolean) request.getSession().getAttribute("autenticato");
 		if(val && request.getSession().getAttribute("utenteInoccupato") != null) {
-			int idAnnuncio = Integer.parseInt(request.getParameter("idAd"));	
+			System.out.println("entro?");
+			int idAnnuncio = Integer.parseInt(request.getParameter("ad"));	
 			Inoccupato inocc = (Inoccupato) request.getSession().getAttribute("utenteInoccupato");
 			ManagerInviti mi = new ManagerInviti();
 			String redirect = "/visualizzaInvito.jsp";
