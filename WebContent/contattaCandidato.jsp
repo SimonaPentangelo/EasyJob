@@ -1,7 +1,9 @@
 <% 
 int idUt = Integer.parseInt(request.getParameter("idUt"));
 int idAn = Integer.parseInt(request.getParameter("idAn"));
-String messageError = (String) session.getAttribute("message");
+String errorFormat = "";
+if(response.getHeader("errore") != null) {
+	errorFormat = response.getHeader("errore").toString(); }
 %>
 <%@page import="javax.servlet.*" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -17,15 +19,21 @@ String messageError = (String) session.getAttribute("message");
 </head>
 <body>
 <%@include file ="header.jsp"%>
-	<form action="${pageContext.request.contextPath}/ContattaCandidatoServlet" method="POST">
+
+<div class="maremma">
+
+<h1>Contatta un candidato</h1>
+
+
+<%if (errorFormat!=null){
+			%><h3><%=errorFormat %></h3>
+		<%} %>
+	<form action="${pageContext.request.contextPath}/PubblicaAnnuncioServlet" method="POST">
 		Titolo: <input id="titolo" onchange="checkTitolo()" type="text" name="titolo">
 		<span id="errorTit"></span> <br>
-	
+		
 		Messaggio: <input id="msg" onchange="checkMsg()" type="text" name="messaggio">
 		<span id="errorMsg"></span> <br>
-		<%if(messageError!=null){
-		%><p><%=messageError %></p>
-		<%} %>
 		<input type="hidden" name="idUtente" value="<%=idUt%>">
 		<input type="hidden" name="idAnnuncio" value="<%=idAn%>">
 		<input id="conferma" type="submit" value="Invia">
