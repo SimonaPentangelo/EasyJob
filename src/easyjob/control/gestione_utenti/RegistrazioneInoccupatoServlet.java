@@ -66,40 +66,48 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
 		String cittaexp = "^[A-Za-zàèìòù' ]{2,20}$";
 		String emailexp = "^[A-Za-z0-9_.]+@[a-zA-Z.]{2,}\\.[a-zA-Z]{2,3}$";
 		
-		if(!Pattern.matches(nomeexp, nome)) {
+		if(!Pattern.matches(nomeexp, nome) || nome == null || nome.equals("")) {
 			valido = false;
 		}
-		if(!Pattern.matches(cognomeexp, cognome)) {
+		if(!Pattern.matches(cognomeexp, cognome) || cognome == null || cognome.equals("")) {
 			valido = false;
 		}
-		if(!Pattern.matches(userexp, username)){
+		if(!Pattern.matches(userexp, username) || username == null || username.equals("")){
 			valido = false;
 		}
-		LocalDateTime dateInput = LocalDateTime.parse(dataNascitaString);
+		LocalDateTime dateInput = LocalDateTime.now();
 		LocalDateTime currentDate = LocalDateTime.now();
+		if(dataNascitaString != null && !dataNascitaString.equals("")) {
+			dateInput = LocalDateTime.parse(dataNascitaString);
+		}
 		if(!dateInput.isBefore(currentDate)) {
 			valido = false;
 		}
-		if(!Pattern.matches(passexp, password)) {
+		if(!Pattern.matches(passexp, password) || password == null || password.equals("")) {
+			valido = false;
+		} else if(!password.equals(confermaPassword) || confermaPassword == null || confermaPassword.equals("")) {
+			valido = false;
+		} else if(!password.equals(confermaPassword)) {
 			valido = false;
 		}
-		if(!password.equals(confermaPassword)) {
+		
+		if(!Pattern.matches(residexp, indirizzo) || indirizzo == null || indirizzo.equals("")) {
 			valido = false;
 		}
-		if(!Pattern.matches(residexp, indirizzo)) {
+		if(!Pattern.matches(cittaexp, cittàNascita) || cittàNascita == null || cittàNascita.equals("")) {
 			valido = false;
 		}
-		if(!Pattern.matches(cittaexp, cittàNascita)) {
-			valido = false;
-		}
-		if(!Pattern.matches(emailexp, email)) {
+		if(!Pattern.matches(emailexp, email) || email == null || email.equals("")) {
 			valido = false;
 		}
 		if(!check) {
 			valido = false;
 		}
-		if(!Paths.get(curriculum.getSubmittedFileName()).getFileName().toString().substring(Paths.get(curriculum.getSubmittedFileName()).getFileName().toString().length() - 3).equals("pdf")) {
-			valido = false;
+		
+		if(curriculum != null && curriculum.getSize() > 0) {
+			if(!Paths.get(curriculum.getSubmittedFileName()).getFileName().toString().substring(Paths.get(curriculum.getSubmittedFileName()).getFileName().toString().length() - 3).equals("pdf")) {
+				valido = false;
+			}
 		}
 		long fileSizeInMB = curriculum.getSize() / 1024;
 
@@ -138,6 +146,7 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
 		
 		Inoccupato inoccupato = new Inoccupato();
 		ManagerUtenti mu = new ManagerUtenti();
+		String redirect="";
 		
 		String nome = request.getParameter("nome");	
 		String cognome = request.getParameter("cognome");
@@ -156,7 +165,9 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
 		String userPath  = "";
 		
 		if(!validazione(nome, cognome, username, dataNascitaString, email, password, confermaPassword, indirizzo, cittàNascita, curriculum, check)) {
-			
+			redirect = "/registrazioneInoccupato.jsp";
+			response.setHeader("errorReg", "Uno o più campi del form non sono validi!");
+			request.getRequestDispatcher(redirect).forward(request, response);
 		} else {
 			rootFolder = "resources"; //serve a dare il nome della cartella di root per salvare i file se gia c'è non la crea
 			rootPath = request.getServletContext().getRealPath("") + rootFolder; //costruisce la stringa contenete il percorso della root dove salviamo i file 
@@ -180,42 +191,44 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
 			inoccupato.setEmail(email);
 			inoccupato.setResidenza(indirizzo);
 			inoccupato.setCurriculum("resources" + File.separator + inoccupato.getUsername() + File.separator + curriculum.getSubmittedFileName().replaceAll(" ", "_"));
-		}
-		
-		try {
-			if(!mu.isPresent(inoccupato)) {
-				mu.registerUserInoccupato(inoccupato);
-				request.setAttribute("message","Successo");
-				
-				File dirRoot = new File(rootPath); //cartella delle resources
-				if(!dirRoot.exists())//se la cartella esiste non la crea altrimenti genera la cartella 
-				{
-					dirRoot.mkdirs();
-				}
-						
-				File userDir = new File(userPath); //cartella propria dell'utente
-				if(!userDir.exists())//serve a creare la cartella dell'utente
-				{
-					userDir.mkdir();
+			
+			try {
+				if(!mu.isPresent(inoccupato)) {
+					mu.registerUserInoccupato(inoccupato);
+					request.setAttribute("message","Successo");
+					
+					File dirRoot = new File(rootPath); //cartella delle resources
+					if(!dirRoot.exists())//se la cartella esiste non la crea altrimenti genera la cartella 
+					{
+						dirRoot.mkdirs();
+					}
 							
+					File userDir = new File(userPath); //cartella propria dell'utente
+					if(!userDir.exists())//serve a creare la cartella dell'utente
+					{
+						userDir.mkdir();
+								
+					}
+			
+					String cvFullPath = userPath + File.separator + curriculum.getSubmittedFileName().replaceAll(" ", "_");
+					InputStream inputStream = curriculum.getInputStream();
+							
+					Files.copy(inputStream, Paths.get(cvFullPath), StandardCopyOption.REPLACE_EXISTING);
+					redirect = "/SuccessfulReg.jsp";
+					request.getRequestDispatcher(redirect).forward(request, response);
+				}else {
+					response.getWriter().write("Formato dati errati");
+					redirect = "/registrazioneInoccupato.jsp";
+					response.setHeader("errorReg", "Username o email già in uso!");
+					request.getRequestDispatcher(redirect).forward(request, response);
 				}
-		
-				String cvFullPath = userPath + File.separator + curriculum.getSubmittedFileName().replaceAll(" ", "_");
-				InputStream inputStream = curriculum.getInputStream();
-						
-				Files.copy(inputStream, Paths.get(cvFullPath), StandardCopyOption.REPLACE_EXISTING);
-			}else {
-				response.getWriter().write("Formato dati errati");
+			} catch (SQLException e) {
+				e.printStackTrace();
+				redirect = "/registrazioneInoccupato.jsp";
+				response.setHeader("errorReg", "Errore nella registrazione");
+				request.getRequestDispatcher(redirect).forward(request, response);
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-		String redirect = "/index.jsp";
-		//String responseGsonString= new Gson().toJson(redirect);
-		//response.getWriter().write(responseGsonString);
-		//response.sendRedirect(redirect);
-		request.getRequestDispatcher(redirect).forward(request, response);
 	}
 
 }

@@ -6,6 +6,17 @@
  * 
  */
 
+$('#logoAzienda').on('change', function(){
+$('.fileSpan').html('');
+$('.fileSpan').html(document.getElementById("logo").files[0].name)
+}); 
+
+$('#logoAzienda').on('change', function(){
+  $('.fileSpan').html('');
+  
+  $('.fileSpan').html(document.getElementById("logo").files[0].name)
+  
+}); 
 
 
 function checkDescrizione() {

@@ -34,7 +34,7 @@ else{
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Annuncio</title>
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <%@include file ="librerie.html"%>

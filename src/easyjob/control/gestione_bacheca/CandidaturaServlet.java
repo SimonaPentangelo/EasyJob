@@ -28,6 +28,7 @@ public class CandidaturaServlet extends HttpServlet {
 		int idAzienda = Integer.parseInt(request.getParameter("idAz"));
 		int idInoccupato = Integer.parseInt(request.getParameter("idUt"));
 		String redirect= "";
+		
 		try{
 			if(idAzienda >= 0 && idInoccupato >= 0){
 			if(!(manager.isAlreadyCandidate(idInoccupato,idAzienda))){
