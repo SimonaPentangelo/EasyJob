@@ -64,7 +64,7 @@ public class ContattaCandidatoServlet extends HttpServlet {
 				redirect="/SuccessfullInvite.jsp";
 			}else {
 				response.getWriter().write("già invitato");
-				redirect ="/ErrorInvite.jsp";
+				redirect ="/contattaCandidato.jsp";
 			}
 		} catch(Exception e) {
 			e.printStackTrace();

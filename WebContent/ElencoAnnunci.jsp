@@ -31,7 +31,7 @@ if (listaAnnunci.isEmpty()){
 		String titolo = annuncio.getTitolo();
 		String data = annuncio.getData();
 		int id = annuncio.getIdAnnuncio();
-		String ahref= "../../VisualizzaCandidatiServlet?idAn="+id+"&tit="+titolo;
+		String ahref= "./VisualizzaCandidatiServlet?idAn="+id+"&tit="+titolo;
 		%>
 	
 	<a href="<%=ahref%>"><p>Titolo: <%=titolo %></p></a>
