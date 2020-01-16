@@ -3,7 +3,8 @@ int idUt = Integer.parseInt(request.getParameter("idUt"));
 int idAn = Integer.parseInt(request.getParameter("idAn"));
 String errorFormat = "";
 if(response.getHeader("errore") != null) {
-	errorFormat = response.getHeader("errore").toString(); }
+	errorFormat = response.getHeader("errore").toString(); 
+} 
 %>
 <%@page import="javax.servlet.*" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -29,12 +30,9 @@ if(response.getHeader("errore") != null) {
 <div class="maremma">
 
 <h1>Contatta un candidato</h1><br>
+<h3><%=errorFormat %></h3>
 
-
-<%if (errorFormat!=null){
-			%><h3><%=errorFormat %></h3>
-		<%} %>
-	<form action="${pageContext.request.contextPath}/PubblicaAnnuncioServlet" method="POST">
+	<form action="${pageContext.request.contextPath}/ContattaCandidatoServlet" method="POST">
 	
 		<div>
 		<span>Titolo:</span><br>

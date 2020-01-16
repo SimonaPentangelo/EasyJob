@@ -52,30 +52,34 @@ public class ContattaCandidatoServlet extends HttpServlet {
 		String titolo = request.getParameter("titolo");
 		String messaggio = request.getParameter("messaggio");
 		if(validazione(idAnnuncio,idInoccupato,titolo,messaggio,idAzienda)) {
-		invito.setAnnuncio(idAnnuncio);
-		invito.setInoccupato(idInoccupato);
-		invito.setTitolo(titolo);
-		invito.setCorpo(messaggio);
-		invito.setAzienda(idAzienda);
-		try{
+			invito.setAnnuncio(idAnnuncio);
+			invito.setInoccupato(idInoccupato);
+			invito.setTitolo(titolo);
+			invito.setCorpo(messaggio);
+			invito.setAzienda(idAzienda);
+			try {
 			
-			if(mi.contattaCandidato(invito)){
-				response.getWriter().write("invitato");
-				redirect="/SuccessfullInvite.jsp";
-			}else {
-				response.getWriter().write("già invitato");
-				redirect ="/contattaCandidato.jsp";
+				if(mi.contattaCandidato(invito)){
+					response.getWriter().write("invitato");
+					redirect="./SuccessfullInvite.jsp";
+					response.sendRedirect(redirect);
+				} else {
+					System.out.println("primo else");
+					response.getWriter().write("già invitato");
+					redirect ="./contattaCandidato.jsp?idUt=" + idInoccupato + "&idAn=" + idAnnuncio;
+					response.setHeader("errore", "Hai già contattato questo candidato per quest'annuncio!");
+					response.sendRedirect(redirect);
+				}
+			} catch(Exception e) {
+				e.printStackTrace();
 			}
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		}else{
+		} else {
+			System.out.println("secondo else");
+			response.setHeader("errore", "Formato non valido");
 					response.getWriter().write("formato non valido");
-					request.setAttribute("message","formato non valido");
-					redirect ="/contattaCandidato.jsp";
-			}
-		
-		response.sendRedirect(request.getContextPath()+redirect);
+					redirect ="./contattaCandidato.jsp?idUt=" + idInoccupato + "&idAn=" + idAnnuncio;
+					response.sendRedirect(redirect);
+		}
 	}
 
 	/**
@@ -97,10 +101,10 @@ public class ContattaCandidatoServlet extends HttpServlet {
 		if(idUt<1) {
 			valido = false;
 		}
-		if(!Pattern.matches(expTit, tit)){
+		if(!Pattern.matches(expTit, tit) || tit == null || tit.equals("")){
 			valido = false;
 		}
-		if(!Pattern.matches(expMsg, msg)) {
+		if(!Pattern.matches(expMsg, msg) || msg == null || msg.equals("")) {
 			valido = false;
 		}
 		if(idAzienda<1) {
