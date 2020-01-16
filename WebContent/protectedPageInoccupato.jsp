@@ -53,49 +53,34 @@ Annuncio annuncioSel = (Annuncio) session.getAttribute("annuncioSelezionato");
 </head>
 <body>
 <%@include file ="header.jsp"%>
-	<p> Benvenuto nella tua area private <%= nameString %></p>
-	<button><a href="index.jsp"> Torna alla home</a></button>
 
+<div class="container">
+<div style="height:100px"></div>
+	<h2 style=""> Benvenuto nella tua area privata <%= nameString %>!</h2>
+	<div style="heigt:80px"></div>
+	<h2 style=""> Ecco un riassunto dei tuoi dati personali: </h2>
+<div class="row">
+
+<div class="col-md-6">
 	<ul>
-	<li><%=nameString%></li>
-	<li><%=utente.getNome()%></li>
-	<li><%=utente.getCognome()%></li>
-	<li><%=utente.getCittà()%></li>
-	<li><%=utente.getResidenza()%></li>
-	</ul> <br>
-	
-	<% if (inviti.isEmpty()) {%>
-	
-	<p> Non ci sono inviti</p>
-
-	<%} else{ %>
-	
-	<h2>Elenco Inviti:</h2> <br>
-	
-	<%for(int i=0; i<inviti.size() ;i++){
-		String titolo = inviti.get(i).getTitolo();
-		String ahref= "../../VisualizzaInvitoServlet?idAd="+inviti.get(i).getAnnuncio() + "&idInocc="+inviti.get(i).getInoccupato();
-	%>
-	
-	<a href="<%=ahref%>"> <p> Titolo: <%=titolo %></p></a>
-	
-	<% } } %>
-	
-	<form action="${pageContext.request.contextPath}/VisualizzaInvitiServlet" method="POST">
-		<input type="submit" value="Inviti ricevuti"> <br> <br>
-	</form>
-	
-	<div>
+	<li style="list-style-type: none;"> Username: <%=nameString%></li>	
+	<li style="list-style-type: none;"> Nome: <%=utente.getNome()%></li>
+	<li style="list-style-type: none;"> Cognome: <%=utente.getCognome()%></li>
+	<li style="list-style-type: none;"> Città: <%=utente.getCittà()%></li>
+	<li style="list-style-type: none;"> Residenza: <%=utente.getResidenza()%></li>
+	</ul>
+</div>
+<div class="col-md-6">
 		<form action="${pageContext.request.contextPath}/DisplayCurriculumServlet" method="POST">
-			<input type="submit" value="Visualizza Curriculum"> <br>
+			<button class="umb-btn" type="submit">Visualizza Curriculum</button> <br>
 		</form> 
 		
+		<span id="errorCurriculum"></span>
+		<div style="height:30px"></div>
 		<form action="${pageContext.request.contextPath}/ModificaCurriculumServlet" method="POST" enctype='multipart/form-data'>
 			 Nuovo Curriculum: <input id="curriculum" onchange="checkCurriculum()" type="file" name="curriculum"> <br>
-			<input id="conferma" type="submit" value="Modifica Curriculum">
+			<button class="umb-btn" id="conferma" type="submit">Modifica Curriculum </button>
 		</form> 
-		<span id="errorCurriculum"></span>
-		
 		<%
 		String stringa = "";
 		if(response.getHeader("errorUpdate") != null) {
@@ -105,18 +90,46 @@ Annuncio annuncioSel = (Annuncio) session.getAttribute("annuncioSelezionato");
 		}
 		%>
 		<span><%=stringa %></span>
-		
+		<div style="height:30px"></div>
 		<form action="${pageContext.request.contextPath}/VisualizzaCandidatureServlet" method ="GET">
-		<input type="submit" value="Visualizza candidature effettuate">
+		<button class="umb-btn" type="submit">Visualizza candidature effettuate</button>
 		</form>
-    </div>
-    <form action = "${pageContext.request.contextPath }/LogoutServlet">
-    <input type="submit" value="Logout">
-    </form>
-    <% if(annuncioSel != null){
+		
+		<div style="height:30px"></div>
+		    <% if(annuncioSel != null){
     	%>
     	<a href="ShowAnnuncio.jsp">Torna all'annuncio</a>
     <% }%>
+</div>
+</div>
+
+
+<div style="height:40px"></div>
+
+	<% if (inviti.isEmpty()) {%>
+	
+	<p> Non ci sono inviti</p>
+
+	<%} else{ %>
+	
+	<h2>Elenco Inviti:</h2> 
+	<ol>
+	<%for(int i=0; i<inviti.size() ;i++){
+		String titolo = inviti.get(i).getTitolo();
+		String ahref= "VisualizzaInvitoServlet?idAd="+inviti.get(i).getAnnuncio() + "&idInocc="+inviti.get(i).getInoccupato();
+	%>
+	<li style="padding-right:80%"><p style="align:left">Titolo: <a href="<%=ahref%>"><%=titolo %></a></p></li>	
+	<% }%>
+	</ol>
+	<%} %>
+	
+	<form action="${pageContext.request.contextPath}/VisualizzaInvitiServlet" method="POST">
+		<button class="umb-btn" type="submit">Inviti ricevuti</button> 
+	</form>
+	
+
+    
+    </div>
     <%@include file ="footer.jsp"%>
 </body>
 </html>

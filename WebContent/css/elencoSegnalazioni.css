@@ -1,0 +1,61 @@
+html,
+body {
+  height: 100%;
+}
+
+.cont {
+  padding-top: 10rem;
+  padding-left: 2rem;
+  padding-bottom: 15rem;
+}
+
+.cont p {
+  padding-top: 0.5rem;
+  /*text-align: left !important;*/
+}
+
+.cont-centred {
+  text-align: center;
+}
+
+.cont h2 {
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+/*Card shit*/
+/* Float four columns side by side */
+
+* {
+  box-sizing: border-box;
+}
+
+.myCol {
+  float: left;
+  width: 60%;
+  padding-left: 30px;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.myRow {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-left: 415px;
+}
+
+/* Clear floats after the columns */
+.myRow:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the counter cards */
+.myCard {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  /* this adds the "card" effect */
+  padding: 16px;
+  text-align: left;
+  background-color: #f1f1f1;
+}

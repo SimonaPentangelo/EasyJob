@@ -22,6 +22,11 @@ import easyjob.model.ManagerSegnalazioni;
 public class SegnalazioneUtenteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
+	/**
+	 * @param titolo oggetto di tipo <strong>String</strong> che rappresenta il titolo della segnalazione.
+	 * @param body   oggetto di tipo <strong>String</strong> che rappresenta il corpo del messaggio della segnalazione.
+	 * @return valido = true se le validazioni sono corrette. False altrimenti.
+	 */
 	private boolean valida(String titolo, String body) {
 		
 		boolean valido = true;

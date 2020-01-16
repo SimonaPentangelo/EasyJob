@@ -24,14 +24,7 @@
 	
 	<div class="container-fluid padding back-food">
 		<div class="zona" id="insert-address">
-	<% 
-	Azienda azienda = (Azienda) session.getAttribute("utenteAzienda");
-	if (azienda != null) {
-	%>
-	<button><a href="pubblicaAnnuncio.jsp"> Pubblica Annuncio</a></button>
-	<%
-	}
-	%>
+	
 	
 	<%
 	Moderatore moderatore = (Moderatore) session.getAttribute("utenteModeratore");
@@ -55,6 +48,14 @@
 		<span class="errore"> <%=errorTag %> </span>
 		<%} %>
 	</form>
+	<% 
+	Azienda azienda = (Azienda) session.getAttribute("utenteAzienda");
+	if (azienda != null) {
+	%>
+	<button class="umb-btn"><a href="pubblicaAnnuncio.jsp" style="color:white"> Pubblica Annuncio</a></button>
+	<%
+	}
+	%>
 		</div>
 	</div>
 	<% }//Fine ELSE %>

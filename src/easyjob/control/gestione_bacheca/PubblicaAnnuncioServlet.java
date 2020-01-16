@@ -25,6 +25,17 @@ public class PubblicaAnnuncioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	
+/**
+ * Il metodo controlla se la validazione di tutti i parametri è corretta
+ * 
+ * @param titolo oggetto di tipo <strong>String</strong>
+ * @param desc   oggetto di tipo <strong>String</strong>
+ * @param req    oggetto di tipo <strong>String</strong>
+ * @param città  oggetto di tipo <strong>String</strong>
+ * @param tag    oggetto di tipo <strong>String</strong>
+ * @param typeContratto oggetto di tipo <strong>String</strong>
+ * @return valido = true se tutte le validazioni sono corrette. False altrimenti.
+ */
 private boolean valida(String titolo, String desc, String req, String città, String tag, String typeContratto) {
 	
 	boolean valido = true;

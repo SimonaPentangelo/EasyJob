@@ -78,6 +78,14 @@ public class ContattaCandidatoServlet extends HttpServlet {
 		response.sendRedirect(request.getContextPath()+redirect);
 	}
 
+	/**
+	 * @param idAn oggetto di tipo <strong>int</strong> che rappresenta l'identificativo dell'annuncio.
+	 * @param idUt oggetto di tipo <strong>int</strong> che rappresenta l'identificativo dell'utente.
+	 * @param tit  oggetto di tipo <strong>String</strong> che descrive il titolo del messaggio.
+	 * @param msg  oggetto di tipo <strong>String</strong> che descrive il corpo del messaggio.
+	 * @param idAzienda oggetto di tipo <strong>String</strong> che rappresenta l'identificativo dell'azienda.
+	 * @return valido = true se tutte le validazioni sono corrette. False altrimenti.
+	 */
 	private boolean validazione (int idAn,int idUt,String tit,String msg,int idAzienda) {
 		boolean valido = true;
 		String expTit= "^[A-Za-zאטלעש .,!?']{5,60}$";

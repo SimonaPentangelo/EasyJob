@@ -40,7 +40,7 @@
 <body>
 <%@include file ="header.jsp"%>
 <p> Benvenuto <%= nameString %></p> <br>
-<form  action="../../VisualizzaSegnalazioniServlet" method="GET">
+<form  action="${pageContext.request.contextPath }/VisualizzaSegnalazioniServlet" method="GET">
 	<input type="submit" value="Visualizza Segnalazioni">
 </form>
 

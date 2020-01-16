@@ -43,6 +43,22 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
     
+    /**
+     * Validazione delle regexp per i campi della registrazione dell'azienda.
+     * 
+     * @param nomeAzienda oggetto di tipo <strong>String</strong> che rappresenta il nome dell'azienda.
+     * @param logoAzienda oggetto di tipo <strong>Part</strong> corrispondente al logo dell'azienda.
+     * @param partitaIVA  oggetto di tipo <strong>String</strong> che rappresenta la partita Iva.
+     * @param username    oggetto di tipo <strong>String</strong> che rappresenta l'username.
+     * @param indirizzo   oggetto di tipo <strong>String</strong> che rappresenta l'indirizzo dove si trova la sede.
+     * @param dataFondazioneString oggetto di tipo <strong>String</strong> che rappresenta la data di fondazione.
+     * @param numeroDipendentiString oggetto di tipo <strong>String</strong> che rappresenta il numero dei dipendenti.
+     * @param emailoggetto di tipo <strong>String</strong> che rappresenta l'indirizzo email.
+     * @param password oggetto di tipo <strong>String</strong> che rappresenta il campo della password.
+     * @param confermaPassword  oggetto di tipo <strong>String</strong> il campo di conferma della password.
+     * @param check oggetto di tipo <strong>Boolean</strong>
+     * @return valido = true se tutte le validazioni sono corrette. False altrimenti.
+     */
     private boolean validazione(String nomeAzienda, Part logoAzienda, String partitaIVA, String username, String indirizzo, String dataFondazioneString, String numeroDipendentiString, String email, String password, String confermaPassword, boolean check) {
 		boolean valido = true;
 		String nomeAzExp = "^[A-Za-zאטלעש0-9-._ ]{5,50}$";
