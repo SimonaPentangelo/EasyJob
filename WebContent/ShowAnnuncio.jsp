@@ -38,6 +38,7 @@ else{
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/responsabbbile.css">
+<link rel ="stylesheet" type="text/css" href="css/umbbtn.css">
 <%@include file ="librerie.html"%>
 </head>
 <body>
@@ -70,7 +71,7 @@ else{
 </form>
 <%}else{ %>
 <form action="<%=redirect %>" method="GET">
-<button style ="margin-left:100px"type="submit" class="class" value="<%=redirect %>" onsubmit="loginForce()">
+<button style ="margin-left:100px"type="submit" class="umb-btn" value="<%=redirect %>" onsubmit="loginForce()">
 Candidati!
 </button>
 <input type="hidden" name="idUt" value ="<%=idInocc %>">
