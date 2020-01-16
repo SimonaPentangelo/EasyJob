@@ -54,8 +54,8 @@
 	String ahref= "/VisualizzaSegnalazioneServlet?idAz="+segnalazioni.get(i).getAzienda() + "&idMod=" + segnalazioni.get(i).getModeratore();
 %>
 <div class="myCard">
-<a href="<%=ahref%>"> <h3>Titolo: <%=titolo %></h3></a>
-<p><h3>Corpo:</h3></p><br>
+<a href="<%=ahref%>"> <h3><%=titolo %></h3></a>
+<br>
 <%=corpo%>
 </div>
 <%
