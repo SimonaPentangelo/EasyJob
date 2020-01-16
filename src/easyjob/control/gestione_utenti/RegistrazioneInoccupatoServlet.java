@@ -40,6 +40,22 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
+    /**
+     * Valida i campi di compilazione per la registrazione dell'utente come inoccupato.
+     * 
+     * @param nome oggetto di tipo <strong>String</strong> che rappresenta il campo "nome".
+     * @param cognome oggetto di tipo <strong>String</strong> che rappresenta il campo "cognome".
+     * @param username oggetto di tipo <strong>String</strong> che rappresenta il campo "username".
+     * @param dataNascitaString oggetto di tipo <strong>String</strong> che rappresenta il campo "data di nascita".
+     * @param email oggetto di tipo <strong>String</strong> che rappresenta il campo "email".
+     * @param password oggetto di tipo <strong>String</strong> che rappresenta il campo "password".
+     * @param confermaPassword oggetto di tipo <strong>String</strong> che rappresenta il campo "conferma password".
+     * @param indirizzo oggetto di tipo <strong>String</strong> che rappresenta il campo "residenza".
+     * @param citt‡Nascita oggetto di tipo <strong>String</strong> che rappresenta il campo " citt‡ di nascita".
+     * @param curriculum oggetto di tipo <strong>Part</strong> che rappresenta il file pdf con il curriculum.
+     * @param check oggetto di tipo <strong>Boolean</strong>
+     * @return valido = true se le validazioni sono corrette. False altrimenti.
+     */
     private boolean validazione(String nome, String cognome, String username, String dataNascitaString, String email, String password, String confermaPassword, String indirizzo, String citt‡Nascita, Part curriculum, boolean check) {
 		boolean valido = true;
 		String nomeexp = "^[A-Za-z‡ËÏÚ˘ ]{2,50}$";

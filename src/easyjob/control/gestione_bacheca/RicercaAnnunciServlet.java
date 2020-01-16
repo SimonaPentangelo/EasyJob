@@ -78,6 +78,12 @@ public class RicercaAnnunciServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
+	/**
+	 * Valida la regExp del tag da cercare.
+	 * 
+	 * @param tagDaCercare, oggetto di tipo <strong>String</strong> che descrive il tag inserito per la ricerca dell'annuncio.
+	 * @return validato = true se la validazione è corretta. False altrimenti
+	 */
 	protected boolean valida (String tagDaCercare) {
 		 boolean validato = true;
 		 String regExpTag = "^[A-Za-z]{1,}$";
