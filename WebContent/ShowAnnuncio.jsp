@@ -70,6 +70,8 @@ else{
 	<input type="hidden" name="idDaRimuovere" value = "<%=idAnnuncio %>">
 </form>
 <%}else{ %>
+<div style="height:40px">
+</div>
 <form action="<%=redirect %>" method="GET">
 <button style ="margin-left:100px"type="submit" class="umb-btn" value="<%=redirect %>" onsubmit="loginForce()">
 Candidati!
@@ -79,6 +81,8 @@ Candidati!
 </form>
 <%} %>
 </div>
+</div>
+<div style="height:110px">
 </div>
 <%@include file ="footer.jsp"%>
 <script>
