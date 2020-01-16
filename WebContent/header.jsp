@@ -37,8 +37,7 @@ Amministratore amministratoreHeader = (Amministratore) session.getAttribute("ute
     </header>
 
 <%
-}else {
-	if(inoccupatoHeader!= null) { // utente inocc
+}if(inoccupatoHeader!= null) { // utente inocc
 
 %>
 
@@ -70,8 +69,7 @@ Amministratore amministratoreHeader = (Amministratore) session.getAttribute("ute
             </div>
         </nav>
         </header>
-<%} else{
-	if(aziendaHeader!=null){
+<%}if(aziendaHeader!=null){
 		// fine if
 	%>
 	<header>
@@ -105,8 +103,7 @@ Amministratore amministratoreHeader = (Amministratore) session.getAttribute("ute
             </div>
         </nav>
         </header>
-<% }
-	if(moderatoreHeader!=null){
+<% }if(moderatoreHeader!=null){
 		%>
 		<header>
         <nav class="navbar navbar-expand-md navbar-light bg-dark fixed-top">
@@ -138,7 +135,7 @@ Amministratore amministratoreHeader = (Amministratore) session.getAttribute("ute
         </header>
 		
 	<% 
-	}else{
+	}if(amministratoreHeader!=null){
 		%>
 		<header>
         <nav class="navbar navbar-expand-md navbar-light bg-dark fixed-top">
@@ -176,9 +173,7 @@ Amministratore amministratoreHeader = (Amministratore) session.getAttribute("ute
         </nav>
         </header>
 	<% 
-}
-}
-} // fine else%>
+}%>
 
 
 
