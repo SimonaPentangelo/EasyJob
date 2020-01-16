@@ -7,11 +7,11 @@
 <meta charset="ISO-8859-1">
 <title>Registrazione Inoccupato</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="../../JS-SCRIPT/controlliRegistrazioneInoccupato.js"></script>
+<script src="./JS-SCRIPT/controlliRegistrazioneInoccupato.js"></script>
 </head>
 <body>
 <%@include file ="header.jsp"%>
-	<form action="${pageContext.request.contextPath}/RegistrazioneInoccupatoServlet" method="POST" enctype='multipart/form-data'>
+	<form enctype='multipart/form-data' action="${pageContext.request.contextPath}/RegistrazioneInoccupatoServlet" method="POST">
 	Nome: <input id="nome" onchange="checkNome()" type="text" name="nome">
 	<span id="errorNome"></span><br>
 	

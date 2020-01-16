@@ -9,9 +9,11 @@ import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Locale;
-
+import java.util.regex.Pattern;
+import javax.servlet.http.Part;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -27,10 +29,7 @@ import easyjob.model.ManagerUtenti;
  * Servlet implementation class RegistrazioneAziendaServlet
  */
 @WebServlet("/RegistrazioneAziendaServlet")
-@MultipartConfig/*(fileSizeThreshold=1024*1024*10,//10MB
-maxFileSize=1024*1024*100000,//100GB
-maxRequestSize=1024*1024*100000)*/ //100GB per la dimensione dei file
-
+@MultipartConfig
 public class RegistrazioneAziendaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -40,6 +39,56 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
     public RegistrazioneAziendaServlet() {
         // TODO Auto-generated constructor stub
     }
+    
+    protected boolean validazione(String nomeAzienda, Part logoAzienda, String partitaIVA, String username, String indirizzo, String dataFondazioneString, String numeroDipendentiString, String email, String password, String confermaPassword, boolean check) {
+		boolean valido = true;
+		String nomeAzExp = "^[A-Za-zאטלעש0-9-._ ]{5,50}$";
+		String userexp = "^[A-Za-z0-9]{5,20}$";
+		String passexp = "^[A-Za-z0-9-._]{8,16}$";
+		String indexp = "^[A-Za-z ]{3,6}[A-Za-zאטלעש ]{2,35}[,]{1}[0-9 ]{2,5}$";
+		String IVAexp = "^[A-Z0-9]{11,11}$";
+		String emailexp = "^[A-Za-z0-9_.]+@[a-zA-Z.]{2,}\\.[a-zA-Z]{2,3}$";
+		
+		if(!Pattern.matches(nomeAzExp, nomeAzienda)) {
+			valido = false;
+		}
+		if(!Pattern.matches(IVAexp, partitaIVA)) {
+			valido = false;
+		}
+		if(!Pattern.matches(userexp, username)){
+			valido = false;
+		}
+		LocalDateTime dateInput = LocalDateTime.parse(dataFondazioneString);
+		LocalDateTime currentDate = LocalDateTime.now();
+		if(!dateInput.isBefore(currentDate)) {
+			valido = false;
+		}
+		if(!Pattern.matches(passexp, password)) {
+			valido = false;
+		}
+		if(!password.equals(confermaPassword)) {
+			valido = false;
+		}
+		if(!Pattern.matches(indexp, indirizzo)) {
+			valido = false;
+		}
+		if(!Pattern.matches(emailexp, email)) {
+			valido = false;
+		}
+		if(!check) {
+			valido = false;
+		}
+		if(!Paths.get(logoAzienda.getSubmittedFileName()).getFileName().toString().substring(Paths.get(logoAzienda.getSubmittedFileName()).getFileName().toString().length() - 3).equals("pdf")) {
+			valido = false;
+		}
+		long fileSizeInMB = logoAzienda.getSize() / 1024;
+
+		if (fileSizeInMB > 10) {
+		  valido = false;
+		}
+		
+		return valido;
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -76,105 +125,48 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
 		ManagerUtenti mu = new ManagerUtenti();
 		
 		String nomeAzienda = request.getParameter("nomeAzienda");
-		if(nomeAzienda != null && !nomeAzienda.equals("") && !nomeAzienda.equals(" ") && nomeAzienda.length() >= 6 && nomeAzienda.length() <= 30) {
-				azienda.setNomeAzienda(nomeAzienda);
-		} else {
-			//errore nel nome dell'aziendas
-		}
-		
 		Part logoAzienda = request.getPart("logoAzienda");
-		if(logoAzienda.getSize() == 0) {
-			//non c'ט il logo 
-		}
-		
 		String partitaIVA = request.getParameter("partitaIVA");
-		if(partitaIVA != null && !partitaIVA.equals("") && !partitaIVA.equals(" ") && partitaIVA.length() == 11) {
-			azienda.setPartitaIVA(partitaIVA);
-		} else {
-			//errore nella partita iva
-		}
-		
 		String username = request.getParameter("username");
-		if(username != null && !username.equals("") && !username.equals(" ") && username.length() >= 5 && username.length() <= 20) {
-			azienda.setUsername(username);
-		} else {
-			//errore nell'username
-		}
-		
 		String indirizzo = request.getParameter("indirizzoSede");
-		if(indirizzo != null && !indirizzo.equals("") && !indirizzo.equals(" ") && indirizzo.length() >= 6 && indirizzo.length() <= 30) {
-			azienda.setIndirizzoSede(indirizzo);
-		} else {
-			//errore nell'indirizzo
-		}
-		
-		String dataFondazioneString = request.getParameter("dataFondazione");
-		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
-		SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
-		try {
-			String dataFondazione = sdf2.format(sdf1.parse(dataFondazioneString));
-			azienda.setDataFondazione(dataFondazione);
-			
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		String descrizione = request.getParameter("descrizione");
-		if(descrizione != null && !descrizione.equals("") && !descrizione.equals(" ") && descrizione.length() <= 500) {
-			azienda.setDescrizione(descrizione);
-		} else {
-			//errore nella descrizione
-		}
-		
-		String numeroDipendentiString = request.getParameter("numeroDipendenti");
-		if(numeroDipendentiString != null && !numeroDipendentiString.equals("") && !numeroDipendentiString.equals(" ")) {
-			try {
-				azienda.setNumeroDipendenti(Integer.parseInt(numeroDipendentiString));
-			} catch(NumberFormatException e) {
-				//non ט stato passato un numero in input
-			}
-		}
-		
-		String email = request.getParameter("email");
-		if(email != null && !email.contentEquals("") && !email.contentEquals(" ")) {
-			azienda.setEmail(email);
-		}
-		
+		String dataFondazioneString = request.getParameter("dataFondazione");	
+		String numeroDipendentiString = request.getParameter("numeroDipendenti");	
+		String email = request.getParameter("email");		
 		String password = request.getParameter("password");
 		String confermaPassword = request.getParameter("confermaPassword");
+		boolean check = Boolean.getBoolean(request.getParameter("trattamentoDati"));
 		
-		if(password != null && !password.equals("") && !password.equals(" ") && password.length() >= 8 && password.length() <= 16) {
-			if(confermaPassword != null && !confermaPassword.equals("") && !confermaPassword.equals(" ") && confermaPassword.length() >= 8 && confermaPassword.length() <= 16)
-			{
-				if(password.equals(confermaPassword)) {
-					azienda.setPassword(password);
-				
-				} else {
-					//le due password non corrispondono
-				}
-			} else {
-				//errore nella password
+		String rootFolder = "";
+		String rootPath = "";
+		String userPath = "";
+		
+		if(!validazione(nomeAzienda, logoAzienda, partitaIVA, username, indirizzo, dataFondazioneString, numeroDipendentiString, email, password, confermaPassword, check)) {
+			
+		} else {
+			rootFolder = "resources"; //serve a dare il nome della cartella di root per salvare i file se gia c'ט non la crea
+			rootPath = request.getServletContext().getRealPath("") + rootFolder; //costruisce la stringa contenete il percorso della root dove salviamo i file 
+			userPath = rootPath + File.separator + azienda.getUsername(); //serve per definire la cartella dell'utente se gia esiste non viene creata
+			SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+			SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
+			String dataFondazione;
+			try {
+				dataFondazione = sdf2.format(sdf1.parse(dataFondazioneString));
+				azienda.setDataFondazione(dataFondazione);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
+			azienda.setEmail(email);
+			azienda.setPartitaIVA(partitaIVA);
+			azienda.setPassword(password);
+			azienda.setUsername(username);
+			azienda.setIndirizzoSede(indirizzo);
+			azienda.setNumeroDipendenti(Integer.parseInt(numeroDipendentiString));
+			azienda.setNomeAzienda(nomeAzienda);
+			azienda.setLogoAzienda("resources" + File.separator + azienda.getUsername()+ File.separator + logoAzienda.getSubmittedFileName().replaceAll(" ", "_"));
+			azienda.setBanned(false);
 		}
 		
-		azienda.setBanned(false);
-		
-		if(request.getParameter("trattamentoDati") == null) {
-			//deve fare il check
-		}
-		
-		//Codice per creare la directory dove salvare l'immagine del logo
-		//BISOGNA VEDERE SE FUNZIONA!
-		
-		String rootFolder = "resources"; //serve a dare il nome della cartella di root per salvare i file se gia c'ט non la crea
-		String rootPath = request.getServletContext().getRealPath("") + rootFolder; //costruisce la stringa contenete il percorso della root dove salviamo i file 
-		String userPath = rootPath + File.separator + azienda.getUsername(); //serve per definire la cartella dell'utente se gia esiste non viene creata
-		
-		azienda.setLogoAzienda("resources" + File.separator + azienda.getUsername()+ File.separator + logoAzienda.getSubmittedFileName().replaceAll(" ", "_"));
-		System.out.println(azienda.getNomeAzienda() + azienda.getDataFondazione());
-		System.out.println(azienda.getDescrizione() + azienda.getEmail());
-		System.out.println(azienda.getIndirizzoSede() + azienda.getNumeroDipendenti());
 		try {
 			if(!mu.isPresent(azienda)) {
 				mu.registerUserAzienda(azienda);

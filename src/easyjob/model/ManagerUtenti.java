@@ -51,6 +51,10 @@ public class ManagerUtenti {
 		if (checkUser(usernameToCheck,TABLE_INOCCUPATO) || checkUser(usernameToCheck,TABLE_AZIENDA) ||
 				checkUser(usernameToCheck,TABLE_MODERATORE) || checkUser(usernameToCheck,TABLE_AMMINISTRATORE))
 			result = true;
+		if(checkEmail(u.getEmail(), TABLE_INOCCUPATO) || checkEmail(u.getEmail(), TABLE_AZIENDA) 
+				|| checkEmail(u.getEmail(), TABLE_MODERATORE) || checkEmail(u.getEmail(), TABLE_AMMINISTRATORE)) {
+			result = false;
+		}
 		return result;
 	}
 	
@@ -422,6 +426,47 @@ public class ManagerUtenti {
 			try{
 				if(checkUserPS != null)
 					checkUserPS.close();
+			    }
+			finally
+			{
+				DriverManagerConnectionPool.releaseConnection(connect);
+			}
+		}
+		return flag;
+	}
+	
+	/**
+	 * Questo metodo controlla se l'utente passato in input con l'username è presente nella tabella passata in input.
+	 * 
+	 * @param email oggetto di tipo <strong>String</strong>
+	 * @param table oggetto di tipo <strong>String</strong>
+	 * @return true se l'email è nella tabella. False altrimenti.
+	 * @throws SQLException
+	 * @precondition username != null && !username.equals("") && table != null.
+	 */
+	private synchronized boolean checkEmail(String email, String table) throws SQLException{
+		
+		PreparedStatement checkEmailPS = null;
+		Connection connect = null;
+		boolean flag = false;
+		String query = "SELECT Email FROM " + table + " WHERE Email = ?;";
+		try{
+			
+		    connect = DriverManagerConnectionPool.getConnection();
+			checkEmailPS = connect.prepareStatement(query);
+			checkEmailPS.setString(1, email);
+			ResultSet result = checkEmailPS.executeQuery();
+			
+			while(result.next())
+			{
+				flag = true;
+			}
+		} 
+		finally 
+		{
+			try{
+				if(checkEmailPS != null)
+					checkEmailPS.close();
 			    }
 			finally
 			{

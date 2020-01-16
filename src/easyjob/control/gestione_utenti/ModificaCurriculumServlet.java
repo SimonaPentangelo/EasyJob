@@ -26,9 +26,7 @@ import easyjob.model.ManagerUtenti;
  * Servlet implementation class ModificaCurriculumServlet
  */
 @WebServlet("/ModificaCurriculumServlet")
-@MultipartConfig(fileSizeThreshold=1024*1024*10,//10MB
-maxFileSize=1024*1024*100000,//100GB
-maxRequestSize=1024*1024*100000)//100GB per la dimensione dei file
+@MultipartConfig
 public class ModificaCurriculumServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -59,14 +57,23 @@ public class ModificaCurriculumServlet extends HttpServlet {
 		ManagerUtenti mu = new ManagerUtenti();
 		HttpSession session=request .getSession(false);
 		boolean auth = (boolean) session.getAttribute("autenticato");
+		String redirect = "/protectedPageInoccupato.jsp";
+		
 		if(auth) {
 			Utente utente = (Utente) session.getAttribute("utenteInoccupato");
 			if(utente instanceof Inoccupato) {
 				Inoccupato inoccupato = (Inoccupato) utente;
 				
 				Part curriculum = request.getPart("curriculum");
-				if(curriculum.getSize() == 0) {
-					//non c'è il curriculum
+				if(!Paths.get(curriculum.getSubmittedFileName()).getFileName().toString().substring(Paths.get(curriculum.getSubmittedFileName()).getFileName().toString().length() - 3).equals("pdf")) {
+					response.setHeader("errorUpdate", "Il file deve essere in formato PDF.");
+					response.sendRedirect(request.getContextPath()+redirect);
+				}
+				long fileSizeInMB = curriculum.getSize() / 1024;
+
+				if (fileSizeInMB > 10) {
+					response.setHeader("errorUpdate", "La dimensione non deve superare i 10MB.");
+					response.sendRedirect(request.getContextPath()+redirect);
 				}
 				
 				//Codice per creare la directory dove salvare l'immagine del logo
@@ -103,6 +110,8 @@ public class ModificaCurriculumServlet extends HttpServlet {
 								
 						Files.copy(inputStream, Paths.get(cvFullPath), StandardCopyOption.REPLACE_EXISTING);
 						inputStream.close();
+						response.setHeader("successUpdate", "Modifica avvenuta con successo");
+						response.sendRedirect(request.getContextPath()+redirect);
 					}
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block

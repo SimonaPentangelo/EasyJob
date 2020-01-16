@@ -9,7 +9,10 @@ import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-
+import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.Locale;
+import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -26,9 +29,7 @@ import easyjob.model.ManagerUtenti;
  * Servlet implementation class RegistrazioneInoccupatoServlet
  */
 @WebServlet("/RegistrazioneInoccupatoServlet")
-@MultipartConfig(fileSizeThreshold=1024*1024*10,//10MB
-maxFileSize=1024*1024*100000,//100GB
-maxRequestSize=1024*1024*100000)//100GB per la dimensione dei file
+@MultipartConfig
 public class RegistrazioneInoccupatoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -39,6 +40,59 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
+    protected boolean validazione(String nome, String cognome, String username, String dataNascitaString, String email, String password, String confermaPassword, String indirizzo, String citt‡Nascita, Part curriculum, boolean check) {
+		boolean valido = true;
+		String nomeexp = "^[A-Za-z‡ËÏÚ˘ ]{2,50}$";
+		String cognomeexp = "^[A-Za-z‡ËÏÚ˘ ]{2,50}$";
+		String userexp = "^[A-Za-z0-9]{5,20}$";
+		String passexp = "^[A-Za-z0-9-._]{8,16}$";
+		String residexp = "^[A-Za-z ]{3,6}[A-Za-z‡ËÏÚ˘ ]{2,35}[,]{1}[0-9 ]{2,5}$";
+		String cittaexp = "^[A-Za-z‡ËÏÚ˘' ]{2,20}$";
+		String emailexp = "^[A-Za-z0-9_.]+@[a-zA-Z.]{2,}\\.[a-zA-Z]{2,3}$";
+		
+		if(!Pattern.matches(nomeexp, nome)) {
+			valido = false;
+		}
+		if(!Pattern.matches(cognomeexp, cognome)) {
+			valido = false;
+		}
+		if(!Pattern.matches(userexp, username)){
+			valido = false;
+		}
+		LocalDateTime dateInput = LocalDateTime.parse(dataNascitaString);
+		LocalDateTime currentDate = LocalDateTime.now();
+		if(!dateInput.isBefore(currentDate)) {
+			valido = false;
+		}
+		if(!Pattern.matches(passexp, password)) {
+			valido = false;
+		}
+		if(!password.equals(confermaPassword)) {
+			valido = false;
+		}
+		if(!Pattern.matches(residexp, indirizzo)) {
+			valido = false;
+		}
+		if(!Pattern.matches(cittaexp, citt‡Nascita)) {
+			valido = false;
+		}
+		if(!Pattern.matches(emailexp, email)) {
+			valido = false;
+		}
+		if(!check) {
+			valido = false;
+		}
+		if(!Paths.get(curriculum.getSubmittedFileName()).getFileName().toString().substring(Paths.get(curriculum.getSubmittedFileName()).getFileName().toString().length() - 3).equals("pdf")) {
+			valido = false;
+		}
+		long fileSizeInMB = curriculum.getSize() / 1024;
+
+		if (fileSizeInMB > 10) {
+		  valido = false;
+		}
+		
+		return valido;
+	}
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -69,98 +123,47 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
 		Inoccupato inoccupato = new Inoccupato();
 		ManagerUtenti mu = new ManagerUtenti();
 		
-		String nome = request.getParameter("nome");
-		if(nome != null && !nome.equals("") && !nome.equals(" ") && nome.length() >= 2 && nome.length() <= 50) {
-				inoccupato.setNome(nome);
-		} else {
-			//errore nel nome 
-		}
-		
+		String nome = request.getParameter("nome");	
 		String cognome = request.getParameter("cognome");
-		if(cognome != null && !nome.equals("") && !cognome.equals(" ") && cognome.length() >= 2 && cognome.length() <= 50) {
-				inoccupato.setCognome(cognome);
-		} else {
-			//errore nel cognome
-		}
-		
 		String citt‡Nascita = request.getParameter("cittaNascita");
-		if(citt‡Nascita != null && !citt‡Nascita.equals("") && !citt‡Nascita.equals(" ") && citt‡Nascita.length() >= 2 && citt‡Nascita.length() <= 20) {
-				inoccupato.setCitt‡(citt‡Nascita);
-				System.out.println(inoccupato.getCitt‡());
-		} else {
-			//errore nella citt‡
-		}
-	
 		String username = request.getParameter("username");
-		if(username != null && !username.equals("") && !username.contentEquals(" ") && username.length() >= 5 && username.length() <= 20) {
-			inoccupato.setUsername(username);
-		} else {
-			//errore nell'username
-		}
-		
 		String indirizzo = request.getParameter("residenza");
-		if(indirizzo != null && !indirizzo.equals("") && !indirizzo.equals(" ") && indirizzo.length() >= 6 && indirizzo.length() <= 30) {
-			inoccupato.setResidenza(indirizzo);
-		} else {
-			//errore nell'indirizzo
-		}
-		
 		String dataNascitaString = request.getParameter("dataNascita");
-		if(dataNascitaString != null) {
-			System.out.println(dataNascitaString);
+		String email = request.getParameter("email");	
+		String password = request.getParameter("password");
+		String confermaPassword = request.getParameter("confermaPassword");
+		Part curriculum = request.getPart("curriculum");
+		boolean check = Boolean.getBoolean(request.getParameter("trattamentoDati"));
+	
+		String rootFolder = "";
+		String rootPath = "";
+		String userPath  = "";
+		
+		if(!validazione(nome, cognome, username, dataNascitaString, email, password, confermaPassword, indirizzo, citt‡Nascita, curriculum, check)) {
+			
+		} else {
+			rootFolder = "resources"; //serve a dare il nome della cartella di root per salvare i file se gia c'Ë non la crea
+			rootPath = request.getServletContext().getRealPath("") + rootFolder; //costruisce la stringa contenete il percorso della root dove salviamo i file 
+			userPath = rootPath + File.separator + inoccupato.getUsername(); //serve per definire la cartella dell'utente se gia esiste non viene creata
+			
+			inoccupato.setNome(nome);
+			inoccupato.setCognome(cognome);
+			inoccupato.setCitt‡(citt‡Nascita);
+			inoccupato.setUsername(username);
+			inoccupato.setPassword(password);
 			SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
 			SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
-			try {	
-				String dataNascita = sdf2.format(sdf1.parse(dataNascitaString));
+			String dataNascita;
+			try {
+				dataNascita = sdf2.format(sdf1.parse(dataNascitaString));
 				inoccupato.setDataNascita(dataNascita);
-			
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} 
-		} else {
-			//errore data
-		}
-		
-		String email = request.getParameter("email");
-		if(email != null && !email.contentEquals("") && !email.contentEquals(" ")) {
-			inoccupato.setEmail(email);
-		}
-		
-		String password = request.getParameter("password");
-		String confermaPassword = request.getParameter("confermaPassword");
-		if(password != null && !password.contentEquals("") && !password.contentEquals(" ") && password.length() >= 8 && password.length() <= 16) {
-			if(confermaPassword != null && !confermaPassword.contentEquals("") && !confermaPassword.contentEquals(" ") && confermaPassword.length() >= 8 && confermaPassword.length() <= 16)
-			{
-				if(password.equals(confermaPassword)) {
-					inoccupato.setPassword(password);
-				} else {
-					//le due password non corrispondono
-				}
-			} else {
-				//errore nella password
 			}
-		}
-		
-		Part curriculum = request.getPart("curriculum");
-		if(curriculum == null) {
-			//no CV
-		} else if(curriculum.getSize() == 0) {
-			//non c'Ë il curriculum
-		}
-		
-		//Codice per creare la directory dove salvare l'immagine del logo
-		//BISOGNA VEDERE SE FUNZIONA!
-			
-		String rootFolder = "resources"; //serve a dare il nome della cartella di root per salvare i file se gia c'Ë non la crea
-		String rootPath = request.getServletContext().getRealPath("") + rootFolder; //costruisce la stringa contenete il percorso della root dove salviamo i file 
-		String userPath = rootPath + File.separator + inoccupato.getUsername(); //serve per definire la cartella dell'utente se gia esiste non viene creata
-				
-		inoccupato.setCurriculum("resources" + File.separator + inoccupato.getUsername() + File.separator + curriculum.getSubmittedFileName().replaceAll(" ", "_"));
-		System.out.println(inoccupato.getCurriculum());
-		System.out.println(request.getParameter("trattamentoDati"));
-		if(request.getParameter("trattamentoDati") == null) {
-			//deve fare il check
+			inoccupato.setEmail(email);
+			inoccupato.setResidenza(indirizzo);
+			inoccupato.setCurriculum("resources" + File.separator + inoccupato.getUsername() + File.separator + curriculum.getSubmittedFileName().replaceAll(" ", "_"));
 		}
 		
 		try {
@@ -180,8 +183,7 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
 					userDir.mkdir();
 							
 				}
-
-						
+		
 				String cvFullPath = userPath + File.separator + curriculum.getSubmittedFileName().replaceAll(" ", "_");
 				InputStream inputStream = curriculum.getInputStream();
 						

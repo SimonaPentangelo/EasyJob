@@ -18,7 +18,7 @@
 <meta charset="ISO-8859-1">
 <title>Invia Segnalazione</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="../../JS-SCRIPT/controlliFormSegnalazione.js"></script>
+<script src="./JS-SCRIPT/controlliFormSegnalazione.js"></script>
 </head>
 <body>
 <%@include file ="header.jsp"%>

@@ -7,11 +7,11 @@
 <meta charset="ISO-8859-1">
 <title>Registrazione Azienda</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="../../JS-SCRIPT/controlliRegistrazioneAzienda.js"></script>
+<script src="./JS-SCRIPT/controlliRegistrazioneAzienda.js"></script>
 </head>
 <body>
 <%@include file ="header.jsp"%>
-	<form action="${pageContext.request.contextPath}/RegistrazioneAziendaServlet" method="POST" enctype='multipart/form-data'>
+	<form enctype='multipart/form-data' action="${pageContext.request.contextPath}/RegistrazioneAziendaServlet" method="POST">
 	Nome Azienda: <input id="nomeAzienda" onchange="checkNomeAzienda()" type="text" name="nomeAzienda"> 
 	<span id="errorNome"></span><br>
 	
