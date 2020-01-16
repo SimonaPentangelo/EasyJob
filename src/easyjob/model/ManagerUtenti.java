@@ -37,7 +37,11 @@ public class ManagerUtenti {
 						checkUser(u.getUsername(),”Inoccupato”) OR
 						checkUser (u.getUsername(),”Azienda”) OR
 						checkUser (u.getUsername(),”Amministratore”)OR
-						checkUser(u.getUsername(),”Moderatore”)  => TRUE.
+						checkUser(u.getUsername(),”Moderatore”) 
+						&& checkEmail(u.getEmail(),”Inoccupato”) OR
+						checkEmail(u.getEmail(),”Azienda”) OR
+						checkEmail(u.getEmail(),”Amministratore”)OR
+						checkEmail(u.getEmail(),”Moderatore”) => TRUE.
 						FALSE altrimenti.
 	 * @throws SQLException
 	 * @precondition (u != null) && (u.getUsername != “” && u.getUsername != null)
@@ -53,7 +57,7 @@ public class ManagerUtenti {
 			result = true;
 		if(checkEmail(u.getEmail(), TABLE_INOCCUPATO) || checkEmail(u.getEmail(), TABLE_AZIENDA) 
 				|| checkEmail(u.getEmail(), TABLE_MODERATORE) || checkEmail(u.getEmail(), TABLE_AMMINISTRATORE)) {
-			result = false;
+			result = true;
 		}
 		return result;
 	}
