@@ -40,7 +40,7 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
     
-    protected boolean validazione(String nomeAzienda, Part logoAzienda, String partitaIVA, String username, String indirizzo, String dataFondazioneString, String numeroDipendentiString, String email, String password, String confermaPassword, boolean check) {
+    private boolean validazione(String nomeAzienda, Part logoAzienda, String partitaIVA, String username, String indirizzo, String dataFondazioneString, String numeroDipendentiString, String email, String password, String confermaPassword, boolean check) {
 		boolean valido = true;
 		String nomeAzExp = "^[A-Za-zאטלעש0-9-._ ]{5,50}$";
 		String userexp = "^[A-Za-z0-9]{5,20}$";

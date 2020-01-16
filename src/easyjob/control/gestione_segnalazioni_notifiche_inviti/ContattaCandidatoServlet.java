@@ -78,7 +78,7 @@ public class ContattaCandidatoServlet extends HttpServlet {
 		response.sendRedirect(request.getContextPath()+redirect);
 	}
 
-	protected boolean validazione (int idAn,int idUt,String tit,String msg,int idAzienda) {
+	private boolean validazione (int idAn,int idUt,String tit,String msg,int idAzienda) {
 		boolean valido = true;
 		String expTit= "^[A-Za-zאטלעש .,!?']{5,60}$";
 		String expMsg="^[A-Za-zאטלעש .,!?']{10,10000}$";

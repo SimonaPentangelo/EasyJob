@@ -25,7 +25,7 @@ public class PubblicaAnnuncioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	
-public boolean valida(String titolo, String desc, String req, String città, String tag, String typeContratto) {
+private boolean valida(String titolo, String desc, String req, String città, String tag, String typeContratto) {
 	
 	boolean valido = true;
 	String expTitolo= "^[A-Za-z0-9,. ]{6,50}$";

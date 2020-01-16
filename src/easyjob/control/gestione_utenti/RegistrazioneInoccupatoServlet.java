@@ -40,7 +40,7 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-    protected boolean validazione(String nome, String cognome, String username, String dataNascitaString, String email, String password, String confermaPassword, String indirizzo, String citt‡Nascita, Part curriculum, boolean check) {
+    private boolean validazione(String nome, String cognome, String username, String dataNascitaString, String email, String password, String confermaPassword, String indirizzo, String citt‡Nascita, Part curriculum, boolean check) {
 		boolean valido = true;
 		String nomeexp = "^[A-Za-z‡ËÏÚ˘ ]{2,50}$";
 		String cognomeexp = "^[A-Za-z‡ËÏÚ˘ ]{2,50}$";
