@@ -8,6 +8,7 @@
 	annunci = (ArrayList) session.getAttribute("annunci");
 	Moderatore mod = (Moderatore) session.getAttribute("utenteModeratore");
 	String tagDellaRicerca = "";
+	String cit=(String) session.getAttribute("cit");
 	if (mod == null) {
 		tagDellaRicerca = (String) session.getAttribute("tag");
 	}
@@ -20,7 +21,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Bacheca</title>
 <%@include file ="librerie.html"%>
 <link rel ="stylesheet" type="text/css" href="css/ordini.css">
 </head>
@@ -32,18 +33,22 @@
 	<%
 		if (annunci.isEmpty()) {
 	%>
-	<p>Non sono stati trovati annunci</p>
-
+	<p style="color:red">Non sono stati trovati annunci per il tag: <%=tagDellaRicerca %></p>
+	<div style="height:350px"></div>
 	<%
 		} else {
 
 			if (mod == null) {
 	%>
-	<form action="${pageContext.request.contextPath}/FiltraAnnunciServlet"
-		method="GET">
-		<input type="text" class="city" name="advancedSearch"> <br> <input type="hidden"
-			name="tag" value="<%=tagDellaRicerca%>"> <input class="umb-btn" type="submit"
-			value="Cerca per città">
+	<%if (cit==null){ %>
+	<h2>Ecco gli annunci per il tag <%=tagDellaRicerca %></h2>
+	<%}else{ %>
+	<h2>Ecco gli annunci per il tag <%=tagDellaRicerca %> nella città <%=cit %></h2>
+<% }%>
+	<form action="FiltraAnnunciServlet" method="GET">
+		<input type="text" class="city" name="advancedSearch"> <br> 
+		<input type="hidden"name="tag" value="<%=tagDellaRicerca%>"> 
+		<input class="umb-btn" type="submit"value="Cerca per città">
 	</form>
 	<div class="tabbbella">
 	<table class="table table-sm">
