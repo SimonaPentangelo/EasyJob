@@ -55,9 +55,11 @@ public class ManagerUtenti {
 		if (checkUser(usernameToCheck,TABLE_INOCCUPATO) || checkUser(usernameToCheck,TABLE_AZIENDA) ||
 				checkUser(usernameToCheck,TABLE_MODERATORE) || checkUser(usernameToCheck,TABLE_AMMINISTRATORE))
 			result = true;
-		if(checkEmail(u.getEmail(), TABLE_INOCCUPATO) || checkEmail(u.getEmail(), TABLE_AZIENDA) 
-				|| checkEmail(u.getEmail(), TABLE_MODERATORE) || checkEmail(u.getEmail(), TABLE_AMMINISTRATORE)) {
-			result = true;
+		if(u.getEmail() != null) {
+			if(checkEmail(u.getEmail(), TABLE_INOCCUPATO) || checkEmail(u.getEmail(), TABLE_AZIENDA) 
+					|| checkEmail(u.getEmail(), TABLE_MODERATORE) || checkEmail(u.getEmail(), TABLE_AMMINISTRATORE)) {
+				result = true;
+			}
 		}
 		return result;
 	}

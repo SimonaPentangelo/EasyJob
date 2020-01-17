@@ -41,16 +41,19 @@ public class RimuoviAnnuncioServlet extends HttpServlet {
 			}
 				else{
 					response.getWriter().write("unespected");
-					redirect="/index.jsp"; //non dovrebbe mai succedere
+					redirect="./showAnnuncio.jsp"; //non dovrebbe mai succedere
+					response.setHeader("errorRemove", "Questo annuncio è già stato rimosso");
 				}
 			}catch(Exception e){
+				response.setHeader("errorRemove", "Si è verificato un errore");
 				e.printStackTrace();
 			}
 		}else {
+			response.setHeader("errorRemove", "Id dell'annuncio non valido");
 			response.getWriter().write("id non valido");
-			redirect = "/index.jsp"; // non dovrebbe mai succedere
+			redirect = "./showAnnuncio.jsp"; // non dovrebbe mai succedere
 		}
-		response.sendRedirect(request.getContextPath()+redirect);
+		response.sendRedirect(redirect);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
