@@ -20,16 +20,21 @@ System.out.println("anche qusto è null");
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <%@include file ="librerie.html"%>
+<link rel="stylesheet" type="text/css" href="css/responsabbbile.css">
+<link rel="stylesheet" type="text/css" href="css/umbtn.css">
+<link rel="stylesheet" type="text/css" href="css/elencoSegnalazioni.css">
 </head>
 <body>
 <%@include file ="header.jsp"%>
+<div id="contain" style="margin-top:130px">
 <p> Ciao , ecco l'elenco delle tue candidature:</p>
 <%if(elenco.size()==0){
 %>
 
 <p>Non hai ancora effettuato una candidatura, puoi candidarti attraverso la nostra bacheca </p>
-<button><a href="Bacheca.jsp">Vai alla bacheca</a></button>
-
+<button id="conferma" class="umb-btn" style="margin-left:695px ;margin-top:160px"><a href="Bacheca.jsp">Vai alla bacheca</a></button>
+<div class="myRow">
+<div class="myCol">
 <% } else{
 	for(int i=0;i<elenco.size();i++){
 		for(int j=0;j<elencoAn.size();j++){
@@ -43,7 +48,10 @@ System.out.println("anche qusto è null");
 	}
 }
 	%>
-
+</div>
+</div>
+</div>
+<div style="height:70px"></div>
 	<%@include file ="footer.jsp"%>
 </body>
 </html>
