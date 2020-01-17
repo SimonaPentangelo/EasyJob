@@ -84,7 +84,7 @@ function checkDataNascita() {
     var data = $("#dataNascita").val();
     var oggi = new Date();
     var nascita = new Date(data);
-    if (data != null && nascita.getFullYear().toString().length >= 4) 
+    if (data != null && isValidDate(nascita) && nascita.getFullYear().toString().length >= 4) 
     {
         if (oggi > nascita) 
         {
@@ -99,7 +99,15 @@ function checkDataNascita() {
     		$("#errorData").show();
         	return false;
         }
+    } else {
+    	$("#errorData").html("La data inserita non rispetta il formato.");
+		$("#errorData").show();
+    	return false;
     }
+}
+
+function isValidDate(d) {
+	  return d instanceof Date && !isNaN(d);
 }
 
 function checkEmail() {
@@ -112,7 +120,7 @@ function checkEmail() {
     	return true;
     } else {
     	
-    	$("#errorMail").html("Il formato non è valido.");
+    	$("#errorMail").html("Il formato non \xE8 valido.");
 		$("#errorMail").show();
         return false;
     }
@@ -191,9 +199,19 @@ function checkTrattamentoDati() {
 		return true;
 	} else {
 		
-		$("#errorCheck").html("E’ obbligatorio spuntare la casella del trattamento dati.");
+		$("#errorCheck").html("\xE8 obbligatorio spuntare la casella del trattamento dati.");
 		$("#errorCheck").show();
 		return false;
+	}
+}
+
+function checkAll() {
+	if(!checkNome() || !checkCognome() || !checkCitta() || !checkResidenza() || !checkDataNascita() || !checkEmail() || !checkUsername() || !checkPass() || !checkCurriculum() || !checkTrattamentoDati()) {
+		
+		return false;
+	} else {
+		
+		return true;
 	}
 }
 

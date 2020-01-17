@@ -8,7 +8,7 @@ function checkData() {
     var dataRic = new Date(data);
     console.log(dataRic);
     console.log(oggi);
-    if (data != null && dataRic.getFullYear().toString().length >= 4) 
+    if (data != null && isValidDate(dataRic) && dataRic.getFullYear().toString().length >= 4) 
     {
         if (oggi > dataRic) 
         {
@@ -22,5 +22,14 @@ function checkData() {
     		$("#errorData").show();
         	return false;
         }
+    } else {
+    	
+    	$("#errorData").html("La data inserita non rispetta il formato.");
+		$("#errorData").show();
+    	return false;
     }
+}
+
+function isValidDate(d) {
+	  return d instanceof Date && !isNaN(d);
 }

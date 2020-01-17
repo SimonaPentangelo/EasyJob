@@ -29,17 +29,17 @@ if(response.getHeader("errore") != null) {
 <%if (errorFormat!=null){
 			%><h3><%=errorFormat %></h3>
 		<%} %>
-	<form action="${pageContext.request.contextPath}/PubblicaAnnuncioServlet" method="POST">
+	<form onsubmit="return checkAll()" action="${pageContext.request.contextPath}/PubblicaAnnuncioServlet" method="POST">
 	<div class="row">
 
 		<div class="column">
 		<div>
-		Titolo: <input class="instesto" id="titolo" onchange="checkTitolo()" type="text" name="titolo"> 
+		Titolo: <input class="instesto" id="titolo" type="text" name="titolo"> 
 		<span class="spanno" id="errorTitolo"></span><br><br>
 		</div>
 		
 		<div>
-		Città: <input class="instesto" id="citta" onchange="checkCitta()" type="text" name="city"> 
+		Città: <input class="instesto" id="citta" type="text" name="city"> 
 		<span id="errorCitta"></span><br><br>
 		</div> 
 		</div>
@@ -47,7 +47,8 @@ if(response.getHeader("errore") != null) {
 		<div class="column">
 		<div>
 		Tipo contratto: 
-		<select class="instesto" id="cont" onchange="checkContratto()" name="tcontratto">
+		<select class="instesto" id="cont" name="tcontratto">
+		<option value="iniziale">--Seleziona un tipo--</option>
   		<option value="full-time">Full-time</option>
   		<option value="part-time">Part-time</option>
   		<option value="apprendistato">Apprendistato</option>
@@ -59,7 +60,7 @@ if(response.getHeader("errore") != null) {
 		</div>
 		
 		<div>
-		Tags: <input class="instesto" id="tags" onchange="checkTags()" type="text" name= "tags" placeholder="Inserisci uno o più tag susseguiti dalla virgola"> 
+		Tags: <input class="instesto" id="tags" type="text" name= "tags" placeholder="Inserisci uno o più tag susseguiti dalla virgola"> 
 		<span class="spanno"  id="errorTags"></span><br><br>
 
 		</div>

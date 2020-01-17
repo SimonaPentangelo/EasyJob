@@ -28,55 +28,55 @@
 		} 
 		%>
 		<span><%=stringa %></span>
-	<form enctype='multipart/form-data' action="${pageContext.request.contextPath}/RegistrazioneInoccupatoServlet" method="POST">
+	<form onsubmit="return checkAll()" enctype='multipart/form-data' action="${pageContext.request.contextPath}/RegistrazioneInoccupatoServlet" method="POST">
 	
 	<div class="row">
 
 		<div class="column">
 		<div>
-		Nome: <input class="instesto" id="nome" onchange="checkNome()" type="text" name="nome">
+		Nome: <input class="instesto" id="nome" type="text" name="nome">
 		<span class="spanno" id="errorNome"></span><br><br>
 		</div>
 		
 		<div>
-		Cognome: <input class="instesto" id="cognome" onchange="checkCognome()" type="text" name="cognome">
+		Cognome: <input class="instesto" id="cognome" type="text" name="cognome">
 		<span id="errorCognome" class="spanno"></span><br><br>
 		</div>
 		
 		<div>
-		Città: <input class="instesto" id="citta" onchange="checkCitta()" type="text" name="cittaNascita">
+		Città: <input class="instesto" id="citta" type="text" name="cittaNascita">
 		<span class="spanno" id="errorCitta"></span><br><br><br>
 		</div>
 		
 		<div>
-		Residenza: <input class="instesto" id="residenza" onchange="checkResidenza()" type="text" name="residenza">
+		Residenza: <input class="instesto" id="residenza" type="text" name="residenza">
 		<span class="spanno" id="errorResidenza"></span><br><br>
 		</div>
 		
 		<div>
-		Data di Nascita: <input class="instesto" id="dataNascita" onchange="checkDataNascita()" type="date" name="dataNascita">
+		Data di Nascita: <input class="instesto" id="dataNascita" type="date" name="dataNascita">
 		<span id="errorData" class="spanno"></span><br>
 		</div>
 		</div>
 		
 		<div class="column">
 		<div>
-		e-mail: <input class="instesto" id="email" onchange="checkEmail()" type="email" name="email">
+		e-mail: <input class="instesto" id="email" type="email" name="email">
 		<span class="spanno" id="errorMail"></span><br><br>
 		</div>
 		
 		<div>
-		Username: <input class="instesto" id="username" onchange="checkUsername()" type="text" name="username"> 
+		Username: <input class="instesto" id="username" type="text" name="username"> 
 		<span class="spanno" id="errorUser"></span><br><br>
 		</div>
 		
 		<div>
-		Password: <input class="instesto" id="pass" onchange="checkPass()" type="password" name="password">
+		Password: <input class="instesto" id="pass" type="password" name="password">
 		<span class="spanno" id="errorPass"></span><br><br>
 		</div>
 		
 		<div>
-		Conferma Password: <input class="instesto" id="confPass" onchange="checkPass()" type="password" name="confermaPassword">
+		Conferma Password: <input class="instesto" id="confPass" type="password" name="confermaPassword">
 		<span class="spanno" id="errorConfPass"></span><br><br>
 		</div>
 		
@@ -84,7 +84,7 @@
 		<p id="cv">Curriculum:</p>
 		<span id="fileSpan" class="fileSpan"></span>
 		<label class="umb-btn" for="curriculum">Scegli file</label>
-		<input id="curriculum" class="intestoLogo" onchange="checkCurriculum()" type="file" name="curriculum">
+		<input id="curriculum" class="intestoLogo" type="file" name="curriculum">
 		<span class="spanno" id="errorCurriculum"></span><br><br>
 		</div>
 

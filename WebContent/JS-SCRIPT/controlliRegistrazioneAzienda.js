@@ -78,7 +78,7 @@ function checkDipendenti() {
         return true;
 	} else {
 	
-		$("#errorDip").html("Il campo può contenere solo cifre.");
+		$("#errorDip").html("Il campo pu\xF2 contenere solo cifre.");
  		$("#errorDip").show();
  		return false;
 	}
@@ -104,7 +104,7 @@ function checkDataFondazione() {
     var data = $("#dataFond").val();
     var oggi = new Date();
     var nascita = new Date(data);
-    if (data != null && nascita.getFullYear().toString().length >= 4) 
+    if (data != null && isValidDate(nascita) && nascita.getFullYear().toString().length >= 4) 
     {
         if (oggi > nascita) 
         {
@@ -119,20 +119,28 @@ function checkDataFondazione() {
     		$("#errorData").show();
         	return false;
         }
+    } else {
+    	$("#errorData").html("La data inserita non rispetta il formato.");
+		$("#errorData").show();
+    	return false;
     }
+}
+
+function isValidDate(d) {
+	  return d instanceof Date && !isNaN(d);
 }
 
 function checkEmail() {
     var email = $("#email").val();
     var StringValidator = /^[A-Za-z0-9_.]+@[a-zA-Z.]{2,}\.[a-zA-Z]{2,3}$/;
 
-    if (email.match(StringValidator) && email == null) {
+    if (email.match(StringValidator) && email != null) {
     	$("#errorMail").hide();
     	
         return true;
     } else {
     	
-    	$("#errorMail").html("Il formato non è valido.");
+    	$("#errorMail").html("Il formato non \xE8 valido.");
 		$("#errorMail").show();
         return false;
     }
@@ -182,7 +190,8 @@ function checkLogo() {
 	var logo = $("#logoAzienda");
 	var name = logo.val();
 	var ext = name.substring(name.length - 3);
-    if (name != null && ext == "jpg" && ext == "png") {
+
+    if (name != null && (ext == "jpg" || ext == "png")) {
     	$("#errorLogo").hide();
     
        	return true;
@@ -202,7 +211,7 @@ function checkTrattamentoDati() {
 		return true;
 	} else {
 
-		$("#errorCheck").html("E’ obbligatorio spuntare la casella del trattamento dati.");
+		$("#errorCheck").html("\xE8 obbligatorio spuntare la casella del trattamento dati.");
 		$("#errorCheck").show();
 		return false;
 	}
