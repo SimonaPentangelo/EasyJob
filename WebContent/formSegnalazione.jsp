@@ -1,6 +1,5 @@
 <%Moderatore mod = (Moderatore) session.getAttribute("utenteModeratore");
   int idAzienda = Integer.parseInt(request.getParameter("az"));
- int idMod = mod.getIdUser();
 %>
 
 <%@ page import ="easyjob.entity.Moderatore" %>
@@ -19,22 +18,44 @@
 <title>Invia Segnalazione</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="./JS-SCRIPT/controlliFormSegnalazione.js"></script>
+<link rel="stylesheet" type="text/css" href="css/umbtn.css">
+<link rel ="stylesheet" type="text/css" href="css/header.css">
+<link rel ="stylesheet" type="text/css" href="css/responsabbbile.css">
+<link rel ="stylesheet" type="text/css" href="css/registerform.css">
+<link rel ="stylesheet" type="text/css" href="css/publish.css">
 </head>
 <body>
 <%@include file ="header.jsp"%>
-<form action="${pageContext.request.contextPath}/SegnalazioneUtenteServlet" method="POST">
-	Titolo: <input id="titolo" onchange="checkTitolo()" type="text" name="titolo"> 
-	<span id="errorTit"></span><br>
-	
-	Corpo: <input id="corpo" onchange="checkBody()" type="text" name="corpo"> 
-	<span id="errorBody"></span><br>
-	
-    <input type="hidden" name="azienda" value="<%=idAzienda%>"> <br>
-    <input type="hidden" name="moderatore" value="<%=idMod%>"><br> 
-	<br>	
-	<input id="conferma" type="submit" value="Invia Segnalazione">
-	</form>
 
+<div class="maremma">
+
+<h1>Segnala un'azienda</h1><br>
+<%
+		String stringa = "";
+		if(response.getHeader("errorReport") != null) {
+			stringa = response.getHeader("errorReport").toString();
+		} 
+		%>
+		<h3><%=stringa %></h3>
+
+<form action="${pageContext.request.contextPath}/SegnalazioneUtenteServlet" method="POST">
+
+	<div>
+	<span>Titolo:</span><br>
+	<input class="instestoPub"  id="titolo" onchange="checkTitolo()" type="text" name="titolo"> 
+	<span id="errorTit"></span><br><br>
+	</div>
+	
+	<div>
+	<span>Messaggio:</span><br> 
+	<textarea class="bigText" id="corpo" onchange="checkBody()" name="corpo"></textarea> <br>
+	<span id="errorMsg"></span><br><br>
+	</div>
+	
+    <input type="hidden" name="azienda" value="<%=idAzienda%>">
+	<input id="conferma" class="umb-btn" type="submit" value="Invia Segnalazione">
+	</form>
+</div>
 <%@include file ="footer.jsp"%>
 </body>
 </html>

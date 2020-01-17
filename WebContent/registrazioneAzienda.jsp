@@ -15,6 +15,7 @@
 <link rel ="stylesheet" type="text/css" href="css/header.css">
 <link rel ="stylesheet" type="text/css" href="css/responsabbbile.css">
 <link rel ="stylesheet" type="text/css" href="css/registerform.css">
+<link rel ="stylesheet" type="text/css" href="css/publish.css">
 </head>
 <body>
 <%@include file ="header.jsp"%>

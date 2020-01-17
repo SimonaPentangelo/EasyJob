@@ -12,6 +12,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import easyjob.entity.Moderatore;
 import easyjob.entity.Segnalazione;
 import easyjob.model.ManagerSegnalazioni;
 
@@ -33,11 +35,11 @@ public class SegnalazioneUtenteServlet extends HttpServlet {
 		String expTitolo= "^[A-Za-zàèìòù .,!?']{5,60}$";
 	    String expBody="^[A-Za-zàèìòù .,!?']{10,10000}$";
 		
-	    if (!Pattern.matches(expTitolo, titolo)) {
+	    if (!Pattern.matches(expTitolo, titolo) || titolo == null || titolo.equals("")) {
 			valido=false;
 		}
 	    
-	    if (!Pattern.matches(expBody, body)) {
+	    if (!Pattern.matches(expBody, body) || body == null || body.equals("")) {
 			valido=false;
 		}
 	    
@@ -67,44 +69,56 @@ public class SegnalazioneUtenteServlet extends HttpServlet {
 		String redirect = "";
 		ManagerSegnalazioni manager = new ManagerSegnalazioni();
 		int azienda = Integer.parseInt(request.getParameter("azienda"));
-		int mod = Integer.parseInt(request.getParameter("moderatore"));
+		Moderatore modObj = (Moderatore) request.getSession().getAttribute("utenteModeratore");
+		int mod = modObj.getIdUser();
 		
 		String titolo = request.getParameter("titolo");
 		String corpo = request.getParameter("corpo");
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		String localDate = dtf.format(LocalDate.now());
 		
-		if(titolo != null && corpo != null) {
-			segnalazione.setTitolo(titolo);
-			segnalazione.setCorpo(corpo);
-			segnalazione.setData(localDate);
-			segnalazione.setModeratore(mod);
-			segnalazione.setAzienda(azienda);
-		}
-
 		try{
 			System.out.println(valida(titolo, corpo));
 			if(valida(titolo, corpo))
 			{
+				segnalazione.setTitolo(titolo);
+				segnalazione.setCorpo(corpo);
+				segnalazione.setData(localDate);
+				segnalazione.setModeratore(mod);
+				segnalazione.setAzienda(azienda);
 				if(!manager.alreadyReported(mod, azienda)) {
 					if(manager.segnalaUtente(segnalazione))
 					{
-						redirect = "/CorrectSegnalazione.jsp";
+						redirect = "./CorrectSegnalazione.jsp";
 						response.getWriter().write("segnalato");
+						request.getRequestDispatcher(redirect).forward(request, response);
+						
 					} else {
-						redirect = "/ErroreSegnalazione.jsp";
+						redirect = "./formSegnalazione.jsp";
+						System.out.println("primo else");
+						response.setHeader("errorReport", "Si è verificato un errore");
+						request.getRequestDispatcher(redirect).forward(request, response);
 					}
 				} else {
+					redirect = "./formSegnalazione.jsp?az=" + azienda;
+					System.out.println("secondo else");
 					response.getWriter().write("è già stato segnalato");
+					response.setHeader("errorReport", "Hai già segnalato quest'azienda!");
+					request.getRequestDispatcher(redirect).forward(request, response);
 				}
 			} else {
+				System.out.println("terzo else");
+				redirect = "./formSegnalazione.jsp?az=" + azienda;
+				response.setHeader("errorReport", "Formato non valido");
 				 response.getWriter().write("formato non valido");
+				 request.getRequestDispatcher(redirect).forward(request, response);
 			}
 		}catch (Exception e){
 			e.printStackTrace();
+			redirect = "./formSegnalazione.jsp?az=" + azienda;
+			response.setHeader("errorReport", "Si è verificato un errore");
+			request.getRequestDispatcher(redirect).forward(request, response);
 		}
-		
-		response.sendRedirect(redirect);
 	}
 	
 
