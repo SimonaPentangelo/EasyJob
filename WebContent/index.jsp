@@ -34,8 +34,9 @@
 	<form  class= "group" action = "${pageContext.request.contextPath}/RicercaAnnunciModeratore" method="GET">
 		<input id="dataID" onchange="checkData()" type="date" name="data"> 
 		<span id="errorData"></span><br>
-		<input id="conferma" type="submit" value="Ricerca per data">
+		<input id="conferma"  class="umb-btn" type="submit" value="Ricerca per data"> <br><br>
 	</form>
+	
 	<%
 	}// FINE IF, SE IN SESSIONE NON C'é UN MODERATORE ALLORA LA RICERCA IN BACHECA è QUELLA CLASSICA
 	else {%>
@@ -47,18 +48,20 @@
 		%>
 		<span class="errore"> <%=errorTag %> </span>
 		<%} %>
+		 <br>
 	</form>
 	<% 
 	Azienda azienda = (Azienda) session.getAttribute("utenteAzienda");
 	if (azienda != null) {
 	%>
-	<button class="umb-btn"><a href="pubblicaAnnuncio.jsp" style="color:white"> Pubblica Annuncio</a></button>
+	<button class="umb-btn"><a href="pubblicaAnnuncio.jsp" style="color:white"> Pubblica Annuncio</a></button> <br>
 	<%
 	}
 	%>
+	
+	<% }//Fine ELSE %>
 		</div>
 	</div>
-	<% }//Fine ELSE %>
 <%@include file ="footer.jsp"  %>
 </body>
 </html>
