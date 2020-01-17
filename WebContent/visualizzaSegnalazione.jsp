@@ -36,19 +36,22 @@
 <body>
 <%@include file ="header.jsp"%>
 <div style="height:80px"> </div>
+<div class="container">
 <%
 	
 	String titolo = segnalazione.getTitolo();
 	String corpo = segnalazione.getCorpo();
 	
 %>
-<h2>Titolo Segnalazione: <%=titolo%></h2>
-<h4>Corpo:<%=corpo%></h4>
+<h2 style="margin-left:5em">Titolo Segnalazione: <%=titolo%></h2>
+<h4 style="margin-left:5em">Corpo:<%=corpo%></h4>
  
 	<form action="${pageContext.request.contextPath}/VisualizzaAziendaServlet" method="POST">
-	<button class="umb-btn"> Vai all'azienda</button>
+	<button style="margin-left:25em"class="umb-btn"> Vai all'azienda</button>
 	<input type= "hidden" name="az" value="<%=segnalazione.getAzienda()%>">
 	</form>
+</div>
+<div style="height:220px"></div>
  <%@include file ="footer.jsp"%>
 </body>
 </html>
