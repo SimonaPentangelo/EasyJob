@@ -17,7 +17,7 @@ CHECK LIST STYLESHEET:
 -ERRORE SEGNALAZIONE < queste tre forse non servono
 -ERRORE INVITE       <
 -FOOTER
--FORM SEGNALAZIONE
+-FORM SEGNALAZIONE -----FATTO
 -HEADER
 -INDEX ----------------- FATTO
 -LOGIN ----------------- FATTO

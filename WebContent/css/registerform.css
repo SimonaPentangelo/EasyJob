@@ -3,6 +3,10 @@ body {
     text-align: center;
 }
 
+.logoDiv {
+	padding-right: 100px;
+}
+
 p#logo {
   display:inline-block;
 }
