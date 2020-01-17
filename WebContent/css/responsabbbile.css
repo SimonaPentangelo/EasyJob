@@ -136,6 +136,10 @@ textarea:focus {
 div.list {margin-left:500px;
 		  margin-bottom:15px;
 		  border-bottom:20px;}
+		  
+div.success{margin-top:280px;}
+
+p.successfull{padding-bottom:155px;}
 
 @media(min-width: 1361px) {
     .myCol {

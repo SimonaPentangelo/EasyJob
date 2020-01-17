@@ -6,11 +6,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <%@include file ="librerie.html"%>
+<link rel="stylesheet" type="text/css" href="css/responsabbbile.css">
 </head>
 <body>
 <%@include file ="header.jsp"%>
-<p>Candidatura effettuata con successo, se l'azienda sarà interessata al tuo profilo potrai trovare un invito che potrai visualizzare
-nella tua pagina personale!</p>
+<div style="margin-top:280px">
+<p style="padding-bottom:155px"> Candidatura effettuata con successo. Se l'azienda sarà interessata al tuo profilo potrai 
+trovare un invito che verrà visualizzato nella tua pagina personale!. </p>
+</div>
 <%@include file ="footer.jsp"%>
 </body>
 </html>
+
