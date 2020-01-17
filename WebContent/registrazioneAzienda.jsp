@@ -29,7 +29,7 @@
 			stringa = response.getHeader("errorReg");
 		} 
 		%>
-		<h3><%=stringa %></h3>
+		<h1><%=stringa %></h1>
 	<form enctype='multipart/form-data' action="${pageContext.request.contextPath}/RegistrazioneAziendaServlet" method="POST">
 	
 	<div class="row">

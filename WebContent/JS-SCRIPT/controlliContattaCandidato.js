@@ -4,17 +4,13 @@
 
 		 
 function checkTitolo() {
-	   var tit = $("#titolo");
+	   var tit = $("#titolo").val();
 	   var StringValidator = /^[A-Za-z\xE0\xE8\xEC\xF2\xF9 .,!?']{5,60}$/;
 
-	   if ($(tit).val().match(StringValidator) || $(tit).val().trim() == "") {
+	   if (tit.match(StringValidator) || tit == null ) {
 	    	$("#errorTit").hide();
-	    	if(!$("#conferma").is(":disabled")) {
-	    		$("#conferma").attr("disabled", false);
-	    	}
 	    	return true;
 	    } else {
-	    	$("#conferma").attr("disabled", true);
 	    	$("#errorTit").html("Il titolo di invito al colloquio deve contenere minimo 5 caratteri e" +
 	    						" al massimo 60 caratteri.");
 			$("#errorTit").show();
@@ -23,20 +19,26 @@ function checkTitolo() {
 }
 
 function checkMsg() {
-	var msg = $("#msg");
+	var msg = $("#msg").val();
 	   var StringValidator = /^[A-Za-z\xE0\xE8\xEC\xF2\xF9 .,!?']{10,10000}$/;
 
-	   if ($(msg).val().match(StringValidator) || $(msg).val().trim() == "") {
+	   if (msg.match(StringValidator) || msg == null) {
 	    	$("#errorMsg").hide();
-	    	if(!$("#conferma").is(":disabled")) {
-	    		$("#conferma").attr("disabled", false);
-	    	}
 	    	return true;
 	    } else {
-	    	$("#conferma").attr("disabled", true);
-	    	$("#errorMsg").html("Il corpo può contenere minimo 10 caratteri " +
+	    	$("#errorMsg").html("Il corpo pu\xF2 contenere minimo 10 caratteri " +
 	    						"e al massimo 10.000 caratteri");
 			$("#errorMsg").show();
 	        return false;
 	    }
+}
+
+function checkAll() {
+	if(!checkTitolo() || !checkMsg()) {
+		alert("Sono nell'if dovrebbe essere disabilitato");
+		return false;
+	} else {
+		alert("Sono nell'else dovrebbe essere valido");
+		return true;
+	}
 }

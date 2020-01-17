@@ -46,18 +46,26 @@ public class RimozioneUtenteServlet extends HttpServlet {
 		String id = request.getParameter("az");
 		int idAzienda = Integer.parseInt(id);
 		ManagerUtenti mu = new ManagerUtenti();
+		String redirect = "";
 		
 		try {
 			if(!mu.isAlreadyBanned(idAzienda)) {
 				Azienda az = mu.findAziendaById(idAzienda);
 				mu.deleteUser(az);
 				response.getWriter().write("Rimosso");
+				redirect="SuccessRemove.jsp";
+				request.getRequestDispatcher(redirect).forward(request, response);
 			}else {
-			response.getWriter().write("L'utente risulta già bannato");
+				response.setHeader("errorRemove", "L'azienda risulta già bannata!");
+				response.getWriter().write("L'utente risulta già bannato");
+				redirect="ShowAzienda.jsp";
+				request.getRequestDispatcher(redirect).forward(request, response);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			response.setHeader("errorRemove", "Si è verificato un errore");
 			e.printStackTrace();
+			redirect="ShowAzienda.jsp";
+			request.getRequestDispatcher(redirect).forward(request, response);
 		}
 	}
 

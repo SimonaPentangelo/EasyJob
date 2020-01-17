@@ -117,21 +117,22 @@ public class LoginServlet extends HttpServlet {
 				else {
 					
 						request.getSession().setAttribute("autenticato",false);
-						request.getSession().setAttribute("error","Username o password non validi");
 						response.getWriter().write("Username o password non validi");
-						request.setAttribute("message","Username o password non validi");
+						response.setHeader("message","Si è verificato un errore");
 						redirect="/login.jsp";
 					 }
 				}else {
 					request.getSession().setAttribute("autenticato",false);
-					request.getSession().setAttribute("error","Username o password non validi");
+					response.setHeader("message","Username o password non validi");
 					response.getWriter().write("Username o password non validi");
 					redirect="/login.jsp";
 				}
 				} catch (SQLException e) {
 						// TODO Auto-generated catch block
 					e.printStackTrace();
+					response.setHeader("message","Si è verificato un errore");
+					redirect="/login.jsp";
 				}
-		response.sendRedirect(request.getContextPath()+redirect);
+			request.getRequestDispatcher(redirect).forward(request, response);
 }
 }

@@ -67,15 +67,12 @@ public class ModificaCurriculumServlet extends HttpServlet {
 				Part curriculum = request.getPart("curriculum");
 				if(!Paths.get(curriculum.getSubmittedFileName()).getFileName().toString().substring(Paths.get(curriculum.getSubmittedFileName()).getFileName().toString().length() - 3).equals("pdf")) {
 					response.setHeader("errorUpdate", "Il file deve essere in formato PDF.");
-					response.sendRedirect(request.getContextPath()+redirect);
 				}
-				long fileSizeInMB = curriculum.getSize() / 1024;
+				long fileSizeInMB = (curriculum.getSize() / 1024)/ 1024;
 
 				if (fileSizeInMB > 10) {
 					response.setHeader("errorUpdate", "La dimensione non deve superare i 10MB.");
-					response.sendRedirect(request.getContextPath()+redirect);
 				}
-				
 				//Codice per creare la directory dove salvare l'immagine del logo
 				//BISOGNA VEDERE SE FUNZIONA!
 					
@@ -88,8 +85,7 @@ public class ModificaCurriculumServlet extends HttpServlet {
 				
 				try {
 					if(mu.modificaCurriculum(inoccupato.getIdUser(), "resources" + File.separator + inoccupato.getUsername() + File.separator + curriculum.getSubmittedFileName().replaceAll(" ", "_"))) {
-						File here = new File(".");
-						System.out.println(here.getAbsolutePath());
+						System.out.println("mo modifico");
 						Files.deleteIfExists(Paths.get(rootPath + File.separator + oldCurriculum));
 						File dirRoot = new File(rootPath); //cartella delle resources
 						if(!dirRoot.exists())//se la cartella esiste non la crea altrimenti genera la cartella 
@@ -111,14 +107,16 @@ public class ModificaCurriculumServlet extends HttpServlet {
 						Files.copy(inputStream, Paths.get(cvFullPath), StandardCopyOption.REPLACE_EXISTING);
 						inputStream.close();
 						response.setHeader("successUpdate", "Modifica avvenuta con successo");
-						response.sendRedirect(request.getContextPath()+redirect);
+						System.out.println(response.getHeader("successUpdate") + " ciao");
 					}
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+					response.setHeader("errorUpdate", "Si è verificato un errore.");
+				} finally {
+					request.getRequestDispatcher(redirect).forward(request, response);
 				}
 			}
 		}
 	}
-
 }

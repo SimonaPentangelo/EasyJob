@@ -1,4 +1,4 @@
-<% String msg = (String) session.getAttribute("error"); %>
+<% String msg = response.getHeader("message"); %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>

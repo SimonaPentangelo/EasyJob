@@ -40,7 +40,7 @@
 <body>
 <%@include file ="header.jsp"%>
 <% if (segnalazioni.isEmpty()) {%>
-<p> Non ci sono segnalazioni</p>
+<h2> Non ci sono segnalazioni</h2>
 
 <%} else{ %>
 <div class="cont">

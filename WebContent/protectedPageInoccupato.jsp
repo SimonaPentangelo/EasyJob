@@ -85,7 +85,8 @@ Annuncio annuncioSel = (Annuncio) session.getAttribute("annuncioSelezionato");
 		String stringa = "";
 		if(response.getHeader("errorUpdate") != null) {
 			stringa = response.getHeader("errorUpdate");
-		} else if(session.getAttribute("successUpdate") != null) {
+		} 
+		if(response.getHeader("successUpdate") != null) {
 			stringa = response.getHeader("successUpdate");
 		}
 		%>

@@ -34,17 +34,17 @@ int idAn = Integer.parseInt(request.getParameter("idAn"));
 		%>
 		<h3><%=stringa %></h3>
 
-	<form action="${pageContext.request.contextPath}/ContattaCandidatoServlet" method="POST">
+	<form onsubmit="return checkAll()" action="${pageContext.request.contextPath}/ContattaCandidatoServlet" method="POST">
 	
 		<div>
 		<span>Titolo:</span><br>
-		<input class="instestoPub" id="titolo" onchange="checkTitolo()" type="text" name="titolo">
+		<input class="instestoPub" id="titolo" type="text" name="titolo"><br>
 		<span id="errorTit"></span><br><br>
 		</div>
 		
 		<div>
 		<span>Messaggio:</span><br> 
-		<textarea class="bigText" id="msg" onchange="checkMsg()" name="messaggio"></textarea> <br>
+		<textarea class="bigText" id="msg" name="messaggio"></textarea><br>
 		<span id="errorMsg"></span><br><br>
 		</div>
 		
@@ -54,5 +54,6 @@ int idAn = Integer.parseInt(request.getParameter("idAn"));
 	</form>
 </div>
 	<%@include file ="footer.jsp"%>
+
 </body>
 </html>

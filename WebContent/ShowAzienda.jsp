@@ -17,7 +17,9 @@ Azienda azienda = (Azienda) session.getAttribute("aziendaDaVisualizzare");
 <body>
 <%@include file ="header.jsp"%>
 <div style="margin-top:100px">
+
 <h5 style="margin-left:645px">Pagina dell'azienda <%= azienda.getNomeAzienda() %>:</h5>
+		
 <img style="margin-left:300px"src=" ${pageContext.request.contextPath}<%= azienda.getLogoAzienda()%>">
 <p> Numero Dipendenti all'attivo: <%=azienda.getNumeroDipendenti() %> </p>
 <p>Partita iva: <%=azienda.getPartitaIVA() %> </p>
@@ -33,6 +35,14 @@ Azienda azienda = (Azienda) session.getAttribute("aziendaDaVisualizzare");
 	<%
 	}
 	%>
+	
+	<%
+		String stringa = "";
+		if(response.getHeader("errorRemove") != null) {
+			stringa = response.getHeader("errorRemove");
+		} 
+		%>
+		<h3><%=stringa %></h3>
 	
 	<% 
 	Amministratore admin = (Amministratore) session.getAttribute("utenteAdmin");
