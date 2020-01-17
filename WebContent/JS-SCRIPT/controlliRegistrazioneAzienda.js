@@ -8,13 +8,13 @@
 
 $('#logoAzienda').on('change', function(){
 $('.fileSpan').html('');
-$('.fileSpan').html(document.getElementById("logo").files[0].name)
+$('.fileSpan').html(document.getElementById("logoAzienda").files[0].name)
 }); 
 
 $('#logoAzienda').on('change', function(){
   $('.fileSpan').html('');
   
-  $('.fileSpan').html(document.getElementById("logo").files[0].name)
+  $('.fileSpan').html(document.getElementById("logoAzienda").files[0].name)
   
 }); 
 
@@ -201,7 +201,7 @@ function checkPass() {
 }
 
 function checkLogo() {
-	var logo = $("#logo");
+	var logo = $("#logoAzienda");
 	var name = logo.val();
 	var ext = name.substring(name.length - 3);
     if (ext == "jpg" || ext == "png") {

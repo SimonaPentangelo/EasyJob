@@ -53,6 +53,7 @@ public class RicercaAnnunciServlet extends HttpServlet {
 			request.getSession().setAttribute("annunci", annunci);
 			request.getSession().setAttribute("tag",tagDaCercare);
 			request.getSession().setAttribute("aziendeAnnunci",aziende );
+			for(Azienda a : aziende) { System.out.println(a.getLogoAzienda()); }
 			response.getWriter().write("ok");
 			redirect = "/Bacheca.jsp";			
 			}else {

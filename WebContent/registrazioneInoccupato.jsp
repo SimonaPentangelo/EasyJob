@@ -89,7 +89,7 @@
 		</div>
 
 		<div id="checkDiv">		
-		<input id="dati" type="checkbox" name="trattamentoDati" checked> Accetto i termini del 
+		<input id="dati" type="checkbox" name="trattamentoDati"> Accetto i termini del 
 		trattamento dati personali. 
 		</div>
 		<span class="spanno" id="errorCheck"></span><br><br>

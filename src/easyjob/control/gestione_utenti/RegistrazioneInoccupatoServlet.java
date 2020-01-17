@@ -56,7 +56,7 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
      * @param check oggetto di tipo <strong>Boolean</strong>
      * @return valido = true se le validazioni sono corrette. False altrimenti.
      */
-    private boolean validazione(String nome, String cognome, String username, String dataNascitaString, String email, String password, String confermaPassword, String indirizzo, String cittàNascita, Part curriculum, boolean check) {
+    private boolean validazione(String nome, String cognome, String username, String dataNascitaString, String email, String password, String confermaPassword, String indirizzo, String cittàNascita, Part curriculum, String check) {
 		boolean valido = true;
 		String nomeexp = "^[A-Za-zàèìòù ]{2,50}$";
 		String cognomeexp = "^[A-Za-zàèìòù ]{2,50}$";
@@ -71,48 +71,54 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
 		}
 		if(!Pattern.matches(cognomeexp, cognome) || cognome == null || cognome.equals("")) {
 			valido = false;
+			System.out.println(cognome);
 		}
 		if(!Pattern.matches(userexp, username) || username == null || username.equals("")){
 			valido = false;
+			System.out.println(username);
 		}
-		LocalDateTime dateInput = LocalDateTime.now();
-		LocalDateTime currentDate = LocalDateTime.now();
-		if(dataNascitaString != null && !dataNascitaString.equals("")) {
-			dateInput = LocalDateTime.parse(dataNascitaString);
-		}
-		if(!dateInput.isBefore(currentDate)) {
-			valido = false;
-		}
+		
 		if(!Pattern.matches(passexp, password) || password == null || password.equals("")) {
 			valido = false;
-		} else if(!password.equals(confermaPassword) || confermaPassword == null || confermaPassword.equals("")) {
+			System.out.println(password);
+		} 
+		if(!password.equals(confermaPassword) || confermaPassword == null || confermaPassword.equals("")) {
 			valido = false;
-		} else if(!password.equals(confermaPassword)) {
+			System.out.println(confermaPassword);
+		} 
+		if(!password.equals(confermaPassword)) {
 			valido = false;
+			System.out.println(confermaPassword + " due");
 		}
 		
 		if(!Pattern.matches(residexp, indirizzo) || indirizzo == null || indirizzo.equals("")) {
 			valido = false;
+			System.out.println(indirizzo);
 		}
 		if(!Pattern.matches(cittaexp, cittàNascita) || cittàNascita == null || cittàNascita.equals("")) {
 			valido = false;
+			System.out.println(cittàNascita);
 		}
 		if(!Pattern.matches(emailexp, email) || email == null || email.equals("")) {
 			valido = false;
+			System.out.println(email);
 		}
-		if(!check) {
+		if(check == null || !check.equalsIgnoreCase("ON")) {
 			valido = false;
+			System.out.println(check);
 		}
 		
 		if(curriculum != null && curriculum.getSize() > 0) {
 			if(!Paths.get(curriculum.getSubmittedFileName()).getFileName().toString().substring(Paths.get(curriculum.getSubmittedFileName()).getFileName().toString().length() - 3).equals("pdf")) {
 				valido = false;
+				System.out.println(curriculum.getSubmittedFileName().replaceAll(" ", "_"));
 			}
 		}
-		long fileSizeInMB = curriculum.getSize() / 1024;
+		long fileSizeInMB = (curriculum.getSize() / 1024)/ 1024;
 
 		if (fileSizeInMB > 10) {
 		  valido = false;
+		  System.out.println(fileSizeInMB);
 		}
 		
 		return valido;
@@ -158,7 +164,7 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		String confermaPassword = request.getParameter("confermaPassword");
 		Part curriculum = request.getPart("curriculum");
-		boolean check = Boolean.getBoolean(request.getParameter("trattamentoDati"));
+		String check = request.getParameter("trattamentoDati");
 	
 		String rootFolder = "";
 		String rootPath = "";
@@ -169,9 +175,6 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
 			response.setHeader("errorReg", "Uno o più campi del form non sono validi!");
 			request.getRequestDispatcher(redirect).forward(request, response);
 		} else {
-			rootFolder = "resources"; //serve a dare il nome della cartella di root per salvare i file se gia c'è non la crea
-			rootPath = request.getServletContext().getRealPath("") + rootFolder; //costruisce la stringa contenete il percorso della root dove salviamo i file 
-			userPath = rootPath + File.separator + inoccupato.getUsername(); //serve per definire la cartella dell'utente se gia esiste non viene creata
 			
 			inoccupato.setNome(nome);
 			inoccupato.setCognome(cognome);
@@ -190,6 +193,9 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
 			}
 			inoccupato.setEmail(email);
 			inoccupato.setResidenza(indirizzo);
+			rootFolder = "resources"; //serve a dare il nome della cartella di root per salvare i file se gia c'è non la crea
+			rootPath = request.getServletContext().getRealPath("") + rootFolder; //costruisce la stringa contenete il percorso della root dove salviamo i file 
+			userPath = rootPath + File.separator + inoccupato.getUsername(); //serve per definire la cartella dell'utente se gia esiste non viene creata
 			inoccupato.setCurriculum("resources" + File.separator + inoccupato.getUsername() + File.separator + curriculum.getSubmittedFileName().replaceAll(" ", "_"));
 			
 			try {

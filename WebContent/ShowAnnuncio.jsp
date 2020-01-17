@@ -20,7 +20,7 @@ String redirect="";
 else{
 	idInocc = inoccupato.getIdUser();
 	System.out.println(idInocc);
-	redirect ="../../CandidaturaServlet";
+	redirect ="./CandidaturaServlet";
 }
 %>
 <%@ page import ="easyjob.entity.Inoccupato" %>

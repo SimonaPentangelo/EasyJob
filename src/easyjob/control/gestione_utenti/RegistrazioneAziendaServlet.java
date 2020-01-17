@@ -59,7 +59,7 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
      * @param check oggetto di tipo <strong>Boolean</strong>
      * @return valido = true se tutte le validazioni sono corrette. False altrimenti.
      */
-    private boolean validazione(String nomeAzienda, Part logoAzienda, String partitaIVA, String username, String indirizzo, String dataFondazioneString, String numeroDipendentiString, String email, String password, String confermaPassword, boolean check) {
+    private boolean validazione(String nomeAzienda, Part logoAzienda, String partitaIVA, String username, String indirizzo, String dataFondazioneString, String numeroDipendentiString, String email, String password, String confermaPassword, String check) {
 		boolean valido = true;
 		String nomeAzExp = "^[A-Za-zאטלעש0-9-._ ]{5,50}$";
 		String userexp = "^[A-Za-z0-9]{5,20}$";
@@ -70,47 +70,54 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
 		
 		if(!Pattern.matches(nomeAzExp, nomeAzienda) || nomeAzienda == null || nomeAzienda.equals("")) {
 			valido = false;
+			System.out.println(nomeAzienda);
 		}
 		if(!Pattern.matches(IVAexp, partitaIVA) || partitaIVA == null || partitaIVA.equals("")) {
 			valido = false;
+			System.out.println(partitaIVA);
 		}
 		if(!Pattern.matches(userexp, username) || username == null || username.equals("")){
 			valido = false;
+			System.out.println(username);
 		}
-		LocalDateTime dateInput = LocalDateTime.now();
-		LocalDateTime currentDate = LocalDateTime.now();
-		if(dataFondazioneString != null && !dataFondazioneString.equals("")) {
-			dateInput = LocalDateTime.parse(dataFondazioneString);
-		}
-		if(!dateInput.isBefore(currentDate)) {
-			valido = false;
-		}
+		
 		
 		if(!Pattern.matches(passexp, password) || password == null || password.equals("")) {
 			valido = false;
-		} else if(!password.equals(confermaPassword) || confermaPassword == null || confermaPassword.equals("")) {
+			System.out.println(password);
+		} 
+		if(!password.equals(confermaPassword) || confermaPassword == null || confermaPassword.equals("")) {
 			valido = false;
-		} else if(!password.equals(confermaPassword)) {
+			System.out.println(confermaPassword);
+		} 
+		if(!password.equals(confermaPassword)) {
 			valido = false;
+			System.out.println(confermaPassword + " 2");
 		}
 		if(!Pattern.matches(indexp, indirizzo) || indirizzo == null || indirizzo.equals("")) {
 			valido = false;
+			System.out.println(indirizzo);
 		}
 		if(!Pattern.matches(emailexp, email) || email == null || email.equals("")) {
 			valido = false;
+			System.out.println(email);
 		}
-		if(!check) {
+		if(check == null || !check.equalsIgnoreCase("ON")) {
 			valido = false;
+			System.out.println(check);
 		}
 		if(logoAzienda != null && logoAzienda.getSize() > 0) {
-			if(!Paths.get(logoAzienda.getSubmittedFileName()).getFileName().toString().substring(Paths.get(logoAzienda.getSubmittedFileName()).getFileName().toString().length() - 3).equals("pdf")) {
+			if(!Paths.get(logoAzienda.getSubmittedFileName()).getFileName().toString().substring(Paths.get(logoAzienda.getSubmittedFileName()).getFileName().toString().length() - 3).equals("jpg") && 
+					!Paths.get(logoAzienda.getSubmittedFileName()).getFileName().toString().substring(Paths.get(logoAzienda.getSubmittedFileName()).getFileName().toString().length() - 3).equals("png")) {
 				valido = false;
+				System.out.println(logoAzienda.getSubmittedFileName().replaceAll(" ", "_"));
 			}
 		}
-		long fileSizeInMB = logoAzienda.getSize() / 1024;
+		long fileSizeInMB = (logoAzienda.getSize() / 1024) / 1024;
 
 		if (fileSizeInMB > 10) {
 		  valido = false;
+		  System.out.println(fileSizeInMB);
 		}
 		
 		return valido;
@@ -161,7 +168,7 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
 		String email = request.getParameter("email");		
 		String password = request.getParameter("password");
 		String confermaPassword = request.getParameter("confermaPassword");
-		boolean check = Boolean.getBoolean(request.getParameter("trattamentoDati"));
+		String check = request.getParameter("trattamentoDati");
 		
 		String rootFolder = "";
 		String rootPath = "";
@@ -173,9 +180,6 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
 			request.getRequestDispatcher(redirect).forward(request, response);
 		} else {
 			System.out.println("PUDDIPUDDI");
-			rootFolder = "resources"; //serve a dare il nome della cartella di root per salvare i file se gia c'ט non la crea
-			rootPath = request.getServletContext().getRealPath("") + rootFolder; //costruisce la stringa contenete il percorso della root dove salviamo i file 
-			userPath = rootPath + File.separator + azienda.getUsername(); //serve per definire la cartella dell'utente se gia esiste non viene creata
 			SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
 			SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
 			String dataFondazione;
@@ -193,6 +197,9 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
 			azienda.setIndirizzoSede(indirizzo);
 			azienda.setNumeroDipendenti(Integer.parseInt(numeroDipendentiString));
 			azienda.setNomeAzienda(nomeAzienda);
+			rootFolder = "resources"; //serve a dare il nome della cartella di root per salvare i file se gia c'ט non la crea
+			rootPath = request.getServletContext().getRealPath("") + rootFolder; //costruisce la stringa contenete il percorso della root dove salviamo i file 
+			userPath = rootPath + File.separator + azienda.getUsername(); //serve per definire la cartella dell'utente se gia esiste non viene creata
 			azienda.setLogoAzienda("resources" + File.separator + azienda.getUsername()+ File.separator + logoAzienda.getSubmittedFileName().replaceAll(" ", "_"));
 			azienda.setBanned(false);
 			

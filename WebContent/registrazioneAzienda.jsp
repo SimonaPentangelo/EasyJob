@@ -43,8 +43,8 @@
 		<div id="logoDiv">
 		<p id="logo">Logo:</p>
 		<span id="fileSpan" class="fileSpan"></span>
-		<label class="umb-btn" for="logo">Scegli file</label>
-		<input class="intestoLogo" id="logo" onchange="checkLogo()" type="file" accept="image/*" name="logoAzienda"> 
+		<label class="umb-btn" for="logoAzienda">Scegli file</label>
+		<input class="intestoLogo" id="logoAzienda" onchange="checkLogo()" type="file" accept="image/*" name="logoAzienda"> 
 		</div>
 		<span class="spanno" id="errorLogo"></span><br><br>
 	
