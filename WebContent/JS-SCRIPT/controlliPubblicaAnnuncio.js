@@ -4,17 +4,15 @@
 
 
 function checkTitolo() {
-    var tit = $("#titolo");
+    var tit = $("#titolo").val();
     var StringValidator = /^[A-Za-z\xE0\xE8\xEC\xF2\xF90-9,. ]{6,50}$/;
 
-    if ($(tit).val().match(StringValidator) || $(tit).val().trim() == "") {
+    if (tit.match(StringValidator) && tit != null) {
     	$("#errorTitolo").hide();
-    	if(!$("#conferma").is(":disabled")) {
-    		$("#conferma").attr("disabled", false);
-    	}
+    	
     	return true;
     } else {
-    	$("#conferma").attr("disabled", true);
+    	
     	$("#errorTitolo").html("Il titolo deve contenere minimo 5 e massimo 60 numeri e lettere.");
 		$("#errorTitolo").show();
         return false;
@@ -22,17 +20,15 @@ function checkTitolo() {
 }
 
 function checkReq() {
-    var req = $("#req");
+    var req = $("#req").val();
     var StringValidator = /^[A-Za-z\xE0\xE8\xEC\xF2\xF9 .,!?']{10,3000}$/;
 
-    if ($(req).val().match(StringValidator) || $(req).val().trim() == "") {
+    if (req.match(StringValidator) && req != null) {
     	$("#errorReq").hide();
-    	if(!$("#conferma").is(":disabled")) {
-    		$("#conferma").attr("disabled", false);
-    	}
+    	
     	return true;
     } else {
-    	$("#conferma").attr("disabled", true);
+    	
     	$("#errorReq").html("I requisiti non devono superare i 3000 caratteri " +
     			"e di almeno 10 caratteri.");
 		$("#errorReq").show();

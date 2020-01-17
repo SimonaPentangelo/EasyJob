@@ -38,17 +38,17 @@
 		%>
 		<h3><%=stringa %></h3>
 
-<form action="${pageContext.request.contextPath}/SegnalazioneUtenteServlet" method="POST">
+<form onsubmit="checkAll()" action="${pageContext.request.contextPath}/SegnalazioneUtenteServlet" method="POST">
 
 	<div>
 	<span>Titolo:</span><br>
-	<input class="instestoPub"  id="titolo" onchange="checkTitolo()" type="text" name="titolo"> 
+	<input class="instestoPub"  id="titolo" type="text" name="titolo"> 
 	<span id="errorTit"></span><br><br>
 	</div>
 	
 	<div>
 	<span>Messaggio:</span><br> 
-	<textarea class="bigText" id="corpo" onchange="checkBody()" name="corpo"></textarea> <br>
+	<textarea class="bigText" id="corpo" name="corpo"></textarea> <br>
 	<span id="errorMsg"></span><br><br>
 	</div>
 	

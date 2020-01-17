@@ -77,8 +77,8 @@ Annuncio annuncioSel = (Annuncio) session.getAttribute("annuncioSelezionato");
 		
 		<span id="errorCurriculum"></span>
 		<div style="height:30px"></div>
-		<form action="${pageContext.request.contextPath}/ModificaCurriculumServlet" method="POST" enctype='multipart/form-data'>
-			 Nuovo Curriculum: <input id="curriculum" onchange="checkCurriculum()" type="file" name="curriculum"> <br>
+		<form onsubmit="checkCurriculum()" action="${pageContext.request.contextPath}/ModificaCurriculumServlet" method="POST" enctype='multipart/form-data'>
+			 Nuovo Curriculum: <input id="curriculum" type="file" name="curriculum"> <br>
 			<button class="umb-btn" id="conferma" type="submit">Modifica Curriculum </button>
 		</form> 
 		<%
