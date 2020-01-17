@@ -22,10 +22,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <%@include file ="librerie.html"%>
-
+<link rel ="stylesheet" type="text/css" href="css/ordini.css">
 </head>
 <body>
 	<%@include file="header.jsp"%>
+<div style="height: 100px">
+</div>	
+<div class="container">
 	<%
 		if (annunci.isEmpty()) {
 	%>
@@ -38,45 +41,72 @@
 	%>
 	<form action="${pageContext.request.contextPath}/FiltraAnnunciServlet"
 		method="GET">
-		<input type="text" name="advancedSearch"> <input type="hidden"
-			name="tag" value="<%=tagDellaRicerca%>"> <input type="submit"
+		<input type="text" class="city" name="advancedSearch"> <br> <input type="hidden"
+			name="tag" value="<%=tagDellaRicerca%>"> <input class="umb-btn" type="submit"
 			value="Cerca per città">
 	</form>
+	<div class="tabbbella">
+	<table class="table table-sm">
+	<thead>
+	<tr>
+	<th scope="col" style="color:#26C97B;"></th>
+	<th scope="col" style="color:#26C97B;">Titolo</th>	
+	<th scope="col" style="color:#26C97B;">Azienda</th>	
+	<th scope="col" style="color:#26C97B;">Città</th>	
+	<th scope="col" style="color:#26C97B;">TipoContratto</th>	
+	</tr>
+	</thead>
+	<tbody>
 	<%
 		}
-
+			String city = "";
+			String tipoC = "";
+			String nomeAz = "";
 			for (int i = 0; i < annunci.size(); i++) {
 				int id = annunci.get(i).getIdAnnuncio();
 				String titolo = annunci.get(i).getTitolo();
 				int idAzienda = annunci.get(i).getAzienda();
 				String pathImage = "";
+				city = annunci.get(i).getCittà();
+				tipoC = annunci.get(i).getTipoContratto();
 				int idAziendaDaVisualizzare = 0; /*Gigi questo è l'id che devi portarti nella jsp della form segnalazione*/
 				for (int j = 0; j < aziende.size(); j++) {
 					if (aziende.get(j).getIdUser() == idAzienda)
 						pathImage = File.separator + aziende.get(j).getLogoAzienda();
 					idAziendaDaVisualizzare = aziende.get(j).getIdUser();
+					nomeAz = aziende.get(j).getNomeAzienda();
 				}
 	%>
-	<br>
-	<p>
-		<a href="./LeggiAnnuncioServlet?idAnnuncio=<%=id%>"><%=titolo%></a>
-	</p>
-	<form
+	<tr>
+	<th scope="row">
+		<form
 		action="${pageContext.request.contextPath}/VisualizzaAziendaServlet"
 		method="GET">
-		<button>
-			<img src="${pageContext.request.contextPath}<%=pathImage%>">
+		<button class="imgButton">
+			<img class="logoElenco" src="${pageContext.request.contextPath}<%=pathImage%>">
 		</button>
 		<input type="hidden" name="az" value="<%=idAziendaDaVisualizzare%>">
 	</form>
-	<p>
-		Debugging
-		<%=pathImage%></p>
-	<br>
-	<%
-		} // fine for
-		} // fine else
-	%>
+	</th>
+	<td>
+		<a href="./LeggiAnnuncioServlet?idAnnuncio=<%=id%>"><%=titolo%></a>
+	</td>
+	<td>
+		<%=nomeAz %>
+	</td>
+	<td>
+		<%=city %>
+	</td>
+		<td>
+		<%=tipoC %>
+	</td>
+	</tr>
+	<% } // fine for %>
+	</tbody>
+	</table>
+	</div>
+	<% } // fine else %>
+</div>
 	<%@include file="footer.jsp"%>
 </body>
 </html>
