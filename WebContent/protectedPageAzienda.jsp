@@ -39,8 +39,8 @@
 </head>
 <body>
 <%@include file ="header.jsp"%>
-<p>Benvenuto <%= nameString %> </p>
-<button><a href="index.jsp"> Torna alla home</a></button>
+<div style="height:80px"></div>
+<h2>Benvenuto <%= nameString %> </h2>
 
 <form action = "${pageContext.request.contextPath}/VisualizzaElencoAnnunciServlet" method="get">
 <button type="submit">Visualizza annunci pubblicati </button>

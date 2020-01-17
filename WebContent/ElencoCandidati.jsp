@@ -13,18 +13,34 @@ int idAnnuncio =  (Integer) session.getAttribute("idAnnuncio");
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Elenco Candidati</title>
 <%@include file ="librerie.html"%>
+<link rel="stylesheet" type="text/css" href="css/ordini.css">
 </head>
 <body>
 <%@include file ="header.jsp"%>
-<p> Ecco i candidati per l'annuncio <%=titoloAnnuncio %> </p>
+<div style="height:80px"></div>
+<h3> Ecco i candidati per l'annuncio <%=titoloAnnuncio %> </h3>
 <%if (listaCandidati.isEmpty()){
 %>
 <p> Non ci sono ancora candidati per questo annuncio </p>
 
 <%
-}else {
+}else { %>
+<div class="tabbbella">
+	<table class="table table-sm">
+		<thead>
+			<tr>
+			<th scope="col" style="color:#007bff"> Nome </th>
+			<th scope="col" style="color:#007bff"> Cognome </th>
+			<th scope="col" style="color:#007bff">Data di nascita </th>
+			<th scope="col" style="color:#007bff"> Residenza </th>
+			<th scope="col" style="color:#007bff"> Curriculum </th>
+			<th scope="col" style="color:#007bff"> Contatta candidato </th>
+			</tr>
+		</thead>
+	<tbody>
+	<% 
 	for(int i=0;i<listaCandidati.size();i++){
 		Inoccupato temp = listaCandidati.get(i);
 		int id = temp.getIdUser();
@@ -35,23 +51,35 @@ int idAnnuncio =  (Integer) session.getAttribute("idAnnuncio");
 		String cv = temp.getCurriculum();
 	
 %>
-	Nome: <%=nome %>
-	Cognome:<%=cognome %>
-	Data di nascita: <%=dataNascita %>
-	Residenza: <%=residenza %>
-	
-	<form action="${pageContext.request.contextPath}/DisplayCurriculumServlet" method="POST">
+	<tr>
+	<th scope="row"> <%=nome %> </th>
+	<td> <%=cognome %></td>
+	<td> <%= dataNascita %></td>
+	<td> <%= residenza %></td>
+	<td><form action="${pageContext.request.contextPath}/DisplayCurriculumServlet" method="POST">
 	<input type="hidden" name="attributoFittizio" value="<%=id %>">
-	<button type="submit">Mostra CV</button>	
-	</form>
-	
+	<button type="submit" style="background-color:transparent; border:none;"><img src="css/images/pdf-icon.png" class="miaClasse"></button>	
+	</form></td>
+	<td>
 	<a href=<%="./contattaCandidato.jsp?idUt=" + id + "&idAn=" + idAnnuncio%>>
-	<button type="submit">Contatta il Candidato</button>
+	<button style="background-color:transparent;border:none; padding-right:20px" type="submit"><img  class="miaClasse2" src="css/images/msg2.png"></button>
 	</a>
+	</td>
+	
+	</tr>
+	
+	
+	
+	
+	
 <%
 	}//FINE FOR
 } // FINE ELSE
 %>
+</tbody>
+</table>
+</div>
+<div style="height:150px"> </div>
 <%@include file ="footer.jsp"%>
 </body>
 </html>

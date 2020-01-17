@@ -11,21 +11,26 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Elenco annunci</title>
 <%@include file ="librerie.html"%>
+<link rel="stylesheet" type="text/css" href="css/ordini.css">
 </head>
 <body>
 <%@include file ="header.jsp"%>
-<p>Ciao <%= azienda.getNomeAzienda() %>, ecco l'elenco degli annunci pubblicati </p>
+<div style="height:80px"></div>
+<h2 style="color:#007bff">Ciao <%= azienda.getNomeAzienda() %>, ecco l'elenco degli annunci pubblicati: </h2>
 <%
 if (listaAnnunci.isEmpty()){
 	
 %>
 
 <p> Non hai pubblicato annunci fin'ora, puoi pubblicarne subito uno utilizzando il seguente pulsante</p>
-<button><a href="pubblicaAnnuncio.jsp"> Pubblica Annuncio</a></button>
+<button class="umb-btn"><a href="pubblicaAnnuncio.jsp"> Pubblica Annuncio</a></button>
 <%
-}else{
+}else{%>
+<div class="tabbbella">
+		<table class="table table-sm"> 
+		<%
 	for (int i=0;i<listaAnnunci.size();i++){
 		Annuncio annuncio = listaAnnunci.get(i);
 		String titolo = annuncio.getTitolo();
@@ -34,13 +39,26 @@ if (listaAnnunci.isEmpty()){
 		String ahref= "./VisualizzaCandidatiServlet?idAn="+id+"&tit="+titolo;
 		%>
 	
-	<a href="<%=ahref%>"><p>Titolo: <%=titolo %></p></a>
-	<p> Data pubblicazione: <%=data %></p>
+			<thead>
+				<tr>
+					<th scope="col"> Titolo </th>
+					<th scope="col"> Data Pubblicazione </th>
+				</tr>
+			</thead>
+	<tbody>
+	<tr>
+	<th scope="row"><a href="<%=ahref%>"> <%=titolo %> </a> </th>
+	<td> <%=data %></td>
+					
+	</tr>
 	
 <%
 	}// FINE FOR
 }// FINE ELSE
 %>
+</tbody>
+</table>
+</div>
 <%@include file ="footer.jsp"%>
 </body>
 </html>
