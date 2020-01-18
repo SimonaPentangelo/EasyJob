@@ -94,13 +94,13 @@ public class SegnalazioneUtenteServlet extends HttpServlet {
 						response.sendRedirect(request.getContextPath()+redirect);
 						
 					} else {
-						redirect = "./formSegnalazione.jsp";
+						redirect = "/formSegnalazione.jsp";
 						System.out.println("primo else");
 						request.getSession().setAttribute("errorReport", "Si è verificato un errore");
 						response.sendRedirect(request.getContextPath()+redirect);
 					}
 				} else {
-					redirect = "./formSegnalazione.jsp?az=" + azienda;
+					redirect = "/formSegnalazione.jsp?az=" + azienda;
 					System.out.println("secondo else");
 					response.getWriter().write("è già stato segnalato");
 					request.getSession().setAttribute("errorReport", "Hai già segnalato quest'azienda!");
@@ -108,14 +108,14 @@ public class SegnalazioneUtenteServlet extends HttpServlet {
 				}
 			} else {
 				System.out.println("terzo else");
-				redirect = "./formSegnalazione.jsp?az=" + azienda;
+				redirect = "/formSegnalazione.jsp?az=" + azienda;
 				request.getSession().setAttribute("errorReport", "Formato non valido");
 				 response.getWriter().write("formato non valido");
 				 response.sendRedirect(request.getContextPath()+redirect);
 			}
 		}catch (Exception e){
 			e.printStackTrace();
-			redirect = "./formSegnalazione.jsp?az=" + azienda;
+			redirect = "/formSegnalazione.jsp?az=" + azienda;
 			request.getSession().setAttribute("errorReport", "Si è verificato un errore");
 			response.sendRedirect(request.getContextPath()+redirect);
 		}
