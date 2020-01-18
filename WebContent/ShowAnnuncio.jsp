@@ -73,7 +73,7 @@ else{
 <div style="height:40px">
 </div>
 <form action="<%=redirect %>" method="GET">
-<button style ="margin-left:100px"type="submit" class="umb-btn" value="<%=redirect %>" onsubmit="loginForce()">
+<button style ="margin-left:100px"type="submit" class="umb-btn" id="cand" value="<%=redirect %>" onclick="loginForce()">
 Candidati!
 </button>
 <input type="hidden" name="idUt" value ="<%=idInocc %>">
@@ -88,7 +88,7 @@ Candidati!
 <script>
 $(document).ready(function(){
 	var stringlog ="login.jsp";
-	$(".class").click(function(event){
+	$("#cand").click(function(event){
 		var buttonID = event.target.value;
 		if(buttonID === stringlog){
 			alert("Devi essere autenticato come Inoccupato per poterti candidare,ti portiamo alla pagina di login");
