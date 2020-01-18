@@ -32,9 +32,9 @@
 <h1>Segnala un'azienda</h1><br>
 <%
 		String stringa = "";
-		if(request.getAttribute("errorReport") != null) {
-			stringa = request.getAttribute("errorReport").toString();
-			
+		if(request.getSession().getAttribute("errorReport") != null) {
+			stringa = (String) request.getSession().getAttribute("errorReport");
+			request.getSession().removeAttribute("errorReport");
 			%> <h3><%=stringa %></h3> <% 
 		} 
 		%>

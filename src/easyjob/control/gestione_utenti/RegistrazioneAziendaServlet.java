@@ -230,13 +230,13 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
 					response.sendRedirect(request.getContextPath()+redirect);
 				} else {
 					redirect = "/registrazioneAzienda.jsp";
-					request.setAttribute("errorReg", "Username o email già in uso!");
+					request.getSession().setAttribute("errorReg", "Username o email già in uso!");
 					response.sendRedirect(request.getContextPath()+redirect);
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 				redirect = "/registrazioneAzienda.jsp";
-				request.setAttribute("errorReg", "Errore nella registrazione");
+				request.getSession().setAttribute("errorReg", "Errore nella registrazione");
 				response.sendRedirect(request.getContextPath()+redirect);
 			}
 		}

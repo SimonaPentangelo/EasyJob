@@ -25,8 +25,9 @@
 		<h1>Registrati ora e crea un account</h1>
 		<%
 		String stringa = "";
-		if(request.getAttribute("errorReg") != null) {
-			stringa = request.getAttribute("errorReg").toString();
+		if(request.getSession().getAttribute("errorReg") != null) {
+			stringa = (String) request.getSession().getAttribute("errorReg");
+			request.getSession().removeAttribute("errorReg");
 			%> 	<h1><%=stringa %></h1> <%
 		} 
 		%>

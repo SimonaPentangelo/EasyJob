@@ -1,6 +1,7 @@
 <% String errorFormat = "";
-if(request.getAttribute("errore") != null) {
-	errorFormat = request.getAttribute("errore").toString(); }%>
+if(request.getSession().getAttribute("errore") != null) {
+	errorFormat = (String) request.getSession().getAttribute("errore");
+	request.getSession().removeAttribute("errore");}%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>

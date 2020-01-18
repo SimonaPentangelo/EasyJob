@@ -28,9 +28,10 @@ int idAn = Integer.parseInt(request.getParameter("idAn"));
 <h1>Contatta un candidato</h1><br>
 <%
 		String stringa = "";
-		if(request.getAttribute("errore") != null) {
-			stringa = request.getAttribute("errore").toString();
+		if(request.getSession().getAttribute("errore") != null) {
+			stringa = (String) request.getSession().getAttribute("errore");
 			%> <h3><%=stringa %></h3> <%
+					request.getSession().removeAttribute("errore");
 		} 
 		%>
 

@@ -225,13 +225,13 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
 				}else {
 					response.getWriter().write("Formato dati errati");
 					redirect = "/registrazioneInoccupato.jsp";
-					request.setAttribute("errorReg", "Username o email già in uso!");
+					request.getSession().setAttribute("errorReg", "Username o email già in uso!");
 					response.sendRedirect(request.getContextPath()+redirect);
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 				redirect = "/registrazioneInoccupato.jsp";
-				request.setAttribute("errorReg", "Errore nella registrazione");
+				request.getSession().setAttribute("errorReg", "Errore nella registrazione");
 				response.sendRedirect(request.getContextPath()+redirect);
 			}
 		}

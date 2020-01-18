@@ -136,18 +136,18 @@ private boolean valida(String titolo, String desc, String req, String città, Str
 					System.out.println("primo else");
 					response.getWriter().write("Errore");
 					redirect="/pubblicaAnnuncio.jsp";
-					request.setAttribute("errore", "Si è verificato un errore");
+					request.getSession().setAttribute("errore", "Si è verificato un errore");
 				}
 			} else {
 				System.out.println("secondo else");
 				response.getWriter().write("Errore nel formato");
-				request.setAttribute("errore", "Formato dati errato");
+				request.getSession().setAttribute("errore", "Formato dati errato");
 				redirect="/pubblicaAnnuncio.jsp";
 			}
 		} catch (Exception e){
 			e.printStackTrace();
 			redirect="/pubblicaAnnuncio.jsp";
-			request.setAttribute("errore", "Si è verificato un errore");
+			request.getSession().setAttribute("errore", "Si è verificato un errore");
 		} finally {
 			System.out.println("finallyyyyyy");
 			response.sendRedirect(request.getContextPath()+redirect);

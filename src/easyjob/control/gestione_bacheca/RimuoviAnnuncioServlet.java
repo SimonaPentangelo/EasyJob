@@ -42,15 +42,15 @@ public class RimuoviAnnuncioServlet extends HttpServlet {
 				else{
 					response.getWriter().write("unespected");
 					redirect="/ShowAnnuncio.jsp"; //non dovrebbe mai succedere
-					request.setAttribute("errorRemove", "Questo annuncio è già stato rimosso");
+					request.getSession().setAttribute("errorRemove", "Questo annuncio è già stato rimosso");
 				}
 			}catch(Exception e){
-				request.setAttribute("errorRemove", "Si è verificato un errore");
+				request.getSession().setAttribute("errorRemove", "Si è verificato un errore");
 				e.printStackTrace();
 				redirect="/ShowAnnuncio.jsp";
 			}
 		}else {
-			request.setAttribute("errorRemove", "Id dell'annuncio non valido");
+			request.getSession().setAttribute("errorRemove", "Id dell'annuncio non valido");
 			response.getWriter().write("id non valido");
 			redirect = "/ShowAnnuncio.jsp"; // non dovrebbe mai succedere
 		}

@@ -1,5 +1,5 @@
 <% String msg = "";
-if(request.getAttribute("message") != null) { request.getAttribute("message").toString(); } %>
+if(request.getSession().getAttribute("message") != null) { msg = (String) request.getSession().getAttribute("message"); } %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>

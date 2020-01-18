@@ -118,13 +118,13 @@ public class LoginServlet extends HttpServlet {
 					
 						request.getSession().setAttribute("autenticato",false);
 						response.getWriter().write("Username o password non validi");
-						request.setAttribute("message","Username o password non validi");
+						request.getSession().setAttribute("message","Username o password non validi");
 						redirect="/login.jsp";
 						System.out.println("puddi1");
 					 }
 				}else {
 					request.getSession().setAttribute("autenticato",false);
-					request.setAttribute("message","Username o password non validi");
+					request.getSession().setAttribute("message","Username o password non validi");
 					response.getWriter().write("Username o password non validi");
 					redirect="/login.jsp";
 					System.out.println("puddi2");
@@ -132,7 +132,7 @@ public class LoginServlet extends HttpServlet {
 				} catch (SQLException e) {
 						// TODO Auto-generated catch block
 					e.printStackTrace();
-					request.setAttribute("message","Si è verificato un errore");
+					request.getSession().setAttribute("message","Si è verificato un errore");
 					redirect="/login.jsp";
 					System.out.println("puddi3");
 				}

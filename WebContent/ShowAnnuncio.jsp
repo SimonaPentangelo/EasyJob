@@ -72,9 +72,9 @@ else{
 
 <%
 		String stringa = "";
-		if(request.getAttribute("errorRemove") != null) {
-			stringa = request.getAttribute("errorRemove").toString();
-			
+		if(request.getSession().getAttribute("errorRemove") != null) {
+			stringa = (String) request.getSession().getAttribute("errorRemove");
+			request.getSession().removeAttribute("errorRemove");
 			%><h3><%=stringa %></h3> <% 
 		} %>
 		
