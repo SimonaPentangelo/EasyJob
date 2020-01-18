@@ -81,11 +81,14 @@
 				tipoC = annunci.get(i).getTipoContratto();
 				int idAziendaDaVisualizzare = 0; /*Gigi questo è l'id che devi portarti nella jsp della form segnalazione*/
 				for (int j = 0; j < aziende.size(); j++) {
-					if (aziende.get(j).getIdUser() == idAzienda)
+					System.out.println("Ciclo num" + j + " " + aziende.get(j).getIdUser());
+					System.out.println(aziende.get(j).getIdUser() == idAzienda);
+					if (aziende.get(j).getIdUser() == idAzienda) {
 						pathImage = File.separator + aziende.get(j).getLogoAzienda();
 					idAziendaDaVisualizzare = aziende.get(j).getIdUser();
-					nomeAz = aziende.get(j).getNomeAzienda();
+					nomeAz = aziende.get(j).getNomeAzienda(); }
 				}
+				System.out.println(idAzienda + " " + idAziendaDaVisualizzare);
 	%>
 	<tr>
 	<th scope="row">
@@ -115,7 +118,7 @@
 	</tbody>
 	</table>
 	</div>
-	<% } // fine else %>
+	<%}  // fine else %>
 </div>
 	<%@include file="footer.jsp"%>
 </body>
