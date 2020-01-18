@@ -11,16 +11,17 @@ Azienda azienda = (Azienda) session.getAttribute("aziendaDaVisualizzare");
 <head>
 <link rel="stylesheet" type="text/css" href="css/responsabbbile.css">
 <%@include file ="librerie.html"%>
+<link rel="stylesheet" type="text/css" href="css/registerform.css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
 <%@include file ="header.jsp"%>
-<div style="margin-top:100px">
+<div class="maremma">
 
-<h5 style="margin-left:645px">Pagina dell'azienda <%= azienda.getNomeAzienda() %>:</h5>
+<h5>Pagina dell'azienda <%= azienda.getNomeAzienda() %>:</h5>
 		
-<img style="margin-left:300px"src=" ${pageContext.request.contextPath}<%= azienda.getLogoAzienda()%>">
+<img id="showAzienda" src="${pageContext.request.contextPath}\<%= azienda.getLogoAzienda()%>">
 <p> Numero Dipendenti all'attivo: <%=azienda.getNumeroDipendenti() %> </p>
 <p>Partita iva: <%=azienda.getPartitaIVA() %> </p>
 <p>Data fondazione: <%=azienda.getDataFondazione() %> </p>
