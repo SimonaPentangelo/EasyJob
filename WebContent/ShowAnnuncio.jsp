@@ -72,11 +72,12 @@ else{
 
 <%
 		String stringa = "";
-		if(response.getHeader("errorRemove") != null) {
-			stringa = response.getHeader("errorRemove");
-		} 
-		%>
-		<h3><%=stringa %></h3>
+		if(request.getAttribute("errorRemove") != null) {
+			stringa = request.getAttribute("errorRemove").toString();
+			
+			%><h3><%=stringa %></h3> <% 
+		} %>
+		
 <%}else{ %>
 <div style="height:40px">
 </div>
@@ -90,11 +91,12 @@ Candidati!
 
 <%
 		String stringa = "";
-		if(response.getHeader("errorCand") != null) {
-			stringa = response.getHeader("errorCand");
+		if(request.getAttribute("errorCand") != null) {
+			stringa = request.getAttribute("errorCand").toString();
+			
+			%><h3><%=stringa %></h3> <% 
 		} 
 		%>
-		<h3><%=stringa %></h3>
 		
 <%} %>
 </div>

@@ -66,12 +66,12 @@ public class ModificaCurriculumServlet extends HttpServlet {
 				
 				Part curriculum = request.getPart("curriculum");
 				if(!Paths.get(curriculum.getSubmittedFileName()).getFileName().toString().substring(Paths.get(curriculum.getSubmittedFileName()).getFileName().toString().length() - 3).equals("pdf")) {
-					response.setHeader("errorUpdate", "Il file deve essere in formato PDF.");
+					request.setAttribute("errorUpdate", "Il file deve essere in formato PDF.");
 				}
 				long fileSizeInMB = (curriculum.getSize() / 1024)/ 1024;
 
 				if (fileSizeInMB > 10) {
-					response.setHeader("errorUpdate", "La dimensione non deve superare i 10MB.");
+					request.setAttribute("errorUpdate", "La dimensione non deve superare i 10MB.");
 				}
 				//Codice per creare la directory dove salvare l'immagine del logo
 				//BISOGNA VEDERE SE FUNZIONA!
@@ -106,15 +106,14 @@ public class ModificaCurriculumServlet extends HttpServlet {
 								
 						Files.copy(inputStream, Paths.get(cvFullPath), StandardCopyOption.REPLACE_EXISTING);
 						inputStream.close();
-						response.setHeader("successUpdate", "Modifica avvenuta con successo");
-						System.out.println(response.getHeader("successUpdate") + " ciao");
+						request.setAttribute("successUpdate", "Modifica avvenuta con successo");
 					}
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-					response.setHeader("errorUpdate", "Si è verificato un errore.");
+					request.setAttribute("errorUpdate", "Si è verificato un errore.");
 				} finally {
-					request.getRequestDispatcher(redirect).forward(request, response);
+					response.sendRedirect(request.getContextPath()+redirect);
 				}
 			}
 		}

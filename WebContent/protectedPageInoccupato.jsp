@@ -1,12 +1,4 @@
-<%
-	Boolean autenticato=(Boolean) session.getAttribute("autenticato");
-	if((autenticato==null)||(!autenticato.booleanValue()))
-	{
-		response.sendRedirect("path di tentato accesso alla pagina senza effettuare login!");
-		return;
-		
-	}
-%>
+
 
 <%!String nameString=""; String surnameString=""; %>
 <%
@@ -83,14 +75,16 @@ Annuncio annuncioSel = (Annuncio) session.getAttribute("annuncioSelezionato");
 		</form> 
 		<%
 		String stringa = "";
-		if(response.getHeader("errorUpdate") != null) {
-			stringa = response.getHeader("errorUpdate");
+		if(request.getAttribute("errorUpdate") != null) {
+			stringa = request.getAttribute("errorUpdate").toString();
+			
+			%> 		<span><%=stringa %></span> <% 
 		} 
-		if(response.getHeader("successUpdate") != null) {
-			stringa = response.getHeader("successUpdate");
+		if(request.getAttribute("successUpdate") != null) {
+			stringa = request.getAttribute("successUpdate").toString();
+			%> 		<span><%=stringa %></span> <% 
 		}
 		%>
-		<span><%=stringa %></span>
 		<div style="height:30px"></div>
 		<form action="${pageContext.request.contextPath}/VisualizzaCandidatureServlet" method ="GET">
 		<button class="umb-btn" type="submit">Visualizza candidature effettuate</button>

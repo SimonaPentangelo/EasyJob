@@ -102,7 +102,7 @@ function checkTags() {
 }
 
 function checkAll() {
-	if(!checkTitolo() || !checkCitta() || !checkContratto() || !checkTags()) {
+	if(!checkTitolo() || !checkCitta() || !checkContratto() || !checkTags() || !checkDesc() || !checkReq()) {
 		
 		return false;
 	} else {

@@ -1,4 +1,5 @@
-<% String msg = response.getHeader("message"); %>
+<% String msg = "";
+if(request.getAttribute("message") != null) { request.getAttribute("message").toString(); } %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -20,7 +21,7 @@
 	 <input type="text" name="username" placeholder="Enter username">
 	 <label for="pass"><b>Password:</b></label>
 	<input type="password" name="password" placeholder="Enter password"> <br>
-	<% if(msg!=null){
+	<% if(msg!=null && !msg.equals("")){
 		%>
 	<p> <%=msg %></p>
 	<%} %>

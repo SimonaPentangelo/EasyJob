@@ -36,25 +36,25 @@ public class CandidaturaServlet extends HttpServlet {
 					response.getWriter().write("candidato");
 					redirect ="/SuccesfulCandidate.jsp";
 				}else {
-					response.setHeader("errorCand","Non è stato possibile effettuare la candidatura");
+					request.setAttribute("errorCand","Non è stato possibile effettuare la candidatura");
 					redirect=  "/ShowAnnuncio.jsp";
 					response.getWriter().write("unespected");
 				}
 			}else {
 				System.out.println("Else errore cand");
-				response.setHeader("errorCand","Ti sei già candidato per questo annuncio");
+				request.setAttribute("errorCand","Ti sei già candidato per questo annuncio");
 				response.getWriter().write("già candidato");
 				redirect="/ShowAnnuncio.jsp";
 			}
 		}else {
-			response.setHeader("errorCand","L'id dell'utente che sta provando a candidarsi non è valido");
+			request.setAttribute("errorCand","L'id dell'utente che sta provando a candidarsi non è valido");
 			response.getWriter().write("id non valido");
 			redirect=  "/ShowAnnuncio.jsp";
 		}
 		
 		}catch (Exception e){
 			e.printStackTrace();
-			response.setHeader("errorCand","Non è stato possibile effettuare la candidatura");
+			request.setAttribute("errorCand","Non è stato possibile effettuare la candidatura");
 			redirect=  "/ShowAnnuncio.jsp";
 		}
 		

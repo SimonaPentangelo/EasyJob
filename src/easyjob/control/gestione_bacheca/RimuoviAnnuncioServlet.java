@@ -41,19 +41,20 @@ public class RimuoviAnnuncioServlet extends HttpServlet {
 			}
 				else{
 					response.getWriter().write("unespected");
-					redirect="./showAnnuncio.jsp"; //non dovrebbe mai succedere
-					response.setHeader("errorRemove", "Questo annuncio è già stato rimosso");
+					redirect="/ShowAnnuncio.jsp"; //non dovrebbe mai succedere
+					request.setAttribute("errorRemove", "Questo annuncio è già stato rimosso");
 				}
 			}catch(Exception e){
-				response.setHeader("errorRemove", "Si è verificato un errore");
+				request.setAttribute("errorRemove", "Si è verificato un errore");
 				e.printStackTrace();
+				redirect="/ShowAnnuncio.jsp";
 			}
 		}else {
-			response.setHeader("errorRemove", "Id dell'annuncio non valido");
+			request.setAttribute("errorRemove", "Id dell'annuncio non valido");
 			response.getWriter().write("id non valido");
-			redirect = "./showAnnuncio.jsp"; // non dovrebbe mai succedere
+			redirect = "/ShowAnnuncio.jsp"; // non dovrebbe mai succedere
 		}
-		response.sendRedirect(redirect);
+		response.sendRedirect(request.getContextPath()+redirect);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
