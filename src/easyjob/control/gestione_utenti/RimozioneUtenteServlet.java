@@ -53,19 +53,19 @@ public class RimozioneUtenteServlet extends HttpServlet {
 				Azienda az = mu.findAziendaById(idAzienda);
 				mu.deleteUser(az);
 				response.getWriter().write("Rimosso");
-				redirect="SuccessRemove.jsp";
-				request.getRequestDispatcher(redirect).forward(request, response);
+				redirect="/SuccessRemove.jsp";
+				response.sendRedirect(request.getContextPath()+redirect);
 			}else {
-				response.setHeader("errorRemove", "L'azienda risulta già bannata!");
+				request.setAttribute("errorRemove", "L'azienda risulta già bannata!");
 				response.getWriter().write("L'utente risulta già bannato");
-				redirect="ShowAzienda.jsp";
-				request.getRequestDispatcher(redirect).forward(request, response);
+				redirect="/ShowAzienda.jsp";
+				response.sendRedirect(request.getContextPath()+redirect);
 			}
 		} catch (SQLException e) {
-			response.setHeader("errorRemove", "Si è verificato un errore");
+			request.setAttribute("errorRemove", "Si è verificato un errore");
 			e.printStackTrace();
-			redirect="ShowAzienda.jsp";
-			request.getRequestDispatcher(redirect).forward(request, response);
+			redirect="/ShowAzienda.jsp";
+			response.sendRedirect(request.getContextPath()+redirect);
 		}
 	}
 

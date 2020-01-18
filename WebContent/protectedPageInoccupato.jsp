@@ -1,5 +1,10 @@
-
-
+<%String stringa = "";
+		if(session.getAttribute("message") != null) {
+			stringa = (String) session.getAttribute("message");
+			session.removeAttribute("message");
+		}
+		System.out.println(stringa);
+		%>
 <%!String nameString=""; String surnameString=""; %>
 <%
 	Inoccupato utente=(Inoccupato) session.getAttribute("utenteInoccupato");
@@ -69,22 +74,13 @@ Annuncio annuncioSel = (Annuncio) session.getAttribute("annuncioSelezionato");
 		
 		<span id="errorCurriculum"></span>
 		<div style="height:30px"></div>
-		<form onsubmit="checkCurriculum()" action="${pageContext.request.contextPath}/ModificaCurriculumServlet" method="POST" enctype='multipart/form-data'>
+		<form onsubmit="return checkCurriculum()" action="${pageContext.request.contextPath}/ModificaCurriculumServlet" method="POST" enctype='multipart/form-data'>
 			 Nuovo Curriculum: <input id="curriculum" type="file" name="curriculum"> <br>
 			<button class="umb-btn" id="conferma" type="submit">Modifica Curriculum </button>
 		</form> 
-		<%
-		String stringa = "";
-		if(request.getAttribute("errorUpdate") != null) {
-			stringa = request.getAttribute("errorUpdate").toString();
-			
-			%> 		<span><%=stringa %></span> <% 
-		} 
-		if(request.getAttribute("successUpdate") != null) {
-			stringa = request.getAttribute("successUpdate").toString();
-			%> 		<span><%=stringa %></span> <% 
-		}
-		%>
+		
+		<span id="notifySpan"><%=stringa %></span> 
+		
 		<div style="height:30px"></div>
 		<form action="${pageContext.request.contextPath}/VisualizzaCandidatureServlet" method ="GET">
 		<button class="umb-btn" type="submit">Visualizza candidature effettuate</button>

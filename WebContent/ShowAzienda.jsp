@@ -38,11 +38,12 @@ Azienda azienda = (Azienda) session.getAttribute("aziendaDaVisualizzare");
 	
 	<%
 		String stringa = "";
-		if(response.getHeader("errorRemove") != null) {
-			stringa = response.getHeader("errorRemove");
+		if(request.getAttribute("errorRemove") != null) {
+			stringa = request.getAttribute("errorRemove").toString();
+			
+			%> 	<h3><%=stringa %></h3> <%
 		} 
 		%>
-		<h3><%=stringa %></h3>
 	
 	<% 
 	Amministratore admin = (Amministratore) session.getAttribute("utenteAdmin");

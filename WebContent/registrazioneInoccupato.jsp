@@ -23,11 +23,11 @@
 		<h1>Registrati ora e crea un account</h1>
 		<%
 		String stringa = "";
-		if(response.getHeader("errorReg") != null) {
-			stringa = response.getHeader("errorReg");
+		if(request.getAttribute("errorReg") != null) {
+			stringa = request.getAttribute("errorReg").toString();
+			%> <span><%=stringa %></span> <%
 		} 
 		%>
-		<span><%=stringa %></span>
 	<form onsubmit="return checkAll()" enctype='multipart/form-data' action="${pageContext.request.contextPath}/RegistrazioneInoccupatoServlet" method="POST">
 	
 	<div class="row">

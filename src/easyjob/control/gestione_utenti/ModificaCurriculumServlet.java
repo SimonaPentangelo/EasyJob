@@ -66,12 +66,12 @@ public class ModificaCurriculumServlet extends HttpServlet {
 				
 				Part curriculum = request.getPart("curriculum");
 				if(!Paths.get(curriculum.getSubmittedFileName()).getFileName().toString().substring(Paths.get(curriculum.getSubmittedFileName()).getFileName().toString().length() - 3).equals("pdf")) {
-					request.setAttribute("errorUpdate", "Il file deve essere in formato PDF.");
+					session.setAttribute("message", "Il file deve essere in formato PDF.");
 				}
 				long fileSizeInMB = (curriculum.getSize() / 1024)/ 1024;
 
 				if (fileSizeInMB > 10) {
-					request.setAttribute("errorUpdate", "La dimensione non deve superare i 10MB.");
+					session.setAttribute("message", "La dimensione non deve superare i 10MB.");
 				}
 				//Codice per creare la directory dove salvare l'immagine del logo
 				//BISOGNA VEDERE SE FUNZIONA!
@@ -86,7 +86,7 @@ public class ModificaCurriculumServlet extends HttpServlet {
 				try {
 					if(mu.modificaCurriculum(inoccupato.getIdUser(), "resources" + File.separator + inoccupato.getUsername() + File.separator + curriculum.getSubmittedFileName().replaceAll(" ", "_"))) {
 						System.out.println("mo modifico");
-						Files.deleteIfExists(Paths.get(rootPath + File.separator + oldCurriculum));
+						Files.deleteIfExists(Paths.get(request.getServletContext().getRealPath("") + File.separator + oldCurriculum));
 						File dirRoot = new File(rootPath); //cartella delle resources
 						if(!dirRoot.exists())//se la cartella esiste non la crea altrimenti genera la cartella 
 						{
@@ -103,19 +103,20 @@ public class ModificaCurriculumServlet extends HttpServlet {
 								
 						String cvFullPath = userPath + File.separator + curriculum.getSubmittedFileName().replaceAll(" ", "_");
 						InputStream inputStream = curriculum.getInputStream();
-								
+						System.out.println(request.getServletContext().getRealPath("") + File.separator + oldCurriculum);
+						
 						Files.copy(inputStream, Paths.get(cvFullPath), StandardCopyOption.REPLACE_EXISTING);
 						inputStream.close();
-						request.setAttribute("successUpdate", "Modifica avvenuta con successo");
+						System.out.println("PUDDI");
+						session.setAttribute("message", "Modifica avvenuta con successo");
 					}
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-					request.setAttribute("errorUpdate", "Si è verificato un errore.");
-				} finally {
-					response.sendRedirect(request.getContextPath()+redirect);
-				}
+					session.setAttribute("message", "Si è verificato un errore.");
+				} 
 			}
 		}
+		response.sendRedirect(request.getContextPath()+redirect);
 	}
 }
