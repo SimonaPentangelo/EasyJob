@@ -26,9 +26,10 @@
 		if(request.getSession().getAttribute("errorReg") != null) {
 			stringa = (String) request.getSession().getAttribute("errorReg");
 			request.getSession().removeAttribute("errorReg");
-			%> <span><%=stringa %></span> <%
 		} 
 		%>
+		
+		<span id="notifySpan"><%=stringa %></span>
 	<form onsubmit="return checkAll()" enctype='multipart/form-data' action="${pageContext.request.contextPath}/RegistrazioneInoccupatoServlet" method="POST">
 	
 	<div class="row">

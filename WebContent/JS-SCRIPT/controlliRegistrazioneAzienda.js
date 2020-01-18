@@ -156,7 +156,7 @@ function checkUsername() {
         return true;
     } else {
    
-    	$("#errorUser").html("L’username deve essere composto da 2 a 50 numeri e lettere.");
+    	$("#errorUser").html("L\'username deve essere composto da 2 a 50 numeri e lettere.");
 		$("#errorUser").show();
         return false;
     }
