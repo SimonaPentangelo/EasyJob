@@ -43,8 +43,8 @@
 
 	<div>
 	<span>Titolo:</span><br>
-	<input class="instestoPub"  id="titolo" type="text" name="titolo"> 
-	<span id="errorTit"></span><br><br>
+	<input class="instestoPub"  id="titolo" type="text" name="titolo"> <br>
+	<span id="errorTit"></span><br>
 	</div>
 	
 	<div>
