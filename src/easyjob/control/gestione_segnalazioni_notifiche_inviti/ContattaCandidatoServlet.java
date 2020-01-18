@@ -61,12 +61,12 @@ public class ContattaCandidatoServlet extends HttpServlet {
 			
 				if(mi.contattaCandidato(invito)){
 					response.getWriter().write("invitato");
-					redirect="./SuccessfullInvite.jsp";
+					redirect="/SuccessfullInvite.jsp";
 					response.sendRedirect(request.getContextPath()+redirect);
 				} else {
 					System.out.println("primo else");
 					response.getWriter().write("già invitato");
-					redirect ="./contattaCandidato.jsp?idUt=" + idInoccupato + "&idAn=" + idAnnuncio;
+					redirect ="/contattaCandidato.jsp?idUt=" + idInoccupato + "&idAn=" + idAnnuncio;
 					request.getSession().setAttribute("errore", "Hai già contattato questo candidato per quest'annuncio!");
 					response.sendRedirect(request.getContextPath()+redirect);
 				}
@@ -77,7 +77,7 @@ public class ContattaCandidatoServlet extends HttpServlet {
 			System.out.println("secondo else");
 			request.getSession().setAttribute("errore", "Formato non valido");
 					response.getWriter().write("formato non valido");
-					redirect ="./contattaCandidato.jsp?idUt=" + idInoccupato + "&idAn=" + idAnnuncio;
+					redirect ="/contattaCandidato.jsp?idUt=" + idInoccupato + "&idAn=" + idAnnuncio;
 					response.sendRedirect(request.getContextPath()+redirect);
 		}
 	}

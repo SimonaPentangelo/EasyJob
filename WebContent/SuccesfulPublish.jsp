@@ -10,9 +10,12 @@
 </head>
 <body>
 <%@include file ="header.jsp"%>
-<div style="margin-top:280px">
-<p style="padding-bottom:155px"> Annuncio Pubblicato con successo! </p>
+<div style="height:80px"></div>
+<div class="container">
+<p> Annuncio Pubblicato con successo! </p>
+<img src="css/images/giphy.gif">
 </div>
+
 <%@include file ="footer.jsp"%>
 </body>
 </html>
