@@ -39,7 +39,7 @@
 		} 
 		%>
 
-<form onsubmit="checkAll()" action="${pageContext.request.contextPath}/SegnalazioneUtenteServlet" method="POST">
+<form onsubmit="return checkAll()" action="${pageContext.request.contextPath}/SegnalazioneUtenteServlet" method="POST">
 
 	<div>
 	<span>Titolo:</span><br>
@@ -49,8 +49,8 @@
 	
 	<div>
 	<span>Messaggio:</span><br> 
-	<textarea class="bigText" id="corpo" name="corpo"></textarea> <br>
-	<span id="errorMsg"></span><br><br>
+	<textarea class="bigText" id="corpo" name="corpo"></textarea> <br><br>
+	<span id="errorBody"></span><br><br>
 	</div>
 	
     <input type="hidden" name="azienda" value="<%=idAzienda%>">
