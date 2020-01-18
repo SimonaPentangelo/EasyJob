@@ -35,6 +35,7 @@ public class RicercaAnnunciModeratore extends HttpServlet {
 		ManagerAnnunci managerAn = new ManagerAnnunci();
 		String dataDaCercareS = request.getParameter("data");
 		String dataDaCercare = null;
+		String redirect = "";
 		
 		if(dataDaCercareS != null && !dataDaCercareS.equals("")) {
 			System.out.println(dataDaCercareS);
@@ -47,7 +48,7 @@ public class RicercaAnnunciModeratore extends HttpServlet {
 				e.printStackTrace();
 			} 
 		System.out.println(dataDaCercare+" Classe: "+ dataDaCercare.getClass());
-		String redirect = "";
+		
 		List<Annuncio> annunci = new ArrayList<>();	
 		List<Azienda> aziende = new ArrayList<>();
 		try{
@@ -66,10 +67,13 @@ public class RicercaAnnunciModeratore extends HttpServlet {
 			e.printStackTrace();
 		}
 		response.getWriter().write("selezione effettuata");
-		response.sendRedirect(request.getContextPath()+redirect);
+		
 		} else {
 			response.getWriter().write("non è stata selezionata la data");
+			request.getSession().setAttribute("errorTag","Non hai selezionato una data");
+			redirect="/index.jsp";
 		}
+		response.sendRedirect(request.getContextPath()+redirect);
 	}
 
 	/**

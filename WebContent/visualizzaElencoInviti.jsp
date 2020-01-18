@@ -46,7 +46,7 @@
 </head>
 <body>
 <%@include file ="header.jsp"%>
-<div style="height:60px" ></div>
+<div style="height:70px" ></div>
 	<% if (inviti.isEmpty()) {%>
 	
 	<p> Non ci sono inviti</p>

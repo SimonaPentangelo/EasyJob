@@ -77,7 +77,6 @@ function checkDesc() {
 	    	
 	    	return true;
 	    } else {
-	    
 	    	$("#errorDescrizione").html("La descrizione non pu\xF2 superare i 7.000 caratteri e " +
 	    								"di almeno 10 caratteri");
 	    	$("#errorDescrizione").show();

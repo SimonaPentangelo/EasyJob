@@ -1,4 +1,5 @@
-<% String errorTag = (String) session.getAttribute("errorTag"); %>
+<% String errorTag = (String) session.getAttribute("errorTag"); 
+session.removeAttribute("errorTag");%>
 
 <%@page import="easyjob.entity.Moderatore" %>
 <%@page import="easyjob.entity.Azienda" %>
@@ -34,7 +35,11 @@
 	<form onsubmit="return checkData()" class= "group" action = "${pageContext.request.contextPath}/RicercaAnnunciModeratore" method="GET">
 		<input id="dataID" type="date" name="data"> 
 		<span id="errorData"></span><br>
-		<input id="conferma"  class="umb-btn" type="submit" value="Ricerca per data"> <br><br>
+		<input id="conferma"  class="umb-btn" type="submit" value="Ricerca per data"> <br>
+		<%if(errorTag!= null){ 
+		%>
+		<span class="errore"> <%=errorTag %> </span>
+		<%} %>
 	</form>
 	
 	<%

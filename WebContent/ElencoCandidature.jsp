@@ -18,39 +18,57 @@ System.out.println("anche qusto è null");
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Elenco candidature</title>
 <%@include file ="librerie.html"%>
 <link rel="stylesheet" type="text/css" href="css/responsabbbile.css">
 <link rel="stylesheet" type="text/css" href="css/umbtn.css">
-<link rel="stylesheet" type="text/css" href="css/elencoSegnalazioni.css">
+<link rel="stylesheet" type="text/css" href="css/ordini.css">
 </head>
 <body>
 <%@include file ="header.jsp"%>
 <div id="contain" style="margin-top:130px">
-<p> Ciao , ecco l'elenco delle tue candidature:</p>
+<h2> Ciao , ecco l'elenco delle tue candidature:</h2>
 <%if(elenco.size()==0){
 %>
 
 <p>Non hai ancora effettuato una candidatura, puoi candidarti attraverso la nostra bacheca </p>
+
 <button id="conferma" class="umb-btn" style="margin-left:695px ;margin-top:160px"><a href="Bacheca.jsp">Vai alla bacheca</a></button>
-<div class="myRow">
-<div class="myCol">
-<% } else{
+
+<div style="height:500px"></div>
+<% } else{%>
+<div class="tabbbella">
+	<table class ="table table-sm">
+	<thead>
+	<tr> 
+	<th scope ="col" style="color:#007bff"> Titolo annuncio </th>
+	<th scope ="col" style="color:#007bff"> Data candidatura </th>
+	</tr>
+</thead>
+<tbody>
+<% 
 	for(int i=0;i<elenco.size();i++){
 		for(int j=0;j<elencoAn.size();j++){
 			if(elenco.get(i).getAnnuncio()==elencoAn.get(j).getIdAnnuncio()){
 				String tit = elencoAn.get(j).getTitolo();
 				String dat = elenco.get(i).getData();
+				int id = elencoAn.get(j).getIdAnnuncio();
 				%>
-				<p> <%=tit %>   <%=dat %></p>
+				<tr>
+				<td> <a href="LeggiAnnuncioServlet?idAnnuncio=<%=id %>"> <%=tit %> </a></td>
+				<td> <%=dat %></td>
+				</tr>
 	<% 		}
 		}
-	}
+	}%>
+	</tbody>
+	</table>
+	</div>
+	
+<% 
 }
 	%>
-</div>
-</div>
-</div>
+
 <div style="height:70px"></div>
 	<%@include file ="footer.jsp"%>
 </body>

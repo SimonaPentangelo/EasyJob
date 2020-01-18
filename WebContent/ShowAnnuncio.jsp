@@ -65,7 +65,7 @@ else{
 
 %>
 <form action ="${pageContext.request.contextPath}/RimuoviAnnuncioServlet" method="GET">
-	<button type="submit" value="Rimuovi annuncio"> Rimuovi Annuncio
+	<button type="submit" class ="umb-btn"value="Rimuovi annuncio"> Rimuovi Annuncio
 	</button>
 	<input  class="umb-btn" type="hidden" name="idDaRimuovere" value = "<%=idAnnuncio %>">
 </form>
