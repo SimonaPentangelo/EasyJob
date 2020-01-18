@@ -7,7 +7,7 @@ function checkTitolo() {
 	   var tit = $("#titolo").val();
 	   var StringValidator = /^[A-Za-z\xE0\xE8\xEC\xF2\xF9 .,!?']{5,60}$/;
 
-	   if (tit.match(StringValidator) || tit == null ) {
+	   if (tit.match(StringValidator) && tit != null) {
 	    	$("#errorTit").hide();
 	    	return true;
 	    } else {
@@ -22,7 +22,7 @@ function checkMsg() {
 	var msg = $("#msg").val();
 	   var StringValidator = /^[A-Za-z\xE0\xE8\xEC\xF2\xF9 .,!?']{10,10000}$/;
 
-	   if (msg.match(StringValidator) || msg == null) {
+	   if (msg.match(StringValidator) && msg != null) {
 	    	$("#errorMsg").hide();
 	    	return true;
 	    } else {
@@ -35,10 +35,10 @@ function checkMsg() {
 
 function checkAll() {
 	if(!checkTitolo() || !checkMsg()) {
-		alert("Sono nell'if dovrebbe essere disabilitato");
+		
 		return false;
 	} else {
-		alert("Sono nell'else dovrebbe essere valido");
+		
 		return true;
 	}
 }

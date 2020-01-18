@@ -4,17 +4,15 @@
 
 
 function checkTitolo() {
-    var tit = $("#titolo");
+    var tit = $("#titolo").val();
     var StringValidator = /^[A-Za-z\xE0\xE8\xEC\xF2\xF90-9,. ]{6,50}$/;
 
-    if ($(tit).val().match(StringValidator) || $(tit).val().trim() == "") {
+    if (tit.match(StringValidator) && tit != null) {
     	$("#errorTitolo").hide();
-    	if(!$("#conferma").is(":disabled")) {
-    		$("#conferma").attr("disabled", false);
-    	}
+    	
     	return true;
     } else {
-    	$("#conferma").attr("disabled", true);
+    	
     	$("#errorTitolo").html("Il titolo deve contenere minimo 5 e massimo 60 numeri e lettere.");
 		$("#errorTitolo").show();
         return false;
@@ -22,17 +20,15 @@ function checkTitolo() {
 }
 
 function checkReq() {
-    var req = $("#req");
+    var req = $("#req").val();
     var StringValidator = /^[A-Za-z\xE0\xE8\xEC\xF2\xF9 .,!?']{10,3000}$/;
 
-    if ($(req).val().match(StringValidator) || $(req).val().trim() == "") {
+    if (req.match(StringValidator) && req != null) {
     	$("#errorReq").hide();
-    	if(!$("#conferma").is(":disabled")) {
-    		$("#conferma").attr("disabled", false);
-    	}
+    	
     	return true;
     } else {
-    	$("#conferma").attr("disabled", true);
+    	
     	$("#errorReq").html("I requisiti non devono superare i 3000 caratteri " +
     			"e di almeno 10 caratteri.");
 		$("#errorReq").show();
@@ -42,14 +38,13 @@ function checkReq() {
 
 function checkContratto() {
 	var cont = $("#cont");
-	if($(cont).val()) {
+	
+	if($(cont).val() != "iniziale") {
 		$("#errorTipo").hide();
-		if(!$("#conferma").is(":disabled")) {
-    		$("#conferma").attr("disabled", false);
-    	}
+		
 		return true;
 	} else {
-		$("#conferma").attr("disabled", true);
+		
 		$("#errorTipo").html("Devi selezionare una delle opzioni elencate.");
 		$("#errorTipo").show();
 		return false;
@@ -57,18 +52,16 @@ function checkContratto() {
 }
 
 function checkCitta() {
-    var citta = $("#citta");
+    var citta = $("#citta").val();
     var StringValidator = /^[A-Za-z\xE0\xE8\xEC\xF2\xF9' ]{2,20}$/;
 
-    if ($(citta).val().match(StringValidator) || $(citta).val().trim() == "") {
+    if (citta.match(StringValidator) && citta != null) {
     	$("#errorCitta").hide();
-    	if(!$("#conferma").is(":disabled")) {
-    		$("#conferma").attr("disabled", false);
-    	}
+    	
     	return true;
     } else {
-    	$("#conferma").attr("disabled", true);
-    	$("#errorCitta").html("La città deve contenere solo lettere e " +
+    	
+    	$("#errorCitta").html("La citt\xE0 deve contenere solo lettere e " +
     			"formata minimo da 2 lettere e massimo da 20.");
     	$("#errorCitta").show();
         return false;
@@ -76,18 +69,16 @@ function checkCitta() {
 }
 
 function checkDesc() {
-	   var desc = $("#desc");
+	   var desc = $("#desc").val();
 	    var StringValidator = /^[A-Za-z\xE0\xE8\xEC\xF2\xF9  .,!?']{10,7000}$/;
 
-	    if ($(desc).val().match(StringValidator) || $(desc).val().trim() == "") {
+	    if (desc.match(StringValidator) && desc != null) {
 	    	$("#errorDescrizione").hide();
-	    	if(!$("#conferma").is(":disabled")) {
-	    		$("#conferma").attr("disabled", false);
-	    	}
+	    	
 	    	return true;
 	    } else {
-	    	$("#conferma").attr("disabled", true);
-	    	$("#errorDescrizione").html("La descrizione non può superare i 7.000 caratteri e " +
+	    
+	    	$("#errorDescrizione").html("La descrizione non pu\xF2 superare i 7.000 caratteri e " +
 	    								"di almeno 10 caratteri");
 	    	$("#errorDescrizione").show();
 	        return false;
@@ -95,19 +86,28 @@ function checkDesc() {
 }
 
 function checkTags() {
-    var tags = $("#tags");
+    var tags = $("#tags").val();
     var StringValidator = /^[A-Za-z\xE0\xE8\xEC\xF2\xF9, ]{4,50}$/;
 
-    if ($(tags).val().match(StringValidator) || $(tags).val().trim() == "") {
+    if (tags.match(StringValidator) && tags != null) {
     	$("#errorTags").hide();
-    	if(!$("#conferma").is(":disabled")) {
-    		$("#conferma").attr("disabled", false);
-    	}
+    	
     	return true;
     } else {
-    	$("#conferma").attr("disabled", true);
+    	
     	$("#errorTags").html("Il tag deve contenere solo lettere e ogni parola deve essere separata da virgola.");
     	$("#errorTags").show();
         return false;
     }
 }
+
+function checkAll() {
+	if(!checkTitolo() || !checkCitta() || !checkContratto() || !checkTags()) {
+		
+		return false;
+	} else {
+		
+		return true;
+	}
+}
+

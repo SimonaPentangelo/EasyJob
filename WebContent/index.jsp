@@ -31,8 +31,8 @@
 	if(moderatore != null){	
 	%>
 	<h3> Ricerca un annuncio per data</h3>
-	<form  class= "group" action = "${pageContext.request.contextPath}/RicercaAnnunciModeratore" method="GET">
-		<input id="dataID" onchange="checkData()" type="date" name="data"> 
+	<form onsubmit="return checkData()" class= "group" action = "${pageContext.request.contextPath}/RicercaAnnunciModeratore" method="GET">
+		<input id="dataID" type="date" name="data"> 
 		<span id="errorData"></span><br>
 		<input id="conferma"  class="umb-btn" type="submit" value="Ricerca per data"> <br><br>
 	</form>

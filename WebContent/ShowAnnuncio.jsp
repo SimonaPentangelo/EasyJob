@@ -67,8 +67,16 @@ else{
 <form action ="${pageContext.request.contextPath}/RimuoviAnnuncioServlet" method="GET">
 	<button type="submit" value="Rimuovi annuncio"> Rimuovi Annuncio
 	</button>
-	<input type="hidden" name="idDaRimuovere" value = "<%=idAnnuncio %>">
+	<input  class="umb-btn" type="hidden" name="idDaRimuovere" value = "<%=idAnnuncio %>">
 </form>
+
+<%
+		String stringa = "";
+		if(response.getHeader("errorRemove") != null) {
+			stringa = response.getHeader("errorRemove");
+		} 
+		%>
+		<h3><%=stringa %></h3>
 <%}else{ %>
 <div style="height:40px">
 </div>
@@ -79,6 +87,15 @@ Candidati!
 <input type="hidden" name="idUt" value ="<%=idInocc %>">
 <input type="hidden" name="idAz" value="<%=idAnnuncio %>">
 </form>
+
+<%
+		String stringa = "";
+		if(response.getHeader("errorCand") != null) {
+			stringa = response.getHeader("errorCand");
+		} 
+		%>
+		<h3><%=stringa %></h3>
+		
 <%} %>
 </div>
 </div>

@@ -3,27 +3,33 @@
  */
 
 function checkData() {
-    var data = $("#dataID");
+    var data = $("#dataID").val();
     var oggi = new Date();
-    var dataRic = new Date($(data).val());
+    var dataRic = new Date(data);
     console.log(dataRic);
     console.log(oggi);
-    if (dataRic.getFullYear().toString().length >= 4) 
+    if (data != null && isValidDate(dataRic) && dataRic.getFullYear().toString().length >= 4) 
     {
         if (oggi > dataRic) 
         {
         	$("#errorData").hide();
-        	if(!$("#conferma").is(":disabled")) {
-        		$("#conferma").attr("disabled", false);
-        	}
+        	
             return true;
         } 
         else
         {
-        	$("#conferma").attr("disabled", true);
         	$("#errorData").html("La data inserita non rispetta il formato.");
     		$("#errorData").show();
         	return false;
         }
+    } else {
+    	
+    	$("#errorData").html("La data inserita non rispetta il formato.");
+		$("#errorData").show();
+    	return false;
     }
+}
+
+function isValidDate(d) {
+	  return d instanceof Date && !isNaN(d);
 }

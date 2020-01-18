@@ -34,27 +34,30 @@ public class CandidaturaServlet extends HttpServlet {
 			if(!(manager.isAlreadyCandidate(idInoccupato,idAzienda))){
 				if(manager.candidate(idInoccupato,idAzienda)) {
 					response.getWriter().write("candidato");
-					redirect ="/SuccesfulCandidate.jsp";
+					redirect ="./SuccesfulCandidate.jsp";
 				}else {
-					request.getSession().setAttribute("error","Non è stato possibile effettuare la candidatura,riprova più tardi");
+					response.setHeader("errorCand","Non è stato possibile effettuare la candidatura");
+					redirect=  "./showAnnuncio.jsp";
 					response.getWriter().write("unespected");
 				}
 			}else {
-				request.getSession().setAttribute("candidaturaIllegale","Ti sei già candidato per questo annuncio");
+				response.setHeader("errorCand","Ti sei già candidato per questo annuncio");
 				response.getWriter().write("già candidato");
-				redirect="/ErroreCandidatura.jsp";
+				redirect="./showAnnuncio.jsp";
 			}
 		}else {
-			request.getSession().setAttribute("errorUtente","L'id dell'utente che sta provando a candidarsi non è valido");
+			response.setHeader("errorCand","L'id dell'utente che sta provando a candidarsi non è valido");
 			response.getWriter().write("id non valido");
-			redirect=  "/ErroreCandidatura.jsp";
+			redirect=  "./showAnnuncio.jsp";
 		}
 		
 		}catch (Exception e){
 			e.printStackTrace();
+			response.setHeader("errorCand","Non è stato possibile effettuare la candidatura");
+			redirect=  "./showAnnuncio.jsp";
 		}
 		
-	response.sendRedirect(request.getContextPath()+redirect);	
+		request.getRequestDispatcher(redirect).forward(request, response);	
 	}
 
 	

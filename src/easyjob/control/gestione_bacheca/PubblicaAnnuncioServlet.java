@@ -150,7 +150,7 @@ private boolean valida(String titolo, String desc, String req, String città, Str
 			response.setHeader("errore", "Si è verificato un errore");
 		} finally {
 			System.out.println("finallyyyyyy");
-			response.sendRedirect(redirect);
+			request.getRequestDispatcher(redirect).forward(request, response);
 		}
 		
 	}

@@ -30,13 +30,13 @@
 		} 
 		%>
 		<h1><%=stringa %></h1>
-	<form enctype='multipart/form-data' action="${pageContext.request.contextPath}/RegistrazioneAziendaServlet" method="POST">
+	<form onsubmit="return checkAll()" enctype='multipart/form-data' action="${pageContext.request.contextPath}/RegistrazioneAziendaServlet" method="POST">
 	
 	<div class="row">
 
 		<div class="column">
 		<div>
-		Nome Azienda: <input class="instesto" id="nomeAzienda" onchange="checkNomeAzienda()" type="text" name="nomeAzienda"> 
+		Nome Azienda: <input class="instesto" id="nomeAzienda" type="text" name="nomeAzienda"> 
 		</div>
 		<span class="spanno" id="errorNome"></span><br><br>
 		
@@ -44,22 +44,22 @@
 		<p id="logo">Logo:</p>
 		<span id="fileSpan" class="fileSpan"></span>
 		<label class="umb-btn" for="logoAzienda">Scegli file</label>
-		<input class="intestoLogo" id="logoAzienda" onchange="checkLogo()" type="file" accept="image/*" name="logoAzienda"> 
+		<input class="intestoLogo" id="logoAzienda" type="file" accept="image/*" name="logoAzienda"> 
 		</div>
 		<span class="spanno" id="errorLogo"></span><br><br>
 	
 		<div>
-		Partita IVA: <input class="instesto" id="piva" onchange="checkPIva()" type="text" name="partitaIVA"> 
+		Partita IVA: <input class="instesto" id="piva" type="text" name="partitaIVA"> 
 		</div>
 		<span class="spanno" id="errorIVA"></span><br><br>
 	
 		<div>
-		Username: <input class="instesto" id="username" onchange="checkUsername()" type="text" name="username"> 
+		Username: <input class="instesto" id="username" type="text" name="username"> 
 		</div>
 		<span class="spanno" id="errorUser"></span><br><br>
 	
 		<div>
-		Indirizzo Sede: <input class="instesto" id="indirizzo" onchange="checkIndirizzo()" type="text" name="indirizzoSede"> 
+		Indirizzo Sede: <input class="instesto" id="indirizzo" type="text" name="indirizzoSede"> 
 		</div>
 		<span class="spanno" id="errorIndirizzo"></span><br><br>
 	
@@ -67,32 +67,32 @@
 	<div class="column">
 	
 		<div>
-		Data Fondazione: <input class="instesto" id="dataFond" onchange="checkDataFondazione()" type="date" name="dataFondazione"> 
+		Data Fondazione: <input class="instesto" id="dataFond" type="date" name="dataFondazione"> 
 		</div>
 		<span class="spanno" id="errorData"></span><br><br>
 		
 		<div>
-		Numero Dipendenti: <input class="instesto" id="dip" onchange="checkDipendenti()" type="text" name="numeroDipendenti"> 
+		Numero Dipendenti: <input class="instesto" id="dip" type="text" name="numeroDipendenti"> 
 		</div>
 		<span class="spanno" id="errorDip"></span><br><br>
 	
 		<div>
-		e-mail: <input class="instesto" id="email" onchange="checkEmail()" type=email" name="email"> 
+		e-mail: <input class="instesto" id="email" type=email" name="email"> 
 		</div>
 		<span class="spanno" id="errorMail"></span><br><br>
 	
 		<div>
-		Password: <input class="instesto" id="pass" onchange="checkPass()" type="password" name="password"> 
+		Password: <input class="instesto" id="pass" type="password" name="password"> 
 		</div>
 		<span class="spanno" id="errorPass"></span><br><br>
 	
 		<div>
-		Conferma Password: <input class="instesto" id="confPass" type="password" onchange="checkPass()" name="confermaPassword"> 
+		Conferma Password: <input class="instesto" id="confPass" type="password" name="confermaPassword"> 
 		</div>
 		<span clas="spanno" id="errorConfPass"></span><br><br>
 	
 		<div id="checkDiv">
-		<input id="dati" type="checkbox" name="trattamentoDati" checked> Accetto i termini del 
+		<input id="dati" type="checkbox" name="trattamentoDati"> Accetto i termini del 
 		trattamento dati personali.
 		</div> 
 		<span class="spanno" id="errorCheck"></span><br><br>
