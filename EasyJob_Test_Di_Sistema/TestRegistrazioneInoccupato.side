@@ -1,0 +1,4162 @@
+{
+  "id": "8cf5cc66-a99e-44cf-96e4-9eed416b00c6",
+  "version": "2.0",
+  "name": "TestRegistrazioneInoccupato",
+  "url": "http://localhost:7080/EasyJob/",
+  "tests": [{
+    "id": "8d7f4d76-da0f-4517-822c-e4718d67d6f9",
+    "name": "TC_1_1_0",
+    "commands": [{
+      "id": "e1f305cb-b06c-45cb-92a4-8f7635896ee2",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:7080/EasyJob/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9c6782b5-1d35-4180-92f0-1a61a65e8b6c",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1058x808",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0adaa818-628c-4636-bb0c-8698e35c7362",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Registrati come inoccupato",
+      "targets": [
+        ["linkText=Registrati come inoccupato", "linkText"],
+        ["css=.nav-item:nth-child(3) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Registrati come inoccupato')]", "xpath:link"],
+        ["xpath=//div[@id='navbarResponsive']/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'registrazioneInoccupato.jsp')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Registrati come inoccupato')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "54d96d58-b741-4c30-bdea-5e6e85c62c0b",
+      "comment": "",
+      "command": "click",
+      "target": "id=nome",
+      "targets": [
+        ["id=nome", "id"],
+        ["name=nome", "name"],
+        ["css=#nome", "css:finder"],
+        ["xpath=//input[@id='nome']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "23d8a7c3-c637-42a8-b087-91dfe54a9765",
+      "comment": "",
+      "command": "type",
+      "target": "id=nome",
+      "targets": [
+        ["id=nome", "id"],
+        ["name=nome", "name"],
+        ["css=#nome", "css:finder"],
+        ["xpath=//input[@id='nome']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "g1us3pp3"
+    }, {
+      "id": "005c5570-2a1b-4d7e-89b7-61411770edec",
+      "comment": "",
+      "command": "click",
+      "target": "id=cognome",
+      "targets": [
+        ["id=cognome", "id"],
+        ["name=cognome", "name"],
+        ["css=#cognome", "css:finder"],
+        ["xpath=//input[@id='cognome']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "946aab2c-31eb-4b9b-aa21-90a8e5d5f7a3",
+      "comment": "",
+      "command": "type",
+      "target": "id=cognome",
+      "targets": [
+        ["id=cognome", "id"],
+        ["name=cognome", "name"],
+        ["css=#cognome", "css:finder"],
+        ["xpath=//input[@id='cognome']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Rainone"
+    }, {
+      "id": "d0602bef-fa02-4893-8d73-478ae0a6f322",
+      "comment": "",
+      "command": "click",
+      "target": "id=citta",
+      "targets": [
+        ["id=citta", "id"],
+        ["name=cittaNascita", "name"],
+        ["css=#citta", "css:finder"],
+        ["xpath=//input[@id='citta']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c040e1b1-7782-4e52-a2ce-8eaac9603e89",
+      "comment": "",
+      "command": "type",
+      "target": "id=citta",
+      "targets": [
+        ["id=citta", "id"],
+        ["name=cittaNascita", "name"],
+        ["css=#citta", "css:finder"],
+        ["xpath=//input[@id='citta']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "Salerno"
+    }, {
+      "id": "cc70d41a-1ee9-4e7f-92ff-6e444919fa3d",
+      "comment": "",
+      "command": "click",
+      "target": "id=residenza",
+      "targets": [
+        ["id=residenza", "id"],
+        ["name=residenza", "name"],
+        ["css=#residenza", "css:finder"],
+        ["xpath=//input[@id='residenza']", "xpath:attributes"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9fe24e5b-2ca1-4457-8980-902855a5bb78",
+      "comment": "",
+      "command": "type",
+      "target": "id=residenza",
+      "targets": [
+        ["id=residenza", "id"],
+        ["name=residenza", "name"],
+        ["css=#residenza", "css:finder"],
+        ["xpath=//input[@id='residenza']", "xpath:attributes"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "Viale Europa"
+    }, {
+      "id": "092b1a2c-de8a-43ac-9ad3-2321bf3b40d6",
+      "comment": "",
+      "command": "click",
+      "target": "id=residenza",
+      "targets": [
+        ["id=residenza", "id"],
+        ["name=residenza", "name"],
+        ["css=#residenza", "css:finder"],
+        ["xpath=//input[@id='residenza']", "xpath:attributes"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "760c592f-ce08-4b01-8149-39c7eab7a6ef",
+      "comment": "",
+      "command": "click",
+      "target": "id=residenza",
+      "targets": [
+        ["id=residenza", "id"],
+        ["name=residenza", "name"],
+        ["css=#residenza", "css:finder"],
+        ["xpath=//input[@id='residenza']", "xpath:attributes"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0e479469-abd2-4b26-b803-a9c3a1ebc168",
+      "comment": "",
+      "command": "type",
+      "target": "id=residenza",
+      "targets": [
+        ["id=residenza", "id"],
+        ["name=residenza", "name"],
+        ["css=#residenza", "css:finder"],
+        ["xpath=//input[@id='residenza']", "xpath:attributes"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "Viale Europa, 44"
+    }, {
+      "id": "8877b101-9c69-4f35-831e-c2ef7721dac2",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c62b6c16-507b-4b6f-99e7-56f7e4f84776",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": "giuseppe.rainone91@gmail.com"
+    }, {
+      "id": "70e9d412-cb69-40de-89b4-4c14d626dcbc",
+      "comment": "",
+      "command": "click",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "caeb9dad-1974-446b-99b4-915b1269c1c8",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "1991-09-28"
+    }, {
+      "id": "455c109e-0648-45a3-a240-ebeec4e51ade",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0e63a7f4-6a84-45a0-950d-79c55b41b250",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/input", "xpath:position"]
+      ],
+      "value": "Giuseppe33"
+    }, {
+      "id": "552bd08a-c4c5-41f0-879e-fd3847b1c220",
+      "comment": "",
+      "command": "click",
+      "target": "id=pass",
+      "targets": [
+        ["id=pass", "id"],
+        ["name=password", "name"],
+        ["css=#pass", "css:finder"],
+        ["xpath=//input[@id='pass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "006c7cee-fefe-491e-88ff-db9a3c914401",
+      "comment": "",
+      "command": "type",
+      "target": "id=pass",
+      "targets": [
+        ["id=pass", "id"],
+        ["name=password", "name"],
+        ["css=#pass", "css:finder"],
+        ["xpath=//input[@id='pass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[3]/input", "xpath:position"]
+      ],
+      "value": "051Progetto_"
+    }, {
+      "id": "4b9d6627-56fb-4890-9994-9021126ac09f",
+      "comment": "",
+      "command": "click",
+      "target": "id=confPass",
+      "targets": [
+        ["id=confPass", "id"],
+        ["name=confermaPassword", "name"],
+        ["css=#confPass", "css:finder"],
+        ["xpath=//input[@id='confPass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a70686e6-86cf-4903-84ca-405b97384021",
+      "comment": "",
+      "command": "type",
+      "target": "id=confPass",
+      "targets": [
+        ["id=confPass", "id"],
+        ["name=confermaPassword", "name"],
+        ["css=#confPass", "css:finder"],
+        ["xpath=//input[@id='confPass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[4]/input", "xpath:position"]
+      ],
+      "value": "051Progetto_"
+    }, {
+      "id": "451ea12e-96f3-4dc9-bea2-1b216b5909ce",
+      "comment": "",
+      "command": "click",
+      "target": "css=.umb-btn:nth-child(3)",
+      "targets": [
+        ["css=.umb-btn:nth-child(3)", "css:finder"],
+        ["xpath=//div[@id='cvDiv']/label", "xpath:idRelative"],
+        ["xpath=//label", "xpath:position"],
+        ["xpath=//label[contains(.,'Scegli file')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0dbad158-1a3e-4437-bc0c-e347b1f9c58f",
+      "comment": "",
+      "command": "type",
+      "target": "id=curriculum",
+      "targets": [
+        ["id=curriculum", "id"],
+        ["name=curriculum", "name"],
+        ["css=#curriculum", "css:finder"],
+        ["xpath=//input[@id='curriculum']", "xpath:attributes"],
+        ["xpath=//div[@id='cvDiv']/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[5]/input", "xpath:position"]
+      ],
+      "value": "C:\\fakepath\\Rainone-Giuseppe-CV.pdf"
+    }, {
+      "id": "9f2755f4-f205-4c89-affe-4546e1646682",
+      "comment": "",
+      "command": "click",
+      "target": "id=dati",
+      "targets": [
+        ["id=dati", "id"],
+        ["name=trattamentoDati", "name"],
+        ["css=#dati", "css:finder"],
+        ["xpath=//input[@id='dati']", "xpath:attributes"],
+        ["xpath=//div[@id='checkDiv']/input", "xpath:idRelative"],
+        ["xpath=//div[6]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ecb4982b-e2f8-4373-8031-3d23131bac81",
+      "comment": "",
+      "command": "click",
+      "target": "id=conferma",
+      "targets": [
+        ["id=conferma", "id"],
+        ["css=#conferma", "css:finder"],
+        ["xpath=//input[@id='conferma']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "151023af-c1c3-4d68-9bd3-67af05a4e858",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=errorNome",
+      "targets": [],
+      "value": "Il nome deve contenere solo lettere e deve essere composto da 2 a 50 lettere."
+    }, {
+      "id": "5863f48f-712e-4b22-b1c5-67ab02b6eeeb",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "67c702e4-ad41-4143-bbc8-bd5810fd2872",
+    "name": "TC_1_1_1",
+    "commands": [{
+      "id": "cfeea15e-48b0-45f3-b457-bfccc6fa57cc",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:7080/EasyJob/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5cb602fd-0bc5-4e27-b4c2-fdff4b48fdea",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1058x808",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b940eff1-8f35-4de8-80b3-6ba1f1d4610d",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Registrati come inoccupato",
+      "targets": [
+        ["linkText=Registrati come inoccupato", "linkText"],
+        ["css=.nav-item:nth-child(3) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Registrati come inoccupato')]", "xpath:link"],
+        ["xpath=//div[@id='navbarResponsive']/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'registrazioneInoccupato.jsp')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Registrati come inoccupato')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4f366a31-bee4-4be5-ab73-0ad24c6a627a",
+      "comment": "",
+      "command": "click",
+      "target": "id=nome",
+      "targets": [
+        ["id=nome", "id"],
+        ["name=nome", "name"],
+        ["css=#nome", "css:finder"],
+        ["xpath=//input[@id='nome']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ce0a33b5-d0b0-465b-b34b-4470674aa48b",
+      "comment": "",
+      "command": "type",
+      "target": "id=nome",
+      "targets": [
+        ["id=nome", "id"],
+        ["name=nome", "name"],
+        ["css=#nome", "css:finder"],
+        ["xpath=//input[@id='nome']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Giuseppe"
+    }, {
+      "id": "1ebc62ff-443e-460b-b7a8-58cfe854d3c6",
+      "comment": "",
+      "command": "click",
+      "target": "id=cognome",
+      "targets": [
+        ["id=cognome", "id"],
+        ["name=cognome", "name"],
+        ["css=#cognome", "css:finder"],
+        ["xpath=//input[@id='cognome']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "42279cb2-cf63-4e1a-9b4f-55b5707a3fd4",
+      "comment": "",
+      "command": "type",
+      "target": "id=cognome",
+      "targets": [
+        ["id=cognome", "id"],
+        ["name=cognome", "name"],
+        ["css=#cognome", "css:finder"],
+        ["xpath=//input[@id='cognome']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Rainon1"
+    }, {
+      "id": "5a4f20a3-dc7a-4abe-ad05-cd524b4341d8",
+      "comment": "",
+      "command": "click",
+      "target": "id=citta",
+      "targets": [
+        ["id=citta", "id"],
+        ["name=cittaNascita", "name"],
+        ["css=#citta", "css:finder"],
+        ["xpath=//input[@id='citta']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "151ffb0f-db00-4617-bb68-f1df5d03718e",
+      "comment": "",
+      "command": "type",
+      "target": "id=citta",
+      "targets": [
+        ["id=citta", "id"],
+        ["name=cittaNascita", "name"],
+        ["css=#citta", "css:finder"],
+        ["xpath=//input[@id='citta']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "Salerno"
+    }, {
+      "id": "d700bbf6-b0f9-4453-aaec-2a11be056e07",
+      "comment": "",
+      "command": "click",
+      "target": "id=residenza",
+      "targets": [
+        ["id=residenza", "id"],
+        ["name=residenza", "name"],
+        ["css=#residenza", "css:finder"],
+        ["xpath=//input[@id='residenza']", "xpath:attributes"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "76a4be5a-30d0-45dd-8f71-7258b129a8cd",
+      "comment": "",
+      "command": "type",
+      "target": "id=residenza",
+      "targets": [
+        ["id=residenza", "id"],
+        ["name=residenza", "name"],
+        ["css=#residenza", "css:finder"],
+        ["xpath=//input[@id='residenza']", "xpath:attributes"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "Viale Europa, 44"
+    }, {
+      "id": "58ffc19c-ff1b-4fa4-88a4-228243ca5c31",
+      "comment": "",
+      "command": "click",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1d44dca5-2a42-436e-b9ed-4a098b2bb64e",
+      "comment": "",
+      "command": "click",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5d84a507-d945-4e7f-a1e4-bc4a73d72c90",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0001-09-28"
+    }, {
+      "id": "d7bcf2ca-774d-4776-8492-e4b570a6f487",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0019-09-28"
+    }, {
+      "id": "a416d5cf-0552-4913-be6a-480c401c14a3",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0199-09-28"
+    }, {
+      "id": "1215a408-a08d-40fc-82f9-8f3419d7e9b3",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "1991-09-28"
+    }, {
+      "id": "4fb29a14-59c3-480f-ad50-bbfc221c12d6",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "265a57bb-d5ac-4113-8235-a1c490b0f1ca",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": "giuseppe.rainone91@gmail.com"
+    }, {
+      "id": "fca83687-e979-45e8-a1bf-7ed796261653",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1ccc070d-ab86-4118-8ad1-5702aedb19cf",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/input", "xpath:position"]
+      ],
+      "value": "Giuseppe33"
+    }, {
+      "id": "b0d5aa1c-b90b-473c-9d0b-8f4838bc2825",
+      "comment": "",
+      "command": "click",
+      "target": "id=pass",
+      "targets": [
+        ["id=pass", "id"],
+        ["name=password", "name"],
+        ["css=#pass", "css:finder"],
+        ["xpath=//input[@id='pass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "50b32d3d-2f90-49e1-b9b3-1f313355d5e6",
+      "comment": "",
+      "command": "type",
+      "target": "id=pass",
+      "targets": [
+        ["id=pass", "id"],
+        ["name=password", "name"],
+        ["css=#pass", "css:finder"],
+        ["xpath=//input[@id='pass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[3]/input", "xpath:position"]
+      ],
+      "value": "051Progetto_"
+    }, {
+      "id": "ef7595e7-8615-46c8-b4f7-d1aaf5c5b5ca",
+      "comment": "",
+      "command": "click",
+      "target": "id=confPass",
+      "targets": [
+        ["id=confPass", "id"],
+        ["name=confermaPassword", "name"],
+        ["css=#confPass", "css:finder"],
+        ["xpath=//input[@id='confPass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "25e44711-3353-4ef5-ac76-84df38b83030",
+      "comment": "",
+      "command": "type",
+      "target": "id=confPass",
+      "targets": [
+        ["id=confPass", "id"],
+        ["name=confermaPassword", "name"],
+        ["css=#confPass", "css:finder"],
+        ["xpath=//input[@id='confPass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[4]/input", "xpath:position"]
+      ],
+      "value": "051Progetto_"
+    }, {
+      "id": "98c8b7e2-0e83-456f-89dc-29d22412290a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.umb-btn:nth-child(3)",
+      "targets": [
+        ["css=.umb-btn:nth-child(3)", "css:finder"],
+        ["xpath=//div[@id='cvDiv']/label", "xpath:idRelative"],
+        ["xpath=//label", "xpath:position"],
+        ["xpath=//label[contains(.,'Scegli file')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4abcfca9-f773-4e07-8cd4-af1d2d0ec472",
+      "comment": "",
+      "command": "type",
+      "target": "id=curriculum",
+      "targets": [
+        ["id=curriculum", "id"],
+        ["name=curriculum", "name"],
+        ["css=#curriculum", "css:finder"],
+        ["xpath=//input[@id='curriculum']", "xpath:attributes"],
+        ["xpath=//div[@id='cvDiv']/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[5]/input", "xpath:position"]
+      ],
+      "value": "C:\\fakepath\\Rainone-Giuseppe-CV.pdf"
+    }, {
+      "id": "bdeae629-7be5-4cfd-93f7-e47a34a40d6e",
+      "comment": "",
+      "command": "click",
+      "target": "id=dati",
+      "targets": [
+        ["id=dati", "id"],
+        ["name=trattamentoDati", "name"],
+        ["css=#dati", "css:finder"],
+        ["xpath=//input[@id='dati']", "xpath:attributes"],
+        ["xpath=//div[@id='checkDiv']/input", "xpath:idRelative"],
+        ["xpath=//div[6]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "34f40b4c-022d-40d8-8259-77c0b4616b75",
+      "comment": "",
+      "command": "click",
+      "target": "id=conferma",
+      "targets": [
+        ["id=conferma", "id"],
+        ["css=#conferma", "css:finder"],
+        ["xpath=//input[@id='conferma']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3d91bd3b-b488-469e-bf9b-34b117c575f8",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=errorCognome",
+      "targets": [],
+      "value": "Il cognome deve contenere solo lettere e deve essere composto da 2 a 50 lettere."
+    }, {
+      "id": "062bb63e-cd9e-4084-b566-873a0d19c0ca",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "f986ce6d-eec4-43e4-b3a0-a7a9cf1d317f",
+    "name": "TC_1_1_2",
+    "commands": [{
+      "id": "ef8a619e-a04c-4d84-a34c-24235e33edf6",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:7080/EasyJob/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4eda337f-0ff5-4cdb-9ab1-df12822d4d28",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1058x808",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bba7895a-1577-499d-8c68-e9d6b2aec70a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Registrati come inoccupato",
+      "targets": [
+        ["linkText=Registrati come inoccupato", "linkText"],
+        ["css=.nav-item:nth-child(3) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Registrati come inoccupato')]", "xpath:link"],
+        ["xpath=//div[@id='navbarResponsive']/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'registrazioneInoccupato.jsp')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Registrati come inoccupato')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3bc54cb4-7cde-428d-95d2-5b4eb3e34ce6",
+      "comment": "",
+      "command": "click",
+      "target": "id=nome",
+      "targets": [
+        ["id=nome", "id"],
+        ["name=nome", "name"],
+        ["css=#nome", "css:finder"],
+        ["xpath=//input[@id='nome']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5387dfa2-0719-441d-8771-ac4b923333f8",
+      "comment": "",
+      "command": "type",
+      "target": "id=nome",
+      "targets": [
+        ["id=nome", "id"],
+        ["name=nome", "name"],
+        ["css=#nome", "css:finder"],
+        ["xpath=//input[@id='nome']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Giuseppe"
+    }, {
+      "id": "13ad64a4-c4e9-4a5a-9ab3-57b98d592ad2",
+      "comment": "",
+      "command": "click",
+      "target": "id=cognome",
+      "targets": [
+        ["id=cognome", "id"],
+        ["name=cognome", "name"],
+        ["css=#cognome", "css:finder"],
+        ["xpath=//input[@id='cognome']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f9c55395-498f-42d1-ab38-e1784cbd47ea",
+      "comment": "",
+      "command": "type",
+      "target": "id=cognome",
+      "targets": [
+        ["id=cognome", "id"],
+        ["name=cognome", "name"],
+        ["css=#cognome", "css:finder"],
+        ["xpath=//input[@id='cognome']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Rainone"
+    }, {
+      "id": "b4ac4512-d8de-4114-88f5-374d9c2201fa",
+      "comment": "",
+      "command": "click",
+      "target": "id=citta",
+      "targets": [
+        ["id=citta", "id"],
+        ["name=cittaNascita", "name"],
+        ["css=#citta", "css:finder"],
+        ["xpath=//input[@id='citta']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a4765080-3677-44df-b518-693d167267fa",
+      "comment": "",
+      "command": "type",
+      "target": "id=citta",
+      "targets": [
+        ["id=citta", "id"],
+        ["name=cittaNascita", "name"],
+        ["css=#citta", "css:finder"],
+        ["xpath=//input[@id='citta']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "Salerno"
+    }, {
+      "id": "ee01207d-d36e-42b4-9803-dd26720baaaa",
+      "comment": "",
+      "command": "click",
+      "target": "id=residenza",
+      "targets": [
+        ["id=residenza", "id"],
+        ["name=residenza", "name"],
+        ["css=#residenza", "css:finder"],
+        ["xpath=//input[@id='residenza']", "xpath:attributes"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2853550b-0ac3-4402-85e0-984da84b0448",
+      "comment": "",
+      "command": "type",
+      "target": "id=residenza",
+      "targets": [
+        ["id=residenza", "id"],
+        ["name=residenza", "name"],
+        ["css=#residenza", "css:finder"],
+        ["xpath=//input[@id='residenza']", "xpath:attributes"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "Viale Europa, 44"
+    }, {
+      "id": "9c36cd3e-59d9-41f4-be79-6906e5def6cb",
+      "comment": "",
+      "command": "click",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1f30b577-97e4-4175-ba11-617d97ed909e",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0001-01-28"
+    }, {
+      "id": "fd3e76a5-158b-4139-bb37-cf4e5bae0c8e",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0019-01-28"
+    }, {
+      "id": "6ce866ba-6ea9-40d8-a643-3d18220159ab",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0199-01-28"
+    }, {
+      "id": "5d232c74-a939-413b-8e3d-9ee0842ec9c2",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "1991-01-28"
+    }, {
+      "id": "13fcebf4-2b43-470b-9a10-4b33f3d46688",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": "giuseppe.rainone91@gmail.com"
+    }, {
+      "id": "5655bc4d-1f58-4a8a-9778-b46da4873021",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ce312ac4-e0fc-4be4-ad6f-5822e2ea0189",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/input", "xpath:position"]
+      ],
+      "value": "G!."
+    }, {
+      "id": "aa7073b5-d730-4501-9806-d2518143a4f2",
+      "comment": "",
+      "command": "click",
+      "target": "id=pass",
+      "targets": [
+        ["id=pass", "id"],
+        ["name=password", "name"],
+        ["css=#pass", "css:finder"],
+        ["xpath=//input[@id='pass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2648042e-a0b9-4d8d-a11b-c26d48cbe447",
+      "comment": "",
+      "command": "type",
+      "target": "id=pass",
+      "targets": [
+        ["id=pass", "id"],
+        ["name=password", "name"],
+        ["css=#pass", "css:finder"],
+        ["xpath=//input[@id='pass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[3]/input", "xpath:position"]
+      ],
+      "value": "051Progetto_"
+    }, {
+      "id": "760c684a-6d03-4423-b943-6205e7b3d82e",
+      "comment": "",
+      "command": "click",
+      "target": "id=confPass",
+      "targets": [
+        ["id=confPass", "id"],
+        ["name=confermaPassword", "name"],
+        ["css=#confPass", "css:finder"],
+        ["xpath=//input[@id='confPass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "65a7059f-e67f-4f8a-9fe9-088287d8d161",
+      "comment": "",
+      "command": "type",
+      "target": "id=confPass",
+      "targets": [
+        ["id=confPass", "id"],
+        ["name=confermaPassword", "name"],
+        ["css=#confPass", "css:finder"],
+        ["xpath=//input[@id='confPass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[4]/input", "xpath:position"]
+      ],
+      "value": "051Progetto_"
+    }, {
+      "id": "7aaafc15-2777-4c7d-922d-ba0e830f60af",
+      "comment": "",
+      "command": "click",
+      "target": "css=.umb-btn:nth-child(3)",
+      "targets": [
+        ["css=.umb-btn:nth-child(3)", "css:finder"],
+        ["xpath=//div[@id='cvDiv']/label", "xpath:idRelative"],
+        ["xpath=//label", "xpath:position"],
+        ["xpath=//label[contains(.,'Scegli file')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "eda5b380-6dbf-4a7c-9e5f-9463b9538f92",
+      "comment": "",
+      "command": "type",
+      "target": "id=curriculum",
+      "targets": [
+        ["id=curriculum", "id"],
+        ["name=curriculum", "name"],
+        ["css=#curriculum", "css:finder"],
+        ["xpath=//input[@id='curriculum']", "xpath:attributes"],
+        ["xpath=//div[@id='cvDiv']/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[5]/input", "xpath:position"]
+      ],
+      "value": "C:\\fakepath\\Rainone-Giuseppe-CV.pdf"
+    }, {
+      "id": "7f6beb01-c63c-43c0-83ff-af507aaef9fa",
+      "comment": "",
+      "command": "click",
+      "target": "id=dati",
+      "targets": [
+        ["id=dati", "id"],
+        ["name=trattamentoDati", "name"],
+        ["css=#dati", "css:finder"],
+        ["xpath=//input[@id='dati']", "xpath:attributes"],
+        ["xpath=//div[@id='checkDiv']/input", "xpath:idRelative"],
+        ["xpath=//div[6]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ea4a5e46-243c-444b-85fc-352f40523b14",
+      "comment": "",
+      "command": "click",
+      "target": "id=conferma",
+      "targets": [
+        ["id=conferma", "id"],
+        ["css=#conferma", "css:finder"],
+        ["xpath=//input[@id='conferma']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0272592d-ac23-472a-99ab-100e43eed533",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=errorUser",
+      "targets": [
+        ["id=errorUser", "id"],
+        ["css=#errorUser", "css:finder"],
+        ["xpath=//span[@id='errorUser']", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/span", "xpath:position"]
+      ],
+      "value": "L'username deve essere composto da 2 a 50 numeri e lettere."
+    }, {
+      "id": "5806e3e2-9159-46e4-8473-437abd538df7",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "ec4702de-ec73-498f-8d06-e83be666c954",
+    "name": "TC_1_1_4",
+    "commands": [{
+      "id": "edc6ef7b-5cdf-4eab-b44c-c64ad87227eb",
+      "comment": "",
+      "command": "open",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3545cf85-cc92-4203-ae48-67bf0e554d86",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Registrati come inoccupato",
+      "targets": [
+        ["linkText=Registrati come inoccupato", "linkText"],
+        ["css=.nav-item:nth-child(3) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Registrati come inoccupato')]", "xpath:link"],
+        ["xpath=//div[@id='navbarResponsive']/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'registrazioneInoccupato.jsp')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Registrati come inoccupato')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7e4ec69c-6775-4b5e-9acc-0dfd95b74147",
+      "comment": "",
+      "command": "click",
+      "target": "id=nome",
+      "targets": [
+        ["id=nome", "id"],
+        ["name=nome", "name"],
+        ["css=#nome", "css:finder"],
+        ["xpath=//input[@id='nome']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "859468da-ec6b-4b39-b8db-5b30a19b2e96",
+      "comment": "",
+      "command": "type",
+      "target": "id=nome",
+      "targets": [
+        ["id=nome", "id"],
+        ["name=nome", "name"],
+        ["css=#nome", "css:finder"],
+        ["xpath=//input[@id='nome']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Giuseppe"
+    }, {
+      "id": "0dcbff82-9488-42fd-9482-3a03e5bfa949",
+      "comment": "",
+      "command": "click",
+      "target": "id=cognome",
+      "targets": [
+        ["id=cognome", "id"],
+        ["name=cognome", "name"],
+        ["css=#cognome", "css:finder"],
+        ["xpath=//input[@id='cognome']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "875bc396-a8dd-45d4-b5db-763b54f0c9c3",
+      "comment": "",
+      "command": "type",
+      "target": "id=cognome",
+      "targets": [
+        ["id=cognome", "id"],
+        ["name=cognome", "name"],
+        ["css=#cognome", "css:finder"],
+        ["xpath=//input[@id='cognome']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Rainone"
+    }, {
+      "id": "a9da3519-3620-4c27-a2e9-2fb3c52b1c71",
+      "comment": "",
+      "command": "click",
+      "target": "id=citta",
+      "targets": [
+        ["id=citta", "id"],
+        ["name=cittaNascita", "name"],
+        ["css=#citta", "css:finder"],
+        ["xpath=//input[@id='citta']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e95c1bfa-d661-49c6-bd8b-e4c33a5a966a",
+      "comment": "",
+      "command": "type",
+      "target": "id=citta",
+      "targets": [
+        ["id=citta", "id"],
+        ["name=cittaNascita", "name"],
+        ["css=#citta", "css:finder"],
+        ["xpath=//input[@id='citta']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "Salerno"
+    }, {
+      "id": "0a0c71c8-43e9-4b1f-b9b9-abf8a676970b",
+      "comment": "",
+      "command": "click",
+      "target": "id=residenza",
+      "targets": [
+        ["id=residenza", "id"],
+        ["name=residenza", "name"],
+        ["css=#residenza", "css:finder"],
+        ["xpath=//input[@id='residenza']", "xpath:attributes"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a279a772-6cbd-4880-b50d-a5e08dee530c",
+      "comment": "",
+      "command": "type",
+      "target": "id=residenza",
+      "targets": [
+        ["id=residenza", "id"],
+        ["name=residenza", "name"],
+        ["css=#residenza", "css:finder"],
+        ["xpath=//input[@id='residenza']", "xpath:attributes"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "Viale Europa, 44"
+    }, {
+      "id": "58b01674-76d2-4cfc-9bc1-4910ed109281",
+      "comment": "",
+      "command": "mouseDown",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "847589fc-49a7-43f0-98e9-4cfdcb114cac",
+      "comment": "",
+      "command": "mouseUp",
+      "target": "css=.column:nth-child(1) > div:nth-child(5)",
+      "targets": [
+        ["css=.column:nth-child(1) > div:nth-child(5)", "css:finder"],
+        ["xpath=//div[5]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "53714561-049c-489d-9e07-64e301b358ec",
+      "comment": "",
+      "command": "click",
+      "target": "css=.column:nth-child(1) > div:nth-child(5)",
+      "targets": [
+        ["css=.column:nth-child(1) > div:nth-child(5)", "css:finder"],
+        ["xpath=//div[5]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "65298224-4b51-4650-9c9e-0734604129e0",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0001-09-29"
+    }, {
+      "id": "062097bf-976a-4b50-82bd-6e21a6817c58",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0019-09-29"
+    }, {
+      "id": "7e96abdf-dcbe-468b-941f-b5579549a3b7",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0199-09-29"
+    }, {
+      "id": "7d7a1920-45b1-4ac5-95c6-fc37e8fd551d",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "1991-09-29"
+    }, {
+      "id": "7aeb77ea-734b-49bb-a9aa-6eb0da02e109",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": "giuseppe.rainone91@gmail.com"
+    }, {
+      "id": "67784d81-d5c9-4bb9-bcc6-25caf200861f",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4f0ec768-7cd0-4483-8cd5-06169d9eef3f",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/input", "xpath:position"]
+      ],
+      "value": "Giuseppe33"
+    }, {
+      "id": "1f387c74-8155-4458-8a20-1009143fe574",
+      "comment": "",
+      "command": "click",
+      "target": "id=pass",
+      "targets": [
+        ["id=pass", "id"],
+        ["name=password", "name"],
+        ["css=#pass", "css:finder"],
+        ["xpath=//input[@id='pass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "18050a8f-e95a-4c19-9e23-db02229eddc4",
+      "comment": "",
+      "command": "type",
+      "target": "id=pass",
+      "targets": [
+        ["id=pass", "id"],
+        ["name=password", "name"],
+        ["css=#pass", "css:finder"],
+        ["xpath=//input[@id='pass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[3]/input", "xpath:position"]
+      ],
+      "value": "00"
+    }, {
+      "id": "c1ec40e8-6575-40dd-a213-7edac0b993eb",
+      "comment": "",
+      "command": "click",
+      "target": "id=confPass",
+      "targets": [
+        ["id=confPass", "id"],
+        ["name=confermaPassword", "name"],
+        ["css=#confPass", "css:finder"],
+        ["xpath=//input[@id='confPass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7371181c-9e2e-4151-91e1-8897afef5909",
+      "comment": "",
+      "command": "type",
+      "target": "id=confPass",
+      "targets": [
+        ["id=confPass", "id"],
+        ["name=confermaPassword", "name"],
+        ["css=#confPass", "css:finder"],
+        ["xpath=//input[@id='confPass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[4]/input", "xpath:position"]
+      ],
+      "value": "00"
+    }, {
+      "id": "bcba0b89-b681-4785-a7f2-473135cc68d9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.umb-btn:nth-child(3)",
+      "targets": [
+        ["css=.umb-btn:nth-child(3)", "css:finder"],
+        ["xpath=//div[@id='cvDiv']/label", "xpath:idRelative"],
+        ["xpath=//label", "xpath:position"],
+        ["xpath=//label[contains(.,'Scegli file')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4c454368-d38b-4ea2-be66-e76c6d48b27f",
+      "comment": "",
+      "command": "type",
+      "target": "id=curriculum",
+      "targets": [
+        ["id=curriculum", "id"],
+        ["name=curriculum", "name"],
+        ["css=#curriculum", "css:finder"],
+        ["xpath=//input[@id='curriculum']", "xpath:attributes"],
+        ["xpath=//div[@id='cvDiv']/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[5]/input", "xpath:position"]
+      ],
+      "value": "C:\\fakepath\\Rainone-Giuseppe-CV.pdf"
+    }, {
+      "id": "374336c8-bc2d-4ef0-a5a4-353bf295707e",
+      "comment": "",
+      "command": "click",
+      "target": "id=checkDiv",
+      "targets": [
+        ["id=checkDiv", "id"],
+        ["css=#checkDiv", "css:finder"],
+        ["xpath=//div[@id='checkDiv']", "xpath:attributes"],
+        ["xpath=//div[6]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "42e0ca4f-8225-4c12-8728-dbeea43203f6",
+      "comment": "",
+      "command": "click",
+      "target": "id=dati",
+      "targets": [
+        ["id=dati", "id"],
+        ["name=trattamentoDati", "name"],
+        ["css=#dati", "css:finder"],
+        ["xpath=//input[@id='dati']", "xpath:attributes"],
+        ["xpath=//div[@id='checkDiv']/input", "xpath:idRelative"],
+        ["xpath=//div[6]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5b3bc539-bde8-44c6-a14a-e9e8c0cce025",
+      "comment": "",
+      "command": "click",
+      "target": "id=conferma",
+      "targets": [
+        ["id=conferma", "id"],
+        ["css=#conferma", "css:finder"],
+        ["xpath=//input[@id='conferma']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d15a2b28-aac8-419a-8588-26ea26f02ab4",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=errorPass",
+      "targets": [
+        ["id=errorPass", "id"],
+        ["css=#errorPass", "css:finder"],
+        ["xpath=//span[@id='errorPass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[3]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'La password deve contenere minimo 8 caratteri e massimo 16.')]", "xpath:innerText"]
+      ],
+      "value": "La password deve contenere minimo 8 caratteri e massimo 16."
+    }, {
+      "id": "fb0a262b-0db1-43f3-84ab-2bdbdac457e9",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "2e8d1b6f-1978-43ea-9e7c-52a8aee92117",
+    "name": "TC_1_1_5",
+    "commands": [{
+      "id": "d45e07bc-e68f-43fb-bcf4-be8ee68955b6",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:7080/EasyJob/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "dce63541-e990-4ad2-9fe9-4acae390542c",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1051x806",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8e3858ba-e471-416a-a754-6467fe65c834",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Registrati come inoccupato",
+      "targets": [
+        ["linkText=Registrati come inoccupato", "linkText"],
+        ["css=.nav-item:nth-child(3) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Registrati come inoccupato')]", "xpath:link"],
+        ["xpath=//div[@id='navbarResponsive']/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'registrazioneInoccupato.jsp')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Registrati come inoccupato')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "50f2c175-e558-4513-aa59-25f4d99d6b4b",
+      "comment": "",
+      "command": "click",
+      "target": "id=nome",
+      "targets": [
+        ["id=nome", "id"],
+        ["name=nome", "name"],
+        ["css=#nome", "css:finder"],
+        ["xpath=//input[@id='nome']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7caea728-d76b-45ef-b30f-944cf0e5244f",
+      "comment": "",
+      "command": "type",
+      "target": "id=nome",
+      "targets": [
+        ["id=nome", "id"],
+        ["name=nome", "name"],
+        ["css=#nome", "css:finder"],
+        ["xpath=//input[@id='nome']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Ernesto"
+    }, {
+      "id": "45e7b317-65dd-4ed0-8510-5a069c8d9eab",
+      "comment": "",
+      "command": "click",
+      "target": "css=html",
+      "targets": [
+        ["css=html", "css:finder"],
+        ["xpath=//html", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4b26c49e-7b42-47f2-8673-1038872dc659",
+      "comment": "",
+      "command": "type",
+      "target": "id=nome",
+      "targets": [
+        ["id=nome", "id"],
+        ["name=nome", "name"],
+        ["css=#nome", "css:finder"],
+        ["xpath=//input[@id='nome']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Giuseppe"
+    }, {
+      "id": "86fa0935-d07c-473f-98c2-fe9ffeee8bcf",
+      "comment": "",
+      "command": "click",
+      "target": "id=cognome",
+      "targets": [
+        ["id=cognome", "id"],
+        ["name=cognome", "name"],
+        ["css=#cognome", "css:finder"],
+        ["xpath=//input[@id='cognome']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "79c8251f-dc13-461a-b220-9de25616b8ff",
+      "comment": "",
+      "command": "type",
+      "target": "id=cognome",
+      "targets": [
+        ["id=cognome", "id"],
+        ["name=cognome", "name"],
+        ["css=#cognome", "css:finder"],
+        ["xpath=//input[@id='cognome']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Rainone"
+    }, {
+      "id": "e6e953b7-32cf-493b-99c6-b5a85d451a5c",
+      "comment": "",
+      "command": "click",
+      "target": "id=citta",
+      "targets": [
+        ["id=citta", "id"],
+        ["name=cittaNascita", "name"],
+        ["css=#citta", "css:finder"],
+        ["xpath=//input[@id='citta']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "af78f2b8-b8b9-4cbd-a792-45b10a64b654",
+      "comment": "",
+      "command": "type",
+      "target": "id=citta",
+      "targets": [
+        ["id=citta", "id"],
+        ["name=cittaNascita", "name"],
+        ["css=#citta", "css:finder"],
+        ["xpath=//input[@id='citta']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "Salerno"
+    }, {
+      "id": "acab0e0a-99e1-4dab-bc5e-ded3320596f7",
+      "comment": "",
+      "command": "click",
+      "target": "id=residenza",
+      "targets": [
+        ["id=residenza", "id"],
+        ["name=residenza", "name"],
+        ["css=#residenza", "css:finder"],
+        ["xpath=//input[@id='residenza']", "xpath:attributes"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "16411429-fb72-4898-9a7c-98a253cab454",
+      "comment": "",
+      "command": "type",
+      "target": "id=residenza",
+      "targets": [
+        ["id=residenza", "id"],
+        ["name=residenza", "name"],
+        ["css=#residenza", "css:finder"],
+        ["xpath=//input[@id='residenza']", "xpath:attributes"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "Viale Europa, 44"
+    }, {
+      "id": "0c9c30af-4f22-4994-ba31-3bde78d6da87",
+      "comment": "",
+      "command": "mouseDown",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "97119595-3933-48d1-bbaf-f98ce27c3bbe",
+      "comment": "",
+      "command": "mouseUp",
+      "target": "css=.column:nth-child(1) > div:nth-child(5)",
+      "targets": [
+        ["css=.column:nth-child(1) > div:nth-child(5)", "css:finder"],
+        ["xpath=//div[5]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0e3d1022-2e89-457d-92fc-960788b45635",
+      "comment": "",
+      "command": "click",
+      "target": "css=.column:nth-child(1) > div:nth-child(5)",
+      "targets": [
+        ["css=.column:nth-child(1) > div:nth-child(5)", "css:finder"],
+        ["xpath=//div[5]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0cb02b85-bdfd-40af-a325-63cde4fe0a25",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0001-09-29"
+    }, {
+      "id": "3d731b3b-9c0d-4b83-92c0-16dcb36f0044",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0019-09-29"
+    }, {
+      "id": "8e84bf2d-c5fc-4aa8-8f49-ea8c76ea4b6a",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0199-09-29"
+    }, {
+      "id": "c8a1ac4b-96a5-4b32-ab86-07589eee5b04",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "1991-09-29"
+    }, {
+      "id": "3c956c16-ae97-4193-9756-08313905456b",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "612a7498-b46c-44b4-9278-3f226968008a",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": "giuseppe.rainone91@gmail.com"
+    }, {
+      "id": "cd0624bc-f830-4891-b4fa-c58496143ae4",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a9e97e95-cdb4-4682-a86c-d87c62f2b467",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/input", "xpath:position"]
+      ],
+      "value": "Giuseppe33"
+    }, {
+      "id": "b6f8198d-38be-4570-a582-8cfbfb6cd3af",
+      "comment": "",
+      "command": "click",
+      "target": "id=pass",
+      "targets": [
+        ["id=pass", "id"],
+        ["name=password", "name"],
+        ["css=#pass", "css:finder"],
+        ["xpath=//input[@id='pass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "20c92514-b0df-4e16-b14b-04522fcab9f4",
+      "comment": "",
+      "command": "type",
+      "target": "id=pass",
+      "targets": [
+        ["id=pass", "id"],
+        ["name=password", "name"],
+        ["css=#pass", "css:finder"],
+        ["xpath=//input[@id='pass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[3]/input", "xpath:position"]
+      ],
+      "value": "051Progetto_"
+    }, {
+      "id": "275dd43e-b93e-4cec-b235-53b3548b5e88",
+      "comment": "",
+      "command": "click",
+      "target": "id=confPass",
+      "targets": [
+        ["id=confPass", "id"],
+        ["name=confermaPassword", "name"],
+        ["css=#confPass", "css:finder"],
+        ["xpath=//input[@id='confPass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "47bb239c-2ec9-4f38-9f9c-1fe25e86209f",
+      "comment": "",
+      "command": "type",
+      "target": "id=confPass",
+      "targets": [
+        ["id=confPass", "id"],
+        ["name=confermaPassword", "name"],
+        ["css=#confPass", "css:finder"],
+        ["xpath=//input[@id='confPass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[4]/input", "xpath:position"]
+      ],
+      "value": "051Prog"
+    }, {
+      "id": "454f6527-6f00-41cd-b4b8-5718d54be401",
+      "comment": "",
+      "command": "click",
+      "target": "css=.umb-btn:nth-child(3)",
+      "targets": [
+        ["css=.umb-btn:nth-child(3)", "css:finder"],
+        ["xpath=//div[@id='cvDiv']/label", "xpath:idRelative"],
+        ["xpath=//label", "xpath:position"],
+        ["xpath=//label[contains(.,'Scegli file')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "797c80f2-8a54-4409-ad10-426f2d1eec41",
+      "comment": "",
+      "command": "type",
+      "target": "id=curriculum",
+      "targets": [
+        ["id=curriculum", "id"],
+        ["name=curriculum", "name"],
+        ["css=#curriculum", "css:finder"],
+        ["xpath=//input[@id='curriculum']", "xpath:attributes"],
+        ["xpath=//div[@id='cvDiv']/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[5]/input", "xpath:position"]
+      ],
+      "value": "C:\\fakepath\\Rainone-Giuseppe-CV.pdf"
+    }, {
+      "id": "30892be0-1a14-44ad-925a-baa8b665f72d",
+      "comment": "",
+      "command": "click",
+      "target": "id=checkDiv",
+      "targets": [
+        ["id=checkDiv", "id"],
+        ["css=#checkDiv", "css:finder"],
+        ["xpath=//div[@id='checkDiv']", "xpath:attributes"],
+        ["xpath=//div[6]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d9ad3f34-1e80-4b5c-a3f0-2462b371f867",
+      "comment": "",
+      "command": "click",
+      "target": "id=dati",
+      "targets": [
+        ["id=dati", "id"],
+        ["name=trattamentoDati", "name"],
+        ["css=#dati", "css:finder"],
+        ["xpath=//input[@id='dati']", "xpath:attributes"],
+        ["xpath=//div[@id='checkDiv']/input", "xpath:idRelative"],
+        ["xpath=//div[6]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "85a3ed15-d20e-4386-b8b0-7d1bada28bdf",
+      "comment": "",
+      "command": "click",
+      "target": "id=conferma",
+      "targets": [
+        ["id=conferma", "id"],
+        ["css=#conferma", "css:finder"],
+        ["xpath=//input[@id='conferma']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f3f98d1d-3796-4c0c-95eb-2371e17f2a4f",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=errorConfPass",
+      "targets": [
+        ["id=errorConfPass", "id"],
+        ["css=#errorConfPass", "css:finder"],
+        ["xpath=//span[@id='errorConfPass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[4]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Password non corrispondente.')]", "xpath:innerText"]
+      ],
+      "value": "Password non corrispondente."
+    }, {
+      "id": "9a311fbf-fa66-4eb3-94a9-98b1d9e5247f",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "becdd2ea-9c48-415d-bcde-ad710c3b55a3",
+    "name": "TC_1_1_6",
+    "commands": [{
+      "id": "9021ce12-d5a7-4d55-b4ea-bed86bba35e1",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:7080/EasyJob/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c7da1542-dff0-4dec-8838-b98379b06a0b",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1051x806",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7a2c9e25-402b-4330-b4b9-6122d5b41644",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Registrati come inoccupato",
+      "targets": [
+        ["linkText=Registrati come inoccupato", "linkText"],
+        ["css=.nav-item:nth-child(3) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Registrati come inoccupato')]", "xpath:link"],
+        ["xpath=//div[@id='navbarResponsive']/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'registrazioneInoccupato.jsp')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Registrati come inoccupato')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1a99143b-e1d1-47af-a655-cff5d3aeb863",
+      "comment": "",
+      "command": "click",
+      "target": "id=nome",
+      "targets": [
+        ["id=nome", "id"],
+        ["name=nome", "name"],
+        ["css=#nome", "css:finder"],
+        ["xpath=//input[@id='nome']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "304470c2-48a1-4758-868d-c13762af639e",
+      "comment": "",
+      "command": "type",
+      "target": "id=nome",
+      "targets": [
+        ["id=nome", "id"],
+        ["name=nome", "name"],
+        ["css=#nome", "css:finder"],
+        ["xpath=//input[@id='nome']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Giuseppe"
+    }, {
+      "id": "35e88f39-944a-466d-9fcd-76f2fc0cb15f",
+      "comment": "",
+      "command": "click",
+      "target": "id=cognome",
+      "targets": [
+        ["id=cognome", "id"],
+        ["name=cognome", "name"],
+        ["css=#cognome", "css:finder"],
+        ["xpath=//input[@id='cognome']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2ed7d27f-74a4-4d61-b081-4fc09cb33c3d",
+      "comment": "",
+      "command": "type",
+      "target": "id=cognome",
+      "targets": [
+        ["id=cognome", "id"],
+        ["name=cognome", "name"],
+        ["css=#cognome", "css:finder"],
+        ["xpath=//input[@id='cognome']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Rainone"
+    }, {
+      "id": "224d6f70-1604-4d15-9ef7-635d5fb91e32",
+      "comment": "",
+      "command": "click",
+      "target": "id=citta",
+      "targets": [
+        ["id=citta", "id"],
+        ["name=cittaNascita", "name"],
+        ["css=#citta", "css:finder"],
+        ["xpath=//input[@id='citta']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "61c7365e-c86c-4dac-8f1c-20f848e4a79e",
+      "comment": "",
+      "command": "type",
+      "target": "id=citta",
+      "targets": [
+        ["id=citta", "id"],
+        ["name=cittaNascita", "name"],
+        ["css=#citta", "css:finder"],
+        ["xpath=//input[@id='citta']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "Salerno"
+    }, {
+      "id": "cffa3f1d-f620-43ea-a01b-99204a92bfc2",
+      "comment": "",
+      "command": "click",
+      "target": "id=residenza",
+      "targets": [
+        ["id=residenza", "id"],
+        ["name=residenza", "name"],
+        ["css=#residenza", "css:finder"],
+        ["xpath=//input[@id='residenza']", "xpath:attributes"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1b17a2a2-b520-4c95-ae78-6cbbcbbb637c",
+      "comment": "",
+      "command": "type",
+      "target": "id=residenza",
+      "targets": [
+        ["id=residenza", "id"],
+        ["name=residenza", "name"],
+        ["css=#residenza", "css:finder"],
+        ["xpath=//input[@id='residenza']", "xpath:attributes"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "Viale Europa, 44"
+    }, {
+      "id": "a5f8fa99-71fa-4693-9840-4555ba87b300",
+      "comment": "",
+      "command": "mouseDown",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cd921a32-4060-47de-be43-36605d5020cf",
+      "comment": "",
+      "command": "mouseUp",
+      "target": "css=.column:nth-child(1) > div:nth-child(5)",
+      "targets": [
+        ["css=.column:nth-child(1) > div:nth-child(5)", "css:finder"],
+        ["xpath=//div[5]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2d792d80-511d-4285-ab94-1e382b3c7349",
+      "comment": "",
+      "command": "click",
+      "target": "css=.column:nth-child(1) > div:nth-child(5)",
+      "targets": [
+        ["css=.column:nth-child(1) > div:nth-child(5)", "css:finder"],
+        ["xpath=//div[5]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "33f560c4-96d8-404a-989c-0598b0b19a4b",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0001-09-28"
+    }, {
+      "id": "b0579704-7666-47be-8cb3-c199fb2b3b39",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0019-09-28"
+    }, {
+      "id": "729c98b9-0617-45e6-9115-9267f8ef7584",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0199-09-28"
+    }, {
+      "id": "8e0259b1-8529-4c13-9e0f-f81683e4c309",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "1991-09-28"
+    }, {
+      "id": "e4a4a54f-1668-44e1-a3bd-1525be34d892",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d37110af-ef14-4a87-b1c6-ab10c54e3d30",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": "giuseppetainone@g.com"
+    }, {
+      "id": "1655aec4-2df2-4d88-824c-307811c6da7a",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/input", "xpath:position"]
+      ],
+      "value": "Giuseppe33"
+    }, {
+      "id": "9d420881-612e-4248-ba6c-468be5f51981",
+      "comment": "",
+      "command": "type",
+      "target": "id=pass",
+      "targets": [
+        ["id=pass", "id"],
+        ["name=password", "name"],
+        ["css=#pass", "css:finder"],
+        ["xpath=//input[@id='pass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[3]/input", "xpath:position"]
+      ],
+      "value": "051Progetto_"
+    }, {
+      "id": "938aff57-3195-452a-9143-70195a68e0fb",
+      "comment": "",
+      "command": "type",
+      "target": "id=confPass",
+      "targets": [
+        ["id=confPass", "id"],
+        ["name=confermaPassword", "name"],
+        ["css=#confPass", "css:finder"],
+        ["xpath=//input[@id='confPass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[4]/input", "xpath:position"]
+      ],
+      "value": "051Progetto_"
+    }, {
+      "id": "7c1acb57-9fe8-4d51-ba93-93670083d68e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.umb-btn:nth-child(3)",
+      "targets": [
+        ["css=.umb-btn:nth-child(3)", "css:finder"],
+        ["xpath=//div[@id='cvDiv']/label", "xpath:idRelative"],
+        ["xpath=//label", "xpath:position"],
+        ["xpath=//label[contains(.,'Scegli file')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d19bd423-4715-474f-b9e1-6aa868950522",
+      "comment": "",
+      "command": "type",
+      "target": "id=curriculum",
+      "targets": [
+        ["id=curriculum", "id"],
+        ["name=curriculum", "name"],
+        ["css=#curriculum", "css:finder"],
+        ["xpath=//input[@id='curriculum']", "xpath:attributes"],
+        ["xpath=//div[@id='cvDiv']/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[5]/input", "xpath:position"]
+      ],
+      "value": "C:\\fakepath\\Rainone-Giuseppe-CV.pdf"
+    }, {
+      "id": "7829c074-bd4f-436e-899a-2c0159129a2c",
+      "comment": "",
+      "command": "click",
+      "target": "id=dati",
+      "targets": [
+        ["id=dati", "id"],
+        ["name=trattamentoDati", "name"],
+        ["css=#dati", "css:finder"],
+        ["xpath=//input[@id='dati']", "xpath:attributes"],
+        ["xpath=//div[@id='checkDiv']/input", "xpath:idRelative"],
+        ["xpath=//div[6]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "491577e6-2c50-4d4f-9645-3a11fe304e79",
+      "comment": "",
+      "command": "click",
+      "target": "id=conferma",
+      "targets": [
+        ["id=conferma", "id"],
+        ["css=#conferma", "css:finder"],
+        ["xpath=//input[@id='conferma']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7235d7e5-3913-4455-9e75-b755239f1f1d",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=errorMail",
+      "targets": [
+        ["id=errorMail", "id"],
+        ["css=#errorMail", "css:finder"],
+        ["xpath=//span[@id='errorMail']", "xpath:attributes"],
+        ["xpath=//div[2]/div/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Il formato non è valido.')]", "xpath:innerText"]
+      ],
+      "value": "Il formato non è valido."
+    }, {
+      "id": "cf866dd0-243c-4da0-be37-84cb877ffbed",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "2c8d076d-56e7-4c09-bbf1-cdc23a56f5a2",
+    "name": "TC_1_1_8",
+    "commands": [{
+      "id": "3fee6a71-36c0-4ed2-b97c-d44ae1e11c58",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:7080/EasyJob/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5d15dc78-45c4-41cc-889f-5699afec990a",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1051x806",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d6992e1d-e58b-4254-980f-e8b6fdfdc988",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Registrati come inoccupato",
+      "targets": [
+        ["linkText=Registrati come inoccupato", "linkText"],
+        ["css=.nav-item:nth-child(3) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Registrati come inoccupato')]", "xpath:link"],
+        ["xpath=//div[@id='navbarResponsive']/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'registrazioneInoccupato.jsp')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Registrati come inoccupato')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "aab04d08-d623-431b-89b3-559a29396109",
+      "comment": "",
+      "command": "click",
+      "target": "id=nome",
+      "targets": [
+        ["id=nome", "id"],
+        ["name=nome", "name"],
+        ["css=#nome", "css:finder"],
+        ["xpath=//input[@id='nome']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b8c2f850-5e1a-406b-b9d6-aa8692f0a275",
+      "comment": "",
+      "command": "type",
+      "target": "id=nome",
+      "targets": [
+        ["id=nome", "id"],
+        ["name=nome", "name"],
+        ["css=#nome", "css:finder"],
+        ["xpath=//input[@id='nome']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Giuseppe"
+    }, {
+      "id": "f54793d2-6dff-4e1e-83c0-77242f6cb7e2",
+      "comment": "",
+      "command": "click",
+      "target": "id=cognome",
+      "targets": [
+        ["id=cognome", "id"],
+        ["name=cognome", "name"],
+        ["css=#cognome", "css:finder"],
+        ["xpath=//input[@id='cognome']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "814d31fc-a172-4f58-b416-777fe7eb033b",
+      "comment": "",
+      "command": "type",
+      "target": "id=cognome",
+      "targets": [
+        ["id=cognome", "id"],
+        ["name=cognome", "name"],
+        ["css=#cognome", "css:finder"],
+        ["xpath=//input[@id='cognome']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Rainone"
+    }, {
+      "id": "f5fc5a4e-9234-43e0-a98d-2628f2baea81",
+      "comment": "",
+      "command": "click",
+      "target": "id=citta",
+      "targets": [
+        ["id=citta", "id"],
+        ["name=cittaNascita", "name"],
+        ["css=#citta", "css:finder"],
+        ["xpath=//input[@id='citta']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "56d5fac9-bbc3-4e79-8ab4-53ea14ca6366",
+      "comment": "",
+      "command": "type",
+      "target": "id=citta",
+      "targets": [
+        ["id=citta", "id"],
+        ["name=cittaNascita", "name"],
+        ["css=#citta", "css:finder"],
+        ["xpath=//input[@id='citta']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "Salerno"
+    }, {
+      "id": "31d4730e-b897-4cfc-b1c7-1868d2a08613",
+      "comment": "",
+      "command": "click",
+      "target": "id=residenza",
+      "targets": [
+        ["id=residenza", "id"],
+        ["name=residenza", "name"],
+        ["css=#residenza", "css:finder"],
+        ["xpath=//input[@id='residenza']", "xpath:attributes"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "989a3159-b7e6-4758-a01e-42a3e262f4a4",
+      "comment": "",
+      "command": "type",
+      "target": "id=residenza",
+      "targets": [
+        ["id=residenza", "id"],
+        ["name=residenza", "name"],
+        ["css=#residenza", "css:finder"],
+        ["xpath=//input[@id='residenza']", "xpath:attributes"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "Viale Europa, 44"
+    }, {
+      "id": "5b1952af-eeaf-41ee-82d2-f1ed906ce72a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.column:nth-child(1) > div:nth-child(5)",
+      "targets": [
+        ["css=.column:nth-child(1) > div:nth-child(5)", "css:finder"],
+        ["xpath=//div[5]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7e6c92f5-58db-4155-82fe-f188e394d5ef",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0001-09-28"
+    }, {
+      "id": "1a10eb13-7ce3-419b-aa12-fb5be5c3e55b",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0019-09-28"
+    }, {
+      "id": "7282ec8c-0743-4b87-944c-06241947b394",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0199-09-28"
+    }, {
+      "id": "ea5282c5-4dae-4a32-a1aa-5408b6bd6d5a",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "1999-09-28"
+    }, {
+      "id": "3832504a-c685-4e87-97e3-37ad97d6c837",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "72ae32bb-2ce4-4207-ae7e-7403695223bf",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0001-09-28"
+    }, {
+      "id": "3bab0a2f-2bbc-44bb-9f47-5bbab24ad4ff",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0019-09-28"
+    }, {
+      "id": "ee774ba7-2cf1-412e-9c64-8f6050a05bc5",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0199-09-28"
+    }, {
+      "id": "a8222b96-61e6-414e-b1a0-f602368b411b",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "1991-09-28"
+    }, {
+      "id": "1afe0681-09fb-49fb-b597-a9e703da10b6",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": "giuseppe.rainone91@gmail.com"
+    }, {
+      "id": "97828437-696d-4b85-8f02-30baf5cd15f5",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "70e1dbf6-2e22-43b0-9ac2-9ecb662b5439",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/input", "xpath:position"]
+      ],
+      "value": "Giuseppe33"
+    }, {
+      "id": "ec560ff4-cafe-4fa9-a3ed-d099c9c15f7b",
+      "comment": "",
+      "command": "click",
+      "target": "id=citta",
+      "targets": [
+        ["id=citta", "id"],
+        ["name=cittaNascita", "name"],
+        ["css=#citta", "css:finder"],
+        ["xpath=//input[@id='citta']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7d6fc60b-1e22-47fe-a1ca-567db0dc59cd",
+      "comment": "",
+      "command": "type",
+      "target": "id=citta",
+      "targets": [
+        ["id=citta", "id"],
+        ["name=cittaNascita", "name"],
+        ["css=#citta", "css:finder"],
+        ["xpath=//input[@id='citta']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "Salern!1"
+    }, {
+      "id": "fd29cfe7-cdec-4b11-8927-c456a9e398c8",
+      "comment": "",
+      "command": "click",
+      "target": "id=pass",
+      "targets": [
+        ["id=pass", "id"],
+        ["name=password", "name"],
+        ["css=#pass", "css:finder"],
+        ["xpath=//input[@id='pass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e9019212-6c7b-4ba5-831e-6d3c6c05b827",
+      "comment": "",
+      "command": "type",
+      "target": "id=pass",
+      "targets": [
+        ["id=pass", "id"],
+        ["name=password", "name"],
+        ["css=#pass", "css:finder"],
+        ["xpath=//input[@id='pass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[3]/input", "xpath:position"]
+      ],
+      "value": "051Progetto_"
+    }, {
+      "id": "c55df94f-80fa-412f-a033-30f0b3f6c060",
+      "comment": "",
+      "command": "type",
+      "target": "id=confPass",
+      "targets": [
+        ["id=confPass", "id"],
+        ["name=confermaPassword", "name"],
+        ["css=#confPass", "css:finder"],
+        ["xpath=//input[@id='confPass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[4]/input", "xpath:position"]
+      ],
+      "value": "051Progetto_"
+    }, {
+      "id": "e1982e83-1166-4a85-a511-06be9461f222",
+      "comment": "",
+      "command": "click",
+      "target": "css=.umb-btn:nth-child(3)",
+      "targets": [
+        ["css=.umb-btn:nth-child(3)", "css:finder"],
+        ["xpath=//div[@id='cvDiv']/label", "xpath:idRelative"],
+        ["xpath=//label", "xpath:position"],
+        ["xpath=//label[contains(.,'Scegli file')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0c345d22-4a2e-4c5b-b179-a9e03a6344b7",
+      "comment": "",
+      "command": "type",
+      "target": "id=curriculum",
+      "targets": [
+        ["id=curriculum", "id"],
+        ["name=curriculum", "name"],
+        ["css=#curriculum", "css:finder"],
+        ["xpath=//input[@id='curriculum']", "xpath:attributes"],
+        ["xpath=//div[@id='cvDiv']/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[5]/input", "xpath:position"]
+      ],
+      "value": "C:\\fakepath\\Rainone-Giuseppe-CV.pdf"
+    }, {
+      "id": "bba88953-beac-464e-83d1-8cf33ecefffe",
+      "comment": "",
+      "command": "click",
+      "target": "id=dati",
+      "targets": [
+        ["id=dati", "id"],
+        ["name=trattamentoDati", "name"],
+        ["css=#dati", "css:finder"],
+        ["xpath=//input[@id='dati']", "xpath:attributes"],
+        ["xpath=//div[@id='checkDiv']/input", "xpath:idRelative"],
+        ["xpath=//div[6]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d4826f41-aee3-4432-a660-337262ed3582",
+      "comment": "",
+      "command": "click",
+      "target": "id=conferma",
+      "targets": [
+        ["id=conferma", "id"],
+        ["css=#conferma", "css:finder"],
+        ["xpath=//input[@id='conferma']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0367d9dd-7a5d-46c0-8eb7-1a27d8962f1d",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=errorCitta",
+      "targets": [
+        ["id=errorCitta", "id"],
+        ["css=#errorCitta", "css:finder"],
+        ["xpath=//span[@id='errorCitta']", "xpath:attributes"],
+        ["xpath=//div/div[3]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'La città deve contenere solo lettere e formata minimo da 2 lettere e massimo da 20.')]", "xpath:innerText"]
+      ],
+      "value": "La città deve contenere solo lettere e formata minimo da 2 lettere e massimo da 20."
+    }, {
+      "id": "f5da175f-a7cc-4b98-80b6-e23cb6f9f47d",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "6a1ac61c-7479-490d-958e-2ae91fb406f3",
+    "name": "TC_1_1_9",
+    "commands": [{
+      "id": "2e231272-7f40-4ac0-b380-870f2ce6e46c",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:7080/EasyJob/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9336a354-627b-4a87-bd25-3475e0d91d93",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1051x806",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a8c2a58c-5f81-4b5c-b27b-5833f41d13dd",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Registrati come inoccupato",
+      "targets": [
+        ["linkText=Registrati come inoccupato", "linkText"],
+        ["css=.nav-item:nth-child(3) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Registrati come inoccupato')]", "xpath:link"],
+        ["xpath=//div[@id='navbarResponsive']/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'registrazioneInoccupato.jsp')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Registrati come inoccupato')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c8e25bc5-10fe-47f9-910f-ed683f3d08dd",
+      "comment": "",
+      "command": "click",
+      "target": "id=nome",
+      "targets": [
+        ["id=nome", "id"],
+        ["name=nome", "name"],
+        ["css=#nome", "css:finder"],
+        ["xpath=//input[@id='nome']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "696ea8be-8c9e-4170-a375-31932922cd77",
+      "comment": "",
+      "command": "type",
+      "target": "id=nome",
+      "targets": [
+        ["id=nome", "id"],
+        ["name=nome", "name"],
+        ["css=#nome", "css:finder"],
+        ["xpath=//input[@id='nome']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Giuseppe"
+    }, {
+      "id": "87d4abc0-8968-464e-9431-d38fc51fe41f",
+      "comment": "",
+      "command": "click",
+      "target": "id=cognome",
+      "targets": [
+        ["id=cognome", "id"],
+        ["name=cognome", "name"],
+        ["css=#cognome", "css:finder"],
+        ["xpath=//input[@id='cognome']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5fb46dbe-3edc-4aec-9cef-65b33419dd03",
+      "comment": "",
+      "command": "type",
+      "target": "id=cognome",
+      "targets": [
+        ["id=cognome", "id"],
+        ["name=cognome", "name"],
+        ["css=#cognome", "css:finder"],
+        ["xpath=//input[@id='cognome']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Rainone"
+    }, {
+      "id": "72afba25-ccc3-48c0-b340-472fe6ddbfdc",
+      "comment": "",
+      "command": "click",
+      "target": "id=citta",
+      "targets": [
+        ["id=citta", "id"],
+        ["name=cittaNascita", "name"],
+        ["css=#citta", "css:finder"],
+        ["xpath=//input[@id='citta']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b619e270-7780-4211-a556-ec53eec4207e",
+      "comment": "",
+      "command": "type",
+      "target": "id=citta",
+      "targets": [
+        ["id=citta", "id"],
+        ["name=cittaNascita", "name"],
+        ["css=#citta", "css:finder"],
+        ["xpath=//input[@id='citta']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "Salerno"
+    }, {
+      "id": "6e116c9f-4784-4dc1-991e-628dbc2a69a5",
+      "comment": "",
+      "command": "click",
+      "target": "id=residenza",
+      "targets": [
+        ["id=residenza", "id"],
+        ["name=residenza", "name"],
+        ["css=#residenza", "css:finder"],
+        ["xpath=//input[@id='residenza']", "xpath:attributes"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "400419b8-09f4-4ee1-9ba2-cf15f18b6715",
+      "comment": "",
+      "command": "type",
+      "target": "id=residenza",
+      "targets": [
+        ["id=residenza", "id"],
+        ["name=residenza", "name"],
+        ["css=#residenza", "css:finder"],
+        ["xpath=//input[@id='residenza']", "xpath:attributes"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "Viale Europa, 44"
+    }, {
+      "id": "3bdcf424-9663-4463-aefc-1b3ad8849a8b",
+      "comment": "",
+      "command": "mouseDown",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "80b0f148-8c5a-4cc3-91a8-9fe80bdb5f11",
+      "comment": "",
+      "command": "mouseUp",
+      "target": "css=.column:nth-child(1) > div:nth-child(5)",
+      "targets": [
+        ["css=.column:nth-child(1) > div:nth-child(5)", "css:finder"],
+        ["xpath=//div[5]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "095b5612-b805-4cb5-9b9f-205eec9d40e5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.column:nth-child(1) > div:nth-child(5)",
+      "targets": [
+        ["css=.column:nth-child(1) > div:nth-child(5)", "css:finder"],
+        ["xpath=//div[5]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a2e71101-d219-41a7-a44d-a4c30de2aee7",
+      "comment": "",
+      "command": "click",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2de1098e-d5d4-474b-ae82-4188634a0c3d",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "2020-01-22"
+    }, {
+      "id": "be4b44d0-35b6-4659-bfc2-41c1868c4c9b",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9fb06d04-b8e8-447a-8b2f-03e7d3bb5c9a",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "2020-01-05"
+    }, {
+      "id": "1fa17a3d-1550-4e45-b30d-d1ae971c2d34",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d3699b73-553a-4bdb-862b-bced57dd5ab0",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "2020-07-05"
+    }, {
+      "id": "39f29ec9-7a43-4dc8-b913-2e8a48da89c3",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0002-07-05"
+    }, {
+      "id": "b1ecbf27-3290-4a61-8f56-fc79127f9f75",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0020-07-05"
+    }, {
+      "id": "fabe894c-88c7-49a9-9b30-b7a1099a028b",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0201-07-05"
+    }, {
+      "id": "41e4dbb8-0ad0-457e-90b0-8a3523bdbe71",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "2012-07-05"
+    }, {
+      "id": "847a1984-4c39-4048-b130-b74437c9c1b4",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e8721a76-2a82-48f4-9e91-611f68589416",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0002-07-05"
+    }, {
+      "id": "ace2014d-4929-476c-b0fc-bdf2a765f50b",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0020-07-05"
+    }, {
+      "id": "54232b56-e5cb-47c5-8554-4ae224344d61",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0201-07-05"
+    }, {
+      "id": "0789d5a7-416a-4524-86f5-38712df4b818",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "dd340aff-4c21-470d-9421-1b54766daf31",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0002-07-05"
+    }, {
+      "id": "9aa68648-9fe6-4554-a9f7-ae78efa43baa",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0020-07-05"
+    }, {
+      "id": "cffdb067-dc0d-475d-bf7b-6b85b6fde777",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0202-07-05"
+    }, {
+      "id": "e98999b0-1cd5-4890-877b-2a980a264ce6",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "2021-07-05"
+    }, {
+      "id": "c8135775-998b-4027-b70c-9195dee933fe",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a0e042be-4f61-46ec-9079-36e5fe39c4b7",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": "giuseppe.rainone91@gmail.com"
+    }, {
+      "id": "a8b7332a-d7ee-4990-b540-c48e5dc2e354",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "15635ee2-5d1e-4f94-8ebe-f3dd45ea57a2",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/input", "xpath:position"]
+      ],
+      "value": "Giuseppe33"
+    }, {
+      "id": "50f6070c-7a1e-4a65-80c7-59d9082f3de0",
+      "comment": "",
+      "command": "click",
+      "target": "id=pass",
+      "targets": [
+        ["id=pass", "id"],
+        ["name=password", "name"],
+        ["css=#pass", "css:finder"],
+        ["xpath=//input[@id='pass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5acd1e43-97b2-4882-b0cc-dd62d775c494",
+      "comment": "",
+      "command": "type",
+      "target": "id=pass",
+      "targets": [
+        ["id=pass", "id"],
+        ["name=password", "name"],
+        ["css=#pass", "css:finder"],
+        ["xpath=//input[@id='pass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[3]/input", "xpath:position"]
+      ],
+      "value": "051Progetto_"
+    }, {
+      "id": "13ca887b-6db7-421b-a52e-89cd1039a09c",
+      "comment": "",
+      "command": "type",
+      "target": "id=confPass",
+      "targets": [
+        ["id=confPass", "id"],
+        ["name=confermaPassword", "name"],
+        ["css=#confPass", "css:finder"],
+        ["xpath=//input[@id='confPass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[4]/input", "xpath:position"]
+      ],
+      "value": "051Progetto_"
+    }, {
+      "id": "8fb814ee-5907-470a-bad9-2b346b31241c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.umb-btn:nth-child(3)",
+      "targets": [
+        ["css=.umb-btn:nth-child(3)", "css:finder"],
+        ["xpath=//div[@id='cvDiv']/label", "xpath:idRelative"],
+        ["xpath=//label", "xpath:position"],
+        ["xpath=//label[contains(.,'Scegli file')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9b4f370d-200a-4cfe-8c76-055e1864d971",
+      "comment": "",
+      "command": "type",
+      "target": "id=curriculum",
+      "targets": [
+        ["id=curriculum", "id"],
+        ["name=curriculum", "name"],
+        ["css=#curriculum", "css:finder"],
+        ["xpath=//input[@id='curriculum']", "xpath:attributes"],
+        ["xpath=//div[@id='cvDiv']/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[5]/input", "xpath:position"]
+      ],
+      "value": "C:\\fakepath\\Rainone-Giuseppe-CV.pdf"
+    }, {
+      "id": "7915689b-9382-47de-b5fa-b4851312e3ff",
+      "comment": "",
+      "command": "click",
+      "target": "id=dati",
+      "targets": [
+        ["id=dati", "id"],
+        ["name=trattamentoDati", "name"],
+        ["css=#dati", "css:finder"],
+        ["xpath=//input[@id='dati']", "xpath:attributes"],
+        ["xpath=//div[@id='checkDiv']/input", "xpath:idRelative"],
+        ["xpath=//div[6]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0c60d0d9-d51e-4519-a07b-a78d77e39f10",
+      "comment": "",
+      "command": "click",
+      "target": "id=conferma",
+      "targets": [
+        ["id=conferma", "id"],
+        ["css=#conferma", "css:finder"],
+        ["xpath=//input[@id='conferma']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6a06fc41-cf25-45b6-9b2d-1d4fb6779732",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=errorData",
+      "targets": [
+        ["id=errorData", "id"],
+        ["css=#errorData", "css:finder"],
+        ["xpath=//span[@id='errorData']", "xpath:attributes"],
+        ["xpath=//div[5]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'La data inserita non rispetta il formato.')]", "xpath:innerText"]
+      ],
+      "value": "La data inserita non rispetta il formato."
+    }, {
+      "id": "3726a577-305b-414c-9697-e78ba4727057",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "9ab476ce-c2fc-4bb1-b058-7f9352284bfc",
+    "name": "TC_1_1_11",
+    "commands": [{
+      "id": "9e96aa55-8dc0-48a3-abee-aa23a7a5f2aa",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:7080/EasyJob/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "96d644b6-209c-44f7-b9e1-215fa2cecd6c",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1051x806",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3b488e70-e079-4a98-8358-37512da78ec3",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Registrati come inoccupato",
+      "targets": [
+        ["linkText=Registrati come inoccupato", "linkText"],
+        ["css=.nav-item:nth-child(3) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Registrati come inoccupato')]", "xpath:link"],
+        ["xpath=//div[@id='navbarResponsive']/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'registrazioneInoccupato.jsp')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Registrati come inoccupato')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6e3d6a83-a14d-4e41-90b6-963bd3e58a09",
+      "comment": "",
+      "command": "click",
+      "target": "id=nome",
+      "targets": [
+        ["id=nome", "id"],
+        ["name=nome", "name"],
+        ["css=#nome", "css:finder"],
+        ["xpath=//input[@id='nome']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "86e0c0e2-acdf-4ec4-a655-aaf4237b6a25",
+      "comment": "",
+      "command": "type",
+      "target": "id=nome",
+      "targets": [
+        ["id=nome", "id"],
+        ["name=nome", "name"],
+        ["css=#nome", "css:finder"],
+        ["xpath=//input[@id='nome']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Giuseppe"
+    }, {
+      "id": "a1fa45ab-fd3d-4d61-91f1-842a95d90c47",
+      "comment": "",
+      "command": "click",
+      "target": "id=cognome",
+      "targets": [
+        ["id=cognome", "id"],
+        ["name=cognome", "name"],
+        ["css=#cognome", "css:finder"],
+        ["xpath=//input[@id='cognome']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "48b31f08-d471-47c6-b756-513c5697fdd6",
+      "comment": "",
+      "command": "type",
+      "target": "id=cognome",
+      "targets": [
+        ["id=cognome", "id"],
+        ["name=cognome", "name"],
+        ["css=#cognome", "css:finder"],
+        ["xpath=//input[@id='cognome']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Rainone"
+    }, {
+      "id": "acdd3d07-cefb-4a8a-a120-984c040f200d",
+      "comment": "",
+      "command": "click",
+      "target": "id=citta",
+      "targets": [
+        ["id=citta", "id"],
+        ["name=cittaNascita", "name"],
+        ["css=#citta", "css:finder"],
+        ["xpath=//input[@id='citta']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c734fac0-41a6-47a1-8b08-53b47e9f7d82",
+      "comment": "",
+      "command": "type",
+      "target": "id=citta",
+      "targets": [
+        ["id=citta", "id"],
+        ["name=cittaNascita", "name"],
+        ["css=#citta", "css:finder"],
+        ["xpath=//input[@id='citta']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "Salerno"
+    }, {
+      "id": "1542147e-6c0c-4790-bb3b-695b826fcacb",
+      "comment": "",
+      "command": "click",
+      "target": "id=residenza",
+      "targets": [
+        ["id=residenza", "id"],
+        ["name=residenza", "name"],
+        ["css=#residenza", "css:finder"],
+        ["xpath=//input[@id='residenza']", "xpath:attributes"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bdfc7c2a-61a4-44c0-9df0-8ce03ca4b789",
+      "comment": "",
+      "command": "type",
+      "target": "id=residenza",
+      "targets": [
+        ["id=residenza", "id"],
+        ["name=residenza", "name"],
+        ["css=#residenza", "css:finder"],
+        ["xpath=//input[@id='residenza']", "xpath:attributes"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "Viale Europa, 44"
+    }, {
+      "id": "cc1ed063-7323-4582-8d2d-0f1f634cb6b3",
+      "comment": "",
+      "command": "mouseDown",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3ce944f9-d1e9-485b-a0c8-a4d898db02d5",
+      "comment": "",
+      "command": "mouseUp",
+      "target": "css=.column:nth-child(1) > div:nth-child(5)",
+      "targets": [
+        ["css=.column:nth-child(1) > div:nth-child(5)", "css:finder"],
+        ["xpath=//div[5]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8a50a457-5560-46af-8912-0ba3b82645da",
+      "comment": "",
+      "command": "click",
+      "target": "css=.column:nth-child(1) > div:nth-child(5)",
+      "targets": [
+        ["css=.column:nth-child(1) > div:nth-child(5)", "css:finder"],
+        ["xpath=//div[5]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "50f872a5-9fef-4479-870f-782ec7a5f01c",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0001-09-28"
+    }, {
+      "id": "42c0be84-5e2f-46fe-bed9-52e0b72687dc",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0019-09-28"
+    }, {
+      "id": "644c8025-8bcc-4a62-9523-a198789771d0",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0199-09-28"
+    }, {
+      "id": "dba1655d-7070-45f5-80b3-4c0f096a1a03",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "1991-09-28"
+    }, {
+      "id": "d7eba6f3-dfa3-4a7f-9b7d-4d38a13d8f78",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": "giuseppe.rainone91@gmail.com"
+    }, {
+      "id": "defb36e2-24f1-4131-a195-b5d3e593a831",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1483acf5-114d-46af-99d9-11c002774195",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/input", "xpath:position"]
+      ],
+      "value": "Giuseppe33"
+    }, {
+      "id": "f3cc61d3-82ae-429e-8c27-f476631f4f54",
+      "comment": "",
+      "command": "click",
+      "target": "id=pass",
+      "targets": [
+        ["id=pass", "id"],
+        ["name=password", "name"],
+        ["css=#pass", "css:finder"],
+        ["xpath=//input[@id='pass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a83b90a7-9b54-4efe-a4b5-cdcf4c8f5fba",
+      "comment": "",
+      "command": "type",
+      "target": "id=pass",
+      "targets": [
+        ["id=pass", "id"],
+        ["name=password", "name"],
+        ["css=#pass", "css:finder"],
+        ["xpath=//input[@id='pass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[3]/input", "xpath:position"]
+      ],
+      "value": "051Progetto_"
+    }, {
+      "id": "e48625b6-0928-43a2-ad87-6c644e51fafa",
+      "comment": "",
+      "command": "type",
+      "target": "id=confPass",
+      "targets": [
+        ["id=confPass", "id"],
+        ["name=confermaPassword", "name"],
+        ["css=#confPass", "css:finder"],
+        ["xpath=//input[@id='confPass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[4]/input", "xpath:position"]
+      ],
+      "value": "051Progetto_"
+    }, {
+      "id": "371029c5-0089-4b67-a787-a393e49381f2",
+      "comment": "",
+      "command": "click",
+      "target": "css=.umb-btn:nth-child(3)",
+      "targets": [
+        ["css=.umb-btn:nth-child(3)", "css:finder"],
+        ["xpath=//div[@id='cvDiv']/label", "xpath:idRelative"],
+        ["xpath=//label", "xpath:position"],
+        ["xpath=//label[contains(.,'Scegli file')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ca3bdece-478d-477b-a24d-56a6d93685cd",
+      "comment": "",
+      "command": "type",
+      "target": "id=curriculum",
+      "targets": [
+        ["id=curriculum", "id"],
+        ["name=curriculum", "name"],
+        ["css=#curriculum", "css:finder"],
+        ["xpath=//input[@id='curriculum']", "xpath:attributes"],
+        ["xpath=//div[@id='cvDiv']/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[5]/input", "xpath:position"]
+      ],
+      "value": "C:\\fakepath\\Rainone-Giuseppe-CV.txt"
+    }, {
+      "id": "3d89d141-d865-4315-9f00-abc8ac5a38b1",
+      "comment": "",
+      "command": "click",
+      "target": "id=dati",
+      "targets": [
+        ["id=dati", "id"],
+        ["name=trattamentoDati", "name"],
+        ["css=#dati", "css:finder"],
+        ["xpath=//input[@id='dati']", "xpath:attributes"],
+        ["xpath=//div[@id='checkDiv']/input", "xpath:idRelative"],
+        ["xpath=//div[6]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d57fe870-e515-4ed8-8ece-3b1f05bbb27f",
+      "comment": "",
+      "command": "click",
+      "target": "id=conferma",
+      "targets": [
+        ["id=conferma", "id"],
+        ["css=#conferma", "css:finder"],
+        ["xpath=//input[@id='conferma']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a73d0e96-186f-4220-b849-f27e2ed51c55",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=errorCurriculum",
+      "targets": [
+        ["id=errorCurriculum", "id"],
+        ["css=#errorCurriculum", "css:finder"],
+        ["xpath=//span[@id='errorCurriculum']", "xpath:attributes"],
+        ["xpath=//div[@id='cvDiv']/span[2]", "xpath:idRelative"],
+        ["xpath=//span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Il file deve essere in formato PDF.')]", "xpath:innerText"]
+      ],
+      "value": "Il file deve essere in formato PDF."
+    }, {
+      "id": "b7119feb-cf84-44bc-b767-5de2ba3c1e5b",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "fdebf7d8-cc33-4fe1-9489-8490af1c5a3e",
+    "name": "TC_1_1_13",
+    "commands": [{
+      "id": "10969dd5-fdc6-4976-8de1-b0be85bfbdc2",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:7080/EasyJob/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ca18f405-0f89-4cc5-b8b3-ac3e98bc11a4",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1051x806",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0178396c-9456-40aa-b487-07b461c28d6a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Registrati come inoccupato",
+      "targets": [
+        ["linkText=Registrati come inoccupato", "linkText"],
+        ["css=.nav-item:nth-child(3) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Registrati come inoccupato')]", "xpath:link"],
+        ["xpath=//div[@id='navbarResponsive']/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'registrazioneInoccupato.jsp')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Registrati come inoccupato')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d470c7ce-a959-44be-bc37-9fc9e66448fb",
+      "comment": "",
+      "command": "click",
+      "target": "id=nome",
+      "targets": [
+        ["id=nome", "id"],
+        ["name=nome", "name"],
+        ["css=#nome", "css:finder"],
+        ["xpath=//input[@id='nome']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "17cc628f-730a-47bf-b8de-d9257aadcfa9",
+      "comment": "",
+      "command": "type",
+      "target": "id=nome",
+      "targets": [
+        ["id=nome", "id"],
+        ["name=nome", "name"],
+        ["css=#nome", "css:finder"],
+        ["xpath=//input[@id='nome']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Giuseppe"
+    }, {
+      "id": "9bff24ca-4d54-4401-971c-dfaeb9adc3d7",
+      "comment": "",
+      "command": "click",
+      "target": "id=cognome",
+      "targets": [
+        ["id=cognome", "id"],
+        ["name=cognome", "name"],
+        ["css=#cognome", "css:finder"],
+        ["xpath=//input[@id='cognome']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2a65a4e2-4cf0-4d8a-a2e7-ebf1306f54fc",
+      "comment": "",
+      "command": "type",
+      "target": "id=cognome",
+      "targets": [
+        ["id=cognome", "id"],
+        ["name=cognome", "name"],
+        ["css=#cognome", "css:finder"],
+        ["xpath=//input[@id='cognome']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Rainone"
+    }, {
+      "id": "fc4fbd61-102b-4251-979c-58937754eba1",
+      "comment": "",
+      "command": "click",
+      "target": "id=citta",
+      "targets": [
+        ["id=citta", "id"],
+        ["name=cittaNascita", "name"],
+        ["css=#citta", "css:finder"],
+        ["xpath=//input[@id='citta']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "88b09606-9c7c-4e17-9101-6fdd234af1e8",
+      "comment": "",
+      "command": "type",
+      "target": "id=citta",
+      "targets": [
+        ["id=citta", "id"],
+        ["name=cittaNascita", "name"],
+        ["css=#citta", "css:finder"],
+        ["xpath=//input[@id='citta']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "Salerno"
+    }, {
+      "id": "0f211d16-058c-43d3-823a-6a44ae667382",
+      "comment": "",
+      "command": "click",
+      "target": "id=residenza",
+      "targets": [
+        ["id=residenza", "id"],
+        ["name=residenza", "name"],
+        ["css=#residenza", "css:finder"],
+        ["xpath=//input[@id='residenza']", "xpath:attributes"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "758ee845-b659-487b-88ee-86b05343513d",
+      "comment": "",
+      "command": "type",
+      "target": "id=residenza",
+      "targets": [
+        ["id=residenza", "id"],
+        ["name=residenza", "name"],
+        ["css=#residenza", "css:finder"],
+        ["xpath=//input[@id='residenza']", "xpath:attributes"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "Viale Europa, 44"
+    }, {
+      "id": "6320ba35-4be2-4347-a1b2-4a49cf38148c",
+      "comment": "",
+      "command": "mouseDown",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ef4da04e-92e5-4475-ae8d-dcce924c95c4",
+      "comment": "",
+      "command": "mouseUp",
+      "target": "css=.column:nth-child(1) > div:nth-child(5)",
+      "targets": [
+        ["css=.column:nth-child(1) > div:nth-child(5)", "css:finder"],
+        ["xpath=//div[5]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f64a8d1d-c7a3-408f-bf52-2a8a5ed4a9a1",
+      "comment": "",
+      "command": "click",
+      "target": "css=.column:nth-child(1) > div:nth-child(5)",
+      "targets": [
+        ["css=.column:nth-child(1) > div:nth-child(5)", "css:finder"],
+        ["xpath=//div[5]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1d27a953-eb92-42de-aa03-fe55bced1af2",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0001-09-28"
+    }, {
+      "id": "14bd488e-ba17-4d6c-82b9-1a98e4bd7d18",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0019-09-28"
+    }, {
+      "id": "f5f431b9-906b-4581-a2b4-7fcd3471d396",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0199-09-28"
+    }, {
+      "id": "093f286d-cd22-4cd2-a304-3555ee5aac79",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "1999-09-28"
+    }, {
+      "id": "1ba3472a-c5a2-45f5-bbae-6ab64d2dd453",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "19991-09-28"
+    }, {
+      "id": "7f0d6b38-fa8c-4eea-a8be-021070b30578",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "69563d7e-ed58-4371-a3fe-d9f0d145ba12",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0001-09-28"
+    }, {
+      "id": "dc627cb7-ee90-409d-9ce5-ae948822677b",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0019-09-28"
+    }, {
+      "id": "0eb247cc-28ff-416f-b296-8dba1399578f",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "0199-09-28"
+    }, {
+      "id": "a3e238b2-d20f-4dc2-9728-0d0d517229e6",
+      "comment": "",
+      "command": "type",
+      "target": "id=dataNascita",
+      "targets": [
+        ["id=dataNascita", "id"],
+        ["name=dataNascita", "name"],
+        ["css=#dataNascita", "css:finder"],
+        ["xpath=//input[@id='dataNascita']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "1991-09-28"
+    }, {
+      "id": "9fd82d1f-cbc1-4baa-9f1d-072f38701a35",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2c1697a9-502d-42b0-8012-48f33c820e2a",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": "giuseppe.rainone91@gmail.com"
+    }, {
+      "id": "f34904d2-f30b-4616-8bfa-e51329580a3c",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a9719b46-ba51-4200-9d2c-c68513ce4a37",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/input", "xpath:position"]
+      ],
+      "value": "Giuseppe33"
+    }, {
+      "id": "00e51202-1b80-427d-ab61-b36dfd6ef4fb",
+      "comment": "",
+      "command": "click",
+      "target": "id=pass",
+      "targets": [
+        ["id=pass", "id"],
+        ["name=password", "name"],
+        ["css=#pass", "css:finder"],
+        ["xpath=//input[@id='pass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b534d7d6-c294-4e81-ac00-18b332cdb296",
+      "comment": "",
+      "command": "type",
+      "target": "id=pass",
+      "targets": [
+        ["id=pass", "id"],
+        ["name=password", "name"],
+        ["css=#pass", "css:finder"],
+        ["xpath=//input[@id='pass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[3]/input", "xpath:position"]
+      ],
+      "value": "051Progetto_"
+    }, {
+      "id": "7800dcdc-e3ca-47c6-a940-d7f38a5173d3",
+      "comment": "",
+      "command": "type",
+      "target": "id=confPass",
+      "targets": [
+        ["id=confPass", "id"],
+        ["name=confermaPassword", "name"],
+        ["css=#confPass", "css:finder"],
+        ["xpath=//input[@id='confPass']", "xpath:attributes"],
+        ["xpath=//div[2]/div[4]/input", "xpath:position"]
+      ],
+      "value": "051Progetto_"
+    }, {
+      "id": "0dd0e6be-c7c4-46cc-a466-481496cb8843",
+      "comment": "",
+      "command": "click",
+      "target": "css=.umb-btn:nth-child(3)",
+      "targets": [
+        ["css=.umb-btn:nth-child(3)", "css:finder"],
+        ["xpath=//div[@id='cvDiv']/label", "xpath:idRelative"],
+        ["xpath=//label", "xpath:position"],
+        ["xpath=//label[contains(.,'Scegli file')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b91270ab-79be-4f4d-bfa9-00c46904c8f5",
+      "comment": "",
+      "command": "type",
+      "target": "id=curriculum",
+      "targets": [
+        ["id=curriculum", "id"],
+        ["name=curriculum", "name"],
+        ["css=#curriculum", "css:finder"],
+        ["xpath=//input[@id='curriculum']", "xpath:attributes"],
+        ["xpath=//div[@id='cvDiv']/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[5]/input", "xpath:position"]
+      ],
+      "value": "C:\\fakepath\\Rainone-Giuseppe-CV.pdf"
+    }, {
+      "id": "fdf29bce-f4f7-4156-8cfa-70175902a31c",
+      "comment": "",
+      "command": "click",
+      "target": "id=conferma",
+      "targets": [
+        ["id=conferma", "id"],
+        ["css=#conferma", "css:finder"],
+        ["xpath=//input[@id='conferma']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a4107f57-fbb0-4ad6-9851-b83b90f1b789",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=errorCheck",
+      "targets": [
+        ["id=errorCheck", "id"],
+        ["css=#errorCheck", "css:finder"],
+        ["xpath=//span[@id='errorCheck']", "xpath:attributes"],
+        ["xpath=//form/div/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'è obbligatorio spuntare la casella del trattamento dati.')]", "xpath:innerText"]
+      ],
+      "value": "è obbligatorio spuntare la casella del trattamento dati."
+    }, {
+      "id": "0fb9f82e-1a9e-499f-a02d-183029eb5ee1",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "9e62569d-6220-4aab-95c7-1a2348512a7f",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["8d7f4d76-da0f-4517-822c-e4718d67d6f9"]
+  }],
+  "urls": ["http://localhost:7080/EasyJob/"],
+  "plugins": []
+}

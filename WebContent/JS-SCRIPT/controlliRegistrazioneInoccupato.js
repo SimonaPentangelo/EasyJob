@@ -57,7 +57,7 @@ function checkCitta() {
     	return true;
     } else {
     
-    	$("#errorCitta").html("La città deve contenere solo lettere e " +
+    	$("#errorCitta").html("La citt\xE0 deve contenere solo lettere e " +
     			"formata minimo da 2 lettere e massimo da 20.");
     	$("#errorCitta").show();
         return false;
@@ -144,27 +144,32 @@ function checkUsername() {
 
 function checkPass() {
     var pass = $("#pass").val();
-    var confPass = $("#confPass").val();
     var StringValidator = /^[A-Za-z0-9-._]{8,16}$/; 
     
     if (pass.match(StringValidator) && pass != null) {
-        if(pass.match(confPass) && confPass != null) {
-        	$("#errorPass").hide();
-        	$("#errorConfPass").hide();
-        	
+        	$("#errorPass").hide(); 	
         	return true;
-        } else {
-        	
-        	$("#errorConfPass").html("Password non corrispondente.");
-    		$("#errorConfPass").show();
-    		return false;
-        }
     } else {
     	
     	$("#errorPass").html("La password deve contenere minimo 8 caratteri e massimo 16.");
 		$("#errorPass").show();
     	return false;
     }
+}
+
+function checkConfPass() {
+	 var pass = $("#pass").val();
+	 var confPass = $("#confPass").val();
+	 
+	 if(pass === confPass && confPass != null) {
+     	$("#errorConfPass").hide();
+     	
+     	return true;
+     } else {
+     	$("#errorConfPass").html("Password non corrispondente.");
+ 		$("#errorConfPass").show();
+ 		return false;
+     }
 }
 
 function checkCurriculum() {
@@ -206,7 +211,7 @@ function checkTrattamentoDati() {
 }
 
 function checkAll() {
-	if(!checkNome() || !checkCognome() || !checkCitta() || !checkResidenza() || !checkDataNascita() || !checkEmail() || !checkUsername() || !checkPass() || !checkCurriculum() || !checkTrattamentoDati()) {
+	if(!checkNome() || !checkCognome() || !checkCitta() || !checkResidenza() || !checkDataNascita() || !checkEmail() || !checkUsername() || !checkPass() || !checkConfPass() || !checkCurriculum() || !checkTrattamentoDati()) {
 		
 		return false;
 	} else {
