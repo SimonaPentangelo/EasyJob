@@ -1,6 +1,6 @@
 <% String errorFormat = "";
-if(response.getHeader("errore") != null) {
-	errorFormat = response.getHeader("errore").toString(); }%>
+if(request.getAttribute("errore") != null) {
+	errorFormat = request.getAttribute("errore").toString(); }%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -26,7 +26,7 @@ if(response.getHeader("errore") != null) {
 <h1>Pubblica un annuncio</h1>
 
 
-<%if (errorFormat!=null){
+<%if (errorFormat!=null && !errorFormat.equals("")){
 			%><h3><%=errorFormat %></h3>
 		<%} %>
 	<form onsubmit="return checkAll()" action="${pageContext.request.contextPath}/PubblicaAnnuncioServlet" method="POST">

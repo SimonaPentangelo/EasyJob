@@ -32,11 +32,12 @@
 <h1>Segnala un'azienda</h1><br>
 <%
 		String stringa = "";
-		if(response.getHeader("errorReport") != null) {
-			stringa = response.getHeader("errorReport").toString();
+		if(request.getAttribute("errorReport") != null) {
+			stringa = request.getAttribute("errorReport").toString();
+			
+			%> <h3><%=stringa %></h3> <% 
 		} 
 		%>
-		<h3><%=stringa %></h3>
 
 <form onsubmit="checkAll()" action="${pageContext.request.contextPath}/SegnalazioneUtenteServlet" method="POST">
 

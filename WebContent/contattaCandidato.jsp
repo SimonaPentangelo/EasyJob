@@ -28,11 +28,11 @@ int idAn = Integer.parseInt(request.getParameter("idAn"));
 <h1>Contatta un candidato</h1><br>
 <%
 		String stringa = "";
-		if(response.getHeader("errore") != null) {
-			stringa = response.getHeader("errore");
+		if(request.getAttribute("errore") != null) {
+			stringa = request.getAttribute("errore").toString();
+			%> <h3><%=stringa %></h3> <%
 		} 
 		%>
-		<h3><%=stringa %></h3>
 
 	<form onsubmit="return checkAll()" action="${pageContext.request.contextPath}/ContattaCandidatoServlet" method="POST">
 	

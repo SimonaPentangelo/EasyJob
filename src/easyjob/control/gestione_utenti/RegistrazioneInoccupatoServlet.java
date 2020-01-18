@@ -172,8 +172,8 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
 		
 		if(!validazione(nome, cognome, username, dataNascitaString, email, password, confermaPassword, indirizzo, cittàNascita, curriculum, check)) {
 			redirect = "/registrazioneInoccupato.jsp";
-			response.setHeader("errorReg", "Uno o più campi del form non sono validi!");
-			request.getRequestDispatcher(redirect).forward(request, response);
+			request.setAttribute("errorReg", "Uno o più campi del form non sono validi!");
+			response.sendRedirect(request.getContextPath()+redirect);
 		} else {
 			
 			inoccupato.setNome(nome);
@@ -221,18 +221,18 @@ public class RegistrazioneInoccupatoServlet extends HttpServlet {
 							
 					Files.copy(inputStream, Paths.get(cvFullPath), StandardCopyOption.REPLACE_EXISTING);
 					redirect = "/SuccessfulReg.jsp";
-					request.getRequestDispatcher(redirect).forward(request, response);
+					response.sendRedirect(request.getContextPath()+redirect);
 				}else {
 					response.getWriter().write("Formato dati errati");
 					redirect = "/registrazioneInoccupato.jsp";
-					response.setHeader("errorReg", "Username o email già in uso!");
-					request.getRequestDispatcher(redirect).forward(request, response);
+					request.setAttribute("errorReg", "Username o email già in uso!");
+					response.sendRedirect(request.getContextPath()+redirect);
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 				redirect = "/registrazioneInoccupato.jsp";
-				response.setHeader("errorReg", "Errore nella registrazione");
-				request.getRequestDispatcher(redirect).forward(request, response);
+				request.setAttribute("errorReg", "Errore nella registrazione");
+				response.sendRedirect(request.getContextPath()+redirect);
 			}
 		}
 	}

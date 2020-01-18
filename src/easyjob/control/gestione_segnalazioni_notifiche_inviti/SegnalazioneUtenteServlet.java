@@ -89,35 +89,35 @@ public class SegnalazioneUtenteServlet extends HttpServlet {
 				if(!manager.alreadyReported(mod, azienda)) {
 					if(manager.segnalaUtente(segnalazione))
 					{
-						redirect = "./CorrectSegnalazione.jsp";
+						redirect = "/CorrectSegnalazione.jsp";
 						response.getWriter().write("segnalato");
-						request.getRequestDispatcher(redirect).forward(request, response);
+						response.sendRedirect(request.getContextPath()+redirect);
 						
 					} else {
 						redirect = "./formSegnalazione.jsp";
 						System.out.println("primo else");
-						response.setHeader("errorReport", "Si è verificato un errore");
-						request.getRequestDispatcher(redirect).forward(request, response);
+						request.setAttribute("errorReport", "Si è verificato un errore");
+						response.sendRedirect(request.getContextPath()+redirect);
 					}
 				} else {
 					redirect = "./formSegnalazione.jsp?az=" + azienda;
 					System.out.println("secondo else");
 					response.getWriter().write("è già stato segnalato");
-					response.setHeader("errorReport", "Hai già segnalato quest'azienda!");
-					request.getRequestDispatcher(redirect).forward(request, response);
+					request.setAttribute("errorReport", "Hai già segnalato quest'azienda!");
+					response.sendRedirect(request.getContextPath()+redirect);
 				}
 			} else {
 				System.out.println("terzo else");
 				redirect = "./formSegnalazione.jsp?az=" + azienda;
-				response.setHeader("errorReport", "Formato non valido");
+				request.setAttribute("errorReport", "Formato non valido");
 				 response.getWriter().write("formato non valido");
-				 request.getRequestDispatcher(redirect).forward(request, response);
+				 response.sendRedirect(request.getContextPath()+redirect);
 			}
 		}catch (Exception e){
 			e.printStackTrace();
 			redirect = "./formSegnalazione.jsp?az=" + azienda;
-			response.setHeader("errorReport", "Si è verificato un errore");
-			request.getRequestDispatcher(redirect).forward(request, response);
+			request.setAttribute("errorReport", "Si è verificato un errore");
+			response.sendRedirect(request.getContextPath()+redirect);
 		}
 	}
 	

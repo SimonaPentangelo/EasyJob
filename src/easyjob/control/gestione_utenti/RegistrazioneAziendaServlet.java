@@ -176,8 +176,8 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
 		
 		if(!validazione(nomeAzienda, logoAzienda, partitaIVA, username, indirizzo, dataFondazioneString, numeroDipendentiString, email, password, confermaPassword, check)) {
 			redirect = "/registrazioneAzienda.jsp";
-			response.setHeader("errorReg", "Uno o più campi del form non sono validi!");
-			request.getRequestDispatcher(redirect).forward(request, response);
+			request.setAttribute("errorReg", "Uno o più campi del form non sono validi!");
+			response.sendRedirect(request.getContextPath()+redirect);
 		} else {
 			System.out.println("PUDDIPUDDI");
 			SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
@@ -227,17 +227,17 @@ public class RegistrazioneAziendaServlet extends HttpServlet {
 					inputStream.close();
 					
 					redirect = "/SuccessfulReg.jsp";
-					request.getRequestDispatcher(redirect).forward(request, response);
+					response.sendRedirect(request.getContextPath()+redirect);
 				} else {
 					redirect = "/registrazioneAzienda.jsp";
-					response.setHeader("errorReg", "Username o email già in uso!");
-					request.getRequestDispatcher(redirect).forward(request, response);
+					request.setAttribute("errorReg", "Username o email già in uso!");
+					response.sendRedirect(request.getContextPath()+redirect);
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 				redirect = "/registrazioneAzienda.jsp";
-				response.setHeader("errorReg", "Errore nella registrazione");
-				request.getRequestDispatcher(redirect).forward(request, response);
+				request.setAttribute("errorReg", "Errore nella registrazione");
+				response.sendRedirect(request.getContextPath()+redirect);
 			}
 		}
 	}

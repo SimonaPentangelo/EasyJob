@@ -131,26 +131,26 @@ private boolean valida(String titolo, String desc, String req, String città, Str
 				if(manager.pubblicaAnnuncio(annuncio)) {
 					System.out.println("annuncio pubblicato");
 					response.getWriter().write("Pubblicato");
-					redirect = "./SuccesfulPublish.jsp";
+					redirect = "/SuccesfulPublish.jsp";
 				} else {
 					System.out.println("primo else");
 					response.getWriter().write("Errore");
-					redirect="./pubblicaAnnuncio.jsp";
-					response.setHeader("errore", "Si è verificato un errore");
+					redirect="/pubblicaAnnuncio.jsp";
+					request.setAttribute("errore", "Si è verificato un errore");
 				}
 			} else {
 				System.out.println("secondo else");
 				response.getWriter().write("Errore nel formato");
-				response.setHeader("errore", "Formato dati errato");
-				redirect="./pubblicaAnnuncio.jsp";
+				request.setAttribute("errore", "Formato dati errato");
+				redirect="/pubblicaAnnuncio.jsp";
 			}
 		} catch (Exception e){
 			e.printStackTrace();
-			redirect="./pubblicaAnnuncio.jsp";
-			response.setHeader("errore", "Si è verificato un errore");
+			redirect="/pubblicaAnnuncio.jsp";
+			request.setAttribute("errore", "Si è verificato un errore");
 		} finally {
 			System.out.println("finallyyyyyy");
-			request.getRequestDispatcher(redirect).forward(request, response);
+			response.sendRedirect(request.getContextPath()+redirect);
 		}
 		
 	}
