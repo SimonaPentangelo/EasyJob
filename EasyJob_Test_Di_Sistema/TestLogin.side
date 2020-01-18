@@ -1,0 +1,360 @@
+{
+  "id": "ae8e92cd-15b9-4b2a-ab04-e325336214be",
+  "version": "2.0",
+  "name": "TestLogin",
+  "url": "http://localhost:8080/EasyJob/",
+  "tests": [{
+    "id": "a6eab7f2-e950-49fd-863d-375efc771225",
+    "name": "LoginFailedByUsername",
+    "commands": [{
+      "id": "820e01de-8d42-487b-9704-d6e655ef063a",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/EasyJob/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c6a65268-1aa1-4f12-a067-d55727a87509",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x840",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fec19369-56d7-48bb-86a7-5e287c798c4b",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Accedi",
+      "targets": [
+        ["linkText=Accedi", "linkText"],
+        ["css=.nav-item:nth-child(1) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Accedi')]", "xpath:link"],
+        ["xpath=//div[@id='navbarResponsive']/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'login.jsp')]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "784a5a7f-c5b5-44af-b44d-660bf8ad5217",
+      "comment": "",
+      "command": "click",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "09912c1e-a64a-4fbe-91c9-2419552bcf80",
+      "comment": "",
+      "command": "type",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "gabbo"
+    }, {
+      "id": "95605aa0-765f-4f30-a3d3-33ab436515c4",
+      "comment": "",
+      "command": "click",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=input:nth-child(4)", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4bf32eaa-9808-4cd6-812b-74309f444d6a",
+      "comment": "",
+      "command": "type",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=input:nth-child(4)", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "ciaociao"
+    }, {
+      "id": "c5493c47-8d89-4c06-aca7-8f1d00ccf847",
+      "comment": "",
+      "command": "click",
+      "target": "css=.umb-btn",
+      "targets": [
+        ["css=.umb-btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "eecf1b03-f27b-49a4-858e-ee07ccab9c6a",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "linkText=Accedi",
+      "targets": [
+        ["linkText=Accedi", "linkText"],
+        ["css=.nav-item:nth-child(1) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Accedi')]", "xpath:link"],
+        ["xpath=//div[@id='navbarResponsive']/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'login.jsp')]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5b54a498-3285-49de-8bf8-056b9883cf46",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "c0cb2a9a-d62f-4fe4-9b70-1b17e75b6243",
+    "name": "LoginFailPassNotCorresp",
+    "commands": [{
+      "id": "241018f9-0a12-4ea7-81d1-0fd8bc72c66a",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/EasyJob/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d46135c6-c62b-464f-9f66-5f2c53e87d11",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1054x808",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f371be48-f304-40b0-986d-2c5737869947",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Accedi",
+      "targets": [
+        ["linkText=Accedi", "linkText"],
+        ["css=.nav-item:nth-child(1) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Accedi')]", "xpath:link"],
+        ["xpath=//div[@id='navbarResponsive']/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'login.jsp')]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "09f2114b-af1e-4f0c-8c6a-0d9346f307a0",
+      "comment": "",
+      "command": "click",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "eb9706e6-a644-4b8e-8e29-f6c679867ebd",
+      "comment": "",
+      "command": "type",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "gabriele1997"
+    }, {
+      "id": "02a109c6-9196-4816-a676-ff330cda6380",
+      "comment": "",
+      "command": "click",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=input:nth-child(4)", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "fb98d3d4-bf45-49b7-9d48-b9f42105d0be",
+      "comment": "",
+      "command": "type",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=input:nth-child(4)", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "ccccc"
+    }, {
+      "id": "f60a8950-be9d-42ed-b725-e2d885ac394f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.umb-btn",
+      "targets": [
+        ["css=.umb-btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5ce1be3c-6e14-4637-97aa-00aecf61c757",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=p:nth-child(6)",
+      "targets": [
+        ["css=p:nth-child(6)", "css:finder"],
+        ["xpath=//p", "xpath:position"],
+        ["xpath=//p[contains(.,'Username o password non validi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8d8b9128-6c6b-4dea-b0a9-1874bb741829",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "47a29a96-2066-4282-8d30-ef5fc825cd33",
+    "name": "LoginSuccess",
+    "commands": [{
+      "id": "1f52a30a-310f-403e-985e-9971fbfbf52a",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/EasyJob/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d2266cc8-7366-4518-ab66-2d930f3cd69e",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x840",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "afe74f88-6e01-48f6-8316-b260426899aa",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Accedi",
+      "targets": [
+        ["linkText=Accedi", "linkText"],
+        ["css=.nav-item:nth-child(1) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Accedi')]", "xpath:link"],
+        ["xpath=//div[@id='navbarResponsive']/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'login.jsp')]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "839ae5fa-7b49-4724-9ca2-2c05789a2878",
+      "comment": "",
+      "command": "click",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "91e77b76-1682-40c6-a520-6951f2e6336c",
+      "comment": "",
+      "command": "type",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "gabriele1997"
+    }, {
+      "id": "def54a62-a7be-4e40-a662-c64bbc2727d6",
+      "comment": "",
+      "command": "click",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=input:nth-child(4)", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "334d0ca8-654f-429b-a9df-c3375be4a79f",
+      "comment": "",
+      "command": "type",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=input:nth-child(4)", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "ciaociao"
+    }, {
+      "id": "58f7ef96-992a-41b0-ba10-bcf2aa01d456",
+      "comment": "",
+      "command": "click",
+      "target": "css=.umb-btn",
+      "targets": [
+        ["css=.umb-btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b29dfdf8-3697-4459-95e4-5287c96a5b0a",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=h2:nth-child(2)",
+      "targets": [
+        ["css=h2:nth-child(2)", "css:finder"],
+        ["xpath=//div[3]/h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Benvenuto nella tua area privata gabriele1997!')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c5befb65-4cf8-4ac9-a827-c177dfb833ad",
+      "comment": "",
+      "command": "click",
+      "target": "css=.nav-item button",
+      "targets": [
+        ["css=.nav-item button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='navbarResponsive']/ul/li/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Logout')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "60b93a1d-f2b8-4f6a-85ca-f88b473b3277",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["http://localhost:8080/EasyJob/"],
+  "plugins": []
+}

@@ -1,0 +1,166 @@
+{
+  "id": "ae8e92cd-15b9-4b2a-ab04-e325336214be",
+  "version": "2.0",
+  "name": "TestRicercaAnnunci",
+  "url": "http://localhost:8080/EasyJob/",
+  "tests": [{
+    "id": "a894a055-da4f-4cc5-a5b1-c1fda7aea69f",
+    "name": "WhiteSpaceResearchFail",
+    "commands": [{
+      "id": "0a3af514-6192-405c-9f8f-418b4f5fc989",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/EasyJob/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "eb44a559-528f-42f1-aeeb-6cddb0618678",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1054x808",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "57cbe63b-f794-4d39-8a62-589154ff64e2",
+      "comment": "",
+      "command": "click",
+      "target": "name=searchTag",
+      "targets": [
+        ["name=searchTag", "name"],
+        ["css=input", "css:finder"],
+        ["xpath=//input[@name='searchTag']", "xpath:attributes"],
+        ["xpath=//div[@id='insert-address']/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "af54f419-5649-4a83-af79-e44f9d3546a0",
+      "comment": "",
+      "command": "type",
+      "target": "name=searchTag",
+      "targets": [
+        ["name=searchTag", "name"],
+        ["css=input", "css:finder"],
+        ["xpath=//input[@name='searchTag']", "xpath:attributes"],
+        ["xpath=//div[@id='insert-address']/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "     "
+    }, {
+      "id": "35bbfbe9-f029-4d24-bf4f-7196654f762c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.group > button",
+      "targets": [
+        ["css=.group > button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='insert-address']/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0a527d8e-5cd3-4033-a2b8-185e2d6ae6ee",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.errore",
+      "targets": [
+        ["css=.errore", "css:finder"],
+        ["xpath=//div[@id='insert-address']/form/span", "xpath:idRelative"],
+        ["xpath=//form/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Il formato del tag non può contenere solo spazi bianchi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6b9f1523-ba89-44e7-b884-2f5fa1340c1a",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "00f8aadf-5db7-49a4-85b4-50ed935c5ab6",
+    "name": "ResearchOk",
+    "commands": [{
+      "id": "88db1bd8-4957-4885-aaa1-79e7a2e11bab",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/EasyJob/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8f161e32-6d19-4e3a-ad99-d3158d1dd7d2",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1054x808",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "dcf37e02-f189-490f-aa24-5fce8f28adb8",
+      "comment": "",
+      "command": "click",
+      "target": "name=searchTag",
+      "targets": [
+        ["name=searchTag", "name"],
+        ["css=input", "css:finder"],
+        ["xpath=//input[@name='searchTag']", "xpath:attributes"],
+        ["xpath=//div[@id='insert-address']/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "46db80ee-034e-48b2-854c-1bb542ad74c9",
+      "comment": "",
+      "command": "type",
+      "target": "name=searchTag",
+      "targets": [
+        ["name=searchTag", "name"],
+        ["css=input", "css:finder"],
+        ["xpath=//input[@name='searchTag']", "xpath:attributes"],
+        ["xpath=//div[@id='insert-address']/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Informatica"
+    }, {
+      "id": "8135512d-d1b1-452f-aef0-b8e28802b607",
+      "comment": "",
+      "command": "click",
+      "target": "css=.group > button",
+      "targets": [
+        ["css=.group > button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='insert-address']/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "dbfb1629-acd2-4e0a-bbaf-00e5d246e504",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.container > h2",
+      "targets": [
+        ["css=.container > h2", "css:finder"],
+        ["xpath=//div[4]/h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Ecco gli annunci per il tag Informatica')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4daa7a83-e466-4f7b-8ef5-dfe53cf8bcf0",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "60b93a1d-f2b8-4f6a-85ca-f88b473b3277",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["http://localhost:8080/EasyJob/"],
+  "plugins": []
+}

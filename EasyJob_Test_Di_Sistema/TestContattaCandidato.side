@@ -1,0 +1,727 @@
+{
+  "id": "725f3903-7eb5-4353-9f5f-172c0cc810c6",
+  "version": "2.0",
+  "name": "TestContattaCandidato",
+  "url": "http://localhost:8080/EasyJob/",
+  "tests": [{
+    "id": "fd7afa1c-2477-46de-b3e9-26bc3941fccc",
+    "name": "TestTitoloNotOk",
+    "commands": [{
+      "id": "4a0d6331-939c-47ee-b50e-4dfe148c8fbf",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/EasyJob/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ddfe5bda-95e0-4303-b34d-50b4f866abee",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1536x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fcc08397-b8ae-4165-8e3d-b65d3c3c4c42",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Accedi",
+      "targets": [
+        ["linkText=Accedi", "linkText"],
+        ["css=.nav-item:nth-child(1) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Accedi')]", "xpath:link"],
+        ["xpath=//div[@id='navbarResponsive']/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'login.jsp')]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "28828b65-f639-4c0b-9d01-a5cb29ff8a56",
+      "comment": "",
+      "command": "click",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c161e70c-5403-4726-b94b-96039d9eebbb",
+      "comment": "",
+      "command": "type",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "google2019"
+    }, {
+      "id": "1852d5bc-17a0-4bbd-b50b-c81dd9dea132",
+      "comment": "",
+      "command": "click",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=input:nth-child(4)", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "18f2b928-4a01-4679-a7a6-c49ec51f06a6",
+      "comment": "",
+      "command": "type",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=input:nth-child(4)", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "google19"
+    }, {
+      "id": "4012cefa-6fcc-4c3d-aa71-8bd9b7e511a1",
+      "comment": "",
+      "command": "click",
+      "target": "css=.umb-btn",
+      "targets": [
+        ["css=.umb-btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "935788f0-220a-4d35-ad46-f0f5623221bb",
+      "comment": "",
+      "command": "click",
+      "target": "id=conferma",
+      "targets": [
+        ["id=conferma", "id"],
+        ["css=#conferma", "css:finder"],
+        ["xpath=//button[@id='conferma']", "xpath:attributes"],
+        ["xpath=//div[2]/form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Visualizza annunci pubblicati')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1e4efd51-1cf6-4e53-a9b4-e747dc196e94",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Reclutamento Web Programmer",
+      "targets": [
+        ["linkText=Test per canidad", "linkText"],
+        ["css=tbody:nth-child(2) a", "css:finder"],
+        ["xpath=//a[contains(text(),'Test per canidad')]", "xpath:link"],
+        ["xpath=//a[contains(@href, './VisualizzaCandidatiServlet?idAn=4&tit=Test per canidad')]", "xpath:href"],
+        ["xpath=//th/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Test per canidad')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f2450e6a-146d-406e-a70c-fcd5e036b3db",
+      "comment": "",
+      "command": "click",
+      "target": "css=.miaClasse2",
+      "targets": [
+        ["css=.miaClasse2", "css:finder"],
+        ["xpath=//a/button/img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3a630bc6-de18-41ba-a9f4-391f8e28e986",
+      "comment": "",
+      "command": "click",
+      "target": "id=titolo",
+      "targets": [
+        ["id=titolo", "id"],
+        ["name=titolo", "name"],
+        ["css=#titolo", "css:finder"],
+        ["xpath=//input[@id='titolo']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0d5b203b-f105-4414-b767-238ac869fad5",
+      "comment": "",
+      "command": "type",
+      "target": "id=titolo",
+      "targets": [
+        ["id=titolo", "id"],
+        ["name=titolo", "name"],
+        ["css=#titolo", "css:finder"],
+        ["xpath=//input[@id='titolo']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "a"
+    }, {
+      "id": "66176b8f-973e-43bd-8b55-947337665955",
+      "comment": "",
+      "command": "click",
+      "target": "id=msg",
+      "targets": [
+        ["id=msg", "id"],
+        ["name=messaggio", "name"],
+        ["css=#msg", "css:finder"],
+        ["xpath=//textarea[@id='msg']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "96fca837-02b1-4566-892e-8350e6157703",
+      "comment": "",
+      "command": "type",
+      "target": "id=msg",
+      "targets": [
+        ["id=msg", "id"],
+        ["name=messaggio", "name"],
+        ["css=#msg", "css:finder"],
+        ["xpath=//textarea[@id='msg']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "aaaaaaaaaaaaaaaaaaaa"
+    }, {
+      "id": "82019974-a3b2-4a2a-a3ac-700dd87dc330",
+      "comment": "",
+      "command": "click",
+      "target": "id=conferma",
+      "targets": [
+        ["id=conferma", "id"],
+        ["css=#conferma", "css:finder"],
+        ["xpath=//input[@id='conferma']", "xpath:attributes"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "30ba48eb-a348-4ae9-a511-abe37be852c5",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "id=errorTit",
+      "targets": [
+        ["id=errorTit", "id"],
+        ["css=#errorTit", "css:finder"],
+        ["xpath=//span[@id='errorTit']", "xpath:attributes"],
+        ["xpath=//span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Il titolo di invito al colloquio deve contenere minimo 5 caratteri e al massimo 60 caratteri.')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "65265eb9-2c2d-4a48-ac0e-c8a3924cbb20",
+      "comment": "",
+      "command": "click",
+      "target": "css=button:nth-child(1)",
+      "targets": [
+        ["css=button:nth-child(1)", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='navbarResponsive']/ul/li/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Logout')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "14a2426c-3b64-423b-b1a1-3193fa9cc72c",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "f00793bb-4d35-4757-97dd-eec36b5baa7a",
+    "name": "TestCorpoNotOk",
+    "commands": [{
+      "id": "d2aa607f-38c8-4b59-ac0b-6cb29cd043a8",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/EasyJob/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2f226e26-ed02-4f63-9938-215e268d59f6",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1536x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fa413593-f1dc-4b0b-8ed6-72f5b05a8304",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Accedi",
+      "targets": [
+        ["linkText=Accedi", "linkText"],
+        ["css=.nav-item:nth-child(1) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Accedi')]", "xpath:link"],
+        ["xpath=//div[@id='navbarResponsive']/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'login.jsp')]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fcfbd8bf-aac2-4228-ae90-9381d7bce94d",
+      "comment": "",
+      "command": "click",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "94228440-d9b0-4e67-9870-1e1b823be497",
+      "comment": "",
+      "command": "type",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "google2019"
+    }, {
+      "id": "ed7e27d5-b747-4453-ad30-d049312a6955",
+      "comment": "",
+      "command": "click",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=input:nth-child(4)", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "37e8cd92-3ee7-4454-864b-b3a1eff9a46f",
+      "comment": "",
+      "command": "type",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=input:nth-child(4)", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "google19"
+    }, {
+      "id": "6b5c87e0-f553-4099-803c-ebf76007c38a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.umb-btn",
+      "targets": [
+        ["css=.umb-btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f4b0db2d-3c08-4897-b92b-5fc0c12f03fd",
+      "comment": "",
+      "command": "click",
+      "target": "id=conferma",
+      "targets": [
+        ["id=conferma", "id"],
+        ["css=#conferma", "css:finder"],
+        ["xpath=//button[@id='conferma']", "xpath:attributes"],
+        ["xpath=//div[2]/form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Visualizza annunci pubblicati')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "74bcbb5e-e42a-4650-8355-648ffb534193",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Reclutamento Web Programmer",
+      "targets": [
+        ["linkText=Test per canidad", "linkText"],
+        ["css=tbody:nth-child(2) a", "css:finder"],
+        ["xpath=//a[contains(text(),'Test per canidad')]", "xpath:link"],
+        ["xpath=//a[contains(@href, './VisualizzaCandidatiServlet?idAn=4&tit=Test per canidad')]", "xpath:href"],
+        ["xpath=//th/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Test per canidad')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "db4a1ee8-6c6e-4ce3-acb3-04f09fb186dc",
+      "comment": "",
+      "command": "click",
+      "target": "css=.miaClasse2",
+      "targets": [
+        ["css=.miaClasse2", "css:finder"],
+        ["xpath=//a/button/img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d92bcd91-08b8-4948-90bc-80816e8a2c3d",
+      "comment": "",
+      "command": "click",
+      "target": "id=titolo",
+      "targets": [
+        ["id=titolo", "id"],
+        ["name=titolo", "name"],
+        ["css=#titolo", "css:finder"],
+        ["xpath=//input[@id='titolo']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2b1a2c7d-edf8-4773-be51-338e3c2e36c9",
+      "comment": "",
+      "command": "type",
+      "target": "id=titolo",
+      "targets": [
+        ["id=titolo", "id"],
+        ["name=titolo", "name"],
+        ["css=#titolo", "css:finder"],
+        ["xpath=//input[@id='titolo']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Titolo abbastanza giusto"
+    }, {
+      "id": "c99afa83-4995-4bef-bcc7-04095ce0fc00",
+      "comment": "",
+      "command": "click",
+      "target": "id=msg",
+      "targets": [
+        ["id=msg", "id"],
+        ["name=messaggio", "name"],
+        ["css=#msg", "css:finder"],
+        ["xpath=//textarea[@id='msg']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "fcdd6ab9-c03d-4274-8305-07c713719a5b",
+      "comment": "",
+      "command": "type",
+      "target": "id=msg",
+      "targets": [
+        ["id=msg", "id"],
+        ["name=messaggio", "name"],
+        ["css=#msg", "css:finder"],
+        ["xpath=//textarea[@id='msg']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "n"
+    }, {
+      "id": "93a4c3e9-201d-4abc-9c88-a41ee3f6dc73",
+      "comment": "",
+      "command": "click",
+      "target": "id=conferma",
+      "targets": [
+        ["id=conferma", "id"],
+        ["css=#conferma", "css:finder"],
+        ["xpath=//input[@id='conferma']", "xpath:attributes"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "384063a2-e7aa-4e8b-a340-d279ffc0e57e",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "id=errorTit",
+      "targets": [
+        ["id=errorTit", "id"],
+        ["css=#errorTit", "css:finder"],
+        ["xpath=//span[@id='errorTit']", "xpath:attributes"],
+        ["xpath=//span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Il titolo di invito al colloquio deve contenere minimo 5 caratteri e al massimo 60 caratteri.')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "273b66b6-c7c9-4425-b66b-5bb15bc4e052",
+      "comment": "",
+      "command": "click",
+      "target": "css=button:nth-child(1)",
+      "targets": [
+        ["css=button:nth-child(1)", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='navbarResponsive']/ul/li/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Logout')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4d85a569-768a-406b-b0f9-db1968e79c00",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "7d11b5b7-9259-446f-a35a-274ae66c7dcc",
+    "name": "TestAlreadyInvited",
+    "commands": [{
+      "id": "ffef5bf9-0bda-410e-b586-ddba2ff55876",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/EasyJob/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3b7243ea-8d36-40c2-be17-0edf901503a2",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x840",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "954b1418-b376-4529-ba46-d9144f50713c",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Accedi",
+      "targets": [
+        ["linkText=Accedi", "linkText"],
+        ["css=.nav-item:nth-child(1) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Accedi')]", "xpath:link"],
+        ["xpath=//div[@id='navbarResponsive']/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'login.jsp')]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "34c4a23e-0776-442c-b1bf-d241cdb7ca5e",
+      "comment": "",
+      "command": "click",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "930b7879-203a-49e4-a281-ed54e1ee8e18",
+      "comment": "",
+      "command": "type",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "google2019"
+    }, {
+      "id": "5893c1c5-12c6-4b8c-ae38-5246ffb3b869",
+      "comment": "",
+      "command": "click",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=input:nth-child(4)", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1d4ea5e7-b30b-4b2d-9152-014342b55fd1",
+      "comment": "",
+      "command": "type",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=input:nth-child(4)", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "google19"
+    }, {
+      "id": "2e741838-1472-4510-b7d3-c12d3f1c8083",
+      "comment": "",
+      "command": "mouseDown",
+      "target": "css=.form-input",
+      "targets": [
+        ["css=.form-input", "css:finder"],
+        ["xpath=//form/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1db8d490-030a-4160-a177-0a9cb2d67ac0",
+      "comment": "",
+      "command": "mouseUp",
+      "target": "css=.umb-btn",
+      "targets": [
+        ["css=.umb-btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c7fd878b-04aa-4f05-9a1b-b67684709a6e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-input",
+      "targets": [
+        ["css=.form-input", "css:finder"],
+        ["xpath=//form/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e0906cdc-d930-4d12-ba0d-723c498c8998",
+      "comment": "",
+      "command": "click",
+      "target": "css=.umb-btn",
+      "targets": [
+        ["css=.umb-btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a03cf38b-4913-4ef5-be39-ddbe2dfc9b8d",
+      "comment": "",
+      "command": "click",
+      "target": "id=conferma",
+      "targets": [
+        ["id=conferma", "id"],
+        ["css=#conferma", "css:finder"],
+        ["xpath=//button[@id='conferma']", "xpath:attributes"],
+        ["xpath=//div[2]/form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Visualizza annunci pubblicati')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "289790e2-f66e-4d91-a88e-05879c8091db",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Reclutamento Web Programmer",
+      "targets": [
+        ["linkText=Esempio annuncio 1", "linkText"],
+        ["css=tbody:nth-child(2) a", "css:finder"],
+        ["xpath=//a[contains(text(),'Esempio annuncio 1')]", "xpath:link"],
+        ["xpath=//a[contains(@href, './VisualizzaCandidatiServlet?idAn=1&tit=Esempio annuncio 1')]", "xpath:href"],
+        ["xpath=//th/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Esempio annuncio 1')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ba36140e-27ab-467c-a5ff-2a4e02d36797",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) .miaClasse2",
+      "targets": [
+        ["css=tr:nth-child(1) .miaClasse2", "css:finder"],
+        ["xpath=//a/button/img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e3889901-a2fc-4065-9611-0c9d4c3e88cc",
+      "comment": "",
+      "command": "click",
+      "target": "id=titolo",
+      "targets": [
+        ["id=titolo", "id"],
+        ["name=titolo", "name"],
+        ["css=#titolo", "css:finder"],
+        ["xpath=//input[@id='titolo']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0694f570-daa3-49ea-b562-e1829b3ae6a7",
+      "comment": "",
+      "command": "type",
+      "target": "id=titolo",
+      "targets": [
+        ["id=titolo", "id"],
+        ["name=titolo", "name"],
+        ["css=#titolo", "css:finder"],
+        ["xpath=//input[@id='titolo']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Esempio test"
+    }, {
+      "id": "0cf98b85-7b0c-4e2f-8b01-0c0f2ceac516",
+      "comment": "",
+      "command": "click",
+      "target": "id=msg",
+      "targets": [
+        ["id=msg", "id"],
+        ["name=messaggio", "name"],
+        ["css=#msg", "css:finder"],
+        ["xpath=//textarea[@id='msg']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8b42332a-bae9-4e63-a236-614341058113",
+      "comment": "",
+      "command": "type",
+      "target": "id=msg",
+      "targets": [
+        ["id=msg", "id"],
+        ["name=messaggio", "name"],
+        ["css=#msg", "css:finder"],
+        ["xpath=//textarea[@id='msg']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "okkkkkkkkkkkkkk"
+    }, {
+      "id": "4416882c-ab6a-4e72-9fbc-e126146f1563",
+      "comment": "",
+      "command": "click",
+      "target": "id=conferma",
+      "targets": [
+        ["id=conferma", "id"],
+        ["css=#conferma", "css:finder"],
+        ["xpath=//input[@id='conferma']", "xpath:attributes"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e8f68431-0af6-4d59-9a21-d6106f23c4e5",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=h3",
+      "targets": [
+        ["css=h3", "css:finder"],
+        ["xpath=//h3", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8e6d3f24-0945-4fe9-ac24-086271162c29",
+      "comment": "",
+      "command": "click",
+      "target": "css=button:nth-child(1)",
+      "targets": [
+        ["css=button:nth-child(1)", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='navbarResponsive']/ul/li/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Logout')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2a7173e9-fc1b-4729-9861-baba3f16b235",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "7039b753-516a-44ce-a1ed-85f1a3340d40",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["fd7afa1c-2477-46de-b3e9-26bc3941fccc"]
+  }],
+  "urls": ["http://localhost:8080/EasyJob/"],
+  "plugins": []
+}
