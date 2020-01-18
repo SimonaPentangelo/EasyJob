@@ -91,8 +91,8 @@ Candidati!
 
 <%
 		String stringa = "";
-		if(request.getAttribute("errorCand") != null) {
-			stringa = request.getAttribute("errorCand").toString();
+		if(request.getSession().getAttribute("errorCand") != null) {
+			stringa = (String) request.getSession().getAttribute("errorCand");
 			
 			%><h3><%=stringa %></h3> <% 
 		} 
