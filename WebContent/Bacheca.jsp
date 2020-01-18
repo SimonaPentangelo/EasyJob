@@ -38,13 +38,18 @@
 	<%
 		} else {
 
-			if (mod == null) {
+			
 	%>
+	<%
+	if (mod!=null){
+	%><h2>Ecco gli annunci per la data selezionata:</h2>
+	<%}else{ %>
 	<%if (cit==null){ %>
 	<h2>Ecco gli annunci per il tag <%=tagDellaRicerca %></h2>
 	<%}else{ %>
 	<h2>Ecco gli annunci per il tag <%=tagDellaRicerca %> nella città <%=cit %></h2>
-<% }%>
+<% } // secondo else
+}//primo else%>
 	<form action="FiltraAnnunciServlet" method="GET">
 		<input type="text" class="city" name="advancedSearch"> <br> 
 		<input type="hidden"name="tag" value="<%=tagDellaRicerca%>"> 
@@ -63,7 +68,7 @@
 	</thead>
 	<tbody>
 	<%
-		}
+		
 			String city = "";
 			String tipoC = "";
 			String nomeAz = "";
