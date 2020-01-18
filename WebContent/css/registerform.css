@@ -3,6 +3,11 @@ body {
     text-align: center;
 }
 
+#showAzienda {
+	width: 200px;
+    padding: 10px;
+}
+
 .logoDiv {
 	padding-right: 100px;
 }
